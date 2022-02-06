@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Alert, StyleSheet} from 'react-native';
 
 import {
@@ -8,16 +8,17 @@ import {
 } from '@react-navigation/drawer';
 
 const CustomSidebarMenu = (props) => {
+    const [logUsr, setUsr] = useState('Mamusa')
     return (
         <View style={stylesSidebar.sideMenuContainer}>
             <View style={stylesSidebar.profileHeader}>
                 <View style={stylesSidebar.profileHeaderPicCircle}>
                     <Text style={{fontSize: 25, color: '#307ecc'}}>
-                        {'About React'.charAt(0)}
+                        {logUsr.charAt(0)}
                     </Text>
                 </View>
                 <Text style={stylesSidebar.profileHeaderText}>
-                    AboutReact
+                    {logUsr}
                 </Text>
             </View>
             <View style={stylesSidebar.profileHeaderLine} />
@@ -34,19 +35,19 @@ const CustomSidebarMenu = (props) => {
                         props.navigation.toggleDrawer();
                         Alert.alert(
                             'Logout',
-                            'Are you sure? You want to logout?',
+                            'Sei sicuro? Vuoi eseguire un logout?',
                             [
                                 {
-                                    text: 'Cancel',
+                                    text: 'Cancella',
                                     onPress: () => {
                                         return null;
                                     },
                                 },
                                 {
-                                    text: 'Confirm',
+                                    text: 'Conferma',
                                     onPress: () => {
                                         // AsyncStorage.clear();
-                                        props.navigation.replace('Auth');
+                                        props.navigation.replace('Autenticazione');
                                     },
                                 },
                             ],

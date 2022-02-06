@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '90%',
-        height: '50px',
+        height: 50,
         resizeMode: 'contain',
         margin: 30
     }

@@ -3,7 +3,7 @@ import React from 'react';
 
 // Import Navigators from React Navigation
 import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createDrawerNavigator, DrawerContent} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './Home';
@@ -14,7 +14,7 @@ import NavigationDrawerHeader from '../NavigationDrawerHeader';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const homeScreenStack = ({navigation}) => {
+const HomeScreenStack = ({navigation}) => {
     return (
         <Stack.Navigator initialRouteName="HomeScreen">
             <Stack.Screen
@@ -38,7 +38,7 @@ const homeScreenStack = ({navigation}) => {
     );
 };
 
-const settingScreenStack = ({navigation}) => {
+const SettingScreenStack = ({navigation}) => {
     return (
         <Stack.Navigator
             initialRouteName="SettingsScreen"
@@ -58,7 +58,7 @@ const settingScreenStack = ({navigation}) => {
                 name="SettingsScreen"
                 component={SettingsScreen}
                 options={{
-                    title: 'Settings', //Set Header Title
+                    title: 'Impostazioni', //Set Header Title
                 }}
             />
         </Stack.Navigator>
@@ -68,7 +68,7 @@ const settingScreenStack = ({navigation}) => {
 const DrawerNavigatorRoutes = (props) => {
     return (
         <Drawer.Navigator
-            drawerContentOptions={{
+            screenOptions={{
                 activeTintColor: '#cee1f2',
                 color: '#cee1f2',
                 itemStyle: {marginVertical: 5, color: 'white'},
@@ -76,17 +76,16 @@ const DrawerNavigatorRoutes = (props) => {
                     color: '#d8d8d8',
                 },
             }}
-            screenOptions={{headerShown: false}}
-            drawerContent={CustomSidebarMenu}>
+            drawerContent={props => <CustomSidebarMenu {...props}/>} >
             <Drawer.Screen
-                name="homeScreenStack"
-                options={{drawerLabel: 'Home Screen'}}
-                component={homeScreenStack}
+                name="HomeScreenStack"
+                options={{drawerLabel: 'Home', headerShown: false}}
+                component={HomeScreenStack}
             />
             <Drawer.Screen
-                name="settingScreenStack"
-                options={{drawerLabel: 'Setting Screen'}}
-                component={settingScreenStack}
+                name="SettingScreenStack"
+                options={{drawerLabel: 'Impostazioni', headerShown: false}}
+                component={SettingScreenStack}
             />
         </Drawer.Navigator>
     );

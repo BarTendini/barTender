@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Button} from "react-native";
+import {View, Button, StyleSheet, SafeAreaView} from "react-native";
 import { TextInput } from "react-native-paper";
 
 const Register = ({ navigation }) => {
@@ -23,7 +23,7 @@ const Register = ({ navigation }) => {
         navigation.goBack();
     }
     return (
-        <View>
+        <SafeAreaView style={styles.Registrati}>
             <TextInput
                 value={logMail}
                 onChangeText={(value) => setMail(value)}
@@ -43,9 +43,29 @@ const Register = ({ navigation }) => {
                 secureTextEntry
                 left={<TextInput.Icon name="form-textbox-password" />}
             />
-            <Button title={"Registrati"} onPress={handleSubmitPress} />
-        </View>
+            <View style={styles.Bottoni}>
+                <View style={styles.BottoneView}>
+                    <Button title={"Registrati"} onPress={handleSubmitPress} />
+                </View>
+            </View>
+        </SafeAreaView>
     );
 };
 
 export default Register;
+
+const styles = StyleSheet.create({
+    Registrati: {
+        flex: 1,
+    },
+    Bottoni: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        padding: 5,
+    },
+    BottoneView: {
+        flex: 1,
+        justifyContent: "center",
+        marginHorizontal: 10
+    },
+});
