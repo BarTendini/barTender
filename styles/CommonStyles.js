@@ -59,5 +59,7 @@ export default StyleSheet.create({
         // Altrimenti è tutto centrato al di sotto del logo
         flex: 1,
         height: 150,
+        justifyContent: "flex-end",
+        alignItems: "center",
     }
 });

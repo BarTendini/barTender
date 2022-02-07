@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, TouchableOpacity, Text, StyleSheet, SafeAreaView, TextInput} from "react-native";
+import {View, TouchableOpacity, Text, StyleSheet, Platform, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
 import Logo from "../headerTender.js";
 import commonStyles from "../../styles/CommonStyles";
 
@@ -20,46 +20,52 @@ const Login = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                style={{flex: 1,}}
+            >
             <Logo icon={0} />
-            <View style={commonStyles.ViewAut}>
-                <Text style={commonStyles.titleText}>Login</Text>
-                <View style={{paddingTop: 20}}/>
-                <TextInput
-                    value={logUsr}
-                    onChangeText={(value) => setUsr(value)}
-                    placeholder={"Username"}
-                    style={commonStyles.Input}
-                />
-                <View style={{paddingTop: 10}}/>
-                <TextInput
-                    value={passText}
-                    onChangeText={(value) => setPass(value)}
-                    placeholder={"Password"}
-                    secureTextEntry={true}
-                    style={commonStyles.Input}
+                <View style={commonStyles.ViewAut}>
+                    <Text style={commonStyles.titleText}>Login</Text>
+                    <View style={{paddingTop: 20}}/>
+                    <TextInput
+                        value={logUsr}
+                        onChangeText={(value) => setUsr(value)}
+                        placeholder={"Username"}
+                        style={commonStyles.Input}
+                    />
+                    <View style={{paddingTop: 10}}/>
+                    <TextInput
+                        value={passText}
+                        onChangeText={(value) => setPass(value)}
+                        placeholder={"Password"}
+                        secureTextEntry={true}
+                        style={commonStyles.Input}
 
-                />
-                <View style={{paddingTop: 10}}/>
-                <View style={styles.Bottoni}>
-                    <View style={commonStyles.BottoneView}>
-                        <TouchableOpacity
-                            onPress={handleSubmitPress}
-                            style={commonStyles.Bottone}
-                        >
-                            <Text style={commonStyles.BottoneText}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={commonStyles.BottoneView}>
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate('Registrati')}
-                            style={commonStyles.Bottone}
-                        >
-                            <Text style={commonStyles.BottoneText}>Registati</Text>
-                        </TouchableOpacity>
+                    />
+                    <View style={{paddingTop: 10}}/>
+                    <View style={styles.Bottoni}>
+                        <View style={commonStyles.BottoneView}>
+                            <TouchableOpacity
+                                onPress={handleSubmitPress}
+                                style={commonStyles.Bottone}
+                            >
+                                <Text style={commonStyles.BottoneText}>Login</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={commonStyles.BottoneView}>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('Registrati')}
+                                style={commonStyles.Bottone}
+                            >
+                                <Text style={commonStyles.BottoneText}>Registati</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
-            <View style={commonStyles.Bottom}><></></View>
+
+            <View style={commonStyles.Bottom}><Text>Build: 0.11</Text></View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };

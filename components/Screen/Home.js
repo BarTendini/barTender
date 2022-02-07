@@ -32,7 +32,7 @@ const Home = ({ navigation }) => {
             <View style={{
                 flex: 1,
                 flexDirection: "column",
-                justifyContent: "start",
+                // justifyContent: "start",
                 marginHorizontal: 10,
             }}>
                 <Text
@@ -61,6 +61,7 @@ const Home = ({ navigation }) => {
                     hideAlert();
                 }}
                 onConfirmPressed={() => {
+                    hideAlert()
                     navigation.replace('Autenticazione');
                 }}
                 overlayStyle={{height: '100%'}}

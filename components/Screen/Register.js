@@ -1,5 +1,14 @@
 import React, {useState} from "react";
-import {View, TouchableOpacity, Text, StyleSheet, SafeAreaView, TextInput} from "react-native";
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    SafeAreaView,
+    TextInput,
+    KeyboardAvoidingView,
+    Platform
+} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import Logo from "../headerTender.js";
 
@@ -25,44 +34,46 @@ const Register = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
-            <Logo icon={1} navigation={navigation} />
-            <View style={commonStyles.ViewAut}>
-                <Text style={commonStyles.titleText}>Registrati</Text>
-                <View style={{padding: 20}}/>
-                <TextInput
-                    value={logMail}
-                    onChangeText={(value) => setMail(value)}
-                    placeholder={"Email"}
-                    style={commonStyles.Input}
-                />
-                <View style={{padding: 10}}/>
-                <TextInput
-                    value={logUsr}
-                    onChangeText={(value) => setUsr(value)}
-                    placeholder={"Username"}
-                    style={commonStyles.Input}
-                />
-                <View style={{padding: 10}}/>
-                <TextInput
-                    value={passText}
-                    onChangeText={(value) => setPass(value)}
-                    placeholder={"Password"}
-                    secureTextEntry={true}
-                    style={commonStyles.Input}
-                />
-                <View style={{padding: 10}}/>
-                <View style={styles.Bottoni}>
-                    <View style={commonStyles.BottoneView}>
-                        <TouchableOpacity
-                            onPress={() => handleSubmitPress}
-                            style={commonStyles.Bottone}
-                        >
-                            <Text style={commonStyles.BottoneText}>Registati</Text>
-                        </TouchableOpacity>
+            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
+                <Logo icon={1} navigation={navigation} />
+                <View style={commonStyles.ViewAut}>
+                    <Text style={commonStyles.titleText}>Registrati</Text>
+                    <View style={{padding: 20}}/>
+                    <TextInput
+                        value={logMail}
+                        onChangeText={(value) => setMail(value)}
+                        placeholder={"Email"}
+                        style={commonStyles.Input}
+                    />
+                    <View style={{padding: 10}}/>
+                    <TextInput
+                        value={logUsr}
+                        onChangeText={(value) => setUsr(value)}
+                        placeholder={"Username"}
+                        style={commonStyles.Input}
+                    />
+                    <View style={{padding: 10}}/>
+                    <TextInput
+                        value={passText}
+                        onChangeText={(value) => setPass(value)}
+                        placeholder={"Password"}
+                        secureTextEntry={true}
+                        style={commonStyles.Input}
+                    />
+                    <View style={{padding: 10}}/>
+                    <View style={styles.Bottoni}>
+                        <View style={commonStyles.BottoneView}>
+                            <TouchableOpacity
+                                onPress={handleSubmitPress}
+                                style={commonStyles.Bottone}
+                            >
+                                <Text style={commonStyles.BottoneText}>Registati</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
-            <View style={commonStyles.Bottom}><></></View>
+                <View style={commonStyles.Bottom}><></></View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };
