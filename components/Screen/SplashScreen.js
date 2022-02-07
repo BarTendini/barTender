@@ -22,13 +22,13 @@ const SplashScreen = ({navigation}) => {
                 ),
             );*/
             navigation.replace('Autenticazione');
-        }, 500);
+        }, 1000);
     }, []);
 
     return (
         <View style={styles.container}>
             <Image
-                source={require('../../image/splash.png')}
+                source={require('../../image/loghi/splash.png')}
                 style={styles.image}
             />
             <ActivityIndicator
@@ -48,16 +48,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#307ecc',
+        backgroundColor: '#ffcc8b',
     },
     activityIndicator: {
         alignItems: 'center',
         height: 80,
     },
     image: {
-        width: '90%',
-        height: 50,
+        width: '100%',
+        height: 100,
         resizeMode: 'contain',
-        margin: 30
     }
 });

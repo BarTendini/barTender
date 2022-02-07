@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import {View, Button, StyleSheet, SafeAreaView} from "react-native";
-import { TextInput } from "react-native-paper";
+import {View, TouchableOpacity, Text, StyleSheet, SafeAreaView, TextInput} from "react-native";
+import commonStyles from "../../styles/CommonStyles";
+import Logo from "../headerTender.js";
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
@@ -23,31 +24,45 @@ const Register = ({ navigation }) => {
         navigation.goBack();
     }
     return (
-        <SafeAreaView style={styles.Registrati}>
-            <TextInput
-                value={logMail}
-                onChangeText={(value) => setMail(value)}
-                label={"Email"}
-                left={<TextInput.Icon name="mail" />}
-            />
-            <TextInput
-                value={logUsr}
-                onChangeText={(value) => setUsr(value)}
-                label={"Username"}
-                left={<TextInput.Icon name="account" />}
-            />
-            <TextInput
-                value={passText}
-                onChangeText={(value) => setPass(value)}
-                label={"Password"}
-                secureTextEntry
-                left={<TextInput.Icon name="form-textbox-password" />}
-            />
-            <View style={styles.Bottoni}>
-                <View style={styles.BottoneView}>
-                    <Button title={"Registrati"} onPress={handleSubmitPress} />
+        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+            <Logo icon={1} navigation={navigation} />
+            <View style={commonStyles.ViewAut}>
+                <Text style={commonStyles.titleText}>Registrati</Text>
+                <View style={{padding: 20}}/>
+                <TextInput
+                    value={logMail}
+                    onChangeText={(value) => setMail(value)}
+                    placeholder={"Email"}
+                    style={commonStyles.Input}
+                />
+                <View style={{padding: 10}}/>
+                <TextInput
+                    value={logUsr}
+                    onChangeText={(value) => setUsr(value)}
+                    placeholder={"Username"}
+                    style={commonStyles.Input}
+                />
+                <View style={{padding: 10}}/>
+                <TextInput
+                    value={passText}
+                    onChangeText={(value) => setPass(value)}
+                    placeholder={"Password"}
+                    secureTextEntry={true}
+                    style={commonStyles.Input}
+                />
+                <View style={{padding: 10}}/>
+                <View style={styles.Bottoni}>
+                    <View style={commonStyles.BottoneView}>
+                        <TouchableOpacity
+                            onPress={() => handleSubmitPress}
+                            style={commonStyles.Bottone}
+                        >
+                            <Text style={commonStyles.BottoneText}>Registati</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
+            <View style={commonStyles.Bottom}><></></View>
         </SafeAreaView>
     );
 };
@@ -55,17 +70,8 @@ const Register = ({ navigation }) => {
 export default Register;
 
 const styles = StyleSheet.create({
-    Registrati: {
-        flex: 1,
-    },
     Bottoni: {
         flexDirection: 'row',
         justifyContent: 'center',
-        padding: 5,
-    },
-    BottoneView: {
-        flex: 1,
-        justifyContent: "center",
-        marginHorizontal: 10
     },
 });

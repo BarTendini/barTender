@@ -8,7 +8,7 @@ import SplashScreen from "./components/Screen/SplashScreen";
 import DrawerNavigationRoutes from './components/Screen/DrawerNavigatorRoutes';
 //import BarSelection from "./components/Screen/Home";
 
-//https://aboutreact.com/react-native-login-and-signup/#Appjs
+//AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
 
 const Stack = createNativeStackNavigator();
 
@@ -24,16 +24,7 @@ const Auth = () => {
         <Stack.Screen
             name="Registrati"
             component={Register}
-            options={{
-              title: 'Registrati', //Set Header Title
-              headerStyle: {
-                backgroundColor: '#307ecc', //Set Header color
-              },
-              headerTintColor: '#fff', //Set Header text color
-              headerTitleStyle: {
-                fontWeight: 'bold', //Set Header text style
-              },
-            }}
+            options={{headerShown: false}}
         />
       </Stack.Navigator>
   );

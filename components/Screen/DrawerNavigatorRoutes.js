@@ -1,9 +1,10 @@
 // Import React
 import React from 'react';
+import {View, Text} from 'react-native';
 
 // Import Navigators from React Navigation
 import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator, DrawerContent} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './Home';
@@ -26,7 +27,7 @@ const HomeScreenStack = ({navigation}) => {
                         <NavigationDrawerHeader navigationProps={navigation} />
                     ),
                     headerStyle: {
-                        backgroundColor: '#307ecc', //Set Header color
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
                     },
                     headerTintColor: '#fff', //Set Header text color
                     headerTitleStyle: {
@@ -47,7 +48,7 @@ const SettingScreenStack = ({navigation}) => {
                     <NavigationDrawerHeader navigationProps={navigation} />
                 ),
                 headerStyle: {
-                    backgroundColor: '#307ecc', //Set Header color
+                    backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
                 },
                 headerTintColor: '#fff', //Set Header text color
                 headerTitleStyle: {
@@ -69,22 +70,26 @@ const DrawerNavigatorRoutes = (props) => {
     return (
         <Drawer.Navigator
             screenOptions={{
-                activeTintColor: '#cee1f2',
-                color: '#cee1f2',
-                itemStyle: {marginVertical: 5, color: 'white'},
-                labelStyle: {
-                    color: '#d8d8d8',
-                },
             }}
             drawerContent={props => <CustomSidebarMenu {...props}/>} >
             <Drawer.Screen
                 name="HomeScreenStack"
-                options={{drawerLabel: 'Home', headerShown: false}}
+                options={{
+                    drawerLabel: 'Home',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+            }}
                 component={HomeScreenStack}
             />
             <Drawer.Screen
                 name="SettingScreenStack"
-                options={{drawerLabel: 'Impostazioni', headerShown: false}}
+                options={{
+                    drawerLabel: 'Impostazioni',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+                }}
                 component={SettingScreenStack}
             />
         </Drawer.Navigator>

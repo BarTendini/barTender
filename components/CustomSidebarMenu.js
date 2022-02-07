@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, Alert, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 import {
     DrawerContentScrollView,
@@ -9,6 +10,14 @@ import {
 
 const CustomSidebarMenu = (props) => {
     const [logUsr, setUsr] = useState('Mamusa')
+    const [alert, setAlert] = useState(false)
+    const showAlert = () => {
+        setAlert( true)
+    };
+
+    const hideAlert = () => {
+        setAlert(false)
+    };
     return (
         <View style={stylesSidebar.sideMenuContainer}>
             <View style={stylesSidebar.profileHeader}>
@@ -32,30 +41,31 @@ const CustomSidebarMenu = (props) => {
                         </Text>
                     }
                     onPress={() => {
-                        props.navigation.toggleDrawer();
-                        Alert.alert(
-                            'Logout',
-                            'Sei sicuro? Vuoi eseguire un logout?',
-                            [
-                                {
-                                    text: 'Cancella',
-                                    onPress: () => {
-                                        return null;
-                                    },
-                                },
-                                {
-                                    text: 'Conferma',
-                                    onPress: () => {
-                                        // AsyncStorage.clear();
-                                        props.navigation.replace('Autenticazione');
-                                    },
-                                },
-                            ],
-                            {cancelable: false},
-                        );
+                        showAlert()
                     }}
                 />
             </DrawerContentScrollView>
+            <AwesomeAlert
+                show={alert}
+                showProgress={false}
+                title="Logout"
+                message="Sei sicuro? Vuoi eseguire un logout?"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                cancelText="Cancella"
+                confirmText="Conferma"
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    props.navigation.replace('Autenticazione');
+                }}
+                overlayStyle={{height: '100%'}}
+                alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
+            />
         </View>
     );
 };
@@ -66,13 +76,13 @@ const stylesSidebar = StyleSheet.create({
     sideMenuContainer: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#307ecc',
+        backgroundColor: '#F78764',
         paddingTop: 40,
         color: 'white',
     },
     profileHeader: {
         flexDirection: 'row',
-        backgroundColor: '#307ecc',
+        backgroundColor: '#F78764',
         padding: 15,
         textAlign: 'center',
     },

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import {View, Button, StyleSheet, SafeAreaView} from "react-native";
-import { TextInput } from "react-native-paper";
+import {View, TouchableOpacity, Text, StyleSheet, SafeAreaView, TextInput} from "react-native";
+import Logo from "../headerTender.js";
+import commonStyles from "../../styles/CommonStyles";
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -18,34 +19,47 @@ const Login = ({ navigation }) => {
         navigation.replace('DrawerNavigationRoutes');
     }
     return (
-        <SafeAreaView style={styles.Login}>
-            <TextInput
-                value={logUsr}
-                onChangeText={(value) => setUsr(value)}
-                label={"Username"}
-                left={<TextInput.Icon name="account" />}
-            />
-            <TextInput
-                value={passText}
-                onChangeText={(value) => setPass(value)}
-                label={"Password"}
-                secureTextEntry
-                left={<TextInput.Icon name="form-textbox-password" />}
-            />
-            <View style={styles.Bottoni}>
-                <View style={styles.BottoneView}>
-                    <Button
-                        title="Login"
-                        onPress={handleSubmitPress}
-                    />
-                </View>
-                <View style={styles.BottoneView}>
-                    <Button
-                        title="Registrati"
-                        onPress={() => navigation.navigate('Registrati')}
-                    />
+        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+            <Logo icon={0} />
+            <View style={commonStyles.ViewAut}>
+                <Text style={commonStyles.titleText}>Login</Text>
+                <View style={{paddingTop: 20}}/>
+                <TextInput
+                    value={logUsr}
+                    onChangeText={(value) => setUsr(value)}
+                    placeholder={"Username"}
+                    style={commonStyles.Input}
+                />
+                <View style={{paddingTop: 10}}/>
+                <TextInput
+                    value={passText}
+                    onChangeText={(value) => setPass(value)}
+                    placeholder={"Password"}
+                    secureTextEntry={true}
+                    style={commonStyles.Input}
+
+                />
+                <View style={{paddingTop: 10}}/>
+                <View style={styles.Bottoni}>
+                    <View style={commonStyles.BottoneView}>
+                        <TouchableOpacity
+                            onPress={handleSubmitPress}
+                            style={commonStyles.Bottone}
+                        >
+                            <Text style={commonStyles.BottoneText}>Login</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={commonStyles.BottoneView}>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Registrati')}
+                            style={commonStyles.Bottone}
+                        >
+                            <Text style={commonStyles.BottoneText}>Registati</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
+            <View style={commonStyles.Bottom}><></></View>
         </SafeAreaView>
     );
 };
@@ -53,17 +67,8 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
-    Login: {
-        flex: 1,
-    },
     Bottoni: {
         flexDirection: 'row',
         justifyContent: 'center',
-        padding: 5,
-    },
-    BottoneView: {
-      flex: 1,
-        justifyContent: "center",
-        marginHorizontal: 10
-    },
+    }
 });
