@@ -4,11 +4,11 @@ import commonStyles from "../styles/CommonStyles";
 
 const Logo = ({ icon, navigation, bgColor, showAlert }) => {
     return (
-        <View style={{flex: 1, backgroundColor: bgColor ? bgColor : null}}>
+        <View style={{backgroundColor: bgColor ? bgColor : null}}>
             <ImageBackground
                 source={require('../image/loghi/logoHome.png')}
-                resizeMode='contain'
                 style={commonStyles.Logo}
+                resizeMode={'contain'}
             >
                 {showIcon(icon, navigation, showAlert)}
             </ImageBackground>

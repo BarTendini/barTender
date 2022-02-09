@@ -16,6 +16,8 @@ export default StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         marginHorizontal: 10,
+        // borderColor: 'black',
+        // borderWidth: 3,
     },
     titleText: {
         textAlign: 'center', // <-- the magic
@@ -57,8 +59,6 @@ export default StyleSheet.create({
     Bottom: {
         //serve per centrare il resto degli elementi della pagina a causa di logo
         // Altrimenti è tutto centrato al di sotto del logo
-        flex: 1,
-        height: 150,
         justifyContent: "flex-end",
         alignItems: "center",
     }

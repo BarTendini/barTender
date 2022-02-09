@@ -32,7 +32,7 @@ const Home = ({ navigation }) => {
             <View style={{
                 flex: 1,
                 flexDirection: "column",
-                // justifyContent: "start",
+                justifyContent: "flex-start",
                 marginHorizontal: 10,
             }}>
                 <Text
