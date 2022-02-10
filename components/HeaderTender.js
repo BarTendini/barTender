@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import commonStyles from "../styles/CommonStyles";
 
-const Logo = ({ icon, navigation, bgColor, showAlert }) => {
+const Logo = ({ icon, navigation, bgColor, alertFun }) => {
     return (
         <View style={{backgroundColor: bgColor ? bgColor : null}}>
             <ImageBackground
@@ -10,7 +10,7 @@ const Logo = ({ icon, navigation, bgColor, showAlert }) => {
                 style={commonStyles.Logo}
                 resizeMode={'contain'}
             >
-                {showIcon(icon, navigation, showAlert)}
+                {showIcon(icon, navigation, alertFun)}
             </ImageBackground>
         </View>
     );
@@ -18,7 +18,7 @@ const Logo = ({ icon, navigation, bgColor, showAlert }) => {
 
 export default Logo;
 
-const showIcon = (icon, navigation, showAlert) => {
+const showIcon = (icon, navigation, alertFun) => {
     if (icon === 1)
         return <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             <Image
@@ -31,7 +31,7 @@ const showIcon = (icon, navigation, showAlert) => {
             />
             </TouchableOpacity>
     else if (icon === 2)
-        return <TouchableOpacity onPress={showAlert} style={{flex: 1, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+        return <TouchableOpacity onPress={alertFun} style={{flex: 1, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             <Image
                 source={require('../image/icons/logout.png')}
                 style={{

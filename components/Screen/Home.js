@@ -11,11 +11,12 @@ const Home = ({ navigation }) => {
 };*/
 
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
+import {View, Platform, SafeAreaView, Alert, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Logo from "../headerTender.js";
+import Logo from "../HeaderTender.js";
 import BarSelection from "../BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
+import {Location} from "../Location";
 
 const Home = ({ navigation }) => {
     const [alert, setAlert] = useState(false)
@@ -27,10 +28,27 @@ const Home = ({ navigation }) => {
     const hideAlert = () => {
         setAlert(false)
     };
-
+    const logOut = () => {
+        if (Platform.OS === 'web') {
+            showAlert()
+        } else {
+            Alert.alert(
+                "Logout",
+                "Sei sicuro? Vuoi eseguire un logout?",
+                [
+                    {
+                        text: "Cancella",
+                        style: "cancel"
+                    },
+                    { text: "Conferma", onPress: () => { navigation.replace('Autenticazione') }}
+                ]
+            );
+        }
+    }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} showAlert={showAlert} />
+            <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
+            <Location />
             <View style={commonStyles.ViewHome}>
                 <FlatList data={Bars} renderItem={item =>
                     <BarSelection Bar={item.item} />

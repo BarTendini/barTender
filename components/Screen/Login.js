@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import Logo from "../headerTender.js";
+import Logo from "../HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 
 const Login = ({ navigation }) => {
