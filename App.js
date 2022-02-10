@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "./components/Screen/Login";
 import Register from "./components/Screen/Register";
 import SplashScreen from "./components/Screen/SplashScreen";
-import DrawerNavigationRoutes from './components/Screen/DrawerNavigatorRoutes';
+import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 //import BarSelection from "./components/Screen/Home";
 
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP

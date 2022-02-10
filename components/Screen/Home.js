@@ -11,13 +11,15 @@ const Home = ({ navigation }) => {
 };*/
 
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
 import Logo from "../headerTender.js";
+import BarSelection from "../BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
 
 const Home = ({ navigation }) => {
     const [alert, setAlert] = useState(false)
+    const [Bars, setBars] = useState([{id: 0, rist: 0, dist: '100m'}, {id: 1, rist: 1, dist: '150m'}, {id: 2, rist: 2, dist: '500m'}, {id: 3, rist: 0, dist: '1km'}])
     const showAlert = () => {
         setAlert( true)
     };
@@ -29,20 +31,11 @@ const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
             <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} showAlert={showAlert} />
-            <View style={{
-                flex: 1,
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                marginHorizontal: 10,
-            }}>
-                <Text
-                    style={{
-                        fontSize: 20,
-                        textAlign: 'center',
-                        marginBottom: 16,
-                    }}>
-                    Fratm
-                </Text>
+            <View style={commonStyles.ViewHome}>
+                <FlatList data={Bars} renderItem={item =>
+                    <BarSelection Bar={item.item} />
+                }
+                />
             </View>
 
             <AwesomeAlert
