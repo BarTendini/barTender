@@ -1,9 +1,12 @@
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, TouchableOpacity} from "react-native";
 import commonStyles from "../styles/CommonStyles";
 
-const BarSelection = ({ Bar }) => {
+const BarSelection = ({ Bar, navigation }) => {
     return (
-        <View style={{ width: '100%', backgroundColor: Bar.color, borderRadius: 50, marginTop: 10}}>
+        <TouchableOpacity
+            onPress={() => navigation.push('BarDescription', Bar)}
+            style={{ width: '100%', backgroundColor: Bar.color, borderRadius: 50, marginTop: 10}}
+        >
             <Text style={{
                 textAlign: 'center', // <-- the magic
                 fontWeight: 'bold',
@@ -29,7 +32,7 @@ const BarSelection = ({ Bar }) => {
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

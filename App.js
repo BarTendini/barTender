@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "./components/Screen/Login";
 import Register from "./components/Screen/Register";
 import SplashScreen from "./components/Screen/SplashScreen";
+import BarDescription from "./components/Screen/BarDescription";
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 //import BarSelection from "./components/Screen/Home";
 
@@ -54,6 +55,12 @@ export default function App () {
               // Hiding header for Navigation Drawer
               options={{headerShown: false}}
           />
+            <Stack.Screen
+                name="BarDescription"
+                component={BarDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
       </NavigationContainer>
   );

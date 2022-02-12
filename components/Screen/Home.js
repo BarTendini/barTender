@@ -1,15 +1,3 @@
-/*import React, {useState} from "react";
-import {View, Button, Text} from "react-native";
-
-const Home = ({ navigation }) => {
-    const [BarList, setBarList] = useState('')
-    return (
-        <View>
-            <Text>Bar</Text>
-        </View>
-    );
-};*/
-
 import React, {useState} from 'react';
 import {View, Platform, SafeAreaView, Alert, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
@@ -17,15 +5,10 @@ import Logo from "../HeaderTender.js";
 import BarSelection from "../BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../Location";
+import BarsInfo from "../../dati/BarsInfo"
 
 const Home = ({ navigation }) => {
     const [alert, setAlert] = useState(false)
-    const [Bars, setBars] = useState([
-        {id: 0, rist: 0, nome: 'DaPino', dist: '100m', color: '#5580e6', textColor: 'black'},
-        {id: 1, rist: 1, nome: 'DaDino', dist: '150m', color: '#ffcc8b'},
-        {id: 2, rist: 2, nome: 'DaGino', dist: '500m', color: 'red', textColor: 'white'},
-        {id: 3, rist: 0, nome: 'DaPino', dist: '1km', color: '#5580e6', textColor: 'black'}
-    ])
     const [showBars, setShowBars] = useState(false)
     const showAlert = () => {
         setAlert( true)
@@ -57,8 +40,8 @@ const Home = ({ navigation }) => {
     const barList = () => {
         if (showBars)
             return <View style={commonStyles.ViewHome}>
-                <FlatList data={Bars} renderItem={item =>
-                    <BarSelection Bar={item.item} />
+                <FlatList data={BarsInfo} renderItem={item =>
+                    <BarSelection Bar={item.item} navigation={navigation} />
                 }
                 />
             </View>
