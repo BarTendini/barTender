@@ -20,7 +20,13 @@ import {Location} from "../Location";
 
 const Home = ({ navigation }) => {
     const [alert, setAlert] = useState(false)
-    const [Bars, setBars] = useState([{id: 0, rist: 0, dist: '100m'}, {id: 1, rist: 1, dist: '150m'}, {id: 2, rist: 2, dist: '500m'}, {id: 3, rist: 0, dist: '1km'}])
+    const [Bars, setBars] = useState([
+        {id: 0, rist: 0, nome: 'DaPino', dist: '100m', color: '#5580e6', textColor: 'black'},
+        {id: 1, rist: 1, nome: 'DaDino', dist: '150m', color: '#ffcc8b'},
+        {id: 2, rist: 2, nome: 'DaGino', dist: '500m', color: 'red', textColor: 'white'},
+        {id: 3, rist: 0, nome: 'DaPino', dist: '1km', color: '#5580e6', textColor: 'black'}
+    ])
+    const [showBars, setShowBars] = useState(false)
     const showAlert = () => {
         setAlert( true)
     };
@@ -45,17 +51,23 @@ const Home = ({ navigation }) => {
             );
         }
     }
-    return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
-            <Location />
-            <View style={commonStyles.ViewHome}>
+    const posizioneOttenuta = () => {
+        setShowBars(true)
+    }
+    const barList = () => {
+        if (showBars)
+            return <View style={commonStyles.ViewHome}>
                 <FlatList data={Bars} renderItem={item =>
                     <BarSelection Bar={item.item} />
                 }
                 />
             </View>
-
+    }
+    return (
+        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
+            <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
+            <Location animEnd={posizioneOttenuta}/>
+            {barList()}
             <AwesomeAlert
                 show={alert}
                 showProgress={false}

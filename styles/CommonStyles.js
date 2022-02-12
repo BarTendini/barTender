@@ -69,8 +69,12 @@ export default StyleSheet.create({
         marginHorizontal: 10,
     },
     RistoranteImm: {
+        justifyContent: "center",
+        alignItems: "center",
         width: '100%',
-        height: 200,
-        resizeMode: 'contain'
+        height: 150,
+        resizeMode: 'contain',
+        // borderColor: 'black',
+        // borderWidth: 3,
     }
 });
