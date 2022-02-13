@@ -6,6 +6,11 @@ export default StyleSheet.create({
         backgroundColor: "#ffcc8b",
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
+    SafeAreaHeader: {
+        flex:0,
+        backgroundColor: '#ffcc8b',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    },
     AndroidHomeSafeArea: {
         flex: 1,
         backgroundColor: "white",

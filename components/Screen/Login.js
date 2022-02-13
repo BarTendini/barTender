@@ -65,7 +65,7 @@ const Login = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <View style={commonStyles.Bottom}><Text>Build: 0.13</Text></View>
+            <View style={commonStyles.Bottom}><Text>Build: 0.15</Text></View>
         </SafeAreaView>
     );
 };
