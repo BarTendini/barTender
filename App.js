@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Platform, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -10,6 +10,14 @@ import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes
 //import BarSelection from "./components/Screen/Home";
 
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
+
+//Aggiugne le animazioni per android
+if (Platform.OS === 'android') {
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+}
+
 
 const Stack = createNativeStackNavigator();
 

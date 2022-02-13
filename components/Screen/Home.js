@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {View, Platform, SafeAreaView, Alert, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Logo from "../HeaderTender.js";
-import BarSelection from "../BarSelection";
+import Logo from "../componenti/HeaderTender.js";
+import BarSelection from "../componenti/BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
-import {Location} from "../Location";
+import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
 
 const Home = ({ navigation }) => {

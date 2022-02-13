@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import Logo from "../HeaderTender.js";
+import Logo from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
+import Projectversion from "../../dati/Projectversion";
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -65,7 +66,7 @@ const Login = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <View style={commonStyles.Bottom}><Text>Build: 0.15</Text></View>
+            <View style={commonStyles.Bottom}><Text>Build: {Projectversion}</Text></View>
         </SafeAreaView>
     );
 };

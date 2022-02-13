@@ -1,32 +1,24 @@
-import {View, TouchableOpacity, Text, StyleSheet, Animated} from 'react-native';
+import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, Animated} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
-import {useState, useRef} from "react";
+import {useState} from "react";
 
 export const Location = ({animEnd}) => {
-    const centerAnim = useRef(new Animated.Value(1)).current
     const [text, setText] = useState('Premi per cercare in base alla posizione')
+    const [isSearching, setSearching] = useState(false)
     const ricerca = () => {
-        Animated.timing(
-            centerAnim,
-            {
-                toValue: 0.1,
-                duration: 1000,
-                useNativeDriver: false
-            }
-        ).start(endAnim);
-        //setTimeout(() => {  }, 1200)
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut, endAnim)
+        setSearching(true)
     }
     const endAnim = () => {
-        centerAnim.setValue('none')
         setText('Via Dante, 12')
         animEnd()
     }
     return (
-        <Animated.View style={{
-            flex: centerAnim,
+        <View style={{
+            flex: isSearching ? 'none' : 1,
             flexDirection: "row",
-            alignItems: 'center',
-            justifyContent: "center",
+            alignItems: isSearching ? 'flex-start' : 'center',
+            justifyContent: 'center',
             marginTop: 10,
             marginHorizontal: 20
         }}
@@ -35,7 +27,7 @@ export const Location = ({animEnd}) => {
                 <Text style={styles.Testo}>{text}</Text>
                 <Entypo name="location-pin" size={32} color="black" />
             </TouchableOpacity>
-        </Animated.View>
+        </View>
     )
 }
 
