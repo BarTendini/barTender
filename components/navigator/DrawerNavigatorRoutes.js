@@ -33,6 +33,7 @@ const HomeScreenStack = ({navigation}) => {
                     headerTitleStyle: {
                         fontWeight: 'bold', //Set Header text style
                     },
+                    headerShown: false,
                 }}
             />
         </Stack.Navigator>

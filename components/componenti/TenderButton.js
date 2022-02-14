@@ -3,9 +3,10 @@ import { View, TouchableOpacity, Text } from 'react-native';
 const TenderButton = ({ testo }) => {
     return (
         <View style={{
-            paddingTop: 5,
+            flex: 1,
+            justifyContent: 'center',
             marginHorizontal: 10,
-            backgroundColor: 'white'
+
         }}>
             <TouchableOpacity style={{
                 backgroundColor: '#ffcc8b',

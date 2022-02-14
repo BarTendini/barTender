@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import {SafeAreaView, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import commonStyles from "../../styles/CommonStyles";
 import Logo from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
@@ -100,17 +101,26 @@ const BarDescription = ({ route, navigation }) => {
                     </View>
                     {feedback()}
                 </View>
-                <View style={{ marginBottom: 55, }} />
+                <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
             </ScrollView>
 
             <View style={{
                 position: 'absolute',
                 width: '100%',
-                height: '8%',
+                height: Platform.OS === 'android' ? '8%' : '14%',
                 bottom: 0,
+                justifyContent: 'center',
+                // borderColor: 'black',
+                // borderWidth: 3,
             }}>
-                <View style={{ marginHorizontal: 10, paddingTop: 5, backgroundColor: 'rgba(255, 255, 255, 0.5)', }} />
-                <TenderButton testo={'ORDINA'}/>
+                <LinearGradient
+                    colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
+                    start={{ x: 0.5, y: 0 }}
+                    end={{ x: 0.5, y: 0.3 }}
+                    style={{ flex: 1, }}
+                >
+                    <TenderButton testo={'ORDINA'}/>
+                </LinearGradient>
             </View>
 
             <AwesomeAlert

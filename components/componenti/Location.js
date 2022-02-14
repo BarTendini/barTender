@@ -14,14 +14,13 @@ export const Location = ({animEnd}) => {
         animEnd()
     }
     return (
-        <View style={{
-            flex: isSearching ? 'none' : 1,
+        <View style={[{
             flexDirection: "row",
             alignItems: isSearching ? 'flex-start' : 'center',
             justifyContent: 'center',
             marginTop: 10,
             marginHorizontal: 20
-        }}
+        }, isSearching ? {} : {flex: 1}]}
         >
             <TouchableOpacity onPress={ricerca} style={styles.Bottone}>
                 <Text style={styles.Testo}>{text}</Text>

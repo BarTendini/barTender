@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, ImageBackground, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {View, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
 
 const Logo = ({ icon, navigation, bgColor, alertFun }) => {
