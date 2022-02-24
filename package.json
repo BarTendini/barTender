@@ -26,6 +26,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-awesome-alerts": "^1.5.2",
+    "react-native-collapsible": "^1.6.0",
     "react-native-gesture-handler": "^2.2.0",
     "react-native-reanimated": "^2.4.1",
     "react-native-safe-area-context": "3.3.2",

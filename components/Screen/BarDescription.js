@@ -5,6 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import Logo from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
+import { CardTender } from "../Card/TenderCard";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
@@ -85,22 +86,16 @@ const BarDescription = ({ route, navigation }) => {
                 </View>
 
                 {/*Descrizione Locale*/}
-                <View style={styles.Descrizione}>
-                    <View style={styles.ViewDescrizioneTesto}>
-                        <Text style={styles.TestoTitoloDescr}>Descrizione:</Text>
-                    </View>
+                <CardTender title={"Descrizione:"}>
                     <View style={styles.ViewDescrizioneTesto}>
                         <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
                     </View>
-                </View>
+                </CardTender>
 
                 {/*Feedback*/}
-                <View style={styles.Descrizione}>
-                    <View style={styles.ViewDescrizioneTesto}>
-                        <Text style={styles.TestoTitoloDescr}>Feedback:</Text>
-                    </View>
+                <CardTender title={"Feedback:"}>
                     {feedback()}
-                </View>
+                </CardTender>
                 <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
             </ScrollView>
 
@@ -174,7 +169,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 25,
         marginHorizontal: 10,
-        paddingBottom: 15
+        paddingBottom: 15,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 5 },
+        shadowRadius: 4,
+        shadowOpacity: 0.5,
     },
     ViewDescrizioneTesto: {
         marginHorizontal: 20,

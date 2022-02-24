@@ -1,3 +1,3 @@
-const version = 0.18
+const version = 0.19
 
 export default version;
