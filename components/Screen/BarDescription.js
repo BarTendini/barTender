@@ -52,10 +52,10 @@ const BarDescription = ({ route, navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
             <Logo icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
-                <View style={styles.MarginTop}>
-                    <Text style={styles.Title}>{bar.nome}</Text>
-                    <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
-                </View>
+            <View style={styles.MarginTop}>
+                <Text style={styles.Title}>{bar.nome}</Text>
+                <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
+            </View>
             <ScrollView contentContainerStyle={{flexGrow: 1}}>
                 {/*Sezione di distanza, status, orari*/}
                 <View style={styles.ViewInfo}>
@@ -114,7 +114,7 @@ const BarDescription = ({ route, navigation }) => {
                     end={{ x: 0.5, y: 0.3 }}
                     style={{ flex: 1, }}
                 >
-                    <TenderButton testo={'ORDINA'}/>
+                    <TenderButton testo={'ORDINA'} navigation={navigation}/>
                 </LinearGradient>
             </View>
 

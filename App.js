@@ -6,6 +6,7 @@ import Login from "./components/Screen/Login";
 import Register from "./components/Screen/Register";
 import SplashScreen from "./components/Screen/SplashScreen";
 import BarDescription from "./components/Screen/BarDescription";
+import DrinkMenu from "./components/Screen/DrinkMenu";
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 //import BarSelection from "./components/Screen/Home";
 
@@ -66,6 +67,12 @@ export default function App () {
             <Stack.Screen
                 name="BarDescription"
                 component={BarDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="Drink"
+                component={DrinkMenu}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />

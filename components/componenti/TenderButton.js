@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 
-const TenderButton = ({ testo }) => {
+const TenderButton = ({ testo, navigation }) => {
     return (
         <View style={{
             flex: 1,
@@ -8,10 +8,12 @@ const TenderButton = ({ testo }) => {
             marginHorizontal: 10,
 
         }}>
-            <TouchableOpacity style={{
-                backgroundColor: '#ffcc8b',
-                paddingVertical: 10,
-                borderRadius: 50,
+            <TouchableOpacity
+                onPress={() => navigation.push('Drink')}
+                style={{
+                    backgroundColor: '#ffcc8b',
+                    paddingVertical: 10,
+                    borderRadius: 50,
             }}>
                 <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>{testo}</Text>
             </TouchableOpacity>
