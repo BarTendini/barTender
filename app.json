@@ -28,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/AppIcons/Assets.xcassets/AppIcon.appiconset/_/48.png"
-    }
+    },
+    "description": ""
   }
 }
