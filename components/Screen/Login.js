@@ -3,6 +3,7 @@ import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView
 import Logo from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import Projectversion from "../../dati/Projectversion";
+import ChangeLog from "../../dati/ChangeLog";
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -66,7 +67,11 @@ const Login = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <View style={commonStyles.Bottom}><Text>Build: {Projectversion}</Text></View>
+            <View style={commonStyles.Bottom}><Text>Build: {Projectversion}</Text>
+            <TouchableOpacity onPress={ChangeLog.infoChange} style={styles.ViewInfoSubTitle}>
+                <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
+            </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
