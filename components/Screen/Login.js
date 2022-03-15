@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
+import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
 import Logo from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import Projectversion from "../../dati/Projectversion";
-import ChangeLog from "../../dati/ChangeLog";
+import infoChange from "../../dati/ChangeLog";
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -20,6 +20,10 @@ const Login = ({ navigation }) => {
         }
         navigation.replace('DrawerNavigationRoutes');
     }
+
+    
+
+
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <KeyboardAvoidingView
@@ -68,7 +72,7 @@ const Login = ({ navigation }) => {
                 </ScrollView>
             </KeyboardAvoidingView>
             <View style={commonStyles.Bottom}><Text>Build: {Projectversion}</Text>
-            <TouchableOpacity onPress={ChangeLog.infoChange} style={styles.ViewInfoSubTitle}>
+            <TouchableOpacity onPress={() => navigation.push('ChangeLog')} style={styles.ViewInfoSubTitle}>
                 <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
             </TouchableOpacity>
             </View>
@@ -84,3 +88,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
+
