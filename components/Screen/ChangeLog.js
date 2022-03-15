@@ -1,14 +1,14 @@
-import React from "react";
-import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import commonStyles from "../../styles/CommonStyles";
-import Projectversion from "../../dati/Projectversion";
-import {changes, cha} from "../../dati/ChangeLog";
+import React from "react"; //quasi sempre necessario
+import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native"; // quasi sempre necessario anche se raramente servono tutti questi import
+import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
+import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
 import { FlatList } from "react-native-gesture-handler";
-import CardTender from "../Card/CardTender";
+import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
+import Logo from "../componenti/HeaderTender.js";
 
-const ChangeLog = ({ navigation }) => {
+const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare 
 
-
+    //permette di renderizzare un singolo log (la magia la spiegherà max)
     const renderItem = ({ item }) => (
 
         <CardTender title={item.version}>
@@ -31,10 +31,18 @@ const ChangeLog = ({ navigation }) => {
             </View>
         </CardTender>
     );
+
+    // permette di fare il log su console (serve per "debuggare")
     console.log("change log page");
+    
+    // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+        <SafeAreaView style={commonStyles.AndroidSafeArea}>            
+            <Logo icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={commonStyles.ViewHome}>
+                <Text style={commonStyles.titleText}>
+                    {version}
+                </Text>
                 <FlatList
                     data={changes}
                     renderItem={renderItem}
@@ -45,10 +53,10 @@ const ChangeLog = ({ navigation }) => {
     );
 };
 
-export default ChangeLog;
+export default ChangeLog; // permette di esportare la funzione ChangeLog e quuindi la pagina (una sorta di public per gli oggetti)
 
 
-
+// crea una serie di stili che potranno essere usati dentro i tag/components di questo file come PROPietà 
 const styles = StyleSheet.create({
     Bottoni: {
         flexDirection: 'row',

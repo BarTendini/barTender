@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
 import Logo from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
-import Projectversion from "../../dati/Projectversion";
-import infoChange from "../../dati/ChangeLog";
+import {version} from "../../dati/ChangeLog";
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -71,7 +70,7 @@ const Login = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <View style={commonStyles.Bottom}><Text>Build: {Projectversion}</Text>
+            <View style={commonStyles.Bottom}><Text>Build: {version}</Text>
             <TouchableOpacity onPress={() => navigation.push('ChangeLog')} style={styles.ViewInfoSubTitle}>
                 <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
             </TouchableOpacity>
