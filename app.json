@@ -29,6 +29,8 @@
     "web": {
       "favicon": "./assets/AppIcons/Assets.xcassets/AppIcon.appiconset/_/48.png"
     },
-    "description": ""
-  }
+    "description": "",
+    "sdkVersion": "44.0.0"
+  },
+  "name": "bartender"
 }

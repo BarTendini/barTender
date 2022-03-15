@@ -8,6 +8,7 @@ import SplashScreen from "./components/Screen/SplashScreen";
 import BarDescription from "./components/Screen/BarDescription";
 import DrinkMenu from "./components/Screen/DrinkMenu";
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
+import ChangeLog from "./components/Screen/ChangeLog";
 //import BarSelection from "./components/Screen/Home";
 
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
@@ -73,6 +74,12 @@ export default function App () {
             <Stack.Screen
                 name="Drink"
                 component={DrinkMenu}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="ChangeLog"
+                component={ChangeLog}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
