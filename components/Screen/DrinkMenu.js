@@ -1,5 +1,5 @@
 import {SafeAreaView, ScrollView, View, StyleSheet, Text} from "react-native";
-import Logo from "../componenti/HeaderTender";
+import {Logo} from "../componenti/HeaderTender";
 import commonStyles from "../../styles/CommonStyles";
 
 const DrinkMenu = ({ navigation }) => {

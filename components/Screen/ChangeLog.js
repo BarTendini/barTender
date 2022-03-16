@@ -4,7 +4,9 @@ import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
 import { FlatList } from "react-native-gesture-handler";
 import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
-import Logo from "../componenti/HeaderTender.js";
+import {Logo, Header} from "../componenti/HeaderTender.js";
+import {themeStyles} from "../../styles/ThemeStyles";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare 
 
@@ -37,8 +39,8 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
     
     // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>            
-            <Logo icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
+        <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>            
+            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
             <View style={commonStyles.ViewHome}>
                 <Text style={commonStyles.titleText}>
                     {version}
@@ -71,3 +73,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 });
+
+const wow = StyleSheet.create({ mio:{backgroundColor:themeStyles.light.backgroundColor2}});// tentativo di gestione tema

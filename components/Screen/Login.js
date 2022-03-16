@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import Logo from "../componenti/HeaderTender.js";
+import {Logo} from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import {version} from "../../dati/ChangeLog";
+import {themeStyles,themeStylesSheet} from "../../styles/ThemeStyles";
+
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -24,7 +26,7 @@ const Login = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+        <SafeAreaView style={[commonStyles.AndroidSafeArea, themeStylesSheet.light1]}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>

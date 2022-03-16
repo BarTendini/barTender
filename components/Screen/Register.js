@@ -11,7 +11,7 @@ import {
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import Logo from "../componenti/HeaderTender.js";
+import {Logo} from "../componenti/HeaderTender.js";
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
