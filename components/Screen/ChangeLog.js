@@ -5,7 +5,7 @@ import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da 
 import { FlatList } from "react-native-gesture-handler";
 import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
 import {Logo, Header} from "../componenti/HeaderTender.js";
-import {themeStyles} from "../../styles/ThemeStyles";
+import {themeStyles} from "../../styles/theme/ThemeStyles";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare 
