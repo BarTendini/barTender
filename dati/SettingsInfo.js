@@ -1,5 +1,5 @@
-const settingSetter = ({identifier, titleString, style}) => {
-    return ({id: identifier, title: titleString, interaction: style});
+const settingSetter = ({identifier, titleString, mystyle}) => {
+    return ({id: identifier, title: titleString, interaction: mystyle});
 };
 
 const groupSettingSetter = ({identifier, sectionTitleString, subSettings}) => {
@@ -10,9 +10,9 @@ const settingsInfo = [
     {
         id:1 ,title: 'notifications', 
         settables:[
-            settingSetter(1,"massages","Switch"),
-            settingSetter(2,"calls","Switch"),
-            settingSetter(3,"push","Switch")
+            {id:1, title:"massages", interaction: "Switch"},
+            {id:2, title:"calls", interaction: "Switch"},
+            {id:3, title:"push", interaction: "Switch"}
         ]
     },
     {
@@ -32,4 +32,4 @@ const settingsInfo = [
 
 
 
-export {settingsInfo};
+export default settingsInfo;

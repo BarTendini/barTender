@@ -72,6 +72,7 @@ export default StyleSheet.create({
         flexDirection: "column",
         justifyContent: "flex-start",
         marginHorizontal: 10,
+        
     },
     RistoranteImm: {
         justifyContent: "center",
