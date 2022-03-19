@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import Logo from "../componenti/HeaderTender.js";
+import {Logo} from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
-import {version} from "../../dati/ChangeLog";
+import {version, changes} from "../../dati/ChangeLog";
+import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
+
 
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('')
@@ -24,7 +26,7 @@ const Login = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+        <SafeAreaView style={[commonStyles.AndroidSafeArea, themeStylesSheet.light1]}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>
@@ -70,7 +72,7 @@ const Login = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <View style={commonStyles.Bottom}><Text>Build: {version}</Text>
+            <View style={commonStyles.Bottom}><Text>Build: {version} in data: {changes[0].dataPush}</Text>
             <TouchableOpacity onPress={() => navigation.push('ChangeLog')} style={styles.ViewInfoSubTitle}>
                 <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
             </TouchableOpacity>
