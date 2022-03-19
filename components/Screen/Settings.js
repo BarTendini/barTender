@@ -14,9 +14,9 @@ const Settings = ({ navigation }) => {
     // Succedeva anche prima o è un mio problema?
 
 
-    // const cardRenderSelector = ({item}) => {
-    //     return (item.settables ? cardRenderGroupItem(item) : cardRenderItem(item));
-    // };
+    const cardRenderSelector = ({item}) => {
+        return (item.settables ? cardRenderGroupItem({item}) : cardRenderItem({item}));
+    };
 
     const cardRenderGroupItem = ({item}) => {
         // console.log("Sono il gruppo con id: " + item.id) ho debuggatto così se ti può interessare
@@ -26,8 +26,8 @@ const Settings = ({ navigation }) => {
                 <View style={{flex: 1, flexDirection: 'column', margin: 10}}>
                     <FlatList
                         data={item.settables}
-                        renderItem={cardRenderItem}
-                        keyExtractor={item => item.id}
+                        renderItem={cardRenderSelector}
+                        
                     />
                 </View>
             </CardTender>
@@ -35,34 +35,26 @@ const Settings = ({ navigation }) => {
     }
 
     const cardRenderItem = ({item}) => {
-        // console.log(item.id)
+        console.log(item.id);
         return (
-            <View style={{flex: 1, flexDirection: 'column', margin: 10}}>
-                <View style={{flexDirection: 'row', alignItems: 'center', borderWidth: 3, borderColor: 'black'}}>
-                    <View style={{flex: 1, alignItems: 'flex-start'}}>
-                        <Text style={styles.infoTextLeft}>
-                            {item.title}
-                        </Text>
-                    </View>
-                    <View style={{flex: 1, alignItems: 'flex-end'}}>
-                        {item.interaction}
-                    </View>
-                </View>
+            <View style={{flexDirection: 'column', margin: 10}}>                
+                    {item.interaction(item)}   
             </View>
         )
     }
 
     console.log("Settings.js");
+    
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
-            <View style={{flex: 1, borderWidth: 3, borderColor: "black"}}>
+            <View style={{flex: 1}}>
                 <Text style={commonStyles.titleText}>
                     settings
                 </Text>
                 <FlatList
                     data={settingsInfo}
-                    renderItem={cardRenderGroupItem}
+                    renderItem={cardRenderSelector}
                 />
             </View>
         </SafeAreaView>
