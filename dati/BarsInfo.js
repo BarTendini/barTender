@@ -1,18 +1,24 @@
-const BarsInfo = [
+const BarsInfo = [ // questo array definisce tutte le informazioni riguardanti i bar
+    // il primo oggetto definisce un singolo bar
     {
-        id: 0, image: require("../image/ristoranti/daPino.png"),
-        nome: 'Da Pino', via: 'Via le dita nel naso n.2',
-        dist: '100m', status: 'Affollato', orario: '22:00-4:00',
-        orari: '\nlun - dom 9.00-13.00\nmar-dom 17.00-23.00',
-        descr: 'Bar storico, tappa obbligatoria per turisti e per i giovani che ogni venerdì sera si ritrovano in centro.',
-        feed: [
+        id: 0, // deve necessariamente essere diverso dagli altri
+        image: require("../image/ristoranti/daPino.png"), // richiama un immagine 
+        nome: 'Da Pino', // nome del bar
+        via: 'Via le dita nel naso n.2', // via del bar
+        dist: '100m', // distana da te al bar (verrà aggiunta un interazione)
+        status: 'Affollato', // stato di affluenza del bar (pieno, affollato, normale, poco affolato)
+        orario: '22:00-4:00', // orario di apertura odierno
+        orari: '\nlun - dom 9.00-13.00\nmar-dom 17.00-23.00', // orario di apertura popup
+        descr: 'Bar storico, tappa obbligatoria per turisti e per i giovani che ogni venerdì sera si ritrovano in centro.', // descrizione
+        feed: [ // array dei feedback 
             { nome: 'Salvatore Riina', txt: 'La coca-cola è buona', voto: 4 },
             { nome: 'Dino', txt: 'Quanti ricordi Da Pino!', voto: 5 },
             { nome: 'Pino', txt: 'feedback generico 1', voto: 1 },
             { nome: 'Gino', txt: 'feedback generico 2', voto: 2 },
             { nome: 'Lino', txt: 'feedback generico 3', voto: 3 },
         ],
-        color: '#5580e6', textColor: 'black'},
+        color: '#5580e6', // sfondo della bolla del bar
+        textColor: 'black'}, // colore del testo della bolla
     {
         id: 1, image: require("../image/ristoranti/daDino.png"),
         nome: 'Da Dino', via: 'Via le dita nel naso n.2',

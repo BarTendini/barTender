@@ -1,17 +1,23 @@
 import React from 'react'; //quasi sempre necessario
-import {View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
+import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles";
 
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
+    const menuIconForWeb = (icon,navigation,alertFun) => {
+        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
+            return(showIcon(3, navigation, alertFun));
+        }
+    }
     return (
         <View style={{backgroundColor: bgColor.backgroundColor1 ? bgColor.backgroundColor1 : null}}>
             <ImageBackground
                 source={require('../../image/loghi/logoHome.png')}
                 style={commonStyles.Logo}
                 resizeMode={'contain'}
-            >
-                {showIcon(icon, navigation, alertFun)}
+            >                
+                {showIcon(icon, navigation, alertFun)}     
+                {menuIconForWeb(icon, navigation, alertFun)}        
             </ImageBackground>
         </View>
     );
@@ -56,10 +62,10 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
                 }}
             />
         </TouchableOpacity>
-    else if (icon === 3) // menu (per adesso si comporta come il logout)
-        return <TouchableOpacity onPress={alertFun} style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+    if (icon === 3) // menu (per adesso si comporta come il logout)
+        return <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
             <Image
-                source={require('../../image/icons/drawerWhite.png')}
+                source={require('../../image/icons/menuButton.png')}
                 style={{
                     width: 80,
                     height: 20,
