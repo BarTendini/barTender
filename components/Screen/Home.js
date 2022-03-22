@@ -7,21 +7,21 @@ import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
 
-const Home = ({ navigation }) => {
-    const [alert, setAlert] = useState(false)
-    const [showBars, setShowBars] = useState(false)
-    const showAlert = () => {
+const Home = ({ navigation }) => { // funzione generatrice della schermata home
+    const [alert, setAlert] = useState(false) // ??? qualcosa per lo stato
+    const [showBars, setShowBars] = useState(false) // ??? qualcosa per lo stato
+    const showAlert = () => { // definizione funzione che mostra l' allert
         setAlert( true)
     };
 
-    const hideAlert = () => {
+    const hideAlert = () => { // definizione funzione che nasconde l' allert
         setAlert(false)
     };
-    const logOut = () => {
-        if (Platform.OS === 'web') {
-            showAlert()
+    const logOut = () => { // definizione funzione per il logout
+        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
+            showAlert() // attiva l'AwesomeAllert per il web
         } else {
-            Alert.alert(
+            Alert.alert( // funzione allerta che prende titolo, testo e bottoni come parametri
                 "Logout",
                 "Sei sicuro? Vuoi eseguire un logout?",
                 [
@@ -34,11 +34,11 @@ const Home = ({ navigation }) => {
             );
         }
     }
-    const posizioneOttenuta = () => {
+    const posizioneOttenuta = () => { // ???
         setShowBars(true)
     }
-    const barList = () => {
-        if (showBars)
+    const barList = () => { // definizione funzione che mostra i bar
+        if (showBars) // se non è nullo restituisce un component di tipo View con flatList e componente fatto da noi "BarSelection"
             return <View style={commonStyles.ViewHome}>
                 <FlatList data={BarsInfo} renderItem={item =>
                     <BarSelection Bar={item.item} navigation={navigation} />
@@ -55,7 +55,7 @@ const Home = ({ navigation }) => {
                 show={alert}
                 showProgress={false}
                 title="Logout"
-                message="Sei sicuro? Vuoi eseguire un logout?"
+                message="Sei sicuro? Vuoi eseguire uno logout?"
                 closeOnTouchOutside={true}
                 closeOnHardwareBackPress={false}
                 showCancelButton={true}
@@ -78,3 +78,28 @@ const Home = ({ navigation }) => {
 };
 
 export default Home;
+
+/*
+<AwesomeAlert
+                show={alert}
+                showProgress={false}
+                title="Logout"
+                message="Sei sicuro? Vuoi eseguire uno logout?"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                cancelText="Cancella"
+                confirmText="Conferma"
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    hideAlert()
+                    navigation.replace('Autenticazione');
+                }}
+                overlayStyle={{height: '100%'}}
+                alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
+            />
+*/

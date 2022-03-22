@@ -62,30 +62,6 @@ const SettingScreenStack = ({navigation}) => {
                 }}
             />
         </Stack.Navigator>
-/*
-        <Stack.Navigator
-            initialRouteName="SettingsScreen"
-            /*screenOptions={{
-                headerLeft: () => (
-                    <NavigationDrawerHeader navigationProps={navigation} />
-                ),
-                headerStyle: {
-                    backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
-                },
-                headerTintColor: '#fff', //Set Header text color
-                headerTitleStyle: {
-                    fontWeight: 'bold', //Set Header text style
-                },
-            }}
-            >
-            <Stack.Screen
-                name="SettingsScreen"
-                component={SettingsScreen}
-                options={{
-                    title: 'Impostazioni', //Set Header Title
-                }}
-            />
-        </Stack.Navigator>*/
     );
 };
 

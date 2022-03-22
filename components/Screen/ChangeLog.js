@@ -1,14 +1,12 @@
 import React from "react"; //quasi sempre necessario
-import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native"; // quasi sempre necessario anche se raramente servono tutti questi import
+import {View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native"; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
-import { FlatList } from "react-native-gesture-handler";
 import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
-import {Logo, Header} from "../componenti/HeaderTender.js";
+import {Header} from "../componenti/HeaderTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare 
+const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
 
     //permette di renderizzare un singolo log (la magia la spiegherà max)
     const renderItem = ({ item }) => (
@@ -36,10 +34,10 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
 
     // permette di fare il log su console (serve per "debuggare")
     console.log("change log page");
-    
+
     // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
     return (
-        <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>            
+        <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>
             <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
             <View style={commonStyles.ViewHome}>
                 <Text style={commonStyles.titleText}>
@@ -58,7 +56,7 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
 export default ChangeLog; // permette di esportare la funzione ChangeLog e quuindi la pagina (una sorta di public per gli oggetti)
 
 
-// crea una serie di stili che potranno essere usati dentro i tag/components di questo file come PROPietà 
+// crea una serie di stili che potranno essere usati dentro i tag/components di questo file come PROPietà
 const styles = StyleSheet.create({
     Bottoni: {
         flexDirection: 'row',
