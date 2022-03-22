@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {SafeAreaView, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import commonStyles from "../../styles/CommonStyles";
-import {Logo} from "../componenti/HeaderTender.js";
+import {Logo,Header} from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
 import { CardTender } from "../Card/TenderCard";
@@ -51,7 +51,7 @@ const BarDescription = ({ route, navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Logo icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.MarginTop}>
                 <Text style={styles.Title}>{bar.nome}</Text>
                 <Text style={{ textAlign: 'center', }}>{bar.via}</Text>

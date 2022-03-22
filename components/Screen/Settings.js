@@ -35,7 +35,6 @@ const Settings = ({ navigation }) => {
     }
 
     const cardRenderItem = ({item}) => {
-        console.log(item.id);
         return (
             <View style={{flexDirection: 'column', margin: 10}}>                
                     {item.interaction(item)}   
@@ -47,7 +46,7 @@ const Settings = ({ navigation }) => {
     
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
+            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light.backgroundColor1} />
             <View style={{flex: 1}}>
                 <Text style={commonStyles.titleText}>
                     settings
@@ -61,15 +60,6 @@ const Settings = ({ navigation }) => {
     );
 };
 
-//           <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
-
-/**
- * <FlatList
-                    data={SettingsInfo}
-                    renderItem={cardRenderSelector}
-                    keyExtractor={item => item.id}
-                />
- */
 
 export default Settings;
 

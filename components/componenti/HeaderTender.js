@@ -1,16 +1,18 @@
 import React from 'react'; //quasi sempre necessario
 import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles";
-
+import NavigationDrawerHeader from '../navigator/NavigationDrawerHeader';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
     const menuIconForWeb = (icon,navigation,alertFun) => {
-        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
+        //if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
             return(showIcon(3, navigation, alertFun));
-        }
+        //}
     }
     return (
-        <View style={{backgroundColor: bgColor.backgroundColor1 ? bgColor.backgroundColor1 : null}}>
+        <View style={{backgroundColor: bgColor ? bgColor : null}}>
             <ImageBackground
                 source={require('../../image/loghi/logoHome.png')}
                 style={commonStyles.Logo}
@@ -63,7 +65,7 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
             />
         </TouchableOpacity>
     if (icon === 3) // menu (per adesso si comporta come il logout)
-        return <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+        return <TouchableOpacity  onPress={() => (<NavigationDrawerHeader navigationProps={navigation} />)} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
             <Image
                 source={require('../../image/icons/menuButton.png')}
                 style={{

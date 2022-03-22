@@ -1,11 +1,11 @@
 import {SafeAreaView, ScrollView, View, StyleSheet, Text} from "react-native";
-import {Logo} from "../componenti/HeaderTender";
+import {Logo,Header} from "../componenti/HeaderTender";
 import commonStyles from "../../styles/CommonStyles";
 
 const DrinkMenu = ({ navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Logo icon={2} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={2} navigation={navigation} bgColor={'#ffcc8b'} />
             <ScrollView contentContainerStyle={{flexGrow: 1}}>
                 <View style={styles.ViewInfo}>
                     <Text style={styles.FeedTestoVoto}>Drink</Text>

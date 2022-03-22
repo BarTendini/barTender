@@ -38,7 +38,7 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
     // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
     return (
         <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>
-            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
+            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light.backgroundColor1} />
             <View style={commonStyles.ViewHome}>
                 <Text style={commonStyles.titleText}>
                     {version}

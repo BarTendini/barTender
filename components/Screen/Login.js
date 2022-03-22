@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import {Logo} from "../componenti/HeaderTender.js";
+import {Logo,Header} from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
