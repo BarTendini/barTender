@@ -8,10 +8,11 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         type:"beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
         image: require("../image/ristoranti/daPino.png"), // richiama un immagine     
         ingredients: [ // array degli ingredienti
-            getIngredientFromNome("ichnusa")   
+            getIngredientFromNome("ichnusa") // quantityML:200 }  
         ],
         color: '#CD7F32', // sfondo della bolla del bar
-        textColor: 'black'// colore del testo della bolla
+        textColor: 'black',// colore del testo della bolla
+        favorite: true // è favorito
     } ,
     {
         id: 1, 
@@ -25,7 +26,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("blueberryJuice")
         ],
         color: '#5580e6', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 2, 
@@ -38,7 +40,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("soda")
         ],
         color: 'orange', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 3, 
@@ -46,11 +49,12 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
         image: require("../image/ristoranti/daPino.png"), 
         ingredients: [
-            getIngredientFromNome("redBul"),
+            getIngredientFromNome("redBull"),
             getIngredientFromNome("vodka")
         ],
         color: '#5580e6', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 4, 
@@ -63,7 +67,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("limeJuice")
         ],
         color: '#800020', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: true
     } ,
     {
         id: 5, 
@@ -75,7 +80,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("tonicWater")
         ],
         color: '#fff99c', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 6, 
@@ -87,7 +93,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("gingerBeer")
         ],
         color: '#5580e6', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: true
     } ,
     {
         id: 7, 
@@ -100,7 +107,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("orangeJuice")
         ],
         color: '#5580e6', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: true
     } ,
     {
         id: 8, 
@@ -114,7 +122,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("blueberryJuice")
         ],
         color: '#ff69b4', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 9, 
@@ -125,7 +134,8 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("carignano")
         ],
         color: '#58181F', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     {
         id: 10, 
@@ -136,9 +146,101 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("vermentino")
         ],
         color: '#EEEDC4', 
-        textColor: 'black'
+        textColor: 'black',
+        favorite: false
     } ,
     
 ]
 
-export default DrinksInfo;
+export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks};
+
+const getTypes=(drinksInfo)=>{
+    console.log("getTypes");
+    const types =["favourites","all"];
+    const isNotFound = true;
+    let j = 0;
+    drinksInfo.forEach(element => {
+        while(isNotFound && types.length > j){
+            if(types[j] === element.type){
+                isNotFound = false;
+            }
+            j++
+        }
+        if (isNotFound){
+            types.push(element.type);
+            j=0;
+        }
+        else{
+            isNotFound = true;
+            j=0;
+        }
+    });
+    return types;
+}
+
+const getDrinksOfType = (drinksInfo, type) => {
+    console.log("getDrinksOfType");
+    const drinksOfType = [];
+    if (type === "all") {
+        return (drinksInfo);
+    }
+    else if (type === "favourites") {
+        drinksInfo.forEach(element => {
+            if (element.favorite) {
+                drinksOfType.push(element);
+            }
+        });
+        return drinksOfType;
+    }
+    else {
+        drinksInfo.forEach(element => {
+            if (element.type === type) {
+                drinksOfType.push(element);
+            }
+        });
+        return drinksOfType;
+    }
+}
+
+const getAvailableAndUnavailableDrinks = (drinksInfo) => {
+    console.log("getAvailableAndUnavailableDrinks");
+    const availableDrinks =[];
+    const unavailableDrinks =[];
+    let areAllAviableIngredient = true;
+    let j = 0;
+    drinksInfo.forEach(element => {
+        //console.log(element.name);
+        while(areAllAviableIngredient && element.ingredients.length > j){
+            if(areAllAviableIngredient && element.ingredients[j].available === false){
+                areAllAviableIngredient = false;
+                //console.log(element.ingredients[j])
+            }
+            j=j+1
+        }
+        if (areAllAviableIngredient){
+            availableDrinks.push(element);
+            j=0;            
+        }
+        else{
+            unavailableDrinks.push(element)
+            j=0;
+            areAllAviableIngredient = true;
+        }        
+    });
+    console.log("unaviables : ");
+    console.log(unavailableDrinks.length);
+    console.log("aviables : ");
+    console.log(availableDrinks.length);
+    return([availableDrinks,setUnaviableColors(unavailableDrinks)]);
+}
+
+const setUnaviableColors = (unavailableDrinks) =>{
+    const bgColor = "#ccc"
+    const textColor = "#222"
+    for (let i = 0; i < unavailableDrinks.length; i++) {
+        unavailableDrinks[i].color = bgColor;
+        unavailableDrinks[i].textColor = textColor;
+    }
+    return (unavailableDrinks);
+}
+

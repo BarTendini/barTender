@@ -1,10 +1,11 @@
 import {View, Text, Image, TouchableOpacity} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 
-const DrinkSelection = ({ Drink, navigation }) => {
-    
+const DrinkTypeSelection = ({ Drink, navigation }) => {
+    console.log("DrinkTypeSelection");
     const pageSelector = () => {
-        if(Drink.type === "beer")
+        console.log("pageSelector");
+        if(Drink === "beer")
             return(() => navigation.push('BeersMenu', Drink));
         else if(Drink.type === "cocktail")
             return(() => navigation.push('CocktailsMenu', Drink));
@@ -41,4 +42,4 @@ const DrinkSelection = ({ Drink, navigation }) => {
     );
 };
 
-export default DrinkSelection;
+export default DrinkTypeSelection;

@@ -14,6 +14,7 @@ import NavigationDrawerHeader from './NavigationDrawerHeader';
 import DrinkMenuScreen from '../Screen/DrinkMenu';
 import ChangeLog from '../Screen/ChangeLog';
 import BarDescription from '../Screen/BarDescription'
+import DrinkType from '../Screen/DrinkTypes';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -96,10 +97,35 @@ const SettingScreenStack = ({navigation}) => {//serve per lanciare la pagina des
 
 const DrinkMenuScreenStack = ({navigation}) => {
     return (
-        <Stack.Navigator initialRouteName="DrinkMenuScreen">
+        <Stack.Navigator initialRouteName="DrinkType">
+            <Stack.Screen
+                name="DrinkType"
+                component={DrinkType}
+                options={{
+                    title: 'Drink', //Set Header Title
+                    headerLeft: () => (
+                        <NavigationDrawerHeader navigationProps={navigation} />
+                    ),
+                    headerStyle: {
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
+                    },
+                    headerTintColor: '#fff', //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                    headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
+    );
+};
+
+const DrinkTypeScreenStack = ({navigation}) => {
+    return (
+        <Stack.Navigator initialRouteName="DrinkTypeScreen">
             <Stack.Screen
                 name="DrinkMenuScreen"
-                component={DrinkMenuScreen}
+                component={DrinkType}
                 options={{
                     title: 'Drink', //Set Header Title
                     headerLeft: () => (
@@ -181,6 +207,16 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
                     drawerInactiveTintColor: 'yellow',
                 }}
                 component={DrinkMenuScreenStack}
+            />
+             <Drawer.Screen
+                name="DrinkTypeScreenStack"
+                options={{
+                    drawerLabel: 'DrinkType',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+                }}
+                component={DrinkTypeScreenStack}
             />
             <Drawer.Screen
                 name="ChangeLogScreenStack"

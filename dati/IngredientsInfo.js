@@ -1,5 +1,5 @@
 const ingredientsInfo =[ // definisce i singoli ingredienti che si possono inserire nella macchina
-    {id:0,  nome: "ichnusa",    type:"beer",    available:true, alcoholic:true},
+    {id:0,  nome: "ichnusa",    type:"beer",    available:false, alcoholic:true},
     {id:1,  nome: "vodka",      type:"vodka",   available:true, alcoholic:true},
     {id:2,  nome: "cointreau",  type:"bitter",  available:true, alcoholic:true },
     {id:3,  nome: "limeJuice",  type:"juice",   available:true, alcoholic:false },    
@@ -13,9 +13,9 @@ const ingredientsInfo =[ // definisce i singoli ingredienti che si possono inser
     {id:11, nome: "gin",        type:"gin",     available:true, alcoholic:true },
     {id:12, nome: "tonicWater", type:"beverage",    available:true, alcoholic:false },
     {id:13, nome: "gingerBeer", type:"beverage",    available:true, alcoholic:false },
-    {id:14, nome: "tequila silver",   type:"tequila",   available:true, alcoholic:true },
+    {id:14, nome: "tequilaSilver",   type:"tequila",   available:true, alcoholic:true },
     {id:15, nome: "grenadineSyrup",   type:"syrup",     available:true, alcoholic:false },
-    {id:16, nome: "orangeJuice",type:"juice",   available:true,    alcoholic:false },
+    {id:16, nome: "orangeJuice",type:"juice",   available:false,    alcoholic:false },
     {id:17, nome: "peachVodka", type:"vodka",   available:true,   alcoholic:true },
     {id:18, nome: "whiteMartini",   type:"liquor",  available:true, alcoholic:true },
     {id:19, nome: "pineappleJuice", type:"juice",   available:true, alcoholic:false },
@@ -26,12 +26,13 @@ const ingredientsInfo =[ // definisce i singoli ingredienti che si possono inser
 
 export {ingredientsInfo, getIngredientFromNome};
 
-const getIngredientFromNome = (nome, ingredientsInfo) => {
+const getIngredientFromNome = (nome) => {
     for(let i = 0; i < ingredientsInfo.length; i++)
     {
-        if(ingredientsInfo[i].nome == nome){
+        if(ingredientsInfo[i].nome === nome){
             return(ingredientsInfo[i]);
         }
     }
+    console.log("ingerdiente non trovato:"+nome)
     return(null);
 };
