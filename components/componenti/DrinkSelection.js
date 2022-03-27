@@ -1,7 +1,8 @@
-import {View, Text, Image, TouchableOpacity} from "react-native";
+import React from "react"; //quasi sempre necessario
+import {View, Platform, Text, Image, TouchableOpacity} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 
-const DrinkSelection = ({ Drink, navigation }) => {
+const DrinkSelection = ({ Drink, availability,  navigation }) => {
     
     const pageSelector = () => {
         if(Drink.type === "beer")
@@ -9,11 +10,16 @@ const DrinkSelection = ({ Drink, navigation }) => {
         else if(Drink.type === "cocktail")
             return(() => navigation.push('CocktailsMenu', Drink));
     };
+
+    const drawAvailability = () => {    
+        return availability.a
+    }
+    
     
     return (
         <TouchableOpacity
             onPress={pageSelector()}
-            style={{ width: '100%', backgroundColor: Drink.color, borderRadius: 50, marginTop: 10}}
+            style={{ width: '100%', borderWidth:5, borderColor: Drink.color, borderRadius: 50, marginTop: 10}}
         >
             <Text style={{
                 textAlign: 'center', // <-- the magic
@@ -25,7 +31,9 @@ const DrinkSelection = ({ Drink, navigation }) => {
                 
                 <View style={{ flex: 1, flexDirection: "row", marginHorizontal: 20}}>
                     <View style={{ flex: 1, justifyContent: "flex-start",}}>
-                        <Text style={{ fontSize: 16, fontWeight: "bold", color: Drink.textColor ? Drink.textColor : 'black' }}>Disponibile</Text>
+                        <Text style={{ fontSize: 16, fontWeight: "bold", color: Drink.textColor ? Drink.textColor : 'black' }}>
+                            {drawAvailability()}
+                            </Text>
                     </View>
                     <View style={{ flex: 1,}}>
                         <Text style={{
@@ -33,7 +41,9 @@ const DrinkSelection = ({ Drink, navigation }) => {
                             fontSize: 16,
                             fontWeight: "bold",
                             color: Drink.textColor ? Drink.textColor : 'black'
-                        }}>type: {Drink.type}</Text>
+                        }}>
+                            type: {Drink.type}
+                        </Text>
                     </View>
                 </View>
             </View>

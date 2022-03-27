@@ -7,9 +7,9 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
     const menuIconForWeb = (icon,navigation,alertFun) => {
-        //if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
+        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
             return(showIcon(3, navigation, alertFun));
-        //}
+        }
     }
     return (
         <View style={{backgroundColor: bgColor ? bgColor : null}}>
@@ -65,7 +65,7 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
             />
         </TouchableOpacity>
     if (icon === 3) // menu (per adesso si comporta come il logout)
-        return <TouchableOpacity  onPress={() => (<NavigationDrawerHeader navigationProps={navigation} />)} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+        return <TouchableOpacity  onPress={() => navigation.openDrawer()} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
             <Image
                 source={require('../../image/icons/menuButton.png')}
                 style={{

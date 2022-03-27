@@ -156,64 +156,46 @@ export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks}
 
 const getTypes=(drinksInfo)=>{
     console.log("getTypes");
-    const types =["favourites","all"];
-    const isNotFound = true;
-    let j = 0;
+    let types =[
+        {id:0, type:"favourites"},
+        {id:1, type:"all"}        
+    ];
     drinksInfo.forEach(element => {
-        while(isNotFound && types.length > j){
-            if(types[j] === element.type){
-                isNotFound = false;
-            }
-            j++
-        }
-        if (isNotFound){
-            types.push(element.type);
-            j=0;
-        }
-        else{
-            isNotFound = true;
-            j=0;
+        if (!types.some(e => e.type === element.type)) {
+            types.push({id:types.length, type:element.type})
         }
     });
+    //console.log(types);
     return types;
 }
 
 const getDrinksOfType = (drinksInfo, type) => {
     console.log("getDrinksOfType");
-    const drinksOfType = [];
     if (type === "all") {
         return (drinksInfo);
     }
     else if (type === "favourites") {
-        drinksInfo.forEach(element => {
-            if (element.favorite) {
-                drinksOfType.push(element);
-            }
-        });
-        return drinksOfType;
+        return drinksInfo.filter(e => e.favorite);
     }
-    else {
-        drinksInfo.forEach(element => {
-            if (element.type === type) {
-                drinksOfType.push(element);
-            }
-        });
-        return drinksOfType;
-    }
+    
+    console.log("Tipo da testare: " + type)
+    return drinksInfo.filter(e => {
+        console.log(e.type)
+        return e.type === type
+    });
+    
 }
 
 const getAvailableAndUnavailableDrinks = (drinksInfo) => {
     console.log("getAvailableAndUnavailableDrinks");
-    const availableDrinks =[];
-    const unavailableDrinks =[];
+    let availableDrinks =[];
+    let unavailableDrinks =[];
     let areAllAviableIngredient = true;
     let j = 0;
     drinksInfo.forEach(element => {
-        //console.log(element.name);
         while(areAllAviableIngredient && element.ingredients.length > j){
             if(areAllAviableIngredient && element.ingredients[j].available === false){
                 areAllAviableIngredient = false;
-                //console.log(element.ingredients[j])
             }
             j=j+1
         }

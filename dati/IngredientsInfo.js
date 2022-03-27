@@ -1,4 +1,4 @@
-const ingredientsInfo =[ // definisce i singoli ingredienti che si possono inserire nella macchina
+const ingredientsInfo = [ // definisce i singoli ingredienti che si possono inserire nella macchina
     {id:0,  nome: "ichnusa",    type:"beer",    available:false, alcoholic:true},
     {id:1,  nome: "vodka",      type:"vodka",   available:true, alcoholic:true},
     {id:2,  nome: "cointreau",  type:"bitter",  available:true, alcoholic:true },
