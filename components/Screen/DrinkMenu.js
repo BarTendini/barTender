@@ -6,14 +6,10 @@ import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare l
 import {getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
-import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 
 const DrinkMenu = ({ route, navigation }) => {
-    const { drinks } = route.params
-    const drink = getAvailableAndUnavailableDrinks(drinks);
-    const availableDrinks = drink[0];
-    const unavailableDrinks = drink[1];
+    const { availableDrinks, unavailableDrinks } = getAvailableAndUnavailableDrinks(route.params.drinks);
     //console.log(unavailableDrinks);
 
     const drinkSelection = () => { // definizione funzione che mostra le categorie di bevande
@@ -51,7 +47,7 @@ const styles = StyleSheet.create({
         /*padding:20,
         margin:10,
         borderRadius:5,
-        backgroundColor:  themeStyles.light.backgroundColor1 
+        backgroundColor:  themeStyles.light.backgroundColor1
     },
     unavailableColor: {
         backgroundColor: "#ccc",

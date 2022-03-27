@@ -4,152 +4,152 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
     // il primo oggetto definisce un singolo drink
     {
         id: 0, // deve necessariamente essere diverso dagli altri
-        name: 'Ichnusa', // nome del drink   
+        name: 'Ichnusa', // nome del drink
         type:"beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), // richiama un immagine     
+        image: require("../image/ristoranti/daPino.png"), // richiama un immagine
         ingredients: [ // array degli ingredienti
-            getIngredientFromNome("ichnusa") // quantityML:200 }  
+            getIngredientFromNome("ichnusa") // quantityML:200 }
         ],
         color: '#CD7F32', // sfondo della bolla del bar
         textColor: 'black',// colore del testo della bolla
         favorite: true // è favorito
     } ,
     {
-        id: 1, 
+        id: 1,
         name: 'Cosmopolitan',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("cointreau"),
             getIngredientFromNome("limeJuice"),
             getIngredientFromNome("blueberryJuice")
         ],
-        color: '#5580e6', 
+        color: '#5580e6',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 2, 
+        id: 2,
         name: 'Aperol Sprits',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("prosecco"),
             getIngredientFromNome("aperol"),
             getIngredientFromNome("soda")
         ],
-        color: 'orange', 
+        color: 'orange',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 3, 
+        id: 3,
         name: 'Vodka Redbull',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("redBull"),
             getIngredientFromNome("vodka")
         ],
-        color: '#5580e6', 
+        color: '#5580e6',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 4, 
+        id: 4,
         name: 'Cuba Libre',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("cocacola"),
             getIngredientFromNome("whiteRum"),
             getIngredientFromNome("limeJuice")
         ],
-        color: '#800020', 
+        color: '#800020',
         textColor: 'black',
         favorite: true
     } ,
     {
-        id: 5, 
+        id: 5,
         name: 'gin tonic',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("gin"),
             getIngredientFromNome("tonicWater")
         ],
-        color: '#fff99c', 
+        color: '#fff99c',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 6, 
+        id: 6,
         name: 'moscow mule',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("gingerBeer")
         ],
-        color: '#5580e6', 
+        color: '#5580e6',
         textColor: 'black',
         favorite: true
     } ,
     {
-        id: 7, 
+        id: 7,
         name: 'tequila sunrise',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("tequilaSilver"),
             getIngredientFromNome("blueberryJuice"),
             getIngredientFromNome("orangeJuice")
         ],
-        color: '#5580e6', 
+        color: '#5580e6',
         textColor: 'black',
         favorite: true
     } ,
     {
-        id: 8, 
+        id: 8,
         name: 'sex on the beach',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("orangeJuice"),
             getIngredientFromNome("peachVodka"),
             getIngredientFromNome("blueberryJuice")
         ],
-        color: '#ff69b4', 
+        color: '#ff69b4',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 9, 
+        id: 9,
         name: 'carignano',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("carignano")
         ],
-        color: '#58181F', 
+        color: '#58181F',
         textColor: 'black',
         favorite: false
     } ,
     {
-        id: 10, 
+        id: 10,
         name: 'vermentino',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, whine
-        image: require("../image/ristoranti/daPino.png"), 
+        image: require("../image/ristoranti/daPino.png"),
         ingredients: [
             getIngredientFromNome("vermentino")
         ],
-        color: '#EEEDC4', 
+        color: '#EEEDC4',
         textColor: 'black',
         favorite: false
     } ,
-    
+
 ]
 
 export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks};
@@ -158,7 +158,7 @@ const getTypes=(drinksInfo)=>{
     console.log("getTypes");
     let types =[
         {id:0, type:"favourites"},
-        {id:1, type:"all"}        
+        {id:1, type:"all"}
     ];
     drinksInfo.forEach(element => {
         if (!types.some(e => e.type === element.type)) {
@@ -177,43 +177,33 @@ const getDrinksOfType = (drinksInfo, type) => {
     else if (type === "favourites") {
         return drinksInfo.filter(e => e.favorite);
     }
-    
-    console.log("Tipo da testare: " + type)
     return drinksInfo.filter(e => {
-        console.log(e.type)
         return e.type === type
     });
-    
+
 }
 
+/*
+    Output di prova
+        Per i vini
+        unavaible 2,
+        avaible: 6
+ */
 const getAvailableAndUnavailableDrinks = (drinksInfo) => {
     console.log("getAvailableAndUnavailableDrinks");
-    let availableDrinks =[];
-    let unavailableDrinks =[];
-    let areAllAviableIngredient = true;
-    let j = 0;
+    const drinks = {
+        availableDrinks: [],
+        unavailableDrinks: []
+    }
     drinksInfo.forEach(element => {
-        while(areAllAviableIngredient && element.ingredients.length > j){
-            if(areAllAviableIngredient && element.ingredients[j].available === false){
-                areAllAviableIngredient = false;
-            }
-            j=j+1
-        }
-        if (areAllAviableIngredient){
-            availableDrinks.push(element);
-            j=0;            
-        }
-        else{
-            unavailableDrinks.push(element)
-            j=0;
-            areAllAviableIngredient = true;
-        }        
+        if (element.ingredients.every(ingrediente => ingrediente.available))
+            drinks.availableDrinks.push(element);
+        else
+            drinks.unavailableDrinks.push(element)
     });
-    console.log("unaviables : ");
-    console.log(unavailableDrinks.length);
-    console.log("aviables : ");
-    console.log(availableDrinks.length);
-    return([availableDrinks,setUnaviableColors(unavailableDrinks)]);
+    console.log("aviables : " + drinks.availableDrinks.length);
+    console.log("unaviables : " + drinks.unavailableDrinks.length);
+    return drinks;
 }
 
 const setUnaviableColors = (unavailableDrinks) =>{
