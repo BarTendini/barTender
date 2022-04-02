@@ -6,19 +6,22 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 0, // deve necessariamente essere diverso dagli altri
         name: 'Ichnusa', // nome del drink
         type:"beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"), // richiama un immagine
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [ // array degli ingredienti
             getIngredientFromNome("ichnusa") // quantityML:200 }
         ],
         color: '#CD7F32', // sfondo della bolla del bar
         textColor: 'black',// colore del testo della bolla
-        favorite: true // è favorito
+        favorite: true, // è favorito
+        price: 2.50,
+        quantity: 330,
+        alchoolicTax: 5
     } ,
     {
         id: 1,
         name: 'Cosmopolitan',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("cointreau"),
@@ -27,13 +30,16 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         ],
         color: '#5580e6',
         textColor: 'black',
-        favorite: false
+        favorite: false,
+        price: 5.50,
+        quantity: 330,
+        alchoolicTax: 5
     } ,
     {
         id: 2,
         name: 'Aperol Sprits',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/drawings/aperolSpritzDraw2.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("prosecco"),
             getIngredientFromNome("aperol"),
@@ -41,26 +47,32 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         ],
         color: 'orange',
         textColor: 'black',
-        favorite: false
+        favorite: false,
+        price: 5.50,
+        quantity: 330,
+        alchoolicTax: 5
     } ,
     {
         id: 3,
         name: 'Vodka Redbull',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("redBull"),
             getIngredientFromNome("vodka")
         ],
         color: '#5580e6',
         textColor: 'black',
-        favorite: false
+        favorite: false,
+        price: 5.50,
+        quantity: 330,
+        alchoolicTax: 5
     } ,
     {
         id: 4,
         name: 'Cuba Libre',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("cocacola"),
             getIngredientFromNome("whiteRum"),
@@ -74,7 +86,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 5,
         name: 'gin tonic',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("gin"),
             getIngredientFromNome("tonicWater")
@@ -87,7 +99,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 6,
         name: 'moscow mule',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("gingerBeer")
@@ -100,7 +112,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 7,
         name: 'tequila sunrise',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("tequilaSilver"),
             getIngredientFromNome("blueberryJuice"),
@@ -114,7 +126,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 8,
         name: 'sex on the beach',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"),
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("orangeJuice"),
@@ -129,7 +141,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 9,
         name: 'carignano',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"),
         ingredients: [
             getIngredientFromNome("carignano")
         ],
@@ -141,7 +153,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 10,
         name: 'vermentino',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, whine
-        image: require("../image/ristoranti/daPino.png"),
+        image: require("../image/drinks/logos/barTenderLogo.png"),
         ingredients: [
             getIngredientFromNome("vermentino")
         ],

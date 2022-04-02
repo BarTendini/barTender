@@ -11,20 +11,25 @@ import {themeStyles} from "../../styles/theme/ThemeStyles"
 const DrinkMenu = ({ route, navigation }) => {
     const { availableDrinks, unavailableDrinks } = getAvailableAndUnavailableDrinks(route.params.drinks);
     //console.log(unavailableDrinks);
-
+    
     const drinkSelection = () => { // definizione funzione che mostra le categorie di bevande
         return <View style={commonStyles.ViewHome}>
-            <ScrollView>
-            <FlatList data={availableDrinks} renderItem={item =>
-                <DrinkSelection Drink={item.item} availability={{a:"Disponibile"}} navigation={navigation} />
-            }
-            />
-            <Text style={styles.FeedTestoVoto}> UNAVIABLE DRINKS </Text>
-            <FlatList data={unavailableDrinks} renderItem={item =>
-                <DrinkSelection Drink={item.item} availability={{a:"Non disponibile"}} navigation={navigation} />
-            }
-            />
-            </ScrollView>
+                <FlatList  
+                    data={availableDrinks} renderItem={item =>
+                        <DrinkSelection Drink={item.item} availability={true} navigation={navigation} />
+                    }
+                    ListFooterComponent={
+                        <FlatList ListHeaderComponent={
+                            <Text style={[styles.FeedTestoVoto, themeStyles.unavailableColor]}> 
+                                UNAVIABLE DRINKS 
+                            </Text>
+                        }
+                        data={unavailableDrinks} renderItem={item =>
+                            <DrinkSelection Drink={item.item} availability={false} navigation={navigation} />
+                        }
+                        />
+                    }
+                />
         </View>
     }
     return (
@@ -44,14 +49,10 @@ const styles = StyleSheet.create({
     FeedTestoVoto: {
         fontSize: 20,
         textAlign: 'center',
-        /*padding:20,
+        padding:20,
         margin:10,
         borderRadius:5,
         backgroundColor:  themeStyles.light.backgroundColor1
-    },
-    unavailableColor: {
-        backgroundColor: "#ccc",
-        color:"#222"*/
     }
 
 })

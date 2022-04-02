@@ -39,14 +39,9 @@ const styles = StyleSheet.create({
     FeedTestoVoto: {
         fontSize: 20,
         textAlign: 'center',
-        /*padding:20,
+        padding:20,
         margin:10,
         borderRadius:5,
         backgroundColor:  themeStyles.light.backgroundColor1 
-    },
-    unavailableColor: {
-        backgroundColor: "#ccc",
-        color:"#222"*/
     }
-
 })

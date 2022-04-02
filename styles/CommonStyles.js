@@ -82,5 +82,15 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         // borderColor: 'black',
         // borderWidth: 3,
+    },
+    DrinkImm: {
+        justifyContent: "center",
+        alignItems: "center",
+        height: 150,
+        width: '100%',
+        resizeMode: 'contain',
+        marginVertical: 10,
+        // borderColor: 'black',
+        // borderWidth: 3,
     }
 });

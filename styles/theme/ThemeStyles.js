@@ -9,6 +9,10 @@ const themeStyles = {
     dark:{
         backgroundColor1: "#cca36f",
         backgroundColor2: "#000000"
+    },
+    unavailableColor: {
+        backgroundColor: "#ccc",
+        color:"#222"
     }
 };
 

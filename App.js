@@ -2,16 +2,18 @@ import { StyleSheet, Platform, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from "./components/Screen/Login";
+/*
 import Register from "./components/Screen/Register";
 import SplashScreen from "./components/Screen/SplashScreen";
 import BarDescription from "./components/Screen/BarDescription";
 import DrinkMenu from "./components/Screen/DrinkMenu";
-import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
+
 import ChangeLog from "./components/Screen/ChangeLog";
 import DrinkType from './components/Screen/DrinkTypes';
-//import BarSelection from "./components/Screen/Home";
-
+import DrinkDescription from "./components/Screen/DrinkDescription";
+*/
+import { BarDescription, ChangeLog, DrinkDescription, DrinkMenu, DrinkType, Home, Login, Register, Settings, SplashScreen } from './components/Screen/Screens'
+import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
 
 //Aggiugne le animazioni per android
@@ -87,6 +89,12 @@ export default function App () {
             <Stack.Screen
                 name="ChangeLog"
                 component={ChangeLog}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="DrinkDescription"
+                component={DrinkDescription}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
