@@ -1,8 +1,7 @@
 import React from "react"; //quasi sempre necessario
 import {SafeAreaView, Platform, ScrollView, View, StyleSheet, Text, FlatList} from "react-native";
-import {Logo,Header} from "../componenti/HeaderTender";
+import Header from "../componenti/HeaderTender";
 import commonStyles from "../../styles/CommonStyles";
-import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
 import {getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
@@ -11,17 +10,16 @@ import {themeStyles} from "../../styles/theme/ThemeStyles"
 const DrinkMenu = ({ route, navigation }) => {
     const { availableDrinks, unavailableDrinks } = getAvailableAndUnavailableDrinks(route.params.drinks);
     //console.log(unavailableDrinks);
-    
     const drinkSelection = () => { // definizione funzione che mostra le categorie di bevande
         return <View style={commonStyles.ViewHome}>
-                <FlatList  
+                <FlatList
                     data={availableDrinks} renderItem={item =>
                         <DrinkSelection Drink={item.item} availability={true} navigation={navigation} />
                     }
                     ListFooterComponent={
                         <FlatList ListHeaderComponent={
-                            <Text style={[styles.FeedTestoVoto, themeStyles.unavailableColor]}> 
-                                UNAVIABLE DRINKS 
+                            <Text style={[styles.FeedTestoVoto, themeStyles.unavailableColor]}>
+                                UNAVIABLE DRINKS
                             </Text>
                         }
                         data={unavailableDrinks} renderItem={item =>

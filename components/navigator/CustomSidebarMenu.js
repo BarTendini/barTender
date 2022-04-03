@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform, Alert} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 import {
@@ -12,7 +12,21 @@ const CustomSidebarMenu = (props) => {
     const [logUsr, setUsr] = useState('Mamusa')
     const [alert, setAlert] = useState(false)
     const showAlert = () => {
-        setAlert( true)
+        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
+            setAlert( true) // attiva l'AwesomeAllert per il web
+        } else {
+            Alert.alert( // funzione allerta che prende titolo, testo e bottoni come parametri
+                "Logout",
+                "Sei sicuro? Vuoi eseguire un logout?",
+                [
+                    {
+                        text: "Cancella",
+                        style: "cancel"
+                    },
+                    { text: "Conferma", onPress: () => { props.navigation.replace('Autenticazione') }}
+                ]
+            );
+        }
     };
 
     const hideAlert = () => {

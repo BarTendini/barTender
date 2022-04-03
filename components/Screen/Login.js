@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import {Logo,Header} from "../componenti/HeaderTender.js";
+import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
+import Header from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
@@ -22,7 +22,7 @@ const Login = ({ navigation }) => {
         navigation.replace('DrawerNavigationRoutes');
     }
 
-    
+
 
 
     return (
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Logo icon={0} />
+                    <Header icon={0} />
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Login</Text>
                         <View style={{paddingTop: 20}}/>

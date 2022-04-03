@@ -1,5 +1,4 @@
-import CardTender from "./CardTender";
+import DrinkCardTender from "./DrinkCardTender";
 import CardTitle from "./CardTitle";
 
-export {CardTender}
-export {CardTitle}
+export {DrinkCardTender, CardTitle}

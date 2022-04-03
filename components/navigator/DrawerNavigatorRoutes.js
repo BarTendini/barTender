@@ -1,21 +1,13 @@
 // Import React
 import React from 'react';
-import {View, Text} from 'react-native';
 
 // Import Navigators from React Navigation
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-// Import Screens
-import HomeScreen from '../Screen/Home';
-import SettingsScreen from '../Screen/Settings';
-import CustomSidebarMenu from './CustomSidebarMenu';
-import NavigationDrawerHeader from './NavigationDrawerHeader';
-import DrinkMenuScreen from '../Screen/DrinkMenu';
-import ChangeLog from '../Screen/ChangeLog';
-import BarDescription from '../Screen/BarDescription'
-import DrinkType from '../Screen/DrinkTypes';
-import DrinkMenu from '../Screen/DrinkMenu';
+import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Settings } from '../Screen/Screens'
+import CustomSidebarMenu from "./CustomSidebarMenu";
+import NavigationDrawerHeader from "./NavigationDrawerHeader";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -25,7 +17,7 @@ const HomeScreenStack = ({navigation}) => { //serve per lanciare la pagina desid
         <Stack.Navigator initialRouteName="HomeScreen">
             <Stack.Screen
                 name="HomeScreen"
-                component={HomeScreen}
+                component={Home}
                 options={{
                     title: 'Home', //Set Header Title
                     headerLeft: () => (
@@ -40,43 +32,23 @@ const HomeScreenStack = ({navigation}) => { //serve per lanciare la pagina desid
                     },
                     headerShown: false,
                 }}
+            />
+            <Stack.Screen
+                name="BarDescription"
+                component={BarDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );
 };
 
-/* non funziona
-const BarDescriptionScreenStack = ({navigation}) => { //serve per lanciare la pagina desiderata dal menu laterale
-    return (
-        <Stack.Navigator initialRouteName="HomeScreen">
-            <Stack.Screen
-                name="BarDescription"
-                component={BarDescription}
-                options={{
-                    title: 'Home', //Set Header Title
-                    headerLeft: () => (
-                        <NavigationDrawerHeader navigationProps={navigation} />
-                    ),
-                    headerStyle: {
-                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
-                    },
-                    headerTintColor: '#fff', //Set Header text color
-                    headerTitleStyle: {
-                        fontWeight: 'bold', //Set Header text style
-                    },
-                    headerShown: false,
-                }}
-            />
-        </Stack.Navigator>
-    );
-};
-*/
 const SettingScreenStack = ({navigation}) => {//serve per lanciare la pagina desiderata dal menu laterale
     return (
         <Stack.Navigator initialRouteName="SettingsScreen">
             <Stack.Screen
                 name="SettingsScreen"
-                component={SettingsScreen}
+                component={Settings}
                 options={{
                     title: 'Impostazioni', //Set Header Title
                     headerLeft: () => (
@@ -142,6 +114,18 @@ const DrinkTypeScreenStack = ({navigation}) => {
                     headerShown: false,
                 }}
             />
+            <Stack.Screen
+                name="DrinkMenu"
+                component={DrinkMenu}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="DrinkDescription"
+                component={DrinkDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
     );
 };
@@ -151,9 +135,9 @@ const ChangeLogScreenStack = ({navigation}) => {
         <Stack.Navigator initialRouteName="ChangeLogScreen">
             <Stack.Screen
                 name="ChangeLogScreen"
-                component={ChangeLog}
+                component={ChangeLogScreen}
                 options={{
-                    title: 'ChangeLog', //Set Header Title
+                    title: 'ChangeLogScreen', //Set Header Title
                     headerLeft: () => (
                         <NavigationDrawerHeader navigationProps={navigation} />
                     ),
@@ -199,7 +183,7 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
                 }}
                 component={SettingScreenStack}
             />
-            
+
              <Drawer.Screen
                 name="DrinkTypeScreenStack"
                 options={{
@@ -225,3 +209,31 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
 };
 
 export default DrawerNavigatorRoutes;
+
+
+/* non funziona
+const BarDescriptionScreenStack = ({navigation}) => { //serve per lanciare la pagina desiderata dal menu laterale
+    return (
+        <Stack.Navigator initialRouteName="HomeScreen">
+            <Stack.Screen
+                name="BarDescription"
+                component={BarDescription}
+                options={{
+                    title: 'Home', //Set Header Title
+                    headerLeft: () => (
+                        <NavigationDrawerHeader navigationProps={navigation} />
+                    ),
+                    headerStyle: {
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
+                    },
+                    headerTintColor: '#fff', //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                    headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
+    );
+};
+*/

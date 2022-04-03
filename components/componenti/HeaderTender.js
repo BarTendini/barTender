@@ -1,9 +1,7 @@
 import React from 'react'; //quasi sempre necessario
 import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles";
-import NavigationDrawerHeader from '../navigator/NavigationDrawerHeader';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {DrawerActions} from "@react-navigation/native";
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
     const menuIconForWeb = (icon,navigation,alertFun) => {
@@ -17,29 +15,15 @@ const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'hea
                 source={require('../../image/loghi/logoHome.png')}
                 style={commonStyles.Logo}
                 resizeMode={'contain'}
-            >                
-                {showIcon(icon, navigation, alertFun)}     
-                {menuIconForWeb(icon, navigation, alertFun)}        
-            </ImageBackground>
-        </View>
-    );
-}
-
-const Logo = ({ icon, navigation, bgColor, alertFun }) => { // renderizza il logo con eventualmente il tasto indietro, logout o menu
-    return (
-        <View style={{backgroundColor: bgColor ? bgColor : null}}>
-            <ImageBackground
-                source={require('../../image/loghi/logoHome.png')}
-                style={commonStyles.Logo}
-                resizeMode={'contain'}
             >
                 {showIcon(icon, navigation, alertFun)}
+                {menuIconForWeb(icon, navigation, alertFun )}
             </ImageBackground>
         </View>
     );
 }
 
-export {Logo,  Header}; // esporta logo e header come oggetto composto da componente
+export default Header; // esporta logo e header come oggetto composto da componente
 
 const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, logout e menu
     if (icon === 1) // indietro
@@ -64,16 +48,22 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
                 }}
             />
         </TouchableOpacity>
-    if (icon === 3) // menu (per adesso si comporta come il logout)
-        return <TouchableOpacity  onPress={() => navigation.openDrawer()} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-            <Image
-                source={require('../../image/icons/menuButton.png')}
-                style={{
-                    width: 80,
-                    height: 20,
-                    resizeMode: 'contain'
-                }}
-            />
-        </TouchableOpacity>
+    if (icon === 3) { // menu (per adesso si comporta come il logout)
+        // controllo che non mi trovi in una schermata del navigator perché in questo caso
+        // non posso disegnare il burger Menu visto che non esiste
+        // Quindi se non visualizzi le tre stecche assicurati di aggiungere lo screen come child nello stack.screen apposito
+        if (navigation && navigation.toggleDrawer) {
+            return <TouchableOpacity  onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+                <Image
+                    source={require('../../image/icons/menuButton.png')}
+                    style={{
+                        width: 80,
+                        height: 20,
+                        resizeMode: 'contain'
+                    }}
+                />
+            </TouchableOpacity>
+        }
+    }
     return <></>// se icon è uguale a 0 o a qualsiasi altro valore
 }

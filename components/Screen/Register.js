@@ -11,7 +11,7 @@ import {
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import {Logo} from "../componenti/HeaderTender.js";
+import Header from "../componenti/HeaderTender.js";
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
@@ -37,7 +37,7 @@ const Register = ({ navigation }) => {
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Logo icon={1} navigation={navigation} />
+                    <Header icon={1} navigation={navigation} />
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
                         <View style={{padding: 20}}/>

@@ -1,5 +1,5 @@
 import BarDescription from "./BarDescription";
-import ChangeLog from "./ChangeLog";
+import ChangeLogScreen from "./ChangeLogScreen";
 import DrinkDescription from "./DrinkDescription";
 import DrinkMenu from "./DrinkMenu";
 import DrinkType from "./DrinkTypes";
@@ -9,4 +9,4 @@ import Register from "./Register";
 import Settings from "./Settings";
 import SplashScreen from "./SplashScreen";
 
-export { BarDescription, ChangeLog, DrinkDescription, DrinkMenu, DrinkType, Home, Login, Register, Settings, SplashScreen };
+export { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Login, Register, Settings, SplashScreen };

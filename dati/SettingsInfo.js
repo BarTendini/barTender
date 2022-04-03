@@ -1,8 +1,8 @@
 import {FlatList, StyleSheet, View, Switch, Text} from 'react-native'; //import necessario
 
 //funzione che restituisce un oggetto contenente le impostazioni
-const settingSetter = (identifier, titleString, mystyle,theValue) => { 
-    return ({id: identifier, title: titleString, interaction: mystyle, value:theValue});
+const settingSetter = (identifier, titleString, mystyle,theValue) => {
+    return ({id: identifier, title: titleString, interaction: mystyle, value: theValue});
 };
 
 //funzione che restituisce un oggetto che contiene altri oggetti impostazioni al proprio interno
@@ -22,7 +22,7 @@ const textInteraction = (item) => { //funzione che definisce come appariranno le
                 </Text>
             </View>
             <View style={{ flex: 0.5, alignItems: 'flex-end' }}>
-                <Text style={styles.InfoTextRight}> 
+                <Text style={styles.InfoTextRight}>
                     {item.value}
                 </Text>
             </View>
@@ -42,7 +42,7 @@ const elementsListedInteraction = (item) => { //funzione che definisce come appa
                         renderItem={singleElementListedInteraction}
                 />
             </View>
-            
+
         </View>
     )
 }
@@ -56,8 +56,8 @@ const singleElementListedInteraction = ({item}) => { //funzione che definisce co
                 </Text>
             </View>
             <View style={{ flex: 0.5, alignItems: 'flex-end' }}>
-                <Text style={styles.InfoTextRight}> 
-                    {item.value} 
+                <Text style={styles.InfoTextRight}>
+                    {item.value}
                 </Text>
             </View>
         </View>
@@ -108,7 +108,10 @@ const settingsInfo = [ // questo oggetto definisce i testi e la struttura dati d
             settingSetter(13,"tag 3",textInteraction,"edit")
         ]),
         settingSetter(12,"add tag",textInteraction,"toggle"),
-        settingSetter(13,"disconnect all",textInteraction,"toggle")        
+        settingSetter(13,"disconnect all",textInteraction,"toggle")
+    ]),
+    groupSettingSetter(4, "Sviluppo", [
+        settingSetter(1, "Show BorderWidth", switchInteraction, true) // Cambia questo valore per aggiornare i bordi
     ])
 ];
 

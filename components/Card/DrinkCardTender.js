@@ -1,4 +1,4 @@
-import {View, Animated, StyleSheet, Easing, TouchableOpacity, Image} from "react-native";
+import {View, Animated, StyleSheet, Easing, TouchableOpacity} from "react-native";
 import Accordion from 'react-native-collapsible/Accordion';
 import {useRef, useState} from "react";
 import CardTitle from "./CardTitle";

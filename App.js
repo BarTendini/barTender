@@ -2,17 +2,7 @@ import { StyleSheet, Platform, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-/*
-import Register from "./components/Screen/Register";
-import SplashScreen from "./components/Screen/SplashScreen";
-import BarDescription from "./components/Screen/BarDescription";
-import DrinkMenu from "./components/Screen/DrinkMenu";
-
-import ChangeLog from "./components/Screen/ChangeLog";
-import DrinkType from './components/Screen/DrinkTypes';
-import DrinkDescription from "./components/Screen/DrinkDescription";
-*/
-import { BarDescription, ChangeLog, DrinkDescription, DrinkMenu, DrinkType, Home, Login, Register, Settings, SplashScreen } from './components/Screen/Screens'
+import { ChangeLogScreen, Login, Register, SplashScreen } from './components/Screen/Screens'
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
 
@@ -47,7 +37,7 @@ const Auth = () => {
 export default function App () {
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Navigator initialRouteName="DrawerNavigationRoutes">
           {/* SplashScreen which will come once for 5 Seconds */}
           <Stack.Screen
               name="SplashScreen"
@@ -69,32 +59,8 @@ export default function App () {
               options={{headerShown: false}}
           />
             <Stack.Screen
-                name="BarDescription"
-                component={BarDescription}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
-            <Stack.Screen
-                name="DrinkMenu"
-                component={DrinkMenu}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
-            <Stack.Screen
-                name="DrinkType"
-                component={DrinkType}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
-            <Stack.Screen
                 name="ChangeLog"
-                component={ChangeLog}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
-            <Stack.Screen
-                name="DrinkDescription"
-                component={DrinkDescription}
+                component={ChangeLogScreen}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />

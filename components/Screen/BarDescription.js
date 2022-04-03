@@ -2,10 +2,10 @@ import React, {useRef, useState} from "react";
 import {SafeAreaView, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import commonStyles from "../../styles/CommonStyles";
-import {Logo,Header} from "../componenti/HeaderTender.js";
+import Header from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
-import { CardTender } from "../Card/TenderCard";
+import { DrinkCardTender } from "../Card/TenderCard";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
@@ -86,16 +86,16 @@ const BarDescription = ({ route, navigation }) => {
                 </View>
 
                 {/*Descrizione Locale*/}
-                <CardTender title={"Descrizione:"}>
+                <DrinkCardTender title={"Descrizione:"}>
                     <View style={styles.ViewDescrizioneTesto}>
                         <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
                     </View>
-                </CardTender>
+                </DrinkCardTender>
 
                 {/*Feedback*/}
-                <CardTender title={"Feedback:"}>
+                <DrinkCardTender title={"Feedback:"}>
                     {feedback()}
-                </CardTender>
+                </DrinkCardTender>
                 <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
             </ScrollView>
 

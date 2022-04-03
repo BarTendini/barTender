@@ -2,16 +2,16 @@ import React from "react"; //quasi sempre necessario
 import {View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native"; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
-import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
-import {Header} from "../componenti/HeaderTender.js";
+import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
+import Header from "../componenti/HeaderTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 
-const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
+const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
 
     //permette di renderizzare un singolo log (la magia la spiegherà max)
     const renderItem = ({ item }) => (
 
-        <CardTender title={item.version}>
+        <DrinkCardTender title={item.version}>
             <View style={{flex: 1, flexDirection: 'column', margin: 10}}>
                 <View style={{ flexDirection: 'row'}}>
                     <View style={{flex: 1, alignItems: 'flex-start'}}>
@@ -29,7 +29,7 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
                     {item.info}
                 </Text>
             </View>
-        </CardTender>
+        </DrinkCardTender>
     );
 
     // permette di fare il log su console (serve per "debuggare")
@@ -53,7 +53,7 @@ const ChangeLog = ({ navigation }) => { //funzione che permette di renderizzare
     );
 };
 
-export default ChangeLog; // permette di esportare la funzione ChangeLog e quuindi la pagina (una sorta di public per gli oggetti)
+export default ChangeLogScreen; // permette di esportare la funzione ChangeLogScreen e quuindi la pagina (una sorta di public per gli oggetti)
 
 
 // crea una serie di stili che potranno essere usati dentro i tag/components di questo file come PROPietà
