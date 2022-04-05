@@ -1,5 +1,6 @@
 const changes = [ // definizione di un array di 6 elementi dove ogni elemento è una sorta di struttura dati di 4 elementi
-    {version:"0.21.0", nome: "Max", dataPush: "3/04 17:00", info:"Sistemato app.js perché i nuovi screen doveno essere messi in drawerNavigationRoutes. Quindi risolto il bug in cui non si poteva chiamare il burgermenu da uno screen lontano\n" +
+    {version:"0.23.0", nome: "Max", dataPush: "5/04 22:00", info:"Sistemata la posizione del cuore, ma devo riprovare con l'ombra in drinkDescription"},
+    {version:"0.22.0", nome: "Max", dataPush: "3/04 17:00", info:"Sistemato app.js perché i nuovi screen doveno essere messi in drawerNavigationRoutes. Quindi risolto il bug in cui non si poteva chiamare il burgermenu da uno screen lontano\n" +
             "Rimossi componenti inutili\n" +
             "Rinominato changeLog in changeLogScreen\n" +
             "Aggiunto nei setting una variabile per debuggare le view in modo da vedere i bordi\n" +

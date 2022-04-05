@@ -92,14 +92,13 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
                         </Text>
                     </View>
                     <View style={{ flex:0.5, justifyContent: 'center', alignContent: 'center', borderWidth: borderWidth }}>
-                        <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignContent: 'center',  borderWidth: borderWidth }}>
+                        <TouchableOpacity style={{ borderWidth: borderWidth }}>
                             <Entypo
                                 onPress={() => heartPressed()}
                                 name={iconName}
                                 size={25}
                                 color={'red'}
-                                style={{ justifyContent: 'center', borderWidth: borderWidth, display: 'flex' }}
-                                //style={{ paddingHorizontal: '20%', justifyContent: 'center', borderWidth: 1, display: 'flex' }}
+                                style={{ textAlign: 'center', borderWidth: borderWidth, borderColor: 'red' }}
                             />
                         </TouchableOpacity>
                     </View>
