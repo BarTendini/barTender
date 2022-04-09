@@ -6,6 +6,7 @@ import Header from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
 import { DrinkCardTender } from "../Card/TenderCard";
+import {IconsButton} from "../../dati/Icons";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
@@ -51,7 +52,7 @@ const BarDescription = ({ route, navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.MarginTop}>
                 <Text style={styles.Title}>{bar.nome}</Text>
                 <Text style={{ textAlign: 'center', }}>{bar.via}</Text>

@@ -5,6 +5,7 @@ import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da 
 import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
 import Header from "../componenti/HeaderTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
+import {IconsButton} from "../../dati/Icons";
 
 const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
 
@@ -38,7 +39,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
     // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
     return (
         <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>
-            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light.backgroundColor1} />
+            <Header icon={IconsButton.back} navigation={navigation} bgColor= {themeStyles.light.backgroundColor1} />
             <View style={commonStyles.ViewHome}>
                 <Text style={commonStyles.titleText}>
                     {version}

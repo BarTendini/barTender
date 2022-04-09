@@ -4,6 +4,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
 import SettingsInfo from "../../dati/SettingsInfo";
+import {IconsButton} from "../../dati/Icons";
 
 const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");
@@ -29,7 +30,7 @@ const DrinkDescription = ({ route, navigation }) => {
 
     return(
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor={'#ffcc8b'}/>
+            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
             <View style={{ flex: 1, borderWidth: borderWidth, }}>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
                     {drink.name}
