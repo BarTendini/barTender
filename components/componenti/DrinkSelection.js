@@ -4,6 +4,7 @@ import { Entypo } from "@expo/vector-icons";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import SettingsInfo from "../../dati/SettingsInfo";
+import btnStyles from "../../styles/BtnStyles";
 
 
 const DrinkSelection = ({ Drink, availability, navigation }) => {
@@ -103,6 +104,15 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </View>
+
+                <TouchableOpacity onPress={() => navigation.push('DrinkCustom', {drink: Drink}) }>
+                    <View style={btnStyles.rectangle}>
+                        <View style={btnStyles.circle}>
+                            <Text style={btnStyles.circleIcon}> 🔧 </Text>
+                        </View>
+                        <Text style={btnStyles.rectangleText}> Modifica </Text>
+                    </View>
+                </TouchableOpacity>
 
             </View>
 

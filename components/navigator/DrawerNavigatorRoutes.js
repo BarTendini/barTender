@@ -8,6 +8,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Settings } from '../Screen/Screens'
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import NavigationDrawerHeader from "./NavigationDrawerHeader";
+import {DrinkCustom} from "../Screen/DrinkCustom";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -123,6 +124,12 @@ const DrinkTypeScreenStack = ({navigation}) => {
             <Stack.Screen
                 name="DrinkDescription"
                 component={DrinkDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="DrinkCustom"
+                component={DrinkCustom}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />

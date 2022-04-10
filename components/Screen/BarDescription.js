@@ -6,7 +6,7 @@ import Header from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
 import { DrinkCardTender } from "../Card/TenderCard";
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;

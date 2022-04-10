@@ -6,7 +6,7 @@ import BarSelection from "../componenti/BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [alert, setAlert] = useState(false) // ??? qualcosa per lo stato

@@ -5,7 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 
 const DrinkMenu = ({ route, navigation }) => {

@@ -4,7 +4,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
 import SettingsInfo from "../../dati/SettingsInfo";
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");

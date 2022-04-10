@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender.js";
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')

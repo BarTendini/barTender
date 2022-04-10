@@ -5,7 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {DrinksInfo,getTypes} from "../../dati/DrinksInfo";
 import DrinkTypeSelection from "../componenti/DrinkTypeSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const DrinkType = ({ navigation }) => {
     console.log("DrinkType");

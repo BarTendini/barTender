@@ -2,7 +2,7 @@ import React from 'react'; //quasi sempre necessario
 import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles";
 import {DrawerActions} from "@react-navigation/native";
-import {IconsButton} from "../../dati/icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header

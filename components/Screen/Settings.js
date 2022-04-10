@@ -6,7 +6,7 @@ import {themeStyles} from "../../styles/theme/ThemeStyles";
 import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da settings info con le info
 import DrinkCardTender from "../Card/DrinkCardTender";
 import CardTender from "../Card/DrinkCardTender";
-import {IconsButton} from "../../dati/Icons"; //permette di importare le bolle personalizzate
+import {IconsButton} from "../../dati/IconsButton"; //permette di importare le bolle personalizzate
 
 
 const Settings = ({ navigation }) => {

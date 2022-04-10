@@ -5,7 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
 import {UserContext} from "../../UserContext";
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 
 const Login = ({ navigation }) => {

@@ -5,7 +5,7 @@ import {changes, version} from "../../dati/ChangeLog"; //importa gli oggetti da 
 import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
 import Header from "../componenti/HeaderTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
-import {IconsButton} from "../../dati/Icons";
+import {IconsButton} from "../../dati/IconsButton";
 
 const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
 
