@@ -9,7 +9,7 @@ const TenderButton = ({ testo, navigation }) => {
 
         }}>
             <TouchableOpacity
-                onPress={() => navigation.push('Drink')}
+                onPress={() => navigation.push('DrinkTypesSelection')}
                 style={{
                     backgroundColor: '#ffcc8b',
                     paddingVertical: 10,

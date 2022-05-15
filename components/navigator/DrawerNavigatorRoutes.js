@@ -36,39 +36,14 @@ const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina
                 }}
             />
             <Stack.Screen
-                name="HomeScreen"
-                component={Home}
+                name="HomeScreenSelector"
+                component={HomeScreenStack}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
             <Stack.Screen
-                name="DrinkTypeScreen"
-                component={DrinkType}
-                options={{
-                    title: 'Drink Type', //Set Header Title
-                    headerLeft: () => (
-                        <NavigationDrawerHeader navigationProps={navigation} />
-                    ),
-                    headerStyle: {
-                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
-                    },
-                    headerTintColor: '#fff', //Set Header text color
-                    headerTitleStyle: {
-                        fontWeight: 'bold', //Set Header text style
-                    },
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen
-                name="DrinkMenu"
-                component={DrinkMenu}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
-            <Stack.Screen
-                name="DrinkDescription"
-                component={DrinkDescription}
-                // Hiding header for Navigation Drawer
+                name="DrinkTypesSelection"
+                component={DrinkTypeScreenStack}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>
@@ -102,6 +77,11 @@ const HomeScreenStack = ({navigation}) => { //serve per lanciare la pagina desid
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
+            <Stack.Screen
+                name="DrinkTypesSelection"
+                component={DrinkTypeScreenStack}
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
     );
 };
@@ -131,30 +111,6 @@ const SettingScreenStack = ({navigation}) => {//serve per lanciare la pagina des
     );
 };
 
-const DrinkMenuScreenStack = ({navigation}) => {
-    return (
-        <Stack.Navigator initialRouteName="DrinkMenuScreen">
-            <Stack.Screen
-                name="DrinkMenuScreen"
-                component={DrinkMenu}
-                options={{
-                    title: 'Drink', //Set Header Title
-                    headerLeft: () => (
-                        <NavigationDrawerHeader navigationProps={navigation} />
-                    ),
-                    headerStyle: {
-                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
-                    },
-                    headerTintColor: '#fff', //Set Header text color
-                    headerTitleStyle: {
-                        fontWeight: 'bold', //Set Header text style
-                    },
-                    headerShown: false,
-                }}
-            />
-        </Stack.Navigator>
-    );
-};
 
 const DrinkTypeScreenStack = ({navigation}) => {
     return (

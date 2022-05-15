@@ -30,8 +30,9 @@ export default Header; // esporta logo e header come oggetto composto da compone
 const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, logout e menu
 
     const getAction = (ico, nav, fun) => {
-        if (ico.name === 'back') return nav.goBack();
-        if (ico.name === 'logout') return fun();
+        console.log(nav.canGoBack())
+        if (ico.name === 'back' || nav.canGoBack()) return nav.goBack();
+        if (ico.name === 'logout' && !nav.canGoBack()) return fun();
         if (ico.name === 'menu' && navigation && navigation.toggleDrawer)
             return navigation.dispatch(DrawerActions.toggleDrawer());
         if (ico.name === 'none')  return null;

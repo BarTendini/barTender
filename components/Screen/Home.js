@@ -14,7 +14,9 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const showAlert = () => { // definizione funzione che mostra l' allert
         setAlert( true)
     };
-
+    const buttonToShow = () => {
+        return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
+    }
     const hideAlert = () => { // definizione funzione che nasconde l' allert
         setAlert(false)
     };
@@ -49,7 +51,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
+            <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
             <Location animEnd={posizioneOttenuta}/>
             {barList()}
             <AwesomeAlert

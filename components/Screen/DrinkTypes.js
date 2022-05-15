@@ -9,6 +9,9 @@ import {IconsButton} from "../../dati/IconsButton";
 
 const DrinkType = ({ navigation }) => {
     console.log("DrinkType");
+    const buttonToShow = () => {
+        return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
+    }
     const drinkTypes = () => { // definizione funzione che mostra le categorie di bevande
         const someTypes = getTypes(DrinksInfo)
         return <View style={commonStyles.ViewHome}>
@@ -22,7 +25,7 @@ const DrinkType = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.ViewInfo}>
                 <Text style={styles.FeedTestoVoto}>Menu: Da Pino</Text>
             </View>

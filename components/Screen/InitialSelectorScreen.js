@@ -4,17 +4,18 @@ import commonStyles from "../../styles/CommonStyles";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
 import SettingsInfo from "../../dati/SettingsInfo";
+import {IconsButton} from "../../dati/IconsButton";
 
 const InitialSelectorScreen = ({ route, navigation }) => {
 
     return(
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor={'#ffcc8b'}/>
+            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'}/>
             <View style={{ flex: 1 }}>
-                <TouchableOpacity onPress={() => navigation.push('HomeScreen')}>
+                <TouchableOpacity onPress={() => navigation.push('HomeScreenSelector')}>
                     <Text>Trova Locale</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.push('DrinkTypeScreen')}>
+                <TouchableOpacity onPress={() => navigation.push('DrinkTypesSelection')}>
                     <Text>Scegli da bere</Text>
                 </TouchableOpacity>
             </View>
