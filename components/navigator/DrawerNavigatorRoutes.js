@@ -8,9 +8,71 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Settings } from '../Screen/Screens'
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import NavigationDrawerHeader from "./NavigationDrawerHeader";
+import InitialSelectorScreen from "../Screen/InitialSelectorScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina desiderata dal menu laterale
+    return (
+        <Stack.Navigator initialRouteName="InitialScreen">
+            <Stack.Screen
+                name="InitialScreen"
+                component={InitialSelectorScreen}
+                options={{
+                    title: 'Selection', //Set Header Title
+                    headerLeft: () => (
+                        <NavigationDrawerHeader navigationProps={navigation} />
+                    ),
+                    headerStyle: {
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
+                    },
+                    headerTintColor: '#fff', //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="Home"
+                component={Home}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="DrinkTypeScreen"
+                component={DrinkType}
+                options={{
+                    title: 'Drink Type', //Set Header Title
+                    headerLeft: () => (
+                        <NavigationDrawerHeader navigationProps={navigation} />
+                    ),
+                    headerStyle: {
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
+                    },
+                    headerTintColor: '#fff', //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="DrinkMenu"
+                component={DrinkMenu}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="DrinkDescription"
+                component={DrinkDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+        </Stack.Navigator>
+    );
+};
 
 const HomeScreenStack = ({navigation}) => { //serve per lanciare la pagina desiderata dal menu laterale
     return (
@@ -162,6 +224,16 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
             screenOptions={{
             }}
             drawerContent={props => <CustomSidebarMenu {...props}/>} >
+            <Drawer.Screen
+                name="InitialStack"
+                options={{
+                    drawerLabel: 'Selection',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+                }}
+                component={InitialSelectionStack}
+            />
             <Drawer.Screen
                 name="HomeScreenStack"
                 options={{
