@@ -36,7 +36,7 @@ const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina
                 }}
             />
             <Stack.Screen
-                name="Home"
+                name="HomeScreen"
                 component={Home}
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
@@ -231,6 +231,17 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
             screenOptions={{
             }}
             drawerContent={props => <CustomSidebarMenu {...props}/>} >
+            <Drawer.Screen
+                name="InitialSelection"
+                options={{
+                    drawerLabel: 'SelectionScreen',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+                }}
+                component={InitialSelectionStack}
+            />
+
             <Drawer.Screen
                 name="HomeScreenStack"
                 options={{
