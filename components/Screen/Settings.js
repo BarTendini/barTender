@@ -5,7 +5,8 @@ import Header from "../componenti/HeaderTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da settings info con le info
 import DrinkCardTender from "../Card/DrinkCardTender";
-import CardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
+import CardTender from "../Card/DrinkCardTender";
+import {IconsButton} from "../../dati/IconsButton"; //permette di importare le bolle personalizzate
 
 
 const Settings = ({ navigation }) => {
@@ -46,7 +47,7 @@ const Settings = ({ navigation }) => {
 
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor={themeStyles.light.backgroundColor1} />
+            <Header icon={IconsButton.back} navigation={navigation} bgColor={themeStyles.light.backgroundColor1} />
             <View style={{flex: 1}}>
                 <Text style={commonStyles.titleText}>
                     settings

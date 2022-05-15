@@ -6,6 +6,7 @@ import BarSelection from "../componenti/BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
+import {IconsButton} from "../../dati/IconsButton";
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [alert, setAlert] = useState(false) // ??? qualcosa per lo stato
@@ -48,7 +49,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={2} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
+            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
             <Location animEnd={posizioneOttenuta}/>
             {barList()}
             <AwesomeAlert

@@ -5,6 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {DrinksInfo,getTypes} from "../../dati/DrinksInfo";
 import DrinkTypeSelection from "../componenti/DrinkTypeSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
+import {IconsButton} from "../../dati/IconsButton";
 
 const DrinkType = ({ navigation }) => {
     console.log("DrinkType");
@@ -21,7 +22,7 @@ const DrinkType = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={2} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.ViewInfo}>
                 <Text style={styles.FeedTestoVoto}>Menu: Da Pino</Text>
             </View>

@@ -2,11 +2,13 @@ import React from 'react'; //quasi sempre necessario
 import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../styles/CommonStyles";
 import {DrawerActions} from "@react-navigation/native";
+import {IconsButton} from "../../dati/IconsButton";
+
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
     const menuIconForWeb = (icon,navigation,alertFun) => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
-            return(showIcon(3, navigation, alertFun));
+            return(showIcon(IconsButton.menu, navigation, alertFun));
         }
     }
     return (
@@ -26,44 +28,17 @@ const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'hea
 export default Header; // esporta logo e header come oggetto composto da componente
 
 const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, logout e menu
-    if (icon === 1) // indietro
-        return <TouchableOpacity onPress={() => navigation.goBack()} style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-            <Image
-                source={require('../../image/icons/back.png')}
-                style={{
-                    width: 80,
-                    height: 20,
-                    resizeMode: 'contain'
-                }}
-            />
-            </TouchableOpacity>
-    else if (icon === 2) // logout
-        return <TouchableOpacity onPress={alertFun} style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-            <Image
-                source={require('../../image/icons/logout.png')}
-                style={{
-                    width: 80,
-                    height: 20,
-                    resizeMode: 'contain'
-                }}
-            />
+
+    const getAction = (ico, nav, fun) => {
+        if (ico.name === 'back') return nav.goBack();
+        if (ico.name === 'logout') return fun();
+        if (ico.name === 'menu' && navigation && navigation.toggleDrawer)
+            return navigation.dispatch(DrawerActions.toggleDrawer());
+        if (ico.name === 'none')  return null;
+    };
+
+    return <TouchableOpacity onPress={() => getAction(icon, navigation, alertFun)}
+                          style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+            {icon.iconJSX}
         </TouchableOpacity>
-    if (icon === 3) { // menu (per adesso si comporta come il logout)
-        // controllo che non mi trovi in una schermata del navigator perché in questo caso
-        // non posso disegnare il burger Menu visto che non esiste
-        // Quindi se non visualizzi le tre stecche assicurati di aggiungere lo screen come child nello stack.screen apposito
-        if (navigation && navigation.toggleDrawer) {
-            return <TouchableOpacity  onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                <Image
-                    source={require('../../image/icons/menuButton.png')}
-                    style={{
-                        width: 80,
-                        height: 20,
-                        resizeMode: 'contain'
-                    }}
-                />
-            </TouchableOpacity>
-        }
-    }
-    return <></>// se icon è uguale a 0 o a qualsiasi altro valore
 }

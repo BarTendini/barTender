@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Platform, Alert} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import {UserContext} from "../../UserContext";
 
 import {
     DrawerContentScrollView,
@@ -9,8 +10,10 @@ import {
 } from '@react-navigation/drawer';
 
 const CustomSidebarMenu = (props) => {
-    const [logUsr, setUsr] = useState('Mamusa')
-    const [alert, setAlert] = useState(false)
+    const [logUsr, setUsr] = useState('Mamusa');
+    const [alert, setAlert] = useState(false);
+    const {user, setUser} = React.useContext(UserContext);
+
     const showAlert = () => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
             setAlert( true) // attiva l'AwesomeAllert per il web
@@ -37,11 +40,11 @@ const CustomSidebarMenu = (props) => {
             <View style={stylesSidebar.profileHeader}>
                 <View style={stylesSidebar.profileHeaderPicCircle}>
                     <Text style={{fontSize: 25, color: '#307ecc'}}>
-                        {logUsr.charAt(0)}
+                        {user.charAt(0)}
                     </Text>
                 </View>
                 <Text style={stylesSidebar.profileHeaderText}>
-                    {logUsr}
+                    {user}
                 </Text>
             </View>
             <View style={stylesSidebar.profileHeaderLine} />

@@ -8,6 +8,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Settings } from '../Screen/Screens'
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import NavigationDrawerHeader from "./NavigationDrawerHeader";
+import {DrinkCustom} from "../Screen/DrinkCustom";
 import InitialSelectorScreen from "../Screen/InitialSelectorScreen";
 
 const Stack = createStackNavigator();
@@ -188,6 +189,12 @@ const DrinkTypeScreenStack = ({navigation}) => {
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
+            <Stack.Screen
+                name="DrinkCustom"
+                component={DrinkCustom}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
     );
 };
@@ -224,16 +231,6 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
             screenOptions={{
             }}
             drawerContent={props => <CustomSidebarMenu {...props}/>} >
-            <Drawer.Screen
-                name="InitialStack"
-                options={{
-                    drawerLabel: 'Selection',
-                    headerShown: false,
-                    drawerActiveTintColor: 'red',
-                    drawerInactiveTintColor: 'yellow',
-                }}
-                component={InitialSelectionStack}
-            />
             <Drawer.Screen
                 name="HomeScreenStack"
                 options={{

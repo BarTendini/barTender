@@ -5,6 +5,7 @@ import commonStyles from "../../styles/CommonStyles";
 import {getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
+import {IconsButton} from "../../dati/IconsButton";
 
 
 const DrinkMenu = ({ route, navigation }) => {
@@ -32,7 +33,7 @@ const DrinkMenu = ({ route, navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.ViewInfo}>
                 <Text style={styles.FeedTestoVoto}>Menu: Da Pino</Text>
             </View>

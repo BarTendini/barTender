@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender.js";
+import {IconsButton} from "../../dati/IconsButton";
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
@@ -37,7 +38,7 @@ const Register = ({ navigation }) => {
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Header icon={1} navigation={navigation} />
+                    <Header icon={IconsButton.back} navigation={navigation} />
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
                         <View style={{padding: 20}}/>
