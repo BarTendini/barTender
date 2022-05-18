@@ -9,21 +9,24 @@ import {WebView} from "react-native-webview";
 import {Dimensions} from "react-native";
 
 export const DrinkCustom = ({route, navigation}) => {
-    const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
+    const selDrink = route.params.drink?.name;
     const fullScreen = {container: {flex: 1, backgroundColor: '#fff'}}
 
-    console.log(CocktailHtml);
+    const runFirst = (selDrink) => `  
+      document.getElementById("negroni").click();
+      document.getElementById("drinkTitle").innerHTML = "${selDrink}"
+      setTimeout(function() {
+        window.alert("ciccio")
+      }, 1000);
+      true;
+    `;
+
     return <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
         <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
         <View style={{flex: 1, flexDirection: 'row'}}>
-            <WebView source={{html: CocktailHtml}}/>
-            {/*<WebView*/}
-            {/*source={{*/}
-            {/*    uri: 'https://github.com/facebook/react-native'*/}
-            {/*}}*/}
-            {/*style={{ marginTop: 20 }}*/}
-            {/*/>*/}
-
+            <WebView source={{html: CocktailHtml}}
+                     injectedJavaScript={runFirst("negroni")}
+                     style={fullScreen}/>
         </View>
     </SafeAreaView>
 }

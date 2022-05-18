@@ -60,7 +60,7 @@ body {
 }
 
 .form-group {
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -331,7 +331,7 @@ label {
 
 <main class="page__content">
     <section class="controls u-vertical-rhythm" id="controls">
-        <h1 class="controls__label">Select a cocktail</h1>
+        <h1 class="controls__label" id="drinkTitle"> . </h1>
         <div class="form-group"><input type="radio" name="drink-select" id="negroni" /><label for="negroni">Negroni</label><input type="radio" name="drink-select" id="manhattan" /><label for="manhattan">Manhattan</label><input type="radio" name="drink-select" id="old-fashioned" /><label for="old-fashioned">Old Fashioned</label><input type="radio" name="drink-select" id="old-nazi" /><label for="old-nazi">Al Burro</label></div>
     </section>
     <section class="cocktail">

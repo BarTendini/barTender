@@ -42,6 +42,12 @@ const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina
                 options={{headerShown: false}}
             />
             <Stack.Screen
+                name="BarDescription"
+                component={BarDescription}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
                 name="DrinkTypesSelection"
                 component={DrinkTypeScreenStack}
                 options={{headerShown: false}}
@@ -151,6 +157,7 @@ const DrinkTypeScreenStack = ({navigation}) => {
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
+
         </Stack.Navigator>
     );
 };
