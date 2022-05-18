@@ -6,9 +6,13 @@ import {DrinksInfo,getTypes} from "../../dati/DrinksInfo";
 import DrinkTypeSelection from "../componenti/DrinkTypeSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import {IconsButton} from "../../dati/IconsButton";
+import {UserContext} from "../../UserContext";
+import { useContext } from 'react';
 
-const DrinkType = ({ navigation }) => {
-    console.log("DrinkType");
+const DrinkType = ({route, navigation }) => {
+    const { selBarName, setSelBarName } = React.useContext(UserContext);
+    console.log("DrinkType - selected bar:", selBarName)
+
     const buttonToShow = () => {
         return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
     }
@@ -27,7 +31,7 @@ const DrinkType = ({ navigation }) => {
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
             <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'} />
             <View style={styles.ViewInfo}>
-                <Text style={styles.FeedTestoVoto}>Menu: Da Pino</Text>
+                <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>
             </View>
             {drinkTypes()}
         </SafeAreaView>

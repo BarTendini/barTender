@@ -6,8 +6,7 @@ import {themeStyles} from "../../styles/theme/ThemeStyles"
 
 const DrinkTypeSelection = ({ type, navigation }) => {
     console.log("DrinkTypeSelection");
-    
-    
+
     return (
         <TouchableOpacity
             onPress={() => navigation.push('DrinkMenu', {drinks: getDrinksOfType(DrinksInfo,type.type)})}

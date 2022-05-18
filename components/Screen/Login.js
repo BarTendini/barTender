@@ -6,6 +6,7 @@ import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
 import {UserContext} from "../../UserContext";
 import {IconsButton} from "../../dati/IconsButton";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 
 const Login = ({ navigation }) => {
@@ -95,3 +96,7 @@ const styles = StyleSheet.create({
     }
 });
 
+// Todo simo: aggiungere il pulsante finto
+// <FontAwesome.Button name="facebook" backgroundColor="#3b5998">
+//     Login with Facebook
+// </FontAwesome.Button>

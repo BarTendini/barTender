@@ -38,7 +38,8 @@ const Auth = () => {
 
 export default function App() {
     const [user, setUser] = React.useState("Gianni");
-    const value = {user, setUser};
+    const [selBarName, setSelBarName] = React.useState("Da Pino");
+    const value = {user, setUser, selBarName, setSelBarName};
 
     return (
         <UserContext.Provider value={value}>

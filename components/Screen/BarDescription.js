@@ -1,18 +1,18 @@
 import React, {useRef, useState} from "react";
 import {SafeAreaView, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import {LinearGradient} from 'expo-linear-gradient';
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
-import { DrinkCardTender } from "../Card/TenderCard";
+import {DrinkCardTender} from "../Card/TenderCard";
 import {IconsButton} from "../../dati/IconsButton";
 
-const BarDescription = ({ route, navigation }) => {
+const BarDescription = ({route, navigation}) => {
     const bar = useRef(route.params).current;
     const [alert, setAlert] = useState(false)
     const showAlert = () => {
-        setAlert( true)
+        setAlert(true)
     };
 
     const hideAlert = () => {
@@ -23,10 +23,10 @@ const BarDescription = ({ route, navigation }) => {
             return (
                 <View style={styles.ViewDescrizioneTesto} key={index}>
                     <View style={styles.ViewFeedNome}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{flex: 1}}>
                             <Text style={styles.FeedNome}>{item.nome} dice:</Text>
                         </View>
-                        <View style={{ flex: 0.2 }}>
+                        <View style={{flex: 0.2}}>
                             <Text style={styles.FeedTestoVoto}>{item.voto}/5</Text>
                         </View>
                     </View>
@@ -52,10 +52,10 @@ const BarDescription = ({ route, navigation }) => {
     }
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
+            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
             <View style={styles.MarginTop}>
                 <Text style={styles.Title}>{bar.nome}</Text>
-                <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
+                <Text style={{textAlign: 'center',}}>{bar.via}</Text>
             </View>
             <ScrollView contentContainerStyle={{flexGrow: 1}}>
                 {/*Sezione di distanza, status, orari*/}
@@ -69,19 +69,19 @@ const BarDescription = ({ route, navigation }) => {
                             <Text style={styles.TextInfoTitle}>Status:</Text>
                         </View>
                         <TouchableOpacity onPress={infoOrari} style={styles.ViewInfoSubTitle}>
-                            <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>Orario:</Text>
+                            <Text style={[styles.TextInfoTitle, {color: '#007fff'}]}>Orario:</Text>
                         </TouchableOpacity>
                     </View>
                     {/*Valori di distanza, status, orari*/}
                     <View style={styles.ViewInfoTitle}>
                         <View style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', }}>{bar.dist}</Text>
+                            <Text style={{textAlign: 'center',}}>{bar.dist}</Text>
                         </View>
                         <View style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', }}>{bar.status}</Text>
+                            <Text style={{textAlign: 'center',}}>{bar.status}</Text>
                         </View>
                         <TouchableOpacity onPress={infoOrari} style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', color: '#007fff' }}>{bar.orario}</Text>
+                            <Text style={{textAlign: 'center', color: '#007fff'}}>{bar.orario}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -97,7 +97,7 @@ const BarDescription = ({ route, navigation }) => {
                 <DrinkCardTender title={"Feedback:"}>
                     {feedback()}
                 </DrinkCardTender>
-                <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
+                <View style={{marginBottom: Platform.OS === 'android' ? 70 : 60,}}/>
             </ScrollView>
 
             <View style={{
@@ -111,11 +111,11 @@ const BarDescription = ({ route, navigation }) => {
             }}>
                 <LinearGradient
                     colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
-                    start={{ x: 0.5, y: 0 }}
-                    end={{ x: 0.5, y: 0.3 }}
-                    style={{ flex: 1, }}
+                    start={{x: 0.5, y: 0}}
+                    end={{x: 0.5, y: 0.3}}
+                    style={{flex: 1,}}
                 >
-                    <TenderButton testo={'ORDINA'} navigation={navigation}/>
+                    <TenderButton testo={'ORDINA'} navigation={navigation} bar={bar}/>
                 </LinearGradient>
             </View>
 
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         elevation: 5,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 5 },
+        shadowOffset: {width: 0, height: 5},
         shadowRadius: 4,
         shadowOpacity: 0.5,
     },
