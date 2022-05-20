@@ -10,7 +10,7 @@ import MainMenu from "../componenti/MainMenu";
 
 //import per sandbox
 import { DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
-import { UserContext } from "../../UserContext";
+import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";

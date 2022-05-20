@@ -4,7 +4,7 @@ import Header from "../componenti/HeaderTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
-import {UserContext} from "../../UserContext";
+import {AppContext} from "../../AppContext";
 import {IconsButton} from "../../dati/IconsButton";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
@@ -12,7 +12,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 const Login = ({ navigation }) => {
     const [logUsr, setUsr] = useState('');
     const [passText, setPass] = useState('');
-    const {user, setUser} = React.useContext(UserContext);
+    const {user, setUser} = React.useContext(AppContext);
 
     const handleSubmitPress = () => {
         //setErrortext('');

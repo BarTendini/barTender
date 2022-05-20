@@ -6,7 +6,7 @@ import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import {IconsButton} from "../../dati/IconsButton";
 import {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
-import {UserContext} from "../../UserContext";
+import {AppContext} from "../../AppContext";
 
 const DrinkMenu = ({route, navigation}) => {
     const avaiableDrinkTypes = getTypes(DrinksInfo);
@@ -30,7 +30,7 @@ const DrinkMenu = ({route, navigation}) => {
     };
 
 
-    const {selBarName, setSelBarName} = React.useContext(UserContext);
+    const {selBarName, setSelBarName} = React.useContext(AppContext);
     console.log("DrinkType - selected bar:", selBarName)
 
     const buttonToShow = () => {

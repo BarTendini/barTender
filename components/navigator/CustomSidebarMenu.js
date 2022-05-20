@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Platform, Alert} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import {UserContext} from "../../UserContext";
+import {AppContext} from "../../AppContext";
 
 import {
     DrawerContentScrollView,
@@ -12,7 +12,7 @@ import {
 const CustomSidebarMenu = (props) => {
     const [logUsr, setUsr] = useState('Mamusa');
     const [alert, setAlert] = useState(false);
-    const {user, setUser} = React.useContext(UserContext);
+    const {user, setUser} = React.useContext(AppContext);
 
     const showAlert = () => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)

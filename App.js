@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ChangeLogScreen, Login, Register, SplashScreen} from './components/Screen/Screens'
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 import React from "react";
-import {UserContext} from "./UserContext";
+import {AppContext} from "./AppContext";
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
 
 //Aggiugne le animazioni per android
@@ -42,7 +42,7 @@ export default function App() {
     const value = {user, setUser, selBarName, setSelBarName};
 
     return (
-        <UserContext.Provider value={value}>
+        <AppContext.Provider value={value}>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="DrawerNavigationRoutes">
                     {/* SplashScreen which will come once for 5 Seconds */}
@@ -73,7 +73,7 @@ export default function App() {
                     />
                 </Stack.Navigator>
             </NavigationContainer>
-        </UserContext.Provider>
+        </AppContext.Provider>
     );
 };
 
