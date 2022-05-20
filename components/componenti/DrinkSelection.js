@@ -5,17 +5,26 @@ import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import SettingsInfo from "../../dati/SettingsInfo";
 import btnStyles from "../../styles/BtnStyles";
+import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
+
 
 
 const DrinkSelection = ({ Drink, availability, navigation }) => {
     const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
-    const [iconName, setIconName] = useState('heart-outlined')
+    const isPreferred = (drink) => {
+        return drink.favorite
+    } 
+
+    const [iconName, setIconName] = useState( isPreferred(Drink) ? 'heart' : 'heart-outlined')
+
 
     const heartPressed = () => {
         let nameHeart = 'heart-outlined'
         if (iconName === nameHeart)
             setIconName ('heart')
         else setIconName(nameHeart)
+        console.log(Drink.id)
+        switchFavouriteStateFromId(DrinksInfo, Drink.id)
     }
 
     const pageSelector = () => {

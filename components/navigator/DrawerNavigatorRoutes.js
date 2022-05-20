@@ -48,8 +48,8 @@ const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina
                 options={{headerShown: false}}
             />
             <Stack.Screen
-                name="DrinkTypesSelection"
-                component={DrinkTypeScreenStack}
+                name="DrinkMenuSelection"
+                component={DrinkMenuScreenStack}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>
@@ -84,8 +84,8 @@ const HomeScreenStack = ({navigation}) => { //serve per lanciare la pagina desid
                 options={{headerShown: false}}
             />
             <Stack.Screen
-                name="DrinkTypesSelection"
-                component={DrinkTypeScreenStack}
+                name="DrinkMenuSelection"
+                component={DrinkMenuScreenStack}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>
@@ -118,14 +118,14 @@ const SettingScreenStack = ({navigation}) => {//serve per lanciare la pagina des
 };
 
 
-const DrinkTypeScreenStack = ({navigation}) => {
+const DrinkMenuScreenStack = ({navigation}) => {
     return (
-        <Stack.Navigator initialRouteName="DrinkTypeScreen">
+        <Stack.Navigator initialRouteName="DrinkMenuScreen">
             <Stack.Screen
-                name="DrinkTypeScreen"
-                component={DrinkType}
+                name="DrinkMenuScreen"
+                component={DrinkMenu}
                 options={{
-                    title: 'Drink Type', //Set Header Title
+                    title: 'Drink Menu', //Set Header Title
                     headerLeft: () => (
                         <NavigationDrawerHeader navigationProps={navigation} />
                     ),
@@ -139,12 +139,7 @@ const DrinkTypeScreenStack = ({navigation}) => {
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
-                name="DrinkMenu"
-                component={DrinkMenu}
-                // Hiding header for Navigation Drawer
-                options={{headerShown: false}}
-            />
+            
             <Stack.Screen
                 name="DrinkDescription"
                 component={DrinkDescription}
@@ -228,14 +223,14 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
             />
 
              <Drawer.Screen
-                name="DrinkTypeScreenStack"
+                name="DrinkMenuScreenStack"
                 options={{
                     drawerLabel: 'Drinks',
                     headerShown: false,
                     drawerActiveTintColor: 'red',
                     drawerInactiveTintColor: 'yellow',
                 }}
-                component={DrinkTypeScreenStack}
+                component={DrinkMenuScreenStack}
             />
             <Drawer.Screen
                 name="ChangeLogScreenStack"

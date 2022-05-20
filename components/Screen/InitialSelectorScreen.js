@@ -24,7 +24,7 @@ const InitialSelectorScreen = ({route, navigation}) => {
                 />
 
                 <HomeButton
-                    onPress={() => navigation.push('DrinkTypesSelection')}
+                    onPress={() => navigation.push('DrinkMenuSelection')}
                     gradient={["#FFCC8B", "#FF91C9"]}
                     text="Scegli da Bere"
                     icon={ <Entypo name="drink" size={100} color="black"/> }

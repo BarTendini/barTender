@@ -164,7 +164,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
 
 ]
 
-export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks};
+export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks, switchFavouriteStateFromId};
 
 const getTypes=(drinksInfo)=>{
     console.log("getTypes");
@@ -228,3 +228,8 @@ const setUnaviableColors = (unavailableDrinks) =>{
     return (unavailableDrinks);
 }
 
+const switchFavouriteStateFromId = (drinksInfo, id) => {
+    console.log("switchFavouriteStateFromId:");
+    console.log(DrinksInfo[id] + "has been changed");
+    drinksInfo[id].favorite = !drinksInfo[id].favorite;
+}

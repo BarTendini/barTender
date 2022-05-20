@@ -21,6 +21,7 @@ export const DrinkCustom = ({route, navigation}) => {
       true;
     `;
 
+    console.log("CocktailHtml");
     return <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
         <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
         <View style={{flex: 1, flexDirection: 'row'}}>
