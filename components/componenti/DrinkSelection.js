@@ -28,7 +28,8 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     }
 
     const pageSelector = () => {
-        navigation.push('DrinkDescription', {drink: Drink});
+        if (availability)
+            navigation.push('DrinkDescription', {drink: Drink});
     };
 
     const drawAvailability = () => {
