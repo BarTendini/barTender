@@ -7,6 +7,7 @@ import {themeStyles} from "../../styles/theme/ThemeStyles"
 import {IconsButton} from "../../dati/IconsButton";
 import {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import {AppContext} from "../../AppContext";
+import {DrinkCardTender} from "../Card/TenderCard";
 
 const DrinkMenu = ({route, navigation}) => {
     const avaiableDrinkTypes = getTypes(DrinksInfo);
@@ -42,16 +43,19 @@ const DrinkMenu = ({route, navigation}) => {
             <View style={styles.ViewInfo}>
                 <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>
             </View>
-            <ScrollView>
+            <ScrollView style={{marginTop:-20}}>
 
-                <ListDrinkType avaiableDrinkTypes={avaiableDrinkTypes} callbackfn={(item, index) => {
-                    return <DrinkTypeSelection type={item.type} key={index}/>
-                }}/>
+                <DrinkCardTender title={"Tipo di Drink:"}>
+                    <View>
+                        <ListDrinkType avaiableDrinkTypes={avaiableDrinkTypes} callbackfn={(item, index) => {
+                            return <DrinkTypeSelection type={item.type} key={index}/>
+                        }}/>
+                    </View>
+                </DrinkCardTender>
 
                 <ListDrinkAvailable availableDrinks={availableDrinks} callbackfn={(item, index) => {
                     return <DrinkSelection Drink={item} availability={true} navigation={navigation} key={index}/>
                 }}/>
-
 
                 <ListUnavailableDrink unavailableDrinks={unavailableDrinks} callbackfn={(item, index) => {
                     return <DrinkSelection Drink={item} availability={false} navigation={navigation} key={index}/>
