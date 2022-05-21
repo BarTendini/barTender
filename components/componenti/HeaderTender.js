@@ -31,9 +31,9 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
 
     const getAction = (ico, nav, fun) => {
         console.log(nav.canGoBack())
-        if (ico.name === 'back' || nav.canGoBack()) return nav.goBack();
+        if (ico.name === 'back' && nav.canGoBack()) return nav.goBack();
         if (ico.name === 'logout' && !nav.canGoBack()) return fun();
-        if (ico.name === 'menu' && navigation && navigation.toggleDrawer)
+        if (ico.name === 'menu' && navigation && navigation.toggleDrawer())
             return navigation.dispatch(DrawerActions.toggleDrawer());
         if (ico.name === 'none')  return null;
     };

@@ -33,10 +33,12 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
-    "react-native-webview": "^11.18.1"
+    "react-native-web-webview": "^1.0.2",
+    "react-native-webview": "^11.18.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "babel-plugin-module-resolver": "^4.1.0"
   },
   "private": true
 }
