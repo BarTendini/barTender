@@ -1,40 +1,76 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
 
+const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+
+
+const drinkInfo = ( id_, 
+                    name_, 
+                    type_ = "unknown", 
+                    image_ = null, 
+                    ingredients_ = [], 
+                    color_ = "#999999", 
+                    textColor_ = 'black', 
+                    favorite_ = false, 
+                    price_ = 5.5, 
+                    quantity_ = 200, 
+                    alchoolicTax_ = 0, 
+                    description_ = fakeText
+                ) =>{
+    return {
+        id: id_, // deve necessariamente essere diverso dagli altri
+        name: name_, // nome del drink
+        type: type_, //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        image: image_, // richiama un immagine
+        ingredients: ingredients_,
+        color: color_, // sfondo della bolla del bar
+        textColor: textColor_,// colore del testo della bolla
+        favorite: favorite_, // è favorito
+        price: price_,
+        quantity: quantity_,
+        alchoolicTax: alchoolicTax_,
+        description: description_
+    }
+}
+
+const setIngredients = () =>{
+    
+}
+
+
 const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti i drink
     // il primo oggetto definisce un singolo drink
-    {
-        id: 0, // deve necessariamente essere diverso dagli altri
-        name: 'Ichnusa', // nome del drink
-        type:"beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine
-        ingredients: [ // array degli ingredienti
-            getIngredientFromNome("ichnusa") // quantityML:200 }
-        ],
-        color: '#CD7F32', // sfondo della bolla del bar
-        textColor: 'black',// colore del testo della bolla
-        favorite: true, // è favorito
-        price: 2.50,
-        quantity: 330,
-        alchoolicTax: 5
-    } ,
-    {
-        id: 1,
-        name: 'Cosmopolitan',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("vodka"),
-            getIngredientFromNome("cointreau"),
-            getIngredientFromNome("limeJuice"),
-            getIngredientFromNome("blueberryJuice")
-        ],
-        color: '#5580e6',
-        textColor: 'black',
-        favorite: false,
-        price: 5.50,
-        quantity: 330,
-        alchoolicTax: 5
-    } ,
+    drinkInfo(  0, // deve necessariamente essere diverso dagli altri 
+                'Ichnusa', // nome del drink 
+                "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
+                require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine 
+                [ // array degli ingredienti
+                getIngredientFromNome("ichnusa") // quantityML:200 }
+                ],
+                '#CD7F32', // sfondo della bolla  
+                'black',// colore del testo della bolla 
+                true, // è favorito 
+                2.50, 
+                330, 
+                5, 
+                fakeText
+            ),
+    drinkInfo(  1,
+                'Cosmopolitan',
+                "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+                require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
+                [
+                    getIngredientFromNome("vodka"),
+                    getIngredientFromNome("cointreau"),
+                    getIngredientFromNome("limeJuice"),
+                    getIngredientFromNome("blueberryJuice")
+                ],
+                '#5580e6',
+                'black',
+                false,
+                5.50,
+                330,
+                5
+            ),
     {
         id: 2,
         name: 'Aperol Sprits',

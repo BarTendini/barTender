@@ -4,7 +4,6 @@ export default StyleSheet.create({
     rectangle: {
         "display": "flex",
         "height": 50,
-        "width": "50%",
         "borderWidth": 1,
         "borderColor": "black",
         "borderStyle": "solid",

@@ -13,6 +13,8 @@ import {
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender.js";
 import {IconsButton} from "../../dati/IconsButton";
+import {themeStyles} from "../../styles/theme/ThemeStyles"
+
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
@@ -37,7 +39,7 @@ const Register = ({ navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
-                <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
+                <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: themeStyles.light.backgroundColor1}} keyboardShouldPersistTaps='handled'>
                     <Header icon={IconsButton.back} navigation={navigation} />
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>

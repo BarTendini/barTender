@@ -18,7 +18,7 @@ const InitialSelectorScreen = ({route, navigation}) => {
 
                 <HomeButton
                     onPress={() => navigation.push('HomeScreenSelector')}
-                    gradient={['#FFCC8B', '#FF91C9']}
+                    gradient={['#FFFFFF', '#FFFFFF','#FFFFFF', '#FFFFFF', '#FFCC8B']}
                     text="Trova Locale"
                     icon={ <MaterialIcons name="place" size={100} color="black"/> }
                 />
@@ -50,10 +50,12 @@ function HomeButton(props) {
 }
 
 const initStyle = StyleSheet.create({
-    btn: {
+    btn: { 
+        borderWidth: 5,
+        borderColor: themeStyles.light.backgroundColor1,
         borderRadius: 50,
         marginBottom: 10,
-        marginHorizontal: 1,        // sottile ma incantevole
+        marginHorizontal: 10,        // sottile ma incantevole
         flex: 1,
         justifyContent: 'center',   // non sto in piedi
         alignItems: 'center'        // ma sto in posa

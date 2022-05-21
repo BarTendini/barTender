@@ -86,7 +86,7 @@ export default StyleSheet.create({
     DrinkImm: {
         justifyContent: "center",
         alignItems: "center",
-        height: 150,
+        height: 300,
         width: '100%',
         resizeMode: 'contain',
         marginVertical: 10,
