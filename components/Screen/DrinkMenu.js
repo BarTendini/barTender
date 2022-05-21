@@ -11,7 +11,7 @@ import {DrinkCardTender} from "../Card/TenderCard";
 
 const DrinkMenu = ({route, navigation}) => {
     const avaiableDrinkTypes = getTypes(DrinksInfo);
-    const [selectedTypeOfDrink, setSelectedTypeOfDrink] = useState(avaiableDrinkTypes[0].type)
+    const [selectedTypeOfDrink, setSelectedTypeOfDrink] = useState(avaiableDrinkTypes[1].type)
     const {
         availableDrinks,
         unavailableDrinks

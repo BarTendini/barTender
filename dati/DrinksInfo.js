@@ -6,7 +6,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 0, // deve necessariamente essere diverso dagli altri
         name: 'Ichnusa', // nome del drink
         type:"beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine
         ingredients: [ // array degli ingredienti
             getIngredientFromNome("ichnusa") // quantityML:200 }
         ],
@@ -21,7 +21,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 1,
         name: 'Cosmopolitan',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("cointreau"),
@@ -39,7 +39,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 2,
         name: 'Aperol Sprits',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/drawings/aperolSpritzDraw2.png"), // richiama un immagine
+        image: require("../image/drinks/drawings/aperolSpritz.png"), // richiama un immagine
         ingredients: [
             getIngredientFromNome("prosecco"),
             getIngredientFromNome("aperol"),
@@ -56,7 +56,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 3,
         name: 'Vodka Redbull',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: null, // richiama un immagine
         ingredients: [
             getIngredientFromNome("redBull"),
             getIngredientFromNome("vodka")
@@ -72,7 +72,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 4,
         name: 'Cuba Libre',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: null, // richiama un immagine
         ingredients: [
             getIngredientFromNome("cocacola"),
             getIngredientFromNome("whiteRum"),
@@ -86,7 +86,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 5,
         name: 'gin tonic',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: null, // richiama un immagine
         ingredients: [
             getIngredientFromNome("gin"),
             getIngredientFromNome("tonicWater")
@@ -99,7 +99,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 6,
         name: 'moscow mule',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: null, // richiama un immagine
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("gingerBeer")
@@ -112,7 +112,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 7,
         name: 'tequila sunrise',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"), // richiama un immagine
+        image: null, // richiama un immagine
         ingredients: [
             getIngredientFromNome("tequilaSilver"),
             getIngredientFromNome("blueberryJuice"),
@@ -126,7 +126,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 8,
         name: 'sex on the beach',
         type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"),
+        image: null,
         ingredients: [
             getIngredientFromNome("vodka"),
             getIngredientFromNome("orangeJuice"),
@@ -141,7 +141,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 9,
         name: 'carignano',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/logos/barTenderLogo.png"),
+        image: require("../image/drinks/drawings/carignano.png"),
         ingredients: [
             getIngredientFromNome("carignano")
         ],
@@ -153,7 +153,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
         id: 10,
         name: 'vermentino',
         type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, whine
-        image: require("../image/drinks/logos/barTenderLogo.png"),
+        image: require("../image/drinks/drawings/vermentino.png"),
         ingredients: [
             getIngredientFromNome("vermentino")
         ],

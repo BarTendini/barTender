@@ -10,6 +10,7 @@ import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 
 
 const DrinkSelection = ({ Drink, availability, navigation }) => {
+    const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
     const isPreferred = (drink) => {
         return drink.favorite
@@ -56,25 +57,42 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
         };
     }
 
+    const getPicture = (drink) => {
+        if (drink.image != null){
+            return drink.image
+        }
+        return standardImage
+    }
+
+    const getDrinkNameIfNeeded = (drink) =>{
+        if (drink.image != null){
+            return null
+        }
+        return (
+            <View style={{ borderWidth: borderWidth }}>
+            <Text style={{
+                textAlign: 'center', // <-- the magic
+                fontWeight: 'bold',
+                color: Drink.textColor ? Drink.textColor : 'black',
+                fontSize: 24,
+                marginHorizontal: 10
+            }}>{drink.name}</Text>
+        </View>
+        );
+
+    }
+
     return (
         <TouchableOpacity
             onPress={() => pageSelector()}
             style={styleAviability()}
         >
             <Image
-                source={Drink.image}
+                source={getPicture(Drink )}
                 style={commonStyles.DrinkImm}
             />
             <View style={{ margin: 10, alignContent: 'center' }}>
-                <View style={{ borderWidth: borderWidth }}>
-                    <Text style={{
-                        textAlign: 'center', // <-- the magic
-                        fontWeight: 'bold',
-                        color: Drink.textColor ? Drink.textColor : 'black',
-                        fontSize: 24,
-                        marginHorizontal: 10
-                    }}>{Drink.name}</Text>
-                </View>
+                {getDrinkNameIfNeeded(Drink)}
 
                 {/*Drink info*/}
                 <View style={{ flexDirection: "row", marginTop: 10, borderWidth: borderWidth }}>
