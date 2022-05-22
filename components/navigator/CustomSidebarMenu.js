@@ -23,7 +23,7 @@ const CustomSidebarMenu = (props) => {
                 "Sei sicuro? Vuoi eseguire un logout?",
                 [
                     {
-                        text: "Cancella",
+                        text: "Cancella", 
                         style: "cancel"
                     },
                     { text: "Conferma", onPress: () => { props.navigation.replace('Autenticazione') }}

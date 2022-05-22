@@ -81,7 +81,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             getIngredientFromNome("aperol"),
             getIngredientFromNome("soda")
         ],
-        color: 'orange',
+        color: "#FF5E13",
         textColor: 'black',
         favorite: false,
         price: 5.50,

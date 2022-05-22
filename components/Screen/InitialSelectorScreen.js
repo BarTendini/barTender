@@ -41,7 +41,7 @@ export default InitialSelectorScreen;
 function HomeButton(props) {
         return <TouchableOpacity
             onPress={props.onPress}
-            style={{flex: 1}}>
+            style={initStyle.touchable}>
             <LinearGradient colors={props.gradient} style={initStyle.btn}>
                 {props.icon}
                 <Text style={{fontSize: 20}}> {props.text} </Text>
@@ -51,13 +51,19 @@ function HomeButton(props) {
 
 const initStyle = StyleSheet.create({
     btn: { 
-        borderWidth: 5,
-        borderColor: themeStyles.light.backgroundColor1,
-        borderRadius: 50,
-        marginBottom: 10,
-        marginHorizontal: 10,        // sottile ma incantevole
+        
+        borderRadius: 40,
+               // sottile ma incantevole
         flex: 1,
         justifyContent: 'center',   // non sto in piedi
         alignItems: 'center'        // ma sto in posa
+    },
+    touchable:{
+        flex: 1, 
+        borderRadius: 50,
+        borderWidth: 6,
+        borderColor: themeStyles.light.backgroundColor1,
+        marginBottom: 10,
+        marginHorizontal: 10,
     }
 });

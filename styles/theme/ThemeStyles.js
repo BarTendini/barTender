@@ -11,8 +11,8 @@ const themeStyles = {
         backgroundColor2: "#000000"
     },
     unavailableColor: {
-        backgroundColor: "#ccc",
-        color:"#222"
+        backgroundColor: "#c0c0c0",
+        color:"#202020"
     }
 };
 

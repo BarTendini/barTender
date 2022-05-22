@@ -2,6 +2,8 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import {AppContext} from "../../AppContext";
 import React, {useState} from "react";
 import { useContext } from 'react';
+import { themeStyles } from "../../styles/theme/ThemeStyles"
+
 
 
 const TenderButton = ({ testo, navigation, bar }) => {
@@ -19,12 +21,18 @@ const TenderButton = ({ testo, navigation, bar }) => {
             flex: 1,
             justifyContent: 'center',
             marginHorizontal: 10,
+            borderWidth: 2,
+            borderColor: themeStyles.light.backgroundColor2,
+            borderRadius: 50
+            
 
         }}>
             <TouchableOpacity
                 onPress={() => setBarAndNavigate()}
                 style={{
-                    backgroundColor: '#ffcc8b',
+                    borderColor:'#ffcc8b',
+                    borderWidth: 6,
+                    backgroundColor: themeStyles.light.backgroundColor2,
                     paddingVertical: 10,
                     borderRadius: 50,
             }}>

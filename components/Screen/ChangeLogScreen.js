@@ -14,7 +14,7 @@ import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";
-
+import  App from "../componenti/TenderAllert"
 
 
 const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
@@ -45,7 +45,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
     /**
      * abilita la sandBox quando true
      */
-    const needForSandbox = false;
+    const needForSandbox = true;
 
     if (!needForSandbox) {
         // permette di fare il log su console (serve per "debuggare")
@@ -81,7 +81,8 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                 <View style={commonStyles.ViewHome}>
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
-                    </Text>                   
+                    </Text>  
+                    <App></App>                
                 </View>
             </SafeAreaView>
         );

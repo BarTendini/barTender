@@ -112,8 +112,8 @@ const BarDescription = ({route, navigation}) => {
                 <LinearGradient
                     colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
                     start={{x: 0.5, y: 0}}
-                    end={{x: 0.5, y: 0.3}}
-                    style={{flex: 1,}}
+                    end={{x: 0.5, y: 0.2}}
+                    style={{height: 100,}}
                 >
                     <TenderButton testo={'ORDINA'} navigation={navigation} bar={bar}/>
                 </LinearGradient>

@@ -7,6 +7,8 @@ import SettingsInfo from "../../dati/SettingsInfo";
 import btnStyles from "../../styles/BtnStyles";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import TenderButton from "../componenti/TenderButton";
+import {LinearGradient} from 'expo-linear-gradient';
+
 
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
@@ -17,7 +19,8 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     const isPreferred = (drink) => {
         return drink.favorite
     } 
-
+    const drinkColor = availability ? Drink.color : themeStyles.unavailableColor.backgroundColor // fare attenzione che i colori sianosotto forma esadecimale #rrggbb
+    //console.log(Drink.name +":  " + drinkColor)
     const [iconName, setIconName] = useState( isPreferred(Drink) ? 'heart' : 'heart-outlined')
 
 
@@ -54,7 +57,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
         return {
             
             borderWidth: 5,
-            borderColor: themeStyles.unavailableColor,
+            borderColor: themeStyles.unavailableColor.backgroundColor,
             borderRadius: 50,
             marginTop: 10,
             marginHorizontal: 5,
@@ -77,7 +80,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             <Text style={{
                 textAlign: 'center', // <-- the magic
                 fontWeight: 'bold',
-                color: Drink.textColor ? Drink.textColor : 'black',
+                color: Drink.textColor ? Drink.textColor : '#000000',
                 fontSize: 24,
                 marginHorizontal: 10
             }}>{drink.name}</Text>
@@ -91,6 +94,12 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             onPress={() => pageSelector()}
             style={styleAviability()}
         >
+            <LinearGradient
+                    colors={[drinkColor+"00", drinkColor+"00", drinkColor + "FF"]}
+                    start={{x: 0.5, y: 0}}
+                    end={{x: 0.5, y: 1}}
+                    style={{flex: 1, borderRadius: 40}}
+                >
             <Image
                 source={getPicture(Drink )}
                 style={commonStyles.DrinkImm}
@@ -115,6 +124,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
                 </View>
 
             </View>
+            </LinearGradient>
 
         </TouchableOpacity>
     );
