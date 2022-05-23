@@ -25,9 +25,8 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
 
     
 
-    const pageSelector = () => {
-        if (availability)
-            navigation.push('DrinkDescription', {drink: Drink});
+    const pageSelector = () => {        
+        navigation.push('DrinkDescription', {drink: Drink});
     };
 
     const drawAvailability = () => {
@@ -68,7 +67,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             return null
         }
         return (
-            <View style={{ borderWidth: borderWidth }}>
+            <View style={{ }}>
             <Text style={{
                 textAlign: 'center', // <-- the magic
                 fontWeight: 'bold',
@@ -79,6 +78,17 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
         </View>
         );
 
+    }
+
+    const availableButton = () => {
+        if(availability){
+            return(
+                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={TenderAlert}/>
+            );
+        }
+        return(
+            <TenderButton testo={'🫗 Terminato'} navigation={navigation} color={drinkColor} action={function(){}}/>
+        );
     }
 
     return (
@@ -100,11 +110,10 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
                 {getDrinkNameIfNeeded(Drink)}
 
                
-                <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, borderWidth: borderWidth }}>
+                <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, }}>
                             
                     {FafouriteButton(Drink)}
-                    <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={TenderAlert}/>
-                
+                    {availableButton()}
                 </View>
 
             </View>
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
         flex: 0.5, 
         justifyContent: 'center', 
         alignContent: 'center', 
-        borderWidth: borderWidth,
+
     }
 
 });

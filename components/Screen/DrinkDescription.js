@@ -1,5 +1,5 @@
 import React, { useState } from "react"; //quasi sempre necessario
-import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, ScrollView } from "react-native";
+import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, ScrollView, Platform } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
@@ -11,6 +11,9 @@ import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import FafouriteButton from "../componenti/FafouriteButton";
 import { DrinkCardTender } from "../Card/TenderCard";
 import { FlatList } from "react-native-gesture-handler";
+import TenderButton from "../componenti/TenderButton";
+import {LinearGradient} from 'expo-linear-gradient';
+
 
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
@@ -81,7 +84,7 @@ const DrinkDescription = ({ route, navigation }) => {
             return null
         }
         return (
-            <View style={{ borderWidth: borderWidth }}>
+            <View style={{  }}>
                 <Text style={{
                     textAlign: 'center', // <-- the magic
                     fontWeight: 'bold',
@@ -114,11 +117,12 @@ const DrinkDescription = ({ route, navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
             <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
-            <View style={{ flex: 1, borderWidth: borderWidth}}>
+            <View style={{ flex: 1, }}>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
                     {Drink.name}
                 </Text>
-                <ScrollView style={{ flex: 1}}>
+                <ScrollView style={{ flexGrow: 1}}>
+                    <View style={{ paddingBottom:80}}>
                     <Image
                         source={getPicture(Drink)}
                         style={commonStyles.DrinkImm}
@@ -126,44 +130,29 @@ const DrinkDescription = ({ route, navigation }) => {
 
 
                     {/*Drink info*/}
-                    <DrinkCardTender title={"Dettagli:"}>
-                    <View style={{ flexDirection: "row", marginTop: 10, borderWidth: borderWidth }}>
-                        <View style={{ flex: 0.5, borderWidth: borderWidth, alignContent: 'center' }}>
-                            <Text style={{ fontSize: 16, textAlign: 'center', fontWeight: "bold", color: Drink.textColor ? Drink.textColor : 'black' }}>
-                                {Drink.quantity}ml
-                            </Text>
+                    <View style={styles.ParallelCardsContainer}>
+                        <View style={styles.ParallelCards}>
+                            <Text style={styles.TextInfoTitle}>Quantità:</Text>
+                            <Text style={{textAlign: 'center',}}>{Drink.quantity}ml</Text>
                         </View>
-                        <View style={{ flex: 0.5, borderWidth: borderWidth, alignContent: 'center' }}>
-                            <Text style={{
-                                textAlign: 'center',
-                                fontSize: 16,
-                                fontWeight: "bold",
-                                color: Drink.textColor ? Drink.textColor : 'black'
-                            }}>
-                                {Drink.alchoolicTax}%
-                            </Text>
+                        <View style={styles.ParallelCards}>
+                            <Text style={styles.TextInfoTitle}>Tasso alcolico:</Text>
+                            <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
                         </View>
-                    </View>
-                    </DrinkCardTender>
-
-                    {/*Prezzo*/}
-                    <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, borderWidth: borderWidth }}>
-                        <View style={{ flex: 0.5, borderWidth: borderWidth }}>
-                            <Text style={{ fontSize: 20, textAlign: 'center', fontWeight: "bold", color: Drink.textColor ? Drink.textColor : 'black' }}>
-                                €{Drink.price}
-                            </Text>
-                        </View>
-                        <View style={{ flex: 0.5, justifyContent: 'center', alignContent: 'center', borderWidth: borderWidth }}>
+                        <View style={styles.ParallelCards}>
                             {FafouriteButton(Drink)}
                         </View>
                         
                     </View>
+                    
+
+
                     <DrinkCardTender title={"Ingredienti:"}>
-                    <FlatList
-                        data={Drink.ingredients}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                    />
+                        <FlatList
+                            data={Drink.ingredients}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                        />
                     </DrinkCardTender>
                     <DrinkCardTender title={"Descrizione:"}>
                     <View style = {{felx:1}}>
@@ -172,29 +161,29 @@ const DrinkDescription = ({ route, navigation }) => {
                         </Text>
                     </View>
                     </DrinkCardTender>
-
+                    </View>
                 </ScrollView>
-                <View style={styles.buttonsContainer}>
-                    <View style={styles.parallelButtons}>
-                    <TouchableOpacity onPress={() => navigation.push('DrinkCustom', { drink: Drink })}>
-                        <View style={btnStyles.rectangle}>
-                            <View style={btnStyles.circle}>
-                                <Text style={btnStyles.circleIcon}> 🔧 </Text>
-                            </View>
-                            <Text style={btnStyles.rectangleText}> Modifica </Text>
-                        </View>
-                    </TouchableOpacity>
+                <View style={{
+                position: 'absolute',
+                width: '100%',
+                height: Platform.OS === 'android' ? '8%' : '14%',
+                bottom: 0,
+                justifyContent: 'center',
+                
+            }}>
+                <LinearGradient
+                    colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
+                    start={{x: 0.5, y: 0}}
+                    end={{x: 0.5, y: 0.2}}
+                    style={{height: 100, paddingVertical:20, flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
+                >
+                    <View style={styles.parallelButtons}>                    
+                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
                     </View>
                     <View style={styles.parallelButtons}>
-                    <TouchableOpacity onPress={() => navigation.push('DrinkCustom', { drink: Drink })}>
-                        <View style={btnStyles.rectangle}>
-                            <View style={btnStyles.circle}>
-                                <Text style={btnStyles.circleIcon}> 🛒 </Text>
-                            </View>
-                            <Text style={btnStyles.rectangleText}> Aquista </Text>
-                        </View>
-                    </TouchableOpacity>
+                         <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
                     </View>
+                </LinearGradient>
                 </View>
             </View>
         </SafeAreaView>
@@ -244,7 +233,7 @@ const styles = StyleSheet.create({
         alignContent: 'center', 
         marginTop: 10, 
         marginBottom: 5, 
-        borderWidth: borderWidth
+        
         
     },
 
@@ -252,7 +241,30 @@ const styles = StyleSheet.create({
         flex: 0.5, 
         justifyContent: 'center', 
         alignContent: 'center', 
-        borderWidth: borderWidth,
-    }
+    },
+    ParallelCardsContainer:{ 
+        flex: 1, 
+        flexDirection: "row", 
+        alignContent: 'center', 
+        marginTop: 10, 
+        marginBottom: 5, 
+    },
+    ParallelCards:{ 
+        flex: 1,
+        alignContent: 'center',
+        textAlignVertical: 'center',
+        backgroundColor: themeStyles.light.backgroundColor1,
+        borderRadius: 50,
+        borderColor: themeStyles.light.backgroundColor1,
+        borderWidth: 8,
+        marginHorizontal:5,
+        justifyContent:"center"
+        
+    },
+    TextInfoTitle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 17
+    },
 
 });

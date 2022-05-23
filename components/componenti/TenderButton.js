@@ -25,20 +25,20 @@ const TenderButton = ({ testo, navigation, bar = "unknown", color = themeStyles.
             marginHorizontal: 10,
             borderWidth: 3,
             borderColor: themeStyles.light.backgroundColor2,
-            borderRadius: 50
-            
+            borderRadius: 50,            
 
         }}>
             <TouchableOpacity
                 onPress={() => action == null ? setBarAndNavigate() : action()}
                 style={{
+                    flex:1,
                     borderColor: color,
                     borderWidth: 6,
                     backgroundColor: themeStyles.light.backgroundColor2,
                     paddingVertical: 10,
                     borderRadius: 50,
             }}>
-                <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>{testo}</Text>
+                <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize:17 }}>{testo}</Text>
             </TouchableOpacity>
         </View>
     )
