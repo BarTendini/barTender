@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, Modal, TouchableOpacity, Button, Alert  } from 'react-native';
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 
-export default class App extends Component {
+export default class TenderAllert extends Component {
 
   constructor(props) {
     super(props);
@@ -20,6 +20,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log("tenderAllert")
     return (
       <View style={styles.container} >
         <Modal

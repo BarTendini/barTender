@@ -8,12 +8,18 @@ import { IconsButton } from "../../dati/IconsButton";
 import btnStyles from "../../styles/BtnStyles";
 import { Entypo } from "@expo/vector-icons";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
+import FafouriteButton from "../componenti/FafouriteButton";
+import { DrinkCardTender } from "../Card/TenderCard";
+import { FlatList } from "react-native-gesture-handler";
+
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");
+    
     const Drink = route.params.drink;
+    console.log(Drink.ingredients)
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     
     const isPreferred = (drink) => {
@@ -120,6 +126,7 @@ const DrinkDescription = ({ route, navigation }) => {
 
 
                     {/*Drink info*/}
+                    <DrinkCardTender title={"Dettagli:"}>
                     <View style={{ flexDirection: "row", marginTop: 10, borderWidth: borderWidth }}>
                         <View style={{ flex: 0.5, borderWidth: borderWidth, alignContent: 'center' }}>
                             <Text style={{ fontSize: 16, textAlign: 'center', fontWeight: "bold", color: Drink.textColor ? Drink.textColor : 'black' }}>
@@ -137,7 +144,7 @@ const DrinkDescription = ({ route, navigation }) => {
                             </Text>
                         </View>
                     </View>
-
+                    </DrinkCardTender>
 
                     {/*Prezzo*/}
                     <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, borderWidth: borderWidth }}>
@@ -147,23 +154,24 @@ const DrinkDescription = ({ route, navigation }) => {
                             </Text>
                         </View>
                         <View style={{ flex: 0.5, justifyContent: 'center', alignContent: 'center', borderWidth: borderWidth }}>
-                            <TouchableOpacity style={{ borderWidth: borderWidth }}>
-                                <Entypo
-                                    onPress={() => heartPressed()}
-                                    name={iconName}
-                                    size={25}
-                                    color={'red'}
-                                    style={styles.FavouriteButton}
-                                />
-                            </TouchableOpacity>
+                            {FafouriteButton(Drink)}
                         </View>
                         
                     </View>
+                    <DrinkCardTender title={"Ingredienti:"}>
+                    <FlatList
+                        data={Drink.ingredients}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                    </DrinkCardTender>
+                    <DrinkCardTender title={"Descrizione:"}>
                     <View style = {{felx:1}}>
                         <Text>
                                 {Drink.description}
                         </Text>
                     </View>
+                    </DrinkCardTender>
 
                 </ScrollView>
                 <View style={styles.buttonsContainer}>
@@ -192,6 +200,15 @@ const DrinkDescription = ({ route, navigation }) => {
         </SafeAreaView>
     );
 }
+
+const renderItem = ({ item }) => (
+    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                        <Text style={styles.infoTextLeft}>
+                            {item.nome}: {item.quantity} {item.unit}
+                        </Text>
+    </View>
+)
+
 
 export default DrinkDescription;
 

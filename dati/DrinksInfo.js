@@ -32,8 +32,15 @@ const drinkInfo = ( id_,
     }
 }
 
-const setIngredients = () =>{
-    
+const setIngredients = (ingredients = [{name: "unknown", quantity: 0, unit:"ml"}]) =>{
+    var result = []
+    ingredients.forEach(element => {
+        var tmp = getIngredientFromNome(element.name)
+        tmp["quantity"] = element.quantity
+        tmp["unit"] = element.unit
+        result.push(tmp)
+    });
+    return result
 }
 
 
@@ -43,67 +50,68 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
                 'Ichnusa', // nome del drink 
                 "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
                 require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine 
-                [ // array degli ingredienti
-                getIngredientFromNome("ichnusa") // quantityML:200 }
-                ],
+                setIngredients([ // array degli ingredienti
+                    {name: "ichnusa", quantity:330} 
+                ]),
                 '#CD7F32', // sfondo della bolla  
                 'black',// colore del testo della bolla 
                 true, // è favorito 
-                2.50, 
-                330, 
-                5, 
-                fakeText
+                2.50, //prezzo
+                330,  //quantità
+                5,  // tasso alcolico
+                "Birra Ichnusa, or simply Ichnusa, is the name of a popular Sardinian-made beer, which is brewed in Assemini, a town near the Sardinian capital Cagliari. It is named after the Latinized ancient name for Sardinia, Hyknusa.\nBirra Ichnusa is a lager (5.0% ABV) with a hoppy taste.\nBirra Ichnusa was founded in Cagliari in 1912. In 1967 the brewery was finally moved to Assemini. In 1981 more than 400,000 hl beer was brewed.[2] In 1986 the brewery was taken over by Heineken" // testo
             ),
     drinkInfo(  1,
                 'Cosmopolitan',
                 "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
                 require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
-                [
-                    getIngredientFromNome("vodka"),
-                    getIngredientFromNome("cointreau"),
-                    getIngredientFromNome("limeJuice"),
-                    getIngredientFromNome("blueberryJuice")
-                ],
+                setIngredients([
+                    {name: "vodka", quantity:40, unit:"ml"},
+                    {name: "cointreau", quantity:15, unit:"ml"},
+                    {name: "limeJuice", quantity:15, unit:"ml"},
+                    {name: "blueberryJuice", quantity:30, unit:"ml"}
+                ]),
                 '#5580e6',
                 'black',
                 false,
                 5.50,
                 330,
-                5
+                5,
+                "The Cosmopolitan (aka 'Cosmo') is a vodka-based cocktail that has become very popular with women, especially since its prominent appearance on the HBO television show 'Sex and the City.' Legend has it the Cosmopolitan was originally served to South Beach, Florida party-leavers.[1] The Cosmopolitan, or 'Cosmo' is a sweet-tart combination of citrus and cranberry flavors that, conveniently, is an attractive pink colour when mixed and served properly."
             ),
-    {
-        id: 2,
-        name: 'Aperol Sprits',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/drawings/aperolSpritz.png"), // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("prosecco"),
-            getIngredientFromNome("aperol"),
-            getIngredientFromNome("soda")
-        ],
-        color: "#FF5E13",
-        textColor: 'black',
-        favorite: false,
-        price: 5.50,
-        quantity: 330,
-        alchoolicTax: 5
-    } ,
-    {
-        id: 3,
-        name: 'Vodka Redbull',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null, // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("redBull"),
-            getIngredientFromNome("vodka")
-        ],
-        color: '#5580e6',
-        textColor: 'black',
-        favorite: false,
-        price: 5.50,
-        quantity: 330,
-        alchoolicTax: 5
-    } ,
+        drinkInfo(  2,
+            'Aperol Sprits',
+            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+            require("../image/drinks/drawings/aperolSpritz.png"), // richiama un immagine
+            setIngredients([
+                {name: "prosecco", quantity:3, unit:"parti"},
+                {name: "aperol", quantity:2, unit:"parti"},
+                {name: "soda", quantity:1, unit:"parti"},
+            ]),
+            '#FF5E13',
+            'black',
+            false,
+            5.50,
+            330,
+            5,
+            "Aperol, an orange-red liquor invented by the Barbieri brothers in Padova in 1919, is a go-to Spritz option. Low in alcohol, pleasantly citrusy and slightly bitter, it is a light and fresh aperitif that owes its flavors and aromas to sweet and bitter oranges, rhubarb, and gentian root. The other components are a trade secret and remain unchanged. When the Campari Group purchased Aperol in 2003, they vowed to remain faithful to the original recipe."
+        ),
+        drinkInfo(  3,
+            'Vodka Redbull',
+            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+            null, // richiama un immagine
+            setIngredients([
+                {name: "redBull", quantity:70, unit:"%"},
+                {name: "vodka", quantity:30, unit:"%"}
+            ]),
+            '#5580e6',
+           'black',
+           false,
+            5.50,
+            330,
+            5,
+            "Il cocktail Vodka Redbull è un long drink amato e conosciuto dai tutti i giovani per vari motivi: è semplice e veloce da preparare, non necessita di shaker, è molto dolce ed è un energy drink, ovvero un cocktail stimolante che aiuta a non sentire la stanchezza e la fatica. Gli ingredienti indispensabili, come dice il nome, sono solo due: la Vodka e la Red Bull (o qualunque altro energy drink). Al gusto sembra non molto alcolico perché la dolcezza della Red Bull copre il sapore della vodka, tuttavia il grado alcoolico del cocktail con le dosi che andiamo a proporre  è pari al 30% Vol.  Mi raccomando, bevete responsabilmente. Vi lascio al cocktail con vodka e redbull."
+        ),
     {
         id: 4,
         name: 'Cuba Libre',
@@ -265,7 +273,6 @@ const setUnaviableColors = (unavailableDrinks) =>{
 }
 
 const switchFavouriteStateFromId = (drinksInfo, id) => {
-    console.log("switchFavouriteStateFromId:");
-    console.log(DrinksInfo[id] + "has been changed");
+    console.log("switchFavouriteStateFromId: " + DrinksInfo[id].name + " has been changed in " + !DrinksInfo[id].favorite);
     drinksInfo[id].favorite = !drinksInfo[id].favorite;
 }

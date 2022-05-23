@@ -14,7 +14,7 @@ import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";
-import  App from "../componenti/TenderAllert"
+import  TenderButton from "../componenti/TenderAllert"
 
 
 const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
@@ -82,7 +82,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
                     </Text>  
-                    <App></App>                
+                    <TenderButton></TenderButton>                
                 </View>
             </SafeAreaView>
         );

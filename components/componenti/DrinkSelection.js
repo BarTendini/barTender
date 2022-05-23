@@ -8,6 +8,8 @@ import btnStyles from "../../styles/BtnStyles";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
+import TenderAlert from "./TenderAllert"
+import FafouriteButton from "./FafouriteButton";
 
 
 
@@ -16,22 +18,12 @@ const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 const DrinkSelection = ({ Drink, availability, navigation }) => {
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
-    const isPreferred = (drink) => {
-        return drink.favorite
-    } 
+    
     const drinkColor = availability ? Drink.color : themeStyles.unavailableColor.backgroundColor // fare attenzione che i colori sianosotto forma esadecimale #rrggbb
     //console.log(Drink.name +":  " + drinkColor)
-    const [iconName, setIconName] = useState( isPreferred(Drink) ? 'heart' : 'heart-outlined')
 
 
-    const heartPressed = () => {
-        let nameHeart = 'heart-outlined'
-        if (iconName === nameHeart)
-            setIconName ('heart')
-        else setIconName(nameHeart)
-        console.log(Drink.id)
-        switchFavouriteStateFromId(DrinksInfo, Drink.id)
-    }
+    
 
     const pageSelector = () => {
         if (availability)
@@ -109,17 +101,9 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
 
                
                 <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, borderWidth: borderWidth }}>
-                            <TouchableOpacity style= {styles.parallelButtons}>
-                            <Entypo
-                                onPress={() => heartPressed()}
-                                name={iconName}
-                                size={25}
-                                color={'red'} 
-                                style={styles.FavouriteButton}                               
-                            />
-                        </TouchableOpacity>
-               
-                    <TenderButton testo={'acquista per: €'+ Drink.price} navigation={navigation}/>
+                            
+                    {FafouriteButton(Drink)}
+                    <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={TenderAlert}/>
                 
                 </View>
 

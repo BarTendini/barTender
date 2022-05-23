@@ -115,7 +115,7 @@ const BarDescription = ({route, navigation}) => {
                     end={{x: 0.5, y: 0.2}}
                     style={{height: 100,}}
                 >
-                    <TenderButton testo={'ORDINA'} navigation={navigation} bar={bar}/>
+                    <TenderButton testo={'🍹 ORDINA'} navigation={navigation} bar={bar}/>
                 </LinearGradient>
             </View>
 
