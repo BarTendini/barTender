@@ -3,6 +3,8 @@ import { Platform, View, ImageBackground, Image, TouchableOpacity} from 'react-n
 import commonStyles from "../../styles/CommonStyles";
 import {DrawerActions} from "@react-navigation/native";
 import {IconsButton} from "../../dati/IconsButton";
+import {LinearGradient} from 'expo-linear-gradient';
+
 
 
 const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
@@ -12,7 +14,14 @@ const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'hea
         }
     }
     return (
+        
         <View style={{backgroundColor: bgColor ? bgColor : null}}>
+            <LinearGradient
+                    colors={['rgba(255,255,255,0)','rgba(255,255,255,0)','rgba(255,255,255,0)', 'rgba(255,255,255,1)']}
+                    start={{ x: 0.5, y: 0.5 }}
+                    end={{ x: 0.5, y: 1 }}
+                    style={{justifyContent: 'center'}}
+                >
             <ImageBackground
                 source={require('../../image/loghi/logoHome.png')}
                 style={commonStyles.Logo}
@@ -21,6 +30,7 @@ const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'hea
                 {showIcon(icon, navigation, alertFun)}
                 {menuIconForWeb(icon, navigation, alertFun )}
             </ImageBackground>
+            </LinearGradient>
         </View>
     );
 }

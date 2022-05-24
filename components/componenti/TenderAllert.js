@@ -1,69 +1,103 @@
-import React, { Component } from 'react';
+import React, { Component, useState} from 'react';
 import { Text, StyleSheet, View, Modal, TouchableOpacity, Button, Alert  } from 'react-native';
 import {themeStyles} from "../../styles/theme/ThemeStyles"
+import Accordion from 'react-native-collapsible/Accordion';
+import { Entypo } from "@expo/vector-icons";
 
-export default class TenderAllert extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      Alert_Visibility: false
-    };
+/* necessario per essere chiamato 
+  const [alertVisibility, setAlertVisibility] = useState(false)  variabile di stato
+
+  const showAlert=()=>{  // permette di aprire l'allert tramite "onPress"
+    if (alertVisibility===false){
+        setAlertVisibility(true)
+    }
   }
+*/
 
-  cancelAlertBox(visible) {
-    this.setState({ Alert_Visibility: visible });
-  }
 
-  okButton = () => {
-    Alert.alert("OK Button Clicked.");
-  }
 
-  render() {
-    console.log("tenderAllert")
+const TenderAllert = (elements) =>{
+const cancelAlertBox = () => {
+  elements.state(false);
+}
+const okButton = () => {
+  Alert.alert("OK Button Clicked.");
+}
+  const _renderContent = () => {
+    
     return (
-      <View style={styles.container} >
-        <Modal
-          visible={this.state.Alert_Visibility}
-          transparent={true}
-          animationType={"fade"}
-          onRequestClose={() => { this.cancelAlertBox(!this.state.Alert_Visibility) }} >
-
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:"#33333399" }}>
-
-            <View style={styles.MainAlertView}>
-
-              <Text style={styles.AlertTitle}>Custom Alert Dialog Box Title.</Text>
-              <View style={{ width: '100%', height: 0.5, backgroundColor: '#fff' }} />
-
-              <Text style={styles.AlertMessage}> Are You Sure ?? </Text>
-
-              <View style={{ width: '100%', height: 0.5, backgroundColor: '#fff' }} />
-
-              <View style={{ flexDirection: 'row', height: '30%' }}>
-                <TouchableOpacity style={styles.buttonStyle} onPress={this.okButton} activeOpacity={0.7} >
-                  <Text style={styles.TextStyle}> OK </Text>
-                </TouchableOpacity>
-
-                <View style={{ width: 0.5, height: '100%', backgroundColor: '#fff' }} />
-
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => { this.cancelAlertBox(!this.state.Alert_Visibility) }} activeOpacity={0.7} >
-                  <Text style={styles.TextStyle}> CANCEL </Text>
-                </TouchableOpacity>
-              </View>
-
-            </View>
-          </View>
-        </Modal>
-
-        <Button onPress={() => { this.cancelAlertBox(true) }} color="#f73378" title="Custom Alert Dialog Box" />
+      <View style={{flex:1, padding:10}}>
+        {elements.children}
       </View>
+      );
+    
+  }
+  const _renderHeader = () => {
+    return (
+      <View style={{flexDirection: "row", alignContent: 'center', borderWidth: 1}}>
+        <Text style={styles.AlertTitle}>{elements.title ? elements.title : "notifica"}</Text>
+        <Entypo
+            onPress={() => { cancelAlertBox() }}
+            name={"circle-with-cross"}
+            size={40}
+            color={'black'} 
+            style={styles.FavouriteButton}                               
+        />
+      </View>
+
     );
   }
+
+console.log("tenderAllert")
+  return(
+    <View style={styles.container} >
+    <Modal
+      visible={elements.visibility }
+      transparent={true}
+      animationType={"fade"}
+      onRequestClose={() => { cancelAlertBox() }} >
+
+      <View style={styles.fullPageBackground}>
+
+        <View style={styles.MainAlertView}>
+          {_renderHeader()}
+          <View style={styles.horizontalWhiteLines} />
+
+          {_renderContent()}
+
+          <View style={styles.horizontalWhiteLines} />
+
+          <View style={{ flexDirection: 'row',  }}>
+            <TouchableOpacity style={styles.buttonStyle} onPress={()=>{okButton()}} activeOpacity={0.7} >
+              <Text style={styles.TextStyle}> OK </Text>
+            </TouchableOpacity>
+
+            <View style={styles.verticalWhiteLine} />
+
+            <TouchableOpacity style={styles.buttonStyle} onPress={() => { cancelAlertBox() }} activeOpacity={0.7} >
+              <Text style={styles.TextStyle}> CANCEL </Text>
+            </TouchableOpacity>
+          </View>
+
+        </View>
+      </View>
+    </Modal>
+  </View>
+);
+  
 }
+
+export default TenderAllert
 
 const styles = StyleSheet.create(
   {
+    fullPageBackground:{ 
+      flex: 1, 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      backgroundColor:"#33333399" 
+  },
     container: {
       flex: 1,
       justifyContent: 'center',
@@ -84,7 +118,7 @@ const styles = StyleSheet.create(
       
       textAlign: 'center',
       padding: 10,
-      height: '28%'
+      width:"85%"
     },
     AlertMessage: {
       fontSize: 22,
@@ -105,5 +139,24 @@ const styles = StyleSheet.create(
       textAlign: 'center',
       fontSize: 22,
       marginTop: -5
-    }
+    },
+    horizontalWhiteLines:{ 
+      width: '100%', 
+      height: 0.5, 
+      backgroundColor: '#fff' 
+    },
+    verticalWhiteLine: { 
+      width: 0.5, 
+      height: '100%', 
+      backgroundColor: '#fff' 
+    },
+    FavouriteButton: { 
+     backgroundColor: themeStyles.light.backgroundColor1,
+     borderRadius:50,
+     borderWidth:0
+  },
   });
+
+
+
+  

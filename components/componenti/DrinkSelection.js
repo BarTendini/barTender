@@ -83,7 +83,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     const availableButton = () => {
         if(availability){
             return(
-                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={TenderAlert}/>
+                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} />
             );
         }
         return(

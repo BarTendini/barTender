@@ -14,11 +14,21 @@ import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";
-import  TenderButton from "../componenti/TenderAllert"
+import  TenderAllert from "../componenti/TenderAllert"
+import  showAlertBox from "../componenti/TenderAllert"
+import TenderButton from "../componenti/TenderButton";
+
 
 
 const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderizzare
-
+    
+    const [alertVisibility, setAlertVisibility] = useState(false)
+    const showAlert=()=>{
+        if (alertVisibility===false){
+            setAlertVisibility(true)
+        }
+    }
+    
     //permette di renderizzare un singolo log (la magia la spiegherà max)
     const renderItem = ({ item }) => (
 
@@ -82,12 +92,21 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
                     </Text>  
-                    <TenderButton></TenderButton>                
+                    <TenderAllert visibility={alertVisibility} state={setAlertVisibility}>
+                        <View>
+                            <Text style={{fontSize:24}}>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmiao</Text>
+                        </View>
+                    </TenderAllert>  
+                    <TenderButton testo={'🚨 Allert!'} navigation={navigation}  action={()=>{showAlert()}}/>    
                 </View>
             </SafeAreaView>
         );
     }
 };
+
+/*
+          
+ */
 
 export default ChangeLogScreen; // permette di esportare la funzione ChangeLogScreen e quuindi la pagina (una sorta di public per gli oggetti)
 
