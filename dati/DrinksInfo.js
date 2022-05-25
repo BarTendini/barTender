@@ -18,6 +18,8 @@ const drinkInfo = ( id_,
                     alchoolicTax_ = 0, 
                     description_ = fakeText
                 ) =>{
+
+    
     return {
         id: id_, // deve necessariamente essere diverso dagli altri
         name: name_, // nome del drink
@@ -34,7 +36,7 @@ const drinkInfo = ( id_,
     }
 }
 
-const setIngredients = (ingredients = [{name: "unknown", quantity: 0, unit:"ml"}]) =>{
+const setRecipe = (ingredients = [{name: "unknown", quantity: 0, unit:"ml"}]) =>{
     var result = []
     ingredients.forEach(element => {
         var tmp = getIngredientFromNome(element.name)
@@ -45,6 +47,11 @@ const setIngredients = (ingredients = [{name: "unknown", quantity: 0, unit:"ml"}
     return result
 }
 
+const setIngredients = () => {
+    return (
+        3
+    )
+}
 
 const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti i drink
     // il primo oggetto definisce un singolo drink
@@ -52,7 +59,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
                 'Ichnusa', // nome del drink 
                 "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
                 require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine 
-                setIngredients([ // array degli ingredienti
+                setRecipe([ // array degli ingredienti
                     {name: "ichnusa", quantity:330} 
                 ]),
                 '#CD7F32', // sfondo della bolla  
@@ -67,7 +74,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
                 'Cosmopolitan',
                 "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
                 require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
-                setIngredients([
+                setRecipe([
                     {name: "vodka", quantity:40, unit:"ml"},
                     {name: "cointreau", quantity:15, unit:"ml"},
                     {name: "limeJuice", quantity:15, unit:"ml"},
@@ -85,7 +92,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             'Aperol Sprits',
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             require("../image/drinks/drawings/aperolSpritz.png"), // richiama un immagine
-            setIngredients([
+            setRecipe([
                 {name: "prosecco", quantity:3, unit:"parti"},
                 {name: "aperol", quantity:2, unit:"parti"},
                 {name: "soda", quantity:1, unit:"parti"},
@@ -102,7 +109,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             'Vodka Redbull',
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             null, // richiama un immagine
-            setIngredients([
+            setRecipe([
                 {name: "redBull", quantity:70, unit:"%"},
                 {name: "vodka", quantity:30, unit:"%"}
             ]),
@@ -114,33 +121,39 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             5,
             "Il cocktail Vodka Redbull è un long drink amato e conosciuto dai tutti i giovani per vari motivi: è semplice e veloce da preparare, non necessita di shaker, è molto dolce ed è un energy drink, ovvero un cocktail stimolante che aiuta a non sentire la stanchezza e la fatica. Gli ingredienti indispensabili, come dice il nome, sono solo due: la Vodka e la Red Bull (o qualunque altro energy drink). Al gusto sembra non molto alcolico perché la dolcezza della Red Bull copre il sapore della vodka, tuttavia il grado alcoolico del cocktail con le dosi che andiamo a proporre  è pari al 30% Vol.  Mi raccomando, bevete responsabilmente. Vi lascio al cocktail con vodka e redbull."
         ),
-    {
-        id: 4,
-        name: 'Cuba Libre',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null, // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("cocacola"),
-            getIngredientFromNome("whiteRum"),
-            getIngredientFromNome("limeJuice")
-        ],
-        color: '#800020',
-        textColor: 'black',
-        favorite: true
-    } ,
-    {
-        id: 5,
-        name: 'gin tonic',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null, // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("gin"),
-            getIngredientFromNome("tonicWater")
-        ],
-        color: '#fff99c',
-        textColor: 'black',
-        favorite: false
-    } ,
+        drinkInfo( 4,
+            'Cuba Libre',
+            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+            null, // richiama un immagine
+            setRecipe([
+                {name: "cocacola", quantity:70, unit:"%"},
+                {name: "whiteRum", quantity:30, unit:"%"},
+                {name: "limeJuice", quantity:30, unit:"%"}
+            ]),
+            '#800020',
+            'black',
+            false,
+            5.50,
+            200,
+            15,
+            "Il Cuba libre è un cocktail ufficiale IBA, appartenente alla categoria dei long drinks a base di rum bianco, cola e lime. Simile al rum & cola, i due termini vengono spesso utilizzati in modo intercambiabile, sebbene indichino due cocktail differenti."
+        ),
+        drinkInfo(  5, // deve necessariamente essere diverso dagli altri 
+            'gin tonic', // nome del drink 
+            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
+            null, // richiama un immagine 
+            setRecipe([ // array degli ingredienti
+                {name: "gin", quantity:70, unit:"%"},
+                {name: "tonicWater", quantity:70, unit:"%"}
+            ]),
+            '#fff99c', // sfondo della bolla  
+            'black',// colore del testo della bolla 
+            false, // è favorito 
+            6.50, //prezzo
+            200,  //quantità
+            15,  // tasso alcolico
+            "Birra Ichnusa, or simply Ichnusa, is the name of a popular Sardinian-made beer, which is brewed in Assemini, a town near the Sardinian capital Cagliari. It is named after the Latinized ancient name for Sardinia, Hyknusa.\nBirra Ichnusa is a lager (5.0% ABV) with a hoppy taste.\nBirra Ichnusa was founded in Cagliari in 1912. In 1967 the brewery was finally moved to Assemini. In 1981 more than 400,000 hl beer was brewed.[2] In 1986 the brewery was taken over by Heineken" // testo
+    ),
     {
         id: 6,
         name: 'moscow mule',

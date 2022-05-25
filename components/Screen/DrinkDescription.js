@@ -148,12 +148,22 @@ const DrinkDescription = ({ route, navigation }) => {
 
 
                     <DrinkCardTender title={"Ingredienti:"}>
+                        {// voglio sostituire la flat list con ciò che segue
+                        }
+                         {Drink.ingredients.map(item => 
+                            <View key={item.id} styale={{ flex: 1, alignItems: 'flex-start' }}>
+                            <Text style={[styles.infoTextLeft, {marginHorizontal:20}]}>
+                                {item.nome}: {item.quantity} {item.unit}
+                            </Text>
+                            </View>
+                            ) }
+                        {/* ma questa non funziona
                         
                         <ListDrinkIngredients 
                             ingredients = {Drink.ingredients}
                             callbackfn={(item,key) => {renderItem(item,key)}}
-                        />
-                        {renderItem(Drink.ingredients[0])} 
+                        />*/
+                        }
                     </DrinkCardTender>
                     <DrinkCardTender title={"Descrizione:"}>
                     <View style = {{felx:1}}>
@@ -191,21 +201,19 @@ const DrinkDescription = ({ route, navigation }) => {
     );
 }
 
-function renderItem(item) {
-    console.log("renderItem: "+ Object.keys(item))
-    return (
+const renderItem = ({ item }) => (
     <View style={{ flex: 1, alignItems: 'flex-start' }}>
                         <Text style={styles.infoTextLeft}>
                             {item.nome}: {item.quantity} {item.unit}
                         </Text>
     </View>
-    )
-}
+)
+
 function ListDrinkIngredients(props) {
-    return <>
+    return( <>
     {<Text>perchè diamine non funziona??</Text>}
         {props.ingredients.map(props.callbackfn)}
-    </>;
+    </>);
 }
 
 export default DrinkDescription;

@@ -3,7 +3,8 @@ import Accordion from 'react-native-collapsible/Accordion';
 import {useRef, useState} from "react";
 import CardTitle from "./CardTitle";
 import { AntDesign } from '@expo/vector-icons';
-import { themeStyles } from "../../styles/theme/ThemeStyles"
+
+
 
 export const zero = "0deg";
 export const half = "180deg";
@@ -66,7 +67,7 @@ const CardTender = (elements) => {
     }
 
     return (
-        <View style={[styles.Descrizione, {backgroundColor: elements.color ? elements.color : themeStyles.light.backgroundColor1}]}>
+        <View style={styles.Descrizione}>
             <Accordion
                 sections={SECTIONS}
                 activeSections={activeSections}
@@ -80,10 +81,11 @@ const CardTender = (elements) => {
     )
 }
 
-export default CardTender;
+export {CardTender, CardTitle}
 
 const styles = StyleSheet.create({
     Descrizione: {
+        backgroundColor: '#ffcc8b',
         marginTop: 20,
         borderRadius: 25,
         marginHorizontal: 10,
