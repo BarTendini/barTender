@@ -38,7 +38,7 @@ const alertMessage = (text) => {
   const _renderContent = () => {
     
     return (
-      <View style={{flex:1, padding:5}}>
+      <View style={{ paddingHorizontal:5, paddingVertical:10}}>
         {elements.children}
       </View>
       );
@@ -46,7 +46,7 @@ const alertMessage = (text) => {
   }
   const _renderHeader = () => {
     return (
-      <View style={{flexDirection: "row", alignContent: 'center'}}>
+      <View style={{flexDirection: "row", alignContent: 'center', paddingVertical:10}}>
         <Text style={styles.AlertTitle}>{elements.title ? elements.title : "notifica"}</Text>
         <View>
         <Entypo
@@ -66,7 +66,7 @@ const alertMessage = (text) => {
     if (elements.tenderButtons) {
       if (elements.tenderButtons.length == 1) {
         return (
-          <View style={{ flexDirection: "row", alignSelf: "center", justifyContent: 'center', alignItems: "center", alignContent: 'center', borderWidth: 3, borderRadius: 50, paddingBottom:10}}>
+          <View style={{ flexDirection: "row", alignSelf: "center", justifyContent: 'center', alignItems: "center", alignContent: 'center', borderWidth: 3, borderRadius: 50, paddingVertical:20}}>
             {
               singleButton(elements.tenderButtons[0])
             }
@@ -76,12 +76,28 @@ const alertMessage = (text) => {
       else if (elements.tenderButtons.length > 1) {
         
         return (
-          <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingBottom:10 }}>
+          <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingVertical:20 }}>
             {
               singleButton(elements.tenderButtons[0])
             }
             {
               singleButton(elements.tenderButtons[1])
+            }
+          </View>
+        );
+      }
+      else{
+        
+        return (
+          <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingVertical:20 }}>
+            {
+              singleButton(elements.tenderButtons[0])
+            }
+            {
+              singleButton(elements.tenderButtons[1])
+            }
+            {
+              singleButton(elements.tenderButtons[2])
             }
           </View>
         );
@@ -181,7 +197,7 @@ const styles = StyleSheet.create(
       justifyContent: 'center',
       backgroundColor: themeStyles.light.backgroundColor1, 
       borderRadius:50,
-      height: 300,
+      flexShrink: 1,
       width: '90%',      
       
     },
