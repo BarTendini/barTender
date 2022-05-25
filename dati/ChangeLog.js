@@ -1,4 +1,5 @@
 const changes = [ // definizione di un array di 6 elementi dove ogni elemento è una sorta di struttura dati di 4 elementi
+{version:"0.26.0", nome: "giangi", dataPush: "25/05 12:40", info:"serie di modifiche estetiche \ncompletato alertTender che permette di creare le notifiche personalizzate"},
 {version:"0.24.0", nome: "giangi", dataPush: "20/05 17:40", info:"eliminata la schermata drinkTypeSelection pichè la funzionalità è stata accorpata dentro Drink menu.\n abilitata la funzionalità dei drink preferiti\n altre modifiche fatte da simo e non documentate nel changeLog"},
     {version:"0.23.0", nome: "Max", dataPush: "5/04 22:00", info:"Sistemata la posizione del cuore, ma devo riprovare con l'ombra in drinkDescription"},
     {version:"0.22.0", nome: "Max", dataPush: "3/04 17:00", info:"Sistemato app.js perché i nuovi screen doveno essere messi in drawerNavigationRoutes. Quindi risolto il bug in cui non si poteva chiamare il burgermenu da uno screen lontano\n" +

@@ -8,7 +8,7 @@ import btnStyles from "../../styles/BtnStyles";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
-import TenderAlert from "./TenderAllert"
+import TenderAllert from "./TenderAllert"
 import FafouriteButton from "./FafouriteButton";
 
 
@@ -21,7 +21,17 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     
     const drinkColor = availability ? Drink.color : themeStyles.unavailableColor.backgroundColor // fare attenzione che i colori sianosotto forma esadecimale #rrggbb
     //console.log(Drink.name +":  " + drinkColor)
-
+    const [alertVisibility, setAlertVisibility] = useState(false)
+    const showAlert=()=>{
+        if (alertVisibility===false){
+            setAlertVisibility(true)
+        }
+    }
+    const hideAlert=()=>{
+        if (alertVisibility===true){
+            setAlertVisibility(false)
+        }
+    }
 
     
 
@@ -83,7 +93,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     const availableButton = () => {
         if(availability){
             return(
-                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} />
+                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={showAlert} />
             );
         }
         return(
@@ -92,6 +102,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     }
 
     return (
+        <View>
         <TouchableOpacity
             onPress={() => pageSelector()}
             style={styleAviability()}
@@ -120,6 +131,26 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             </LinearGradient>
 
         </TouchableOpacity>
+        <TenderAllert 
+        visibility = {alertVisibility} 
+        state = {setAlertVisibility}
+        title = {"Pronto a Bere?"}
+        tenderButtons = {[
+            {testo: "si!", alertText: "acquisto effettuato"},
+            {testo:'no',action:hideAlert},            
+        ]}
+        >
+        <View>
+            <Text style={{fontSize:24}}>
+                <Text>Sicuro di voler aquistare un bicchiere di </Text>
+                <Text style={{fontWeight:"bold"}}>{Drink.name}</Text>
+                <Text> al prezzo di </Text>
+                <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
+                <Text> ?</Text>
+            </Text>
+        </View>
+    </TenderAllert> 
+    </View>
     );
 };
 

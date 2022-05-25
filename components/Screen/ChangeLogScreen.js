@@ -55,7 +55,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
     /**
      * abilita la sandBox quando true
      */
-    const needForSandbox = true;
+    const needForSandbox = false;
 
     if (!needForSandbox) {
         // permette di fare il log su console (serve per "debuggare")
@@ -92,7 +92,17 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
                     </Text>  
-                    <TenderAllert visibility={alertVisibility} state={setAlertVisibility}>
+                    <TenderAllert 
+                        visibility = {alertVisibility} 
+                        state = {setAlertVisibility}
+                        title = {"una notifica con tantissime belle parole dentro"}
+                        tenderButtons = {[
+                            {alertText: "acquisto effettuato"},
+                            {id:1, testo:'🚨 Allert!', navigation: navigation,  action:()=>{showAlert()}},
+                            {id:2, testo:'🚨 Allert!', navigation: navigation, color:"#2244FF",  action:()=>{showAlert()}}
+                            
+                        ]}
+                        >
                         <View>
                             <Text style={{fontSize:24}}>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmiao</Text>
                         </View>

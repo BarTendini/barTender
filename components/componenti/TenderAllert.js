@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Modal, TouchableOpacity, Button, Alert  } from 
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import Accordion from 'react-native-collapsible/Accordion';
 import { Entypo } from "@expo/vector-icons";
+import TenderButton from "../componenti/TenderButton";
 
 
 /* necessario per essere chiamato 
@@ -15,19 +16,29 @@ import { Entypo } from "@expo/vector-icons";
   }
 */
 
-
+/**
+ * 
+ * @param {
+ * #children, //componenti figli
+ * visibility, // true/false: visibilità iniziale
+ * state, // funzione per cambiamento di stato
+ * title, // "titolo"
+ * tenderButtons, //[{testo, navigation, bar, color, action, alertText }]
+ * } elements 
+ * @returns 
+ */
 
 const TenderAllert = (elements) =>{
 const cancelAlertBox = () => {
   elements.state(false);
 }
-const okButton = () => {
-  Alert.alert("OK Button Clicked.");
+const alertMessage = (text) => {
+  Alert.alert(text);
 }
   const _renderContent = () => {
     
     return (
-      <View style={{flex:1, padding:10}}>
+      <View style={{flex:1, padding:5}}>
         {elements.children}
       </View>
       );
@@ -35,8 +46,9 @@ const okButton = () => {
   }
   const _renderHeader = () => {
     return (
-      <View style={{flexDirection: "row", alignContent: 'center', borderWidth: 1}}>
+      <View style={{flexDirection: "row", alignContent: 'center'}}>
         <Text style={styles.AlertTitle}>{elements.title ? elements.title : "notifica"}</Text>
+        <View>
         <Entypo
             onPress={() => { cancelAlertBox() }}
             name={"circle-with-cross"}
@@ -44,10 +56,82 @@ const okButton = () => {
             color={'black'} 
             style={styles.FavouriteButton}                               
         />
+        </View>
       </View>
 
     );
   }
+  const _renderButtons = () => {
+
+    if (elements.tenderButtons) {
+      if (elements.tenderButtons.length == 1) {
+        return (
+          <View style={{ flexDirection: "row", alignSelf: "center", justifyContent: 'center', alignItems: "center", alignContent: 'center', borderWidth: 3, borderRadius: 50, paddingBottom:10}}>
+            {
+              singleButton(elements.tenderButtons[0])
+            }
+          </View>
+        );
+      }
+      else if (elements.tenderButtons.length > 1) {
+        
+        return (
+          <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingBottom:10 }}>
+            {
+              singleButton(elements.tenderButtons[0])
+            }
+            {
+              singleButton(elements.tenderButtons[1])
+            }
+          </View>
+        );
+      }
+    }
+
+    /*{
+      elements.tenderButtons.map((element,index) => {
+        singleButton(index, element.testo, element.navigation, element.bar, element.color, element.action)
+      })
+    }*/
+  }
+
+  const singleButton = (element) => {
+
+    const testo_ = element.testo
+    const navigation_ = element.navigation
+    const bar_ = element.bar
+    const color_ = element.color
+    const action_ = element.action
+    const alertText = element.alertText
+
+    if(alertText){
+      return(
+      <View style={styles.parallelButtons}>
+        <TenderButton
+          testo = {testo_ ? testo_ : "OK"}
+          navigation = {navigation_}
+          bar = {bar_ ? bar_ : "unknown"} 
+          color = {color_ ? color_ : themeStyles.light.backgroundColor1}
+          action = {action_ ? action_ : ()=>{alertMessage(alertText)}}
+          />
+      </View>
+      );
+    }
+
+    return(
+      <View style={styles.parallelButtons}>
+        <TenderButton
+          testo = {testo_ ? testo_ : "OK"}
+          navigation = {navigation_}
+          bar = {bar_ ? bar_ : "unknown"} 
+          color = {color_ ? color_ : themeStyles.light.backgroundColor1}
+          action = {action_ ? action_ : ()=>{alertMessage("OK Button Clicked.")}}
+          />
+      </View>
+      
+    );
+  }
+
 
 console.log("tenderAllert")
   return(
@@ -66,19 +150,7 @@ console.log("tenderAllert")
 
           {_renderContent()}
 
-          <View style={styles.horizontalWhiteLines} />
-
-          <View style={{ flexDirection: 'row',  }}>
-            <TouchableOpacity style={styles.buttonStyle} onPress={()=>{okButton()}} activeOpacity={0.7} >
-              <Text style={styles.TextStyle}> OK </Text>
-            </TouchableOpacity>
-
-            <View style={styles.verticalWhiteLine} />
-
-            <TouchableOpacity style={styles.buttonStyle} onPress={() => { cancelAlertBox() }} activeOpacity={0.7} >
-              <Text style={styles.TextStyle}> CANCEL </Text>
-            </TouchableOpacity>
-          </View>
+          {_renderButtons()}
 
         </View>
       </View>
@@ -115,14 +187,14 @@ const styles = StyleSheet.create(
     },
     AlertTitle: {
       fontSize: 25,
-      
+      fontWeight: 'bold',
       textAlign: 'center',
-      padding: 10,
-      width:"85%"
+      paddingVertical: 3,
+      paddingLeft:10,
+      width:"90%"
     },
     AlertMessage: {
       fontSize: 22,
-      
       textAlign: 'center',
       textAlignVertical: 'center',
       padding: 10,
@@ -142,7 +214,7 @@ const styles = StyleSheet.create(
     },
     horizontalWhiteLines:{ 
       width: '100%', 
-      height: 0.5, 
+      height: 1, 
       backgroundColor: '#fff' 
     },
     verticalWhiteLine: { 
@@ -154,9 +226,31 @@ const styles = StyleSheet.create(
      backgroundColor: themeStyles.light.backgroundColor1,
      borderRadius:50,
      borderWidth:0
-  },
+  },parallelButtons: { 
+    flex: 1, 
+    height:60,
+    justifyContent: 'center', 
+    alignContent: 'center', 
+},
   });
 
 
 
+  /*
   
+  <View style={{ flexDirection: 'row',  }}>
+            <TouchableOpacity style={styles.buttonStyle} onPress={()=>{alertMessage()}} activeOpacity={0.7} >
+              <Text style={styles.TextStyle}> OK </Text>
+            </TouchableOpacity>
+
+            <View style={styles.verticalWhiteLine} />
+
+            <TouchableOpacity style={styles.buttonStyle} onPress={() => { cancelAlertBox() }} activeOpacity={0.7} >
+              <Text style={styles.TextStyle}> CANCEL </Text>
+            </TouchableOpacity>
+          </View>
+  
+
+
+          
+  */
