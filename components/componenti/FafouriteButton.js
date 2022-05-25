@@ -1,5 +1,5 @@
 import React, {useState} from "react"; //quasi sempre necessario
-import {TouchableOpacity, StyleSheet} from "react-native";
+import {TouchableOpacity, StyleSheet, View} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
@@ -24,47 +24,46 @@ const FavouriteButton = (Drink) => {
 
     return(   
     <TouchableOpacity style= {styles.parallelButtons}>
-                            <Entypo
-                                onPress={() => heartPressed()}
-                                name={iconName}
-                                size={25}
-                                color={'red'} 
-                                style={styles.FavouriteButton}                               
-                            />
-                        </TouchableOpacity>
+        <View style={styles.FavouriteView}>
+            <Entypo
+                onPress={() => heartPressed()}
+                name={iconName}
+                size={25}
+                color={'red'}
+                style={styles.center}
+            />
+        </View>
+    </TouchableOpacity>
     )
 }
 
 export default FavouriteButton;
 
 const styles = StyleSheet.create({
-    FavouriteButton: { 
-        textAlign: 'center', 
-        borderWidth: 3, 
+    FavouriteView: {
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        borderWidth: 3,
         borderColor: 'red' , 
         width: 50,
         height: 50,
-        borderRadius:50,
-        textAlignVertical: 'center',
-        backgroundColor: themeStyles.light.backgroundColor2
-
+        borderRadius: 50/2,
+        backgroundColor: themeStyles.light.backgroundColor2,
     },
-    parallelButtons: { 
-         
-        justifyContent: 'center', 
-        alignContent: 'center', 
-        borderWidth: 3, 
+    parallelButtons: {
+        borderWidth: 3,
         borderColor: themeStyles.light.backgroundColor2 , 
-        borderRadius:50,
+        borderRadius:56/2,
         width: 56,
         height: 56,
-        textAlign:'center',
         shadowColor: '#000',
         shadowOpacity: 0.25,
         shadowRadius: 3.84 ,
         shadowOffset : { width: 0, height: 5},
         elevation: 15,
-
+    },
+    center: {
+        textAlign: 'center'
     }
-
 });

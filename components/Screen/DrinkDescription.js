@@ -5,12 +5,9 @@ import { themeStyles } from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
 import SettingsInfo from "../../dati/SettingsInfo";
 import { IconsButton } from "../../dati/IconsButton";
-import btnStyles from "../../styles/BtnStyles";
-import { Entypo } from "@expo/vector-icons";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import FafouriteButton from "../componenti/FafouriteButton";
 import { DrinkCardTender } from "../Card/TenderCard";
-import { FlatList } from "react-native-gesture-handler";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
 
@@ -117,85 +114,77 @@ const DrinkDescription = ({ route, navigation }) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
             <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
-            <View style={{ flex: 1, }}>
+            <View>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
                     {Drink.name}
                 </Text>
-                <ScrollView style={{ flexGrow: 1}}>
-                    <View style={{ paddingBottom:100}}>
-                    <Image
-                        source={getPicture(Drink)}
-                        style={commonStyles.DrinkImm}
-                    />
+            </View>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                <View style={{ flex: 1, paddingBottom: 80 }}>
+                    <View style={{ flexDirection: "column", justifyContent: "center", marginTop: 20 }}>
+                        <Image
+                            source={getPicture(Drink)}
+                            style={commonStyles.DrinkImm}
+                        />
 
 
-                    {/*Drink info*/}
-                    <View style={styles.ParallelCardsContainer}>
-                        <View style={styles.ParallelCards}>
-                            <Text style={styles.TextInfoTitle}>Quantità:</Text>
-                            <Text style={{textAlign: 'center',}}>{Drink.quantity}ml</Text>
-                        </View>
-                        <View style={styles.ParallelCards}>
-                            <Text style={styles.TextInfoTitle}>Tasso alcolico:</Text>
-                            <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
-                        </View>
-                        <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50}}>
-                            {FafouriteButton(Drink)}
-                        </View>
-                        
-                    </View>
-                    
-
-
-                    <DrinkCardTender title={"Ingredienti:"}>
-                        {// voglio sostituire la flat list con ciò che segue
-                        }
-                         {Drink.ingredients.map(item => 
-                            <View key={item.id} styale={{ flex: 1, alignItems: 'flex-start' }}>
-                            <Text style={[styles.infoTextLeft, {marginHorizontal:20}]}>
-                                {item.nome}: {item.quantity} {item.unit}
-                            </Text>
+                        {/*Drink info*/}
+                        <View style={styles.ParallelCardsContainer}>
+                            <View style={styles.ParallelCards}>
+                                <Text style={styles.TextInfoTitle}>Quantità</Text>
+                                <Text style={{textAlign: 'center',}}>{Drink.quantity}ml</Text>
                             </View>
-                            ) }
-                        {/* ma questa non funziona
-                        
-                        <ListDrinkIngredients 
-                            ingredients = {Drink.ingredients}
-                            callbackfn={(item,key) => {renderItem(item,key)}}
-                        />*/
-                        }
-                    </DrinkCardTender>
-                    <DrinkCardTender title={"Descrizione:"}>
-                    <View style = {{felx:1}}>
-                        <Text>
-                                {Drink.description}
-                        </Text>
+                            <View style={styles.ParallelCards}>
+                                <Text style={styles.TextInfoTitle}>Tasso alcolico</Text>
+                                <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
+                            </View>
+                            <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50, marginHorizontal: 5}}>
+                                {FafouriteButton(Drink)}
+                            </View>
+
+                        </View>
+
+
+
+                        <DrinkCardTender title={"Ingredienti:"}>
+                            <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
+                                 {Drink.ingredients.map(item =>
+                                    <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
+                                        <Text style={styles.infoTextLeft}>
+                                            {item.nome}: {item.quantity} {item.unit}
+                                        </Text>
+                                    </View>
+                                 )}
+                            </View>
+                        </DrinkCardTender>
+                        <DrinkCardTender title={"Descrizione:"}>
+                            <View style = {{flex:1, marginHorizontal:20, marginVertical: 10}}>
+                                <Text>{Drink.description}</Text>
+                            </View>
+                        </DrinkCardTender>
                     </View>
-                    </DrinkCardTender>
-                    </View>
-                </ScrollView>
-                <View style={{
+                </View>
+            </ScrollView>
+            <View style={{
                 position: 'absolute',
                 width: '100%',
                 height: Platform.OS === 'android' ? '8%' : '14%',
                 bottom: 0,
                 justifyContent: 'center',
-                
             }}>
                 <LinearGradient
                     colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
                     start={{x: 0.5, y: 0}}
                     end={{x: 0.5, y: 0.2}}
-                    style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
+                    style={{height: 100, paddingVertical: 20,  flexDirection: "row", justifyContent: 'center'}}
                 >
-                    <View style={styles.parallelButtons}>                    
+                    <View style={styles.parallelButtons}>
                         <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
                     </View>
                     <View style={styles.parallelButtons}>
                          <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
                     </View>
                 </LinearGradient>
-                </View>
             </View>
         </SafeAreaView>
     );
@@ -203,9 +192,9 @@ const DrinkDescription = ({ route, navigation }) => {
 
 const renderItem = ({ item }) => (
     <View style={{ flex: 1, alignItems: 'flex-start' }}>
-                        <Text style={styles.infoTextLeft}>
-                            {item.nome}: {item.quantity} {item.unit}
-                        </Text>
+        <Text style={styles.infoTextLeft}>
+            {item.nome}: {item.quantity} {item.unit}
+        </Text>
     </View>
 )
 
@@ -217,7 +206,6 @@ function ListDrinkIngredients(props) {
 }
 
 export default DrinkDescription;
-
 
 
 const styles = StyleSheet.create({
@@ -257,7 +245,7 @@ const styles = StyleSheet.create({
     },
 
     parallelButtons: { 
-        flex: 0.5, 
+        width: '50%',
         justifyContent: 'center', 
         alignContent: 'center', 
     },
@@ -285,5 +273,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 17
     },
-
+    infoTextLeft: {
+        textAlign: 'left', // <-- the magic
+        fontWeight: 'bold'
+    },
 });

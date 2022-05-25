@@ -1,18 +1,31 @@
-import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, Animated} from 'react-native';
+import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 export const Location = ({animEnd}) => {
-    const [text, setText] = useState('Premi per cercare in base alla posizione')
+    const [text, setText] = useState('Calcolo posizione')
+    const [animEnded, setAnimEnded] = useState(false)
     const [isSearching, setSearching] = useState(false)
+    useEffect(() => {
+        // write your code here, it's like componentWillMount
+        setTimeout(ricerca, 1000)
+    }, [])
+
     const ricerca = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut, endAnim)
         setSearching(true)
     }
     const endAnim = () => {
         setText('Via Dante, 12')
+        setAnimEnded(true)
         animEnd()
     }
+    const showLoader = () => {
+        if (!animEnded) {
+            return <ActivityIndicator style={{ marginVertical: 10}} />
+        }
+    }
+
     return (
         <View style={[{
             flexDirection: "row",
@@ -22,9 +35,10 @@ export const Location = ({animEnd}) => {
             marginHorizontal: 20
         }, isSearching ? {} : {flex: 1}]}
         >
-            <TouchableOpacity onPress={ricerca} style={styles.Bottone}>
+            <TouchableOpacity style={styles.Bottone}>
                 <Text style={styles.Testo}>{text}</Text>
-                <Entypo name="location-pin" size={32} color="black" />
+                {showLoader()}
+                {/*<Entypo name="location-pin" size={32} color="black" />*/}
             </TouchableOpacity>
         </View>
     )
@@ -39,13 +53,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 20
     },
     Bottone: {
-        flexDirection: "row",
+        flexDirection: "column",
         alignItems: 'center',
         justifyContent: "center",
         borderColor: 'black',
         paddingHorizontal: 20,
         borderWidth: 1,
-        borderRadius: 50
+        borderRadius: 50,
+        padding: 5,
     },
     Testo: {
         textAlign: 'center',

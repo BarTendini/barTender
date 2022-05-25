@@ -59,49 +59,49 @@ const BarDescription = ({ route, navigation }) => {
                 <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
             </View>
             <ScrollView contentContainerStyle={{ flexGrow: 1}}>
-<View style={{ paddingBottom:80}}>
-                {/*Sezione di distanza, status, orari*/}
-                <View style={styles.ViewInfo}>
-                    <View style={{ height: 100, marginHorizontal: 30 }}>
-                        <Image
-                            source={bar.image}
-                            style={{
-                                flex: 1,
-                                width: '100%',
-                                resizeMode: 'contain',
-                            }}
-                        />
-                    </View>
-                    {/*Sotto titolo di distanza, status, orari*/}
-                    <View style={styles.ParallelCardsContainer}>
-                        <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
-                            <Text style={styles.TextInfoTitle}>Distanza:</Text>
-                            <Text style={{ textAlign: 'center', }}>{bar.dist}</Text>
+                <View style={{ paddingBottom:80}}>
+                    {/*Sezione di distanza, status, orari*/}
+                    <View style={styles.ViewInfo}>
+                        <View style={{ height: 100, marginHorizontal: 30 }}>
+                            <Image
+                                source={bar.image}
+                                style={{
+                                    flex: 1,
+                                    width: '100%',
+                                    resizeMode: 'contain',
+                                }}
+                            />
                         </View>
-                        <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
-                            <Text style={styles.TextInfoTitle}>Status:</Text>
-                            <Text style={{ textAlign: 'center', }}>{bar.status}</Text>
+                        {/*Sotto titolo di distanza, status, orari*/}
+                        <View style={styles.ParallelCardsContainer}>
+                            <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={styles.TextInfoTitle}>Distanza:</Text>
+                                <Text style={{ textAlign: 'center', }}>{bar.dist}</Text>
+                            </View>
+                            <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={styles.TextInfoTitle}>Status:</Text>
+                                <Text style={{ textAlign: 'center', }}>{bar.status}</Text>
+                            </View>
+                            <TouchableOpacity onPress={infoOrari} style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={[styles.TextInfoTitle, { color: '#007fff' }]}>Orario:</Text>
+                                <Text style={{ textAlign: 'center', color: '#007fff' }}>{bar.orario}</Text>
+                            </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={infoOrari} style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
-                            <Text style={[styles.TextInfoTitle, { color: '#007fff' }]}>Orario:</Text>
-                            <Text style={{ textAlign: 'center', color: '#007fff' }}>{bar.orario}</Text>
-                        </TouchableOpacity>
+
                     </View>
 
-                </View>
+                    {/*Descrizione Locale*/}
+                    <DrinkCardTender title={"Descrizione:"}>
+                        <View style={styles.ViewDescrizioneTesto}>
+                            <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
+                        </View>
+                    </DrinkCardTender>
 
-                {/*Descrizione Locale*/}
-                <DrinkCardTender title={"Descrizione:"}>
-                    <View style={styles.ViewDescrizioneTesto}>
-                        <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
-                    </View>
-                </DrinkCardTender>
-
-                {/*Feedback*/}
-                <DrinkCardTender title={"Feedback:"}>
-                    {feedback()}
-                </DrinkCardTender>
-                <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
+                    {/*Feedback*/}
+                    <DrinkCardTender title={"Feedback:"}>
+                        {feedback()}
+                    </DrinkCardTender>
+                    <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
                 </View>
             </ScrollView>
 

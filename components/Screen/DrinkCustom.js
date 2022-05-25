@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender";
 import {IconsButton} from "../../dati/IconsButton";
@@ -7,12 +7,10 @@ import SettingsInfo from "../../dati/SettingsInfo";
 import {CocktailHtml} from "../webview/CocktailStyles";
 import {WebView} from "react-native-webview";
 import {WebView as WebJS} from "react-native-web-webview";
-import {Dimensions} from "react-native";
 import TenderButton from "../componenti/TenderButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
-import { DrinkCardTender } from "../Card/TenderCard";
-import Slider from '@react-native-community/slider';
+import CardWithSlider from "../Card/CardWithSlider";
 
 export const DrinkCustom = ({route, navigation}) => {
 
@@ -27,29 +25,22 @@ export const DrinkCustom = ({route, navigation}) => {
       document.getElementById("drinkTitle").innerHTML = "${selDrink}"
       true;
     `;
-    //console.log(CocktailHtml)
-    const renderItem = ({ item }) => (
-        <DrinkCardTender title={item.nome} color="#33333333">
-            <View style={{ flex: 1, alignItems: 'flex-start' , margin:20}}>
-                <Text style={styles.infoTextLeft}>
-                    {item.nome}: {item.quantity} {item.unit}
-                </Text>
-                {
-                    //https://github.com/callstack/react-native-slider
-                }
-                <Slider
-                    style={{width:"100%", marginTop:10}}
-                    minimumValue={0}
-                    value={item.quantity}
-                    maximumValue={Drink.quantity}
-                    minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#000000"
-                    onValueChange={()=>{}}
-                    onSlidingComplete={()=>{}}
-                />
+    const _renderHeader = () => {
+        {/*Tutorial WebView*/}
+        {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
+        return (
+            <View style={{width: '100%', height:300, borderWidth:3}}>
+                {showHTML()}
             </View>
-        </DrinkCardTender>
-    )
+        )
+    }
+
+    const renderItem = ({ item }) => {
+        return (
+            <CardWithSlider item={item} drinkQuantity={Drink.quantity}/>
+        );
+    };
+
     const webViewProp = {
         source: {html: CocktailHtml},
         injectedJavaScript: runFirst(selDrink),
@@ -69,43 +60,40 @@ export const DrinkCustom = ({route, navigation}) => {
     return <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
         <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
         <Text style={{ fontSize: 36, textAlign: 'center' }}>
-                    {Drink.name}
-                </Text>
-        <ScrollView style={{ flexGrow: 1}}>
-        {/*Tutorial WebView*/}
-        {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
-        <View style={{flexDirection:"column", flex: 1, height:300, borderWidth:3}}>
-            {showHTML()}            
-        </View>
-        <View>
+            {Drink.name}
+        </Text>
         <FlatList
+            ListHeaderComponent={_renderHeader}
             data={Drink.ingredients}
             renderItem={renderItem}
             keyExtractor={item => item.id}
+            contentContainerStyle={{ paddingBottom: 80}}
         />
+        <View style={{
+            position: 'absolute',
+            width: '100%',
+            height: Platform.OS === 'android' ? '8%' : '14%',
+            bottom: 0,
+            justifyContent: 'center',
+
+        }}>
+            <LinearGradient
+                colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
+                start={{x: 0.5, y: 0}}
+                end={{x: 0.5, y: 0.2}}
+                style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
+            >
+                <View style={styles.parallelButtons}>
+                    <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
+                </View>
+                <View style={styles.parallelButtons}>
+                        <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
+                </View>
+            </LinearGradient>
         </View>
-        </ScrollView>
-        <LinearGradient
-            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
-            start={{x: 0.5, y: 0}}
-            end={{x: 0.5, y: 0.2}}
-            style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
-        >
-            <View style={styles.parallelButtons}>                    
-                <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
-            </View>
-            <View style={styles.parallelButtons}>
-                    <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
-            </View>
-        </LinearGradient>
         
     </SafeAreaView>
 }
-
-
-
-
-
 
 const styles = StyleSheet.create({
     DrinkImm: {

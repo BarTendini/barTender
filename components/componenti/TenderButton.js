@@ -25,7 +25,7 @@ const TenderButton = ({ testo, navigation, bar = "unknown", color = themeStyles.
             marginHorizontal: 10,
             borderWidth: 3,
             borderColor: themeStyles.light.backgroundColor2,
-            borderRadius: 50,            
+            borderRadius: 50,
 
         }}>
             <TouchableOpacity

@@ -1,11 +1,9 @@
 import React, {useState} from "react"; //quasi sempre necessario
-import { View, Text, Image, TouchableOpacity, StyleSheet} from "react-native";
+import {View, Text, Image, TouchableOpacity, StyleSheet, Platform} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import SettingsInfo from "../../dati/SettingsInfo";
-import btnStyles from "../../styles/BtnStyles";
-import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
 import TenderAllert from "./TenderAllert"
@@ -102,7 +100,9 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             style={styleAviability()}
         >
             <LinearGradient
-                    colors={[drinkColor+"00", drinkColor+"00", drinkColor + "FF"]}
+                    colors={Platform.OS === 'ios' ?
+                        [drinkColor+"00", drinkColor + "FF"]
+                        : [drinkColor+"00", drinkColor+"00", drinkColor + "FF"]}
                     start={{x: 0.5, y: 0}}
                     end={{x: 0.5, y: 1}}
                     style={{flex: 1, borderRadius: 40}}

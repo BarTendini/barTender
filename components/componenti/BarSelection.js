@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from "react-native";
+import {View, Text, Image, TouchableOpacity, Platform} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import {LinearGradient} from 'expo-linear-gradient';
 
@@ -10,7 +10,10 @@ const BarSelection = ({ Bar, navigation }) => {
             style={{ width: '100%', borderColor: Bar.color, borderWidth:6, borderRadius: 50, marginTop: 10}}
         >
             <LinearGradient
-                    colors={[Bar.color+"00", Bar.color+"00", Bar.color + "FF"]}
+                    colors={Platform.OS === 'ios' ?
+                        [Bar.color+"00", Bar.color + "FF"]
+                        : [Bar.color+"00", Bar.color+"00", Bar.color + "FF"]
+                    }
                     start={{x: 0.5, y: 0}}
                     end={{x: 0.5, y: 1}}
                     style={{flex: 1, borderRadius: 40}}

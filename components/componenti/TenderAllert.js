@@ -46,17 +46,15 @@ const alertMessage = (text) => {
   }
   const _renderHeader = () => {
     return (
-      <View style={{flexDirection: "row", alignContent: 'center', paddingVertical:10}}>
-        <Text style={styles.AlertTitle}>{elements.title ? elements.title : "notifica"}</Text>
-        <View>
-        <Entypo
-            onPress={() => { cancelAlertBox() }}
-            name={"circle-with-cross"}
-            size={40}
-            color={'black'} 
-            style={styles.FavouriteButton}                               
-        />
-        </View>
+      <View style={{width: '100%', flexDirection: "row", paddingVertical:10}}>
+          <Text style={styles.AlertTitle}>{elements.title ? elements.title : "notifica"}</Text>
+          <Entypo
+              onPress={() => { cancelAlertBox() }}
+              name={"circle-with-cross"}
+              size={40}
+              color={'black'}
+              style={styles.FavouriteButton}
+          />
       </View>
 
     );
@@ -178,77 +176,80 @@ console.log("tenderAllert")
 
 export default TenderAllert
 
-const styles = StyleSheet.create(
-  {
-    fullPageBackground:{ 
-      flex: 1, 
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      backgroundColor:"#33333399" 
+const styles = StyleSheet.create({
+  fullPageBackground:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:"#33333399"
   },
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 20
-    },
-     MainAlertView: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: themeStyles.light.backgroundColor1, 
-      borderRadius:50,
-      flexShrink: 1,
-      width: '90%',      
-      
-    },
-    AlertTitle: {
-      fontSize: 25,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      paddingVertical: 3,
-      paddingLeft:10,
-      width:"90%"
-    },
-    AlertMessage: {
-      fontSize: 22,
-      textAlign: 'center',
-      textAlignVertical: 'center',
-      padding: 10,
-      height: '40%'
-    },
-    buttonStyle: {
-      width: '50%',
-      height: '100%',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    TextStyle: {
-      
-      textAlign: 'center',
-      fontSize: 22,
-      marginTop: -5
-    },
-    horizontalWhiteLines:{ 
-      width: '100%', 
-      height: 1, 
-      backgroundColor: '#fff' 
-    },
-    verticalWhiteLine: { 
-      width: 0.5, 
-      height: '100%', 
-      backgroundColor: '#fff' 
-    },
-    FavouriteButton: { 
-     backgroundColor: themeStyles.light.backgroundColor1,
-     borderRadius:50,
-     borderWidth:0
-  },parallelButtons: { 
-    flex: 1, 
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 20
+  },
+   MainAlertView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: themeStyles.light.backgroundColor1,
+    borderRadius:40,
+    flexShrink: 1,
+    width: '90%',
+
+  },
+  AlertTitle: {
+    flexGrow: 1,
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingVertical: 3,
+    paddingLeft:10,
+    width:"90%"
+  },
+  AlertMessage: {
+    fontSize: 22,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    padding: 10,
+    height: '40%'
+  },
+  buttonStyle: {
+    width: '50%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  TextStyle: {
+
+    textAlign: 'center',
+    fontSize: 22,
+    marginTop: -5
+  },
+  horizontalWhiteLines:{
+    width: '100%',
+    height: 1,
+    backgroundColor: '#fff'
+  },
+  verticalWhiteLine: {
+    width: 0.5,
+    height: '100%',
+    backgroundColor: '#fff'
+  },
+  FavouriteButton: {
+   // backgroundColor: themeStyles.light.backgroundColor1,
+  },
+  FavouriteButtonView: {
+    // backgroundColor: themeStyles.light.backgroundColor1,
+    borderWidth: 1
+  },
+  parallelButtons: {
+    flex: 1,
     height:60,
-    justifyContent: 'center', 
-    alignContent: 'center', 
-},
-  });
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+});
 
 
 
