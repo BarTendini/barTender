@@ -16,17 +16,15 @@ export const DrinkCustom = ({route, navigation}) => {
     // const fullScreen = {container: {flex: 1, backgroundColor: '#000000'}}
 
     const runFirst = (selDrink) => `  
-      document.getElementById("negroni").click();
+      document.getElementById("${selDrink}").click();
       document.getElementById("drinkTitle").innerHTML = "${selDrink}"
-      setTimeout(function() {
-        window.alert("ciccio")
-      }, 1000);
       true;
     `;
+    //console.log(CocktailHtml)
 
     const webViewProp = {
         source: {html: CocktailHtml},
-        injectedJavaScript: runFirst("negroni"),
+        injectedJavaScript: runFirst(selDrink),
         style: fullScreen
     }
 

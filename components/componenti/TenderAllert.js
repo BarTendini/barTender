@@ -73,7 +73,7 @@ const alertMessage = (text) => {
           </View>
         );
       }
-      else if (elements.tenderButtons.length > 1) {
+      else if (elements.tenderButtons.length == 2) {
         
         return (
           <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingVertical:20 }}>
@@ -141,7 +141,7 @@ const alertMessage = (text) => {
           navigation = {navigation_}
           bar = {bar_ ? bar_ : "unknown"} 
           color = {color_ ? color_ : themeStyles.light.backgroundColor1}
-          action = {action_ ? action_ : ()=>{alertMessage("OK Button Clicked.")}}
+          action = {action_ ? action_ : cancelAlertBox}
           />
       </View>
       

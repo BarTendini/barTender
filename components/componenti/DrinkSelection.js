@@ -27,13 +27,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
             setAlertVisibility(true)
         }
     }
-    const hideAlert=()=>{
-        if (alertVisibility===true){
-            setAlertVisibility(false)
-        }
-    }
-
-    
+   
 
     const pageSelector = () => {        
         navigation.push('DrinkDescription', {drink: Drink});
@@ -136,8 +130,9 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
         state = {setAlertVisibility}
         title = {"Pronto a Bere?"}
         tenderButtons = {[
-            {testo: "si!", alertText: "acquisto effettuato"},
-            {testo:'no',action:hideAlert},            
+            {testo: "si!", alertText: "acquisto effettuato", color: Drink.color},
+            {testo:'no'},
+            {testo:"ne voglio 2", alertText:"presi 2"}            
         ]}
         >
         <View>

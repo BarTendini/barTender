@@ -1,4 +1,6 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
+import React, { Component } from 'react'; 
+import { StyleSheet, View, Button, Text } from 'react-native';
 
 const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
 
@@ -208,7 +210,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
 
 ]
 
-export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks, switchFavouriteStateFromId};
+export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks, switchFavouriteStateFromId, fullDrinkListForCocktailStyles, fullDrinkListForInputRadio};
 
 const getTypes=(drinksInfo)=>{
     console.log("getTypes");
@@ -276,3 +278,65 @@ const switchFavouriteStateFromId = (drinksInfo, id) => {
     console.log("switchFavouriteStateFromId: " + DrinksInfo[id].name + " has been changed in " + !DrinksInfo[id].favorite);
     drinksInfo[id].favorite = !drinksInfo[id].favorite;
 }
+
+
+const fullDrinkListForCocktailStyles = () =>{
+    var drinks = ""
+    DrinksInfo.forEach(element => {
+        drinks = drinks + drinkForCocktailStyles(element);
+    })
+    //console.log(drinks)
+    return drinks;
+}
+
+
+const drinkForCocktailStyles = (drink) =>{
+    var ingredienti = ""
+    var virgola = "\n\t\t\t"
+    drink.ingredients.forEach(element => {
+        
+        ingredienti = ingredienti + virgola + ingredientForCocktailStyles(element);
+        virgola = ",\n\t\t\t"
+    });
+    //console.log(drink.ingredients)
+    return `
+        {
+        \tname: "` + drink.name +`",
+        \tid: "` +drink.name +`",
+        \tingredients: [`
+        + ingredienti +`
+        \t],
+        \tgarnish: "Orange Peel",
+        \tglass: "Old fashioned"
+        },`
+}
+
+const ingredientForCocktailStyles = (ingredient) => {
+    const color = (ingredient.color ? ingredient.color :  generateColor())
+    //console.log("ingredientForCocktailStyles " + ingredient + ": "+color)
+
+    return'{ text: "' + ingredient.nome +'", color: "' + color + '" }'
+}
+
+const generateColor = () => {
+    const randomColor = Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, '0');
+    return `#${randomColor}`;
+  };
+
+
+  const fullDrinkListForInputRadio = () => {
+    var drinks = ""
+    DrinksInfo.forEach(element => {
+        drinks = drinks + drinkForInputRadio(element);
+    })
+    //console.log(drinks)
+    return drinks;
+  }
+
+  const drinkForInputRadio = (drink) => {
+    return `
+    \t\t<input type="radio" name="drink-select" id="${drink.name}" />
+    \t\t<label for="${drink.name}">${drink.name}</label>`
+  }

@@ -22,7 +22,7 @@ const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");
     
     const Drink = route.params.drink;
-    console.log(Drink.ingredients)
+    //console.log(Drink.ingredients)
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     
     const isPreferred = (drink) => {
@@ -122,7 +122,7 @@ const DrinkDescription = ({ route, navigation }) => {
                     {Drink.name}
                 </Text>
                 <ScrollView style={{ flexGrow: 1}}>
-                    <View style={{ paddingBottom:80}}>
+                    <View style={{ paddingBottom:100}}>
                     <Image
                         source={getPicture(Drink)}
                         style={commonStyles.DrinkImm}
@@ -139,7 +139,7 @@ const DrinkDescription = ({ route, navigation }) => {
                             <Text style={styles.TextInfoTitle}>Tasso alcolico:</Text>
                             <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
                         </View>
-                        <View style={styles.ParallelCards}>
+                        <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50}}>
                             {FafouriteButton(Drink)}
                         </View>
                         
@@ -148,11 +148,12 @@ const DrinkDescription = ({ route, navigation }) => {
 
 
                     <DrinkCardTender title={"Ingredienti:"}>
-                        <FlatList
-                            data={Drink.ingredients}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
+                        
+                        <ListDrinkIngredients 
+                            ingredients = {Drink.ingredients}
+                            callbackfn={(item,key) => {renderItem(item,key)}}
                         />
+                        {renderItem(Drink.ingredients[0])} 
                     </DrinkCardTender>
                     <DrinkCardTender title={"Descrizione:"}>
                     <View style = {{felx:1}}>
@@ -175,7 +176,7 @@ const DrinkDescription = ({ route, navigation }) => {
                     colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
                     start={{x: 0.5, y: 0}}
                     end={{x: 0.5, y: 0.2}}
-                    style={{height: 100, paddingVertical:20, flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
+                    style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
                 >
                     <View style={styles.parallelButtons}>                    
                         <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
@@ -190,16 +191,26 @@ const DrinkDescription = ({ route, navigation }) => {
     );
 }
 
-const renderItem = ({ item }) => (
+function renderItem(item) {
+    console.log("renderItem: "+ Object.keys(item))
+    return (
     <View style={{ flex: 1, alignItems: 'flex-start' }}>
                         <Text style={styles.infoTextLeft}>
                             {item.nome}: {item.quantity} {item.unit}
                         </Text>
     </View>
-)
-
+    )
+}
+function ListDrinkIngredients(props) {
+    return <>
+    {<Text>perchè diamine non funziona??</Text>}
+        {props.ingredients.map(props.callbackfn)}
+    </>;
+}
 
 export default DrinkDescription;
+
+
 
 const styles = StyleSheet.create({
     DrinkImm: {
