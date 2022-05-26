@@ -27,6 +27,7 @@ const drinkInfo = ( id_,
         image: image_, // richiama un immagine
         ingredients: setIngredients(ingredients_, quantity_),
         recipe: ingredients_,
+        custom: null,
         color: color_, // sfondo della bolla del bar
         textColor: textColor_,// colore del testo della bolla
         favorite: favorite_, // è favorito
@@ -270,7 +271,17 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
 
 ]
 
-export {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks, switchFavouriteStateFromId, fullDrinkListForCocktailStyles, fullDrinkListForInputRadio};
+export {
+    DrinksInfo,
+    getTypes,
+    getDrinksOfType,
+    getAvailableAndUnavailableDrinks,
+    switchFavouriteStateFromId,
+    fullDrinkListForCocktailStyles,
+    fullDrinkListForInputRadio,
+    customizeIngredients,
+    deleteCustomization
+};
 
 const getTypes=(drinksInfo)=>{
     console.log("getTypes");
@@ -414,4 +425,58 @@ function copy(mainObj) {
         objCopy[key] = mainObj[key]; // copies each property to the objCopy object
     }
     return objCopy;
+}
+
+
+function customizeIngredients(drink, ingredientID, ingredientNewQuantity, isFixedQuantity){
+      console.log("customizeIngredients")
+      if (!drink.custom){
+          drink.custom = copy(drink.ingredients)
+      }
+      if (isFixedQuantity){
+          updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
+      }
+      else{
+          updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
+      }
+}
+
+function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
+     console.log("updateWithFixedQuantity")
+      var sumOfQuantities = 0
+    drink.custom.forEach(e => {
+          if(drink.custom[i].id == ingredientID){
+              sumOfQuantities += ingredientNewQuantity
+          }
+          else {
+              sumOfQuantities += e.quantity
+          }
+      })
+
+    for (i = 0 ; i < drink.custom.length; i++){
+        drink.custom[i].percent = precise(drink.custom[i].quantity / sumOfQuantities * 100)
+        if(drink.custom[i].id == ingredientID) {
+            drink.custom[i].quantity = precise(drink.quantity * ( ingredientNewQuantity / sumOfQuantities))
+        }
+        else {
+            drink.custom[i].quantity = precise(drink.quantity * (drink.custom[i].quantity / sumOfQuantities))
+        }
+    }
+}
+function updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity){
+    console.log("updateWithFreeQuantity")
+      for (i = 0 ; i < drink.custom.length; i++){
+        if(drink.custom[i].id == ingredientID){
+            const quantityToUpdate = ingredientNewQuantity - drink.custom[i].quantity
+            drink.custom[i].quantity = ingredientNewQuantity
+            drink.quantity += quantityToUpdate
+            return
+        }
+    }
+
+}
+
+function deleteCustomization(drink){
+      drink["custom"] = null
+    console.log("deleteCustomization")
 }

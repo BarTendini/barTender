@@ -4,14 +4,17 @@ import {DrinkCardTender} from "./TenderCard";
 import Slider from "@react-native-community/slider";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 import { FontAwesome } from "@expo/vector-icons";
+import {customizeIngredients, deleteCustomization} from "../../dati/DrinksInfo"
 
 
-const CardWithSlider = ({ item, drinkQuantity }) => {
+const CardWithSlider = ({drink, item, drinkQuantity }) => {
     //console.log(CocktailHtml)
     const [actualValue, setActualValue] = useState(item.quantity)
     const [displayText, setDisplayText] = useState([item.quantity, item.percent])
     const updateValue = (newValue) => {
-        setDisplayText(`quantity: ${item.quantity} ml${item.percent ? "\nproportion: "+item.percent+"%":"" }`)
+        newValue = Math.round(newValue)
+        customizeIngredients(drink, item.id, newValue, false)
+        setDisplayText([newValue, item.percent])
         setActualValue(newValue)
     }
     return (
@@ -50,7 +53,8 @@ const CardWithSlider = ({ item, drinkQuantity }) => {
                     {item.action ? <></> :
                         <FontAwesome
                             onPress={() => {
-                                console.log("remove button Worked")
+                                console.log("remove button Worked");
+                                deleteCustomization(drink)
                             }}
                             name="trash"
                             size={24}
