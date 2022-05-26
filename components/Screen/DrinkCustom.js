@@ -36,6 +36,7 @@ export const DrinkCustom = ({route, navigation}) => {
     }
 
     const renderItem = ({ item }) => {
+        console
         return (
             <CardWithSlider item={item} drinkQuantity={Drink.quantity}/>
         );

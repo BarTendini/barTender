@@ -1,31 +1,32 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 
 const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
 
 
-const drinkInfo = ( id_, 
-                    name_, 
-                    type_ = "unknown", 
-                    image_ = null, 
-                    ingredients_ = [], 
-                    color_ = "#999999", 
-                    textColor_ = 'black', 
-                    favorite_ = false, 
-                    price_ = 5.5, 
-                    quantity_ = 200, 
-                    alchoolicTax_ = 0, 
+const drinkInfo = ( id_,
+                    name_,
+                    type_ = "unknown",
+                    image_ = null,
+                    ingredients_ = [],
+                    color_ = "#999999",
+                    textColor_ = 'black',
+                    favorite_ = false,
+                    price_ = 5.5,
+                    quantity_ = 200,
+                    alchoolicTax_ = 0,
                     description_ = fakeText
                 ) =>{
 
-    
+
     return {
         id: id_, // deve necessariamente essere diverso dagli altri
         name: name_, // nome del drink
         type: type_, //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
         image: image_, // richiama un immagine
-        ingredients: ingredients_,
+        ingredients: setIngredients(ingredients_, quantity_),
+        recipe: ingredients_,
         color: color_, // sfondo della bolla del bar
         textColor: textColor_,// colore del testo della bolla
         favorite: favorite_, // è favorito
@@ -36,35 +37,81 @@ const drinkInfo = ( id_,
     }
 }
 
-const setRecipe = (ingredients = [{name: "unknown", quantity: 0, unit:"ml"}]) =>{
+const setRecipe = (ingredients = [{name: "unknown", quantity: 0}],  unit ="ml") =>{
     var result = []
     ingredients.forEach(element => {
         var tmp = getIngredientFromNome(element.name)
         tmp["quantity"] = element.quantity
-        tmp["unit"] = element.unit
+        tmp["unit"] = unit
         result.push(tmp)
     });
     return result
 }
 
-const setIngredients = () => {
+function setIngredients(recipe=[], quantityML =200){
+    if (recipe.length == 0){
+        return []
+    }
+
+    let ingredients = []
+    const unit = recipe[0].unit
+
+    if (unit == "%") {
+        recipe.forEach(e => {
+            var tmp = e
+            tmp["percent"] = precise(tmp["quantity"])
+            tmp["quantity"] = quantityML * (tmp["percent"] / 100)
+        ingredients.push(tmp)
+    })
+    }
+    else if (unit == "parti"){
+        var sumOfAllParts = 0
+        recipe.forEach(e => {
+            sumOfAllParts += e["quantity"]
+            console.log(sumOfAllParts)
+        })
+        recipe.forEach(e => {
+            var tmp = e
+            tmp["percent"] = precise(tmp["quantity"] / sumOfAllParts * 100)
+            tmp["quantity"] = quantityML * (tmp["quantity"] / sumOfAllParts)
+        ingredients.push(tmp)
+    })
+    }
+    else if (unit == "ml"){
+        var sumOfAllML = 0
+        console.log("recipe -----------------------")
+        console.log(recipe)
+        recipe.forEach(e => {
+            console.log(e["quantity"])
+            sumOfAllML = sumOfAllML + e["quantity"]
+            console.log(sumOfAllML)
+        })
+        recipe.forEach(e => {
+            var tmp = e
+            tmp["percent"] = precise(tmp["quantity"] / sumOfAllML * 100)
+        tmp["quantity"] = quantityML * (tmp["quantity"] / sumOfAllML)
+        ingredients.push(tmp)
+    })
+    }
+    console.log("setIngredients")
+    console.log(ingredients)
     return (
-        3
+        ingredients
     )
 }
 
 const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti i drink
     // il primo oggetto definisce un singolo drink
-    drinkInfo(  0, // deve necessariamente essere diverso dagli altri 
-                'Ichnusa', // nome del drink 
-                "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
-                require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine 
+    drinkInfo(  0, // deve necessariamente essere diverso dagli altri
+                'Ichnusa', // nome del drink
+                "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+                require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine
                 setRecipe([ // array degli ingredienti
-                    {name: "ichnusa", quantity:330} 
-                ]),
-                '#CD7F32', // sfondo della bolla  
-                'black',// colore del testo della bolla 
-                true, // è favorito 
+                    {name: "ichnusa", quantity:330}
+                ],"ml"),
+                '#CD7F32', // sfondo della bolla
+                'black',// colore del testo della bolla
+                true, // è favorito
                 2.50, //prezzo
                 330,  //quantità
                 5,  // tasso alcolico
@@ -75,10 +122,10 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
                 "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
                 require("../image/drinks/drawings/cosmopolitan.png"), // richiama un immagine
                 setRecipe([
-                    {name: "vodka", quantity:40, unit:"ml"},
-                    {name: "cointreau", quantity:15, unit:"ml"},
-                    {name: "limeJuice", quantity:15, unit:"ml"},
-                    {name: "blueberryJuice", quantity:30, unit:"ml"}
+                    {name: "vodka", quantity:40},
+                    {name: "cointreau", quantity:15},
+                    {name: "limeJuice", quantity:15},
+                    {name: "blueberryJuice", quantity:30}
                 ]),
                 '#5580e6',
                 'black',
@@ -93,10 +140,10 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             require("../image/drinks/drawings/aperolSpritz.png"), // richiama un immagine
             setRecipe([
-                {name: "prosecco", quantity:3, unit:"parti"},
-                {name: "aperol", quantity:2, unit:"parti"},
-                {name: "soda", quantity:1, unit:"parti"},
-            ]),
+                {name: "prosecco", quantity:3},
+                {name: "aperol", quantity:2},
+                {name: "soda", quantity:1},
+            ],"parti"),
             '#FF5E13',
             'black',
             false,
@@ -110,9 +157,9 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             null, // richiama un immagine
             setRecipe([
-                {name: "redBull", quantity:70, unit:"%"},
-                {name: "vodka", quantity:30, unit:"%"}
-            ]),
+                {name: "redBull", quantity:70},
+                {name: "vodka", quantity:30}
+            ],"%"),
             '#5580e6',
            'black',
            false,
@@ -126,10 +173,9 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             null, // richiama un immagine
             setRecipe([
-                {name: "cocacola", quantity:70, unit:"%"},
-                {name: "whiteRum", quantity:30, unit:"%"},
-                {name: "limeJuice", quantity:30, unit:"%"}
-            ]),
+                {name: "cocacola", quantity:50},
+                {name: "whiteRum", quantity:50},
+            ],"%"),
             '#800020',
             'black',
             false,
@@ -138,17 +184,17 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             15,
             "Il Cuba libre è un cocktail ufficiale IBA, appartenente alla categoria dei long drinks a base di rum bianco, cola e lime. Simile al rum & cola, i due termini vengono spesso utilizzati in modo intercambiabile, sebbene indichino due cocktail differenti."
         ),
-        drinkInfo(  5, // deve necessariamente essere diverso dagli altri 
-            'gin tonic', // nome del drink 
-            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine 
-            null, // richiama un immagine 
+        drinkInfo(  5, // deve necessariamente essere diverso dagli altri
+            'gin tonic', // nome del drink
+            "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+            null, // richiama un immagine
             setRecipe([ // array degli ingredienti
-                {name: "gin", quantity:70, unit:"%"},
-                {name: "tonicWater", quantity:70, unit:"%"}
-            ]),
-            '#fff99c', // sfondo della bolla  
-            'black',// colore del testo della bolla 
-            false, // è favorito 
+                {name: "gin", quantity:30},
+                {name: "tonicWater", quantity:70}
+            ],"%"),
+            '#fff99c', // sfondo della bolla
+            'black',// colore del testo della bolla
+            false, // è favorito
             6.50, //prezzo
             200,  //quantità
             15,  // tasso alcolico
@@ -298,6 +344,7 @@ const fullDrinkListForCocktailStyles = () =>{
     DrinksInfo.forEach(element => {
         drinks = drinks + drinkForCocktailStyles(element);
     })
+    //console.log("fullDrinkListForCocktailStyles------------------------------------------------")
     //console.log(drinks)
     return drinks;
 }
@@ -307,7 +354,7 @@ const drinkForCocktailStyles = (drink) =>{
     var ingredienti = ""
     var virgola = "\n\t\t\t"
     drink.ingredients.forEach(element => {
-        
+
         ingredienti = ingredienti + virgola + ingredientForCocktailStyles(element);
         virgola = ",\n\t\t\t"
     });
@@ -353,3 +400,7 @@ const generateColor = () => {
     \t\t<input type="radio" name="drink-select" id="${drink.name}" />
     \t\t<label for="${drink.name}">${drink.name}</label>`
   }
+
+function precise(x) {
+    return x;
+}
