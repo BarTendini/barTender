@@ -19,7 +19,7 @@ const drinkInfo = ( id_,
                     description_ = fakeText
                 ) =>{
 
-
+    console.log('drinkInfo: ' + name_ + " ------------------------------------------")
     return {
         id: id_, // deve necessariamente essere diverso dagli altri
         name: name_, // nome del drink
@@ -40,7 +40,8 @@ const drinkInfo = ( id_,
 const setRecipe = (ingredients = [{name: "unknown", quantity: 0}],  unit ="ml") =>{
     var result = []
     ingredients.forEach(element => {
-        var tmp = getIngredientFromNome(element.name)
+        var tmp = copy(getIngredientFromNome(element.name))
+        //var tmp = getIngredientFromNome(element.name)
         tmp["quantity"] = element.quantity
         tmp["unit"] = unit
         result.push(tmp)
@@ -68,7 +69,7 @@ function setIngredients(recipe=[], quantityML =200){
         var sumOfAllParts = 0
         recipe.forEach(e => {
             sumOfAllParts += e["quantity"]
-            console.log(sumOfAllParts)
+            //console.log(sumOfAllParts)
         })
         recipe.forEach(e => {
             var tmp = e
@@ -79,12 +80,12 @@ function setIngredients(recipe=[], quantityML =200){
     }
     else if (unit == "ml"){
         var sumOfAllML = 0
-        console.log("recipe -----------------------")
-        console.log(recipe)
+        //console.log("recipe -----------------------")
+        //console.log(recipe)
         recipe.forEach(e => {
-            console.log(e["quantity"])
+            //console.log(e["quantity"])
             sumOfAllML = sumOfAllML + e["quantity"]
-            console.log(sumOfAllML)
+            //console.log(sumOfAllML)
         })
         recipe.forEach(e => {
             var tmp = e
@@ -93,7 +94,7 @@ function setIngredients(recipe=[], quantityML =200){
         ingredients.push(tmp)
     })
     }
-    console.log("setIngredients")
+    console.log("setIngredients----------------------------")
     console.log(ingredients)
     return (
         ingredients
@@ -287,7 +288,7 @@ const getTypes=(drinksInfo)=>{
 }
 
 const getDrinksOfType = (drinksInfo, type) => {
-    console.log("getDrinksOfType");
+    //console.log("getDrinksOfType");
     if (type === "all") {
         return (drinksInfo);
     }
@@ -334,7 +335,7 @@ const setUnaviableColors = (unavailableDrinks) =>{
 }
 
 const switchFavouriteStateFromId = (drinksInfo, id) => {
-    console.log("switchFavouriteStateFromId: " + DrinksInfo[id].name + " has been changed in " + !DrinksInfo[id].favorite);
+    //console.log("switchFavouriteStateFromId: " + DrinksInfo[id].name + " has been changed in " + !DrinksInfo[id].favorite);
     drinksInfo[id].favorite = !drinksInfo[id].favorite;
 }
 
@@ -402,5 +403,15 @@ const generateColor = () => {
   }
 
 function precise(x) {
-    return x;
+    return x.toPrecision(4);
+}
+
+function copy(mainObj) {
+    let objCopy = {}; // objCopy will store a copy of the mainObj
+    let key;
+
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key]; // copies each property to the objCopy object
+    }
+    return objCopy;
 }

@@ -11,6 +11,7 @@ import TenderButton from "../componenti/TenderButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
+import {DrinkCardTender} from "../Card/TenderCard";
 
 export const DrinkCustom = ({route, navigation}) => {
 
@@ -28,15 +29,29 @@ export const DrinkCustom = ({route, navigation}) => {
     const _renderHeader = () => {
         {/*Tutorial WebView*/}
         {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
-        return (
-            <View style={{width: '100%', height:300, borderWidth:3}}>
+        const quantity = {nome:"quantity", quantity:Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
+        return (<>
+            <View style={{width: '100%', height:300}}>
                 {showHTML()}
+            </View>
+            <CardWithSlider item={quantity} drinkQuantity={1000} />
+            </>
+        )
+    }
+
+    const _renderFooter = () => {
+        {/*Tutorial WebView*/}
+        {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
+        return (
+            <View style={{paddingBottom:60}}>
+                <DrinkCardTender title={"add ingredients"} color={"#ffffff"} borderColor={Drink.color}>
+
+                </DrinkCardTender>
             </View>
         )
     }
 
     const renderItem = ({ item }) => {
-        console
         return (
             <CardWithSlider item={item} drinkQuantity={Drink.quantity}/>
         );
@@ -68,7 +83,7 @@ export const DrinkCustom = ({route, navigation}) => {
             data={Drink.ingredients}
             renderItem={renderItem}
             keyExtractor={item => item.id}
-            contentContainerStyle={{ paddingBottom: 80}}
+            contentContainerStyle={{ paddingBottom: 100}}
         />
         <View style={{
             position: 'absolute',
@@ -85,10 +100,10 @@ export const DrinkCustom = ({route, navigation}) => {
                 style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
             >
                 <View style={styles.parallelButtons}>
-                    <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
+                    <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {}}/>
                 </View>
                 <View style={styles.parallelButtons}>
-                        <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
+                        <TenderButton testo={'🍹 conferma'} navigation={navigation} action={() => {}}/>
                 </View>
             </LinearGradient>
         </View>
