@@ -175,8 +175,9 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
             null, // richiama un immagine
             setRecipe([
-                {name: "cocacola", quantity:50},
+                {name: "cocacola", quantity:120},
                 {name: "whiteRum", quantity:50},
+                {name: "limeJuice", quantity:1}
             ],"%"),
             '#800020',
             'black',
@@ -200,75 +201,90 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
             6.50, //prezzo
             200,  //quantità
             15,  // tasso alcolico
-            "Birra Ichnusa, or simply Ichnusa, is the name of a popular Sardinian-made beer, which is brewed in Assemini, a town near the Sardinian capital Cagliari. It is named after the Latinized ancient name for Sardinia, Hyknusa.\nBirra Ichnusa is a lager (5.0% ABV) with a hoppy taste.\nBirra Ichnusa was founded in Cagliari in 1912. In 1967 the brewery was finally moved to Assemini. In 1981 more than 400,000 hl beer was brewed.[2] In 1986 the brewery was taken over by Heineken" // testo
+            fakeText // testo
     ),
-    {
-        id: 6,
-        name: 'moscow mule',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null, // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("vodka"),
-            getIngredientFromNome("gingerBeer")
-        ],
-        color: '#5580e6',
-        textColor: 'black',
-        favorite: true
-    } ,
-    {
-        id: 7,
-        name: 'tequila sunrise',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null, // richiama un immagine
-        ingredients: [
-            getIngredientFromNome("tequilaSilver"),
-            getIngredientFromNome("blueberryJuice"),
-            getIngredientFromNome("orangeJuice")
-        ],
-        color: '#5580e6',
-        textColor: 'black',
-        favorite: true
-    } ,
-    {
-        id: 8,
-        name: 'sex on the beach',
-        type:"cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: null,
-        ingredients: [
-            getIngredientFromNome("vodka"),
-            getIngredientFromNome("orangeJuice"),
-            getIngredientFromNome("peachVodka"),
-            getIngredientFromNome("blueberryJuice")
-        ],
-        color: '#ff69b4',
-        textColor: 'black',
-        favorite: false
-    } ,
-    {
-        id: 9,
-        name: 'carignano',
-        type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: require("../image/drinks/drawings/carignano.png"),
-        ingredients: [
-            getIngredientFromNome("carignano")
-        ],
-        color: '#58181F',
-        textColor: 'black',
-        favorite: false
-    } ,
-    {
-        id: 10,
-        name: 'vermentino',
-        type:"wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, whine
-        image: require("../image/drinks/drawings/vermentino.png"),
-        ingredients: [
-            getIngredientFromNome("vermentino")
-        ],
-        color: '#EEEDC4',
-        textColor: 'black',
-        favorite: false
-    } ,
-
+    drinkInfo(  6, // deve necessariamente essere diverso dagli altri
+        'moscow mule', // nome del drink
+        "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        null, // richiama un immagine
+        setRecipe([ // array degli ingredienti
+            {name: "vodka", quantity:50},
+            {name: "gingerBeer", quantity:120},
+            {name: "limeJuice", quantity:1}
+        ],"ml"),
+        '#5580e6', // sfondo della bolla
+        'black',// colore del testo della bolla
+        false, // è favorito
+        5.60, //prezzo
+        200,  //quantità
+        15,  // tasso alcolico
+        fakeText
+    ),
+    drinkInfo(  7, // deve necessariamente essere diverso dagli altri
+        'tequila sunrise', // nome del drink
+        "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        null, // richiama un immagine
+        setRecipe([ // array degli ingredienti
+            {name: "tequilaSilver", quantity:90},
+            {name: "orangeJuice", quantity:180},
+            {name: "grenadineSyrup", quantity:30}
+        ],"ml"),
+        '#5580e6', // sfondo della bolla
+        'black',// colore del testo della bolla
+        false, // è favorito
+        5.60, //prezzo
+        200,  //quantità
+        15,  // tasso alcolico
+        fakeText
+    ),
+    drinkInfo(  8, // deve necessariamente essere diverso dagli altri
+        'sex on the beach', // nome del drink
+        "cocktail", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        null, // richiama un immagine
+        setRecipe([ // array degli ingredienti
+            {name: "vodka", quantity:40},
+            {name: "orangeJuice", quantity:40},
+            {name: "blueberryJuice", quantity:40},
+            {name: "peachVodka", quantity:20}
+        ],"ml"),
+        '#ff69b4', // sfondo della bolla
+        'black',// colore del testo della bolla
+        false, // è favorito
+        5.60, //prezzo
+        200,  //quantità
+        15,  // tasso alcolico
+        fakeText
+    ),
+    drinkInfo(  9, // deve necessariamente essere diverso dagli altri
+        'carignano', // nome del drink
+        "wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        require("../image/drinks/drawings/carignano.png"), // richiama un immagine
+        setRecipe([ // array degli ingredienti
+            {name: "carignano", quantity:100}
+        ],"%"),
+        '#58181F', // sfondo della bolla
+        'black',// colore del testo della bolla
+        false, // è favorito
+        5.60, //prezzo
+        200,  //quantità
+        15,  // tasso alcolico
+        fakeText
+    ),
+    drinkInfo(  10, // deve necessariamente essere diverso dagli altri
+        'vermentino', // nome del drink
+        "wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        require("../image/drinks/drawings/vermentino.png"), // richiama un immagine
+        setRecipe([ // array degli ingredienti
+            {name: "vermentino", quantity:100}
+        ],"%"),
+        '#EEEDC4', // sfondo della bolla
+        'black',// colore del testo della bolla
+        false, // è favorito
+        5.60, //prezzo
+        200,  //quantità
+        15,  // tasso alcolico
+        fakeText
+    ),
 ]
 
 export {
@@ -426,12 +442,21 @@ function copy(mainObj) {
     }
     return objCopy;
 }
+function copyArray(mainObj) {
+    let objCopy = []; // objCopy will store a copy of the mainObj
+    let key;
+
+    mainObj.forEach(e=>{
+        objCopy.push(copy(e));
+    })
+    return objCopy;
+}
 
 
 function customizeIngredients(drink, ingredientID, ingredientNewQuantity, isFixedQuantity){
       console.log("customizeIngredients")
       if (!drink.custom){
-          drink.custom = copy(drink.ingredients)
+          drink.custom = copyArray(drink.ingredients)
       }
       if (isFixedQuantity){
           updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
@@ -453,6 +478,7 @@ function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
           }
       })
 
+    let i;
     for (i = 0 ; i < drink.custom.length; i++){
         drink.custom[i].percent = precise(drink.custom[i].quantity / sumOfQuantities * 100)
         if(drink.custom[i].id == ingredientID) {
@@ -463,14 +489,29 @@ function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
         }
     }
 }
-function updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity){
-    console.log("updateWithFreeQuantity")
-      for (i = 0 ; i < drink.custom.length; i++){
+function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingredientNewQuantity){
+    console.log("updateWithFreeQuantity   id:" + ingredientID + " quantity:"+ingredientNewQuantity + " customLength:" + drink.custom.length )
+    let i;
+    var sumOfQuantities = 0
+    drink.custom.forEach(e => {
+        if(e.id == ingredientID){
+            sumOfQuantities += ingredientNewQuantity
+        }
+        else {
+            sumOfQuantities += e.quantity
+        }
+    })
+    for (i = 0 ; i < drink.custom.length; i++){
+
         if(drink.custom[i].id == ingredientID){
             const quantityToUpdate = ingredientNewQuantity - drink.custom[i].quantity
             drink.custom[i].quantity = ingredientNewQuantity
             drink.quantity += quantityToUpdate
-            return
+            drink.custom[i].percent = precise(ingredientNewQuantity / sumOfQuantities * 100)
+
+        }else{
+            drink.custom[i].percent = precise(drink.custom[i].quantity / sumOfQuantities * 100)
+            console.log(drink.custom[i].nome + ": "+ drink.custom[i].percent + "%")
         }
     }
 

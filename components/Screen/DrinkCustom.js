@@ -12,15 +12,24 @@ import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
+import {customizeIngredients, deleteCustomization, DrinksInfo} from "../../dati/DrinksInfo"
 
 export const DrinkCustom = ({route, navigation}) => {
 
-    const Drink=route.params.drink
+    //const Drink=route.params.drink
+    const [Drink, setDrink] = useState(DrinksInfo[route.params.drink])
     const selDrink = route.params.drink?.name;
     // Se provo a cambiare colore viene visualizzato solo per pochi secondi
     const fullScreen = {flex: 1, backgroundColor: '#fff'}
     // const fullScreen = {container: {flex: 1, backgroundColor: '#000000'}}
+    const [pageTitle, setPageTitle] = useState(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
+    const [customIngridients, setCustomIngridients] = useState(Drink.custom ? Drink.custom : Drink.ingredients )
 
+    console.log(Drink.custom)
+    const updateDrink=()=>{
+        setDrink(DrinksInfo[route.params.drink])
+        route.params.updateDrink()
+    }
     const runFirst = (selDrink) => `  
       document.getElementById("${selDrink}").click();
       document.getElementById("drinkTitle").innerHTML = "${selDrink}"
@@ -34,7 +43,15 @@ export const DrinkCustom = ({route, navigation}) => {
             <View style={{width: '100%', height:300}}>
                 {showHTML()}
             </View>
-            <CardWithSlider item={quantity} drinkQuantity={1000} />
+            <CardWithSlider
+                item={quantity}
+                drinkQuantity={1000}
+                action={
+                ()=>{
+                    setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
+                    console.log("setPageTitle")
+                }
+            }/>
             </>
         )
     }
@@ -53,7 +70,20 @@ export const DrinkCustom = ({route, navigation}) => {
 
     const renderItem = ({ item }) => {
         return (
-            <CardWithSlider drink={Drink} item={item} drinkQuantity={Drink.quantity}/>
+            <CardWithSlider
+                drink={Drink}
+                item={item}
+                drinkQuantity={Drink.quantity}
+                stateUpdate = {updateDrink}
+                action={
+                    ()=>{
+                        //console.log(Drink.custom)
+                        updateDrink()
+                        setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
+                        //console.log("setPageTitle")
+                        //console.log(Drink.custom)
+                    }
+            }/>
         );
     };
 
@@ -76,11 +106,11 @@ export const DrinkCustom = ({route, navigation}) => {
     return <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
         <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
         <Text style={{ fontSize: 36, textAlign: 'center' }}>
-            {Drink.name}
+            {pageTitle}
         </Text>
         <FlatList
             ListHeaderComponent={_renderHeader}
-            data={Drink.ingredients}
+            data={Drink.ingredients }
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={{ paddingBottom: 100}}
@@ -100,7 +130,7 @@ export const DrinkCustom = ({route, navigation}) => {
                 style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
             >
                 <View style={styles.parallelButtons}>
-                    <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {}}/>
+                    <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {deleteCustomization(Drink); updateDrink(); setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)}}/>
                 </View>
                 <View style={styles.parallelButtons}>
                         <TenderButton testo={'🍹 conferma'} navigation={navigation} action={() => {}}/>

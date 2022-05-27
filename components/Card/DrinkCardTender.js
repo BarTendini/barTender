@@ -62,7 +62,6 @@ const CardTender = (elements) => {
                             paddingBottom:5,
                             paddingHorizontal: 5,
                             alignSelf: "center",
-                            justifyContent: "center",
                             backgroundColor: "#ffffff",
                             textAlign: "center",
                             borderRadius: 50,

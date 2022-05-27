@@ -7,12 +7,13 @@ import { FontAwesome } from "@expo/vector-icons";
 import {customizeIngredients, deleteCustomization} from "../../dati/DrinksInfo"
 
 
-const CardWithSlider = ({drink, item, drinkQuantity }) => {
+const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
     //console.log(CocktailHtml)
     const [actualValue, setActualValue] = useState(item.quantity)
     const [displayText, setDisplayText] = useState([item.quantity, item.percent])
     const updateValue = (newValue) => {
         newValue = Math.round(newValue)
+        action()
         customizeIngredients(drink, item.id, newValue, false)
         setDisplayText([newValue, item.percent])
         setActualValue(newValue)
@@ -74,7 +75,7 @@ const CardWithSlider = ({drink, item, drinkQuantity }) => {
                 <View style={{flexDirection: "row"}}>
                     <Text style={styles.QuantityIndicatorLeft}>0</Text>
                     <Slider
-                        style={{flex: 1, marginTop:10}}
+                        style={{flex: 1, marginTop:10, width:600, marginHorizontal:5}}
                         minimumValue={0}
                         value={actualValue}
                         maximumValue={drinkQuantity}

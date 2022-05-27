@@ -54,11 +54,11 @@ const DrinkMenu = ({route, navigation}) => {
                 </DrinkCardTender>
 
                 <ListDrinkAvailable availableDrinks={availableDrinks} callbackfn={(item, index) => {
-                    return <DrinkSelection Drink={item} availability={true} navigation={navigation} key={index}/>
+                    return <DrinkSelection Drink_={item.id} availability={true} navigation={navigation} key={index}/>
                 }}/>
 
                 <ListUnavailableDrink unavailableDrinks={unavailableDrinks} callbackfn={(item, index) => {
-                    return <DrinkSelection Drink={item} availability={false} navigation={navigation} key={index}/>
+                    return <DrinkSelection Drink_={item.id} availability={false} navigation={navigation} key={index}/>
                 }}/>
 
             </ScrollView>

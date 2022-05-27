@@ -10,18 +10,26 @@ import FafouriteButton from "../componenti/FafouriteButton";
 import { DrinkCardTender } from "../Card/TenderCard";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
-
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");
+
     
-    const Drink = route.params.drink;
+    //const Drink = route.params.drink;
+    const [Drink, setDrink] = useState(DrinksInfo[route.params.drink])
+    console.log(Drink.custom);
     //console.log(Drink.ingredients)
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
-    
+    const updateDrink=()=>{
+        setDrink(DrinksInfo[route.params.drink])
+        route.params.updateDrink()
+    }
     const isPreferred = (drink) => {
         return drink.favorite
     }
@@ -116,7 +124,7 @@ const DrinkDescription = ({ route, navigation }) => {
             <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
             <View>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
-                    {Drink.name}
+                    {Drink.name} {Drink.custom ? "custom": "" }
                 </Text>
             </View>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -148,12 +156,20 @@ const DrinkDescription = ({ route, navigation }) => {
 
                         <DrinkCardTender title={"Ingredienti:"}>
                             <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
-                                 {Drink.ingredients.map(item =>
-                                    <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
-                                        <Text style={styles.infoTextLeft}>
-                                            {item.nome}: {item.quantity} {item.unit}
-                                        </Text>
-                                    </View>
+                                 {Drink.custom ?
+                                     Drink.custom.map(item =>
+                                         <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
+                                             <Text style={styles.infoTextLeft}>
+                                                 {item.nome}: {item.quantity} {item.unit}
+                                             </Text>
+                                         </View>
+                                     )
+                                     :Drink.ingredients.map(item =>
+                                        <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
+                                            <Text style={styles.infoTextLeft}>
+                                                {item.nome}: {item.quantity} {item.unit}
+                                            </Text>
+                                        </View>
                                  )}
                             </View>
                         </DrinkCardTender>
@@ -179,7 +195,7 @@ const DrinkDescription = ({ route, navigation }) => {
                     style={{height: 100, paddingVertical: 20,  flexDirection: "row", justifyContent: 'center'}}
                 >
                     <View style={styles.parallelButtons}>
-                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink })}/>
+                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink.id, updateDrink:updateDrink })}/>
                     </View>
                     <View style={styles.parallelButtons}>
                          <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>

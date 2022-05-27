@@ -147,7 +147,7 @@ const alertMessage = (text) => {
   }
 
 
-console.log("tenderAllert")
+//console.log("tenderAllert")
   return(
     <View style={styles.container} >
     <Modal
@@ -244,7 +244,8 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   parallelButtons: {
-    flex: 1,
+    flexGrow: 1,
+    minWidth:60,
     height:60,
     justifyContent: 'center',
     alignContent: 'center',

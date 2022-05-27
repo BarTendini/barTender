@@ -8,18 +8,22 @@ import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
 import TenderAllert from "./TenderAllert"
 import FafouriteButton from "./FafouriteButton";
+import {DrinksInfo} from "../../dati/DrinksInfo";
 
 
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 
-const DrinkSelection = ({ Drink, availability, navigation }) => {
+const DrinkSelection = ({ Drink_, availability, navigation }) => {
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
-    
+    const [Drink, setDrink] = useState(DrinksInfo[Drink_])
     const drinkColor = availability ? Drink.color : themeStyles.unavailableColor.backgroundColor // fare attenzione che i colori sianosotto forma esadecimale #rrggbb
     //console.log(Drink.name +":  " + drinkColor)
     const [alertVisibility, setAlertVisibility] = useState(false)
+    const updateDrink=()=>{
+        setDrink(DrinksInfo[Drink_])
+    }
     const showAlert=()=>{
         if (alertVisibility===false){
             setAlertVisibility(true)
@@ -28,7 +32,7 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
    
 
     const pageSelector = () => {        
-        navigation.push('DrinkDescription', {drink: Drink});
+        navigation.push('DrinkDescription', {drink: Drink.id, updateDrink:updateDrink});
     };
 
     const drawAvailability = () => {
@@ -85,11 +89,19 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
     const availableButton = () => {
         if(availability){
             return(
-                <TenderButton testo={'🛒 acquista per: €'+ Drink.price} navigation={navigation} color={drinkColor} action={showAlert} />
+                <TenderButton
+                    testo={'🛒 acquista per: €'+ Drink.price}
+                    navigation={navigation}
+                    color={drinkColor}
+                    action={showAlert} />
             );
         }
         return(
-            <TenderButton testo={'🫗 Terminato'} navigation={navigation} color={drinkColor} action={function(){}}/>
+            <TenderButton
+                testo={'🫗 Terminato'}
+                navigation={navigation}
+                color={drinkColor}
+                action={function(){}}/>
         );
     }
 
@@ -129,11 +141,16 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
         visibility = {alertVisibility} 
         state = {setAlertVisibility}
         title = {"Pronto a Bere?"}
-        tenderButtons = {[
-            {testo: "si!", alertText: "acquisto effettuato", color: Drink.color},
-            {testo:'no'},
-            {testo:"ne voglio 2", alertText:"presi 2"}            
-        ]}
+        tenderButtons = {
+            Drink.custom? [
+                    {testo: "original", alertText: "acquistato originale", color: Drink.color},
+                    {testo:'custom', alertText: "acquistato originale", color: Drink.color}
+                ]:
+                [
+                    {testo: "si!", alertText: "acquisto effettuato", color: Drink.color},
+                    {testo:'no'}
+                ]
+        }
         >
         <View>
             <Text style={{fontSize:24}}>
@@ -143,6 +160,28 @@ const DrinkSelection = ({ Drink, availability, navigation }) => {
                 <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
                 <Text> ?</Text>
             </Text>
+            {Drink.custom ?
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:0.5, fontSize: 24}}>
+                        <Text>original</Text>
+                        {
+                            Drink.ingredients.map(item =>
+                                <Text>{item.nome}: {item.percent}</Text>
+                            )
+                        }
+                    </View>
+                    <View style={{flex:0.5, fontSize: 24}}>
+                        <Text>custom</Text>
+                        {console.log(Drink.custom)}
+                        {
+                            Drink.custom.map(item =>
+                                <Text>{item.nome}: {item.percent}</Text>
+                            )
+                        }
+                    </View>
+                </View>
+                : <></>
+            }
         </View>
     </TenderAllert> 
     </View>
