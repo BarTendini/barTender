@@ -47,18 +47,18 @@ const DrinkMenu = ({route, navigation}) => {
 
                 <DrinkCardTender title={"Tipo di Drink:"}>
                     <View>
-                        <ListDrinkType avaiableDrinkTypes={avaiableDrinkTypes} callbackfn={(item, index) => {
-                            return <DrinkTypeSelection type={item.type} key={index}/>
+                        <ListDrinkType avaiableDrinkTypes={avaiableDrinkTypes} callbackfn={(item) => {
+                            return <DrinkTypeSelection type={item.type} key={item.id}/>
                         }}/>
                     </View>
                 </DrinkCardTender>
 
-                <ListDrinkAvailable availableDrinks={availableDrinks} callbackfn={(item, index) => {
-                    return <DrinkSelection Drink_={item.id} availability={true} navigation={navigation} key={index}/>
+                <ListDrinkAvailable availableDrinks={availableDrinks} callbackfn={(item) => {
+                    return <DrinkSelection Drink_={item.id} availability={true} navigation={navigation} key={item.id}/>
                 }}/>
 
                 <ListUnavailableDrink unavailableDrinks={unavailableDrinks} callbackfn={(item, index) => {
-                    return <DrinkSelection Drink_={item.id} availability={false} navigation={navigation} key={index}/>
+                    return <DrinkSelection Drink_={item.id} availability={false} navigation={navigation} key={item.id}/>
                 }}/>
 
             </ScrollView>

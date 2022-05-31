@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, TouchableOpacityComponent} from "react-native";
+import {SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, TouchableOpacityComponent, ScrollView} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/HeaderTender";
@@ -13,8 +13,8 @@ import { Entypo } from '@expo/vector-icons';
 const InitialSelectorScreen = ({route, navigation}) => {
     return (
         <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'}/>
-            <View style={{flex: 1, marginTop: 10}}>
+            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'} />
+            <ScrollView style={{flex: 1, marginTop: 10}}>
 
                 <HomeButton
                     onPress={() => navigation.push('HomeScreenSelector')}
@@ -30,7 +30,14 @@ const InitialSelectorScreen = ({route, navigation}) => {
                     icon={ <Entypo name="drink" size={100} color="black"/> }
                 />
 
-            </View>
+                <HomeButton
+                    onPress={() => navigation.push('Cart')}
+                    gradient={["#FF91C9", "#FFFFFF"]}
+                    text="Guarda il carrello"
+                    icon={ <Entypo name="shopping-cart" size={100} color="black"/> }
+                />
+
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -58,6 +65,7 @@ const initStyle = StyleSheet.create({
     },
     touchable:{
         flex: 1,
+        minHeight: 200,
         borderRadius: 40,
         borderWidth: 6,
         borderColor: themeStyles.light.backgroundColor1,

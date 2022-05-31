@@ -6,8 +6,7 @@ import {IconsButton} from "../../dati/IconsButton";
 import {LinearGradient} from 'expo-linear-gradient';
 
 
-
-const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'header header
+const Header = ({ icon, navigation, bgColor, alertFun, noGradient=false}) => { //renderizza l'header header
     const menuIconForWeb = (icon,navigation,alertFun) => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
             return(showIcon(IconsButton.menu, navigation, alertFun));
@@ -17,7 +16,7 @@ const Header = ({ icon, navigation, bgColor, alertFun }) => { //renderizza l'hea
         
         <View style={{backgroundColor: bgColor ? bgColor : null}}>
             <LinearGradient
-                    colors={['rgba(255,255,255,0)','rgba(255,255,255,0)','rgba(255,255,255,0)', 'rgba(255,255,255,1)']}
+                    colors={['rgba(255,255,255,0)','rgba(255,255,255,0)','rgba(255,255,255,0)', noGradient ? 'rgba(255,255,255,0)':'rgba(255,255,255,1)']}
                     start={{ x: 0.5, y: 0.5 }}
                     end={{ x: 0.5, y: 1 }}
                     style={{justifyContent: 'center'}}
@@ -41,14 +40,14 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
 
     const getAction = (ico, nav, fun) => {
         console.log(nav.canGoBack())
-        if (ico.name === 'back' && nav.canGoBack()) return nav.goBack();
+        if (ico.name === 'back' && nav.canGoBack()) return nav.goBack({wentBack:true});
         if (ico.name === 'logout' && !nav.canGoBack()) return fun();
         if (ico.name === 'menu' && navigation && navigation.toggleDrawer())
             return navigation.dispatch(DrawerActions.toggleDrawer());
         if (ico.name === 'none')  return null;
     };
 
-    return <TouchableOpacity onPress={() => getAction(icon, navigation, alertFun)}
+    return <TouchableOpacity onPress={() => getAction(icon, navigation, () => { navigation.replace('Autenticazione') })}
                           style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             {icon.iconJSX}
         </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, {useState} from "react"; //quasi sempre necessario
+import React, {useEffect, useState} from "react"; //quasi sempre necessario
 import {View, Text, Image, TouchableOpacity, StyleSheet, Platform} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import commonStyles from "../../styles/CommonStyles";
@@ -9,6 +9,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import TenderAllert from "./TenderAllert"
 import FafouriteButton from "./FafouriteButton";
 import {DrinksInfo} from "../../dati/DrinksInfo";
+import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId, addCartInfo} from "../../dati/CartInfo";
 
 
 
@@ -16,14 +17,19 @@ const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 
 const DrinkSelection = ({ Drink_, availability, navigation }) => {
+
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     const [Drink, setDrink] = useState(DrinksInfo[Drink_])
+    console.log("DrinkSelection: " + Drink.name)
     const drinkColor = availability ? Drink.color : themeStyles.unavailableColor.backgroundColor // fare attenzione che i colori sianosotto forma esadecimale #rrggbb
     //console.log(Drink.name +":  " + drinkColor)
     const [alertVisibility, setAlertVisibility] = useState(false)
     const updateDrink=()=>{
         setDrink(DrinksInfo[Drink_])
     }
+    useEffect(()=>{
+        setDrink(DrinksInfo[Drink_])
+    })
     const showAlert=()=>{
         if (alertVisibility===false){
             setAlertVisibility(true)
@@ -32,7 +38,7 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
    
 
     const pageSelector = () => {        
-        navigation.push('DrinkDescription', {drink: Drink.id, updateDrink:updateDrink});
+        navigation.push('DrinkDescription', {drink: Drink.id});
     };
 
     const drawAvailability = () => {
@@ -128,8 +134,8 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
 
                
                 <View style={{ flex: 1, flexDirection: "row", alignContent: 'center', marginTop: 10, marginBottom: 5, }}>
-                            
-                    {FafouriteButton(Drink)}
+                    {console.log(Drink.id)}
+                    {FafouriteButton(Drink.id)}
                     {availableButton()}
                 </View>
 
@@ -143,45 +149,24 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
         title = {"Pronto a Bere?"}
         tenderButtons = {
             Drink.custom? [
-                    {testo: "original", alertText: "acquistato originale", color: Drink.color},
-                    {testo:'custom', alertText: "acquistato originale", color: Drink.color}
+                    {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, false); navigation.push('Cart')}},
+                    {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, true); navigation.push('Cart')}},
+                    {testo:'annulla'}
                 ]:
                 [
-                    {testo: "si!", alertText: "acquisto effettuato", color: Drink.color},
+                    {testo: "si!", alertText: "acquisto effettuato", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, false); navigation.push('Cart')}},
                     {testo:'no'}
                 ]
         }
         >
         <View>
             <Text style={{fontSize:24}}>
-                <Text>Sicuro di voler aquistare un bicchiere di </Text>
-                <Text style={{fontWeight:"bold"}}>{Drink.name}</Text>
+                <Text>Stai acquistando </Text>
+                <Text style={{fontWeight:"bold"}}>{Drink.name} </Text>
+                {Drink.custom ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
                 <Text> al prezzo di </Text>
                 <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
-                <Text> ?</Text>
             </Text>
-            {Drink.custom ?
-                <View style={{flexDirection:"row"}}>
-                    <View style={{flex:0.5, fontSize: 24}}>
-                        <Text>original</Text>
-                        {
-                            Drink.ingredients.map(item =>
-                                <Text>{item.nome}: {item.percent}</Text>
-                            )
-                        }
-                    </View>
-                    <View style={{flex:0.5, fontSize: 24}}>
-                        <Text>custom</Text>
-                        {console.log(Drink.custom)}
-                        {
-                            Drink.custom.map(item =>
-                                <Text>{item.nome}: {item.percent}</Text>
-                            )
-                        }
-                    </View>
-                </View>
-                : <></>
-            }
         </View>
     </TenderAllert> 
     </View>

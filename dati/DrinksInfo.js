@@ -1,5 +1,5 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 
 const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
@@ -33,6 +33,7 @@ const drinkInfo = ( id_,
         favorite: favorite_, // è favorito
         price: price_,
         quantity: quantity_,
+        customQuantity: null,
         alchoolicTax: alchoolicTax_,
         description: description_
     }
@@ -95,8 +96,8 @@ function setIngredients(recipe=[], quantityML =200){
         ingredients.push(tmp)
     })
     }
-    console.log("setIngredients----------------------------")
-    console.log(ingredients)
+    //console.log("setIngredients----------------------------")
+    //console.log(ingredients)
     return (
         ingredients
     )
@@ -296,7 +297,9 @@ export {
     fullDrinkListForCocktailStyles,
     fullDrinkListForInputRadio,
     customizeIngredients,
-    deleteCustomization
+    deleteCustomization,
+    getIngredientById,
+    getCustomIngredientById
 };
 
 const getTypes=(drinksInfo)=>{
@@ -430,7 +433,7 @@ const generateColor = () => {
   }
 
 function precise(x) {
-    return x.toPrecision(4);
+    return Math.round(x)//.toPrecision(3);
 }
 
 function copy(mainObj) {
@@ -482,9 +485,11 @@ function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
     for (i = 0 ; i < drink.custom.length; i++){
         drink.custom[i].percent = precise(drink.custom[i].quantity / sumOfQuantities * 100)
         if(drink.custom[i].id == ingredientID) {
+
             drink.custom[i].quantity = precise(drink.quantity * ( ingredientNewQuantity / sumOfQuantities))
         }
         else {
+
             drink.custom[i].quantity = precise(drink.quantity * (drink.custom[i].quantity / sumOfQuantities))
         }
     }
@@ -501,17 +506,18 @@ function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingredientNew
             sumOfQuantities += e.quantity
         }
     })
+    drink.customQuantity = sumOfQuantities
     for (i = 0 ; i < drink.custom.length; i++){
 
         if(drink.custom[i].id == ingredientID){
             const quantityToUpdate = ingredientNewQuantity - drink.custom[i].quantity
             drink.custom[i].quantity = ingredientNewQuantity
-            drink.quantity += quantityToUpdate
             drink.custom[i].percent = precise(ingredientNewQuantity / sumOfQuantities * 100)
 
         }else{
             drink.custom[i].percent = precise(drink.custom[i].quantity / sumOfQuantities * 100)
-            console.log(drink.custom[i].nome + ": "+ drink.custom[i].percent + "%")
+
+            //console.log(drink.custom[i].nome + ": "+ drink.custom[i].percent + "%")
         }
     }
 
@@ -520,4 +526,15 @@ function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingredientNew
 function deleteCustomization(drink){
       drink["custom"] = null
     console.log("deleteCustomization")
+}
+
+function deleteCustomIngridient(){
+
+}
+
+function getIngredientById (drinksInfo, drinkId, ingredientId){
+      return drinksInfo[drinkId].ingredients.find(x => x.id === ingredientId)
+}
+function getCustomIngredientById (drinksInfo, drinkId, ingredientId){
+    return drinksInfo[drinkId].custom.find(x => x.id === ingredientId)
 }

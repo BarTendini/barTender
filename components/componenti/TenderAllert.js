@@ -86,18 +86,23 @@ const alertMessage = (text) => {
       }
       else{
         
-        return (
-          <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingVertical:20 }}>
-            {
-              singleButton(elements.tenderButtons[0])
-            }
-            {
-              singleButton(elements.tenderButtons[1])
-            }
-            {
-              singleButton(elements.tenderButtons[2])
-            }
-          </View>
+        return (<>
+              <View style={{ flexDirection: "row", alignSelf: "center",justifyContent: 'center', paddingVertical:20,fontSize:20 }}>
+                {
+                  singleButton(elements.tenderButtons[0])
+                }
+                {
+                  singleButton(elements.tenderButtons[1])
+                }
+                {
+                  singleButton(elements.tenderButtons[2])
+                }
+
+              </View>
+              <View style={{flexDirection: "row", width:"50%", justifyContent: 'center', paddingBottom:20 }}>
+
+              </View>
+            </>
         );
       }
     }
@@ -139,7 +144,7 @@ const alertMessage = (text) => {
           navigation = {navigation_}
           bar = {bar_ ? bar_ : "unknown"} 
           color = {color_ ? color_ : themeStyles.light.backgroundColor1}
-          action = {action_ ? action_ : cancelAlertBox}
+          action = {action_ ? ()=>{cancelAlertBox(); action_()} : cancelAlertBox}
           />
       </View>
       

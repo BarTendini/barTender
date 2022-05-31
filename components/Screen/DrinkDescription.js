@@ -1,4 +1,4 @@
-import React, { useState } from "react"; //quasi sempre necessario
+import React, {useEffect, useState} from "react"; //quasi sempre necessario
 import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, ScrollView, Platform } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
@@ -13,22 +13,32 @@ import {LinearGradient} from 'expo-linear-gradient';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import TenderAllert from "../componenti/TenderAllert";
+import {addCartInfo} from "../../dati/CartInfo";
 
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
 const DrinkDescription = ({ route, navigation }) => {
     console.log("DrinkDescription");
-
-    
     //const Drink = route.params.drink;
     const [Drink, setDrink] = useState(DrinksInfo[route.params.drink])
-    console.log(Drink.custom);
+    const [alertVisibility, setAlertVisibility] = useState(false)
+    const [dummy, setDummy] = useState(0)
     //console.log(Drink.ingredients)
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     const updateDrink=()=>{
         setDrink(DrinksInfo[route.params.drink])
-        route.params.updateDrink()
+    }
+    useEffect(()=>{
+        console.log("dummy === "+ dummy)
+        setDrink(DrinksInfo[route.params.drink])
+        setDummy(0)
+    })
+    const showAlert=()=>{
+        if (alertVisibility===false){
+            setAlertVisibility(true)
+        }
     }
     const isPreferred = (drink) => {
         return drink.favorite
@@ -42,7 +52,7 @@ const DrinkDescription = ({ route, navigation }) => {
         if (iconName === nameHeart)
             setIconName('heart')
         else setIconName(nameHeart)
-        console.log(Drink.id)
+        console.log("id: "+Drink.id)
         switchFavouriteStateFromId(DrinksInfo, Drink.id)
     }
 
@@ -96,7 +106,7 @@ const DrinkDescription = ({ route, navigation }) => {
                     color: Drink.textColor ? Drink.textColor : 'black',
                     fontSize: 24,
                     marginHorizontal: 10
-                }}>{drink.name}</Text>
+                }}>{Drink.name}</Text>
             </View>
         );
 
@@ -139,15 +149,15 @@ const DrinkDescription = ({ route, navigation }) => {
                         {/*Drink info*/}
                         <View style={styles.ParallelCardsContainer}>
                             <View style={styles.ParallelCards}>
-                                <Text style={styles.TextInfoTitle}>Quantità</Text>
-                                <Text style={{textAlign: 'center',}}>{Drink.quantity}ml</Text>
+                                <Text style={styles.TextInfoTitle}>Prezzo</Text>
+                                <Text style={{textAlign: 'center',}}>{Drink.price}€</Text>
                             </View>
                             <View style={styles.ParallelCards}>
                                 <Text style={styles.TextInfoTitle}>Tasso alcolico</Text>
                                 <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
                             </View>
                             <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50, marginHorizontal: 5}}>
-                                {FafouriteButton(Drink)}
+                                {FafouriteButton(Drink.id)}
                             </View>
 
                         </View>
@@ -157,20 +167,39 @@ const DrinkDescription = ({ route, navigation }) => {
                         <DrinkCardTender title={"Ingredienti:"}>
                             <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
                                  {Drink.custom ?
-                                     Drink.custom.map(item =>
-                                         <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
-                                             <Text style={styles.infoTextLeft}>
-                                                 {item.nome}: {item.quantity} {item.unit}
-                                             </Text>
+                                         <View style={{flexDirection:"row"}}>
+                                             <View style={{flex:0.5, fontSize: 24}}>
+                                                 <Text style={{fontWeight:"bold"}}>original</Text>
+                                                 <Text>quantity: {Drink.quantity}ml</Text>
+                                                 {
+                                                     Drink.ingredients.map(item =>
+                                                         <Text key={item.id}>{item.nome}: {item.percent}%</Text>
+                                                     )
+                                                 }
+                                             </View>
+                                             <View style={{flex:0.5, fontSize: 24}}>
+                                                 <Text style={{fontWeight:"bold"}}>custom</Text>
+                                                 <Text>quantity: {Drink.customQuantity}ml</Text>
+                                                 {
+                                                     Drink.custom.map(item =>
+                                                         <Text key={item.id}>{item.nome}: {item.percent}%</Text>
+                                                     )
+                                                 }
+                                             </View>
                                          </View>
-                                     )
-                                     :Drink.ingredients.map(item =>
-                                        <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
-                                            <Text style={styles.infoTextLeft}>
-                                                {item.nome}: {item.quantity} {item.unit}
-                                            </Text>
-                                        </View>
-                                 )}
+
+                                     :<>
+                                     <Text>quantity: {Drink.quantity}ml</Text>
+                                         {Drink.ingredients.map(item =>
+                                                <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
+                                                    <Text >
+                                                        {item.nome}: {item.quantity} {item.unit}
+                                                    </Text>
+                                                </View>
+
+                                        )}
+                                     </>
+                                     }
                             </View>
                         </DrinkCardTender>
                         <DrinkCardTender title={"Descrizione:"}>
@@ -195,13 +224,39 @@ const DrinkDescription = ({ route, navigation }) => {
                     style={{height: 100, paddingVertical: 20,  flexDirection: "row", justifyContent: 'center'}}
                 >
                     <View style={styles.parallelButtons}>
-                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() => navigation.push('DrinkCustom', { drink: Drink.id, updateDrink:updateDrink })}/>
+                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() =>{ setDummy(2); navigation.push('DrinkCustom', { drink: Drink.id}) }}/>
                     </View>
                     <View style={styles.parallelButtons}>
-                         <TenderButton testo={'🍹 Aquista per €' +Drink.price} navigation={navigation}/>
+                         <TenderButton testo={'🍹 Aquista' } navigation={navigation} action={showAlert}/>
                     </View>
                 </LinearGradient>
             </View>
+            <TenderAllert
+                visibility = {alertVisibility}
+                state = {setAlertVisibility}
+                title = {"Pronto a Bere?"}
+                tenderButtons = {
+                    Drink.custom? [
+                            {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, false); navigation.push('Cart')}},
+                            {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, true); navigation.push('Cart')}},
+                            {testo:'annulla'}
+                        ]:
+                        [
+                            {testo: "si!", alertText: "acquisto effettuato", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, false); navigation.push('Cart')}},
+                            {testo:'no'}
+                        ]
+                }
+            >
+                <View>
+                    <Text style={{fontSize:24}}>
+                        <Text>Stai acquistando </Text>
+                        <Text style={{fontWeight:"bold"}}>{Drink.name} </Text>
+                        {Drink.custom ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
+                        <Text> al prezzo di </Text>
+                        <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
+                    </Text>
+                </View>
+            </TenderAllert>
         </SafeAreaView>
     );
 }

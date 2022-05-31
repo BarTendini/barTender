@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/HeaderTender";
 import {IconsButton} from "../../dati/IconsButton";
@@ -18,18 +18,23 @@ export const DrinkCustom = ({route, navigation}) => {
 
     //const Drink=route.params.drink
     const [Drink, setDrink] = useState(DrinksInfo[route.params.drink])
-    const selDrink = route.params.drink?.name;
+    const selDrink = Drink?.name;
     // Se provo a cambiare colore viene visualizzato solo per pochi secondi
     const fullScreen = {flex: 1, backgroundColor: '#fff'}
     // const fullScreen = {container: {flex: 1, backgroundColor: '#000000'}}
     const [pageTitle, setPageTitle] = useState(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
     const [customIngridients, setCustomIngridients] = useState(Drink.custom ? Drink.custom : Drink.ingredients )
 
-    console.log(Drink.custom)
+    //console.log(Drink.custom)
     const updateDrink=()=>{
         setDrink(DrinksInfo[route.params.drink])
-        route.params.updateDrink()
+        setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
     }
+    useEffect(()=>{
+        setDrink(DrinksInfo[route.params.drink])
+        setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
+    })
+
     const runFirst = (selDrink) => `  
       document.getElementById("${selDrink}").click();
       document.getElementById("drinkTitle").innerHTML = "${selDrink}"
@@ -38,7 +43,7 @@ export const DrinkCustom = ({route, navigation}) => {
     const _renderHeader = () => {
         {/*Tutorial WebView*/}
         {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
-        const quantity = {nome:"quantity", quantity:Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
+        const quantity = {nome:"quantity", quantity:Drink.custom ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
         return (<>
             <View style={{width: '100%', height:300}}>
                 {showHTML()}
@@ -71,7 +76,7 @@ export const DrinkCustom = ({route, navigation}) => {
     const renderItem = ({ item }) => {
         return (
             <CardWithSlider
-                drink={Drink}
+                drink={route.params.drink}
                 item={item}
                 drinkQuantity={Drink.quantity}
                 stateUpdate = {updateDrink}
@@ -79,7 +84,6 @@ export const DrinkCustom = ({route, navigation}) => {
                     ()=>{
                         //console.log(Drink.custom)
                         updateDrink()
-                        setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
                         //console.log("setPageTitle")
                         //console.log(Drink.custom)
                     }
@@ -110,7 +114,7 @@ export const DrinkCustom = ({route, navigation}) => {
         </Text>
         <FlatList
             ListHeaderComponent={_renderHeader}
-            data={Drink.ingredients }
+            data={Drink.custom ? Drink.custom : Drink.ingredients }
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={{ paddingBottom: 100}}
@@ -133,7 +137,7 @@ export const DrinkCustom = ({route, navigation}) => {
                     <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {deleteCustomization(Drink); updateDrink(); setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)}}/>
                 </View>
                 <View style={styles.parallelButtons}>
-                        <TenderButton testo={'🍹 conferma'} navigation={navigation} action={() => {}}/>
+                        <TenderButton testo={'🍹 conferma'} navigation={navigation} action={() => {navigation.goBack()}}/>
                 </View>
             </LinearGradient>
         </View>

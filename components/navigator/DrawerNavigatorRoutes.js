@@ -5,11 +5,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, DrinkType, Home, Settings } from '../Screen/Screens'
+import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, Home, Settings, Cart} from '../Screen/Screens'
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import NavigationDrawerHeader from "./NavigationDrawerHeader";
 import {DrinkCustom} from "../Screen/DrinkCustom";
 import InitialSelectorScreen from "../Screen/InitialSelectorScreen";
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,6 +53,13 @@ const InitialSelectionStack = ({navigation}) => { //serve per lanciare la pagina
                 component={DrinkMenuScreenStack}
                 options={{headerShown: false}}
             />
+            <Stack.Screen
+                name="Cart"
+                component={Cart}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
+
         </Stack.Navigator>
     );
 };
@@ -152,6 +160,12 @@ const DrinkMenuScreenStack = ({navigation}) => {
                 // Hiding header for Navigation Drawer
                 options={{headerShown: false}}
             />
+            <Stack.Screen
+                name="Cart"
+                component={Cart}
+                // Hiding header for Navigation Drawer
+                options={{headerShown: false}}
+            />
 
         </Stack.Navigator>
     );
@@ -165,6 +179,32 @@ const ChangeLogScreenStack = ({navigation}) => {
                 component={ChangeLogScreen}
                 options={{
                     title: 'ChangeLogScreen', //Set Header Title
+                    headerLeft: () => (
+                        <NavigationDrawerHeader navigationProps={navigation} />
+                    ),
+                    headerStyle: {
+                        backgroundColor: '#307ecc', //Set Header color, non nella bar laterale
+                    },
+                    headerTintColor: '#fff', //Set Header text color
+                    headerTitleStyle: {
+                        fontWeight: 'bold', //Set Header text style
+                    },
+                    headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
+    );
+};
+
+
+const CartScreenStack = ({navigation}) => {
+    return (
+        <Stack.Navigator initialRouteName="CartScreen">
+            <Stack.Screen
+                name="CartScreen"
+                component={Cart}
+                options={{
+                    title: 'Cart', //Set Header Title
                     headerLeft: () => (
                         <NavigationDrawerHeader navigationProps={navigation} />
                     ),
@@ -231,6 +271,16 @@ const DrawerNavigatorRoutes = (props) => { //definisce cosa appare nel menù a s
                     drawerInactiveTintColor: 'yellow',
                 }}
                 component={DrinkMenuScreenStack}
+            />
+            <Drawer.Screen
+                name="CartScreenStack"
+                options={{
+                    drawerLabel: 'Cart',
+                    headerShown: false,
+                    drawerActiveTintColor: 'red',
+                    drawerInactiveTintColor: 'yellow',
+                }}
+                component={CartScreenStack}
             />
             <Drawer.Screen
                 name="ChangeLogScreenStack"

@@ -7,5 +7,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Settings from "./Settings";
 import SplashScreen from "./SplashScreen";
+import Cart from "./Cart"
 
-export { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, Home, Login, Register, Settings, SplashScreen };
+
+export { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, Home, Login, Register, Settings, SplashScreen, Cart };

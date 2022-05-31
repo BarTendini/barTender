@@ -6,20 +6,25 @@ import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
 
 
-const FavouriteButton = (Drink) => {
+const FavouriteButton = (drinkID) => {
+    console.log("FavouriteButton")
+    console.log("id"+drinkID)
+    const [Drink, setDrink] = useState(DrinksInfo[drinkID])
     const isPreferred = (drink) => {
+        console.log(drink.name)
         console.log(drink.name + ": " + drink.favorite)
         return drink.favorite
-    } 
-
+    }
     const [iconName, setIconName] = useState( isPreferred(Drink) ? 'heart' : 'heart-outlined')
-
     const heartPressed = () => {
-        let nameHeart = 'heart-outlined'
+        /*let nameHeart = 'heart-outlined'
         if (iconName === nameHeart)
             setIconName ('heart')
         else setIconName(nameHeart)
+        */
         switchFavouriteStateFromId(DrinksInfo, Drink.id)
+        setDrink(DrinksInfo[drinkID])
+        setIconName (isPreferred(Drink) ? 'heart' : 'heart-outlined')
     }
 
     return(   

@@ -1,23 +1,29 @@
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {DrinkCardTender} from "./TenderCard";
 import Slider from "@react-native-community/slider";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 import { FontAwesome } from "@expo/vector-icons";
-import {customizeIngredients, deleteCustomization} from "../../dati/DrinksInfo"
-
+import {customizeIngredients, deleteCustomization,DrinksInfo,getCustomIngredientById,getIngredientById } from "../../dati/DrinksInfo"
 
 const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
-    //console.log(CocktailHtml)
+    console.log("CardWithSlider")
+    const [Drink, setDrink] = useState(DrinksInfo[drink])
     const [actualValue, setActualValue] = useState(item.quantity)
     const [displayText, setDisplayText] = useState([item.quantity, item.percent])
+    console.log("still alive")
     const updateValue = (newValue) => {
         newValue = Math.round(newValue)
         action()
-        customizeIngredients(drink, item.id, newValue, false)
-        setDisplayText([newValue, item.percent])
+        customizeIngredients(Drink, item.id, newValue, false)
+
+        setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id).percent :getIngredientById(DrinksInfo,drink,item.id).percent ])
         setActualValue(newValue)
     }
+
+    useEffect(()=>{
+        //setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id):getIngredientById(DrinksInfo,drink,item.id) ])
+    })
     return (
         <DrinkCardTender title={item.nome} color={item.color} action={item.action ? item.action : null} borderColor={item.borderColor ? item.borderColor : null}>
             <View style={{ alignItems: 'flex-start' , margin:20}}>
@@ -55,7 +61,7 @@ const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
                         <FontAwesome
                             onPress={() => {
                                 console.log("remove button Worked");
-                                deleteCustomization(drink)
+                                deleteCustomization(Drink)
                             }}
                             name="trash"
                             size={24}

@@ -6,6 +6,7 @@ import {ChangeLogScreen, Login, Register, SplashScreen} from './components/Scree
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 import React from "react";
 import {AppContext} from "./AppContext";
+import Cart from "./components/Screen/Cart"
 //AGGIUNGI HERMES COME ENGINE PER VELOCIZZARE L'APP
 
 //Aggiugne le animazioni per android

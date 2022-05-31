@@ -40,7 +40,7 @@ const Register = ({ navigation }) => {
         <SafeAreaView style={commonStyles.AndroidSafeArea}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: themeStyles.light.backgroundColor1}} keyboardShouldPersistTaps='handled'>
-                    <Header icon={IconsButton.back} navigation={navigation} />
+                    <Header icon={IconsButton.back} navigation={navigation} noGradient={true}/>
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
                         <View style={{padding: 20}}/>

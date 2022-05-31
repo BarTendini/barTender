@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Header icon={IconsButton.none} />
+                    <Header icon={IconsButton.none} noGradient={true}/>
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Login</Text>
                         <View style={{paddingTop: 20}}/>
