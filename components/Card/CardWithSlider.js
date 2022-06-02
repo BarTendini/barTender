@@ -4,26 +4,43 @@ import {DrinkCardTender} from "./TenderCard";
 import Slider from "@react-native-community/slider";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 import { FontAwesome } from "@expo/vector-icons";
-import {customizeIngredients, deleteCustomization,DrinksInfo,getCustomIngredientById,getIngredientById } from "../../dati/DrinksInfo"
+import {copyArray, updateWithFixedQuantity, updateWithFreeQuantity, deleteCustomization,DrinksInfo,getCustomIngredientById,getIngredientById } from "../../dati/DrinksInfo"
 
 const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
     console.log("CardWithSlider")
     const [Drink, setDrink] = useState(DrinksInfo[drink])
     const [actualValue, setActualValue] = useState(item.quantity)
     const [displayText, setDisplayText] = useState([item.quantity, item.percent])
-    console.log("still alive")
+    const [custom, setCustom] = useState([])
+    //console.log("still alive")
     const updateValue = (newValue) => {
         newValue = Math.round(newValue)
-        action()
         customizeIngredients(Drink, item.id, newValue, false)
 
         setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id).percent :getIngredientById(DrinksInfo,drink,item.id).percent ])
         setActualValue(newValue)
     }
 
+    const customizeIngredients = (drink, ingredientID, ingredientNewQuantity, isFixedQuantity) => {
+        console.log("customizeIngredients")
+        if (!drink.custom){
+            const lol = copyArray(drink.ingredients)
+            setCustom(lol)
+            console.warn(lol)
+        }
+        // if (isFixedQuantity){
+        //     updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
+        // }
+        // else{
+        //     updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
+        // }
+    }
+
     useEffect(()=>{
+        action(custom)
+        console.log(custom)
         //setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id):getIngredientById(DrinksInfo,drink,item.id) ])
-    })
+    }, [custom])
     return (
         <DrinkCardTender title={item.nome} color={item.color} action={item.action ? item.action : null} borderColor={item.borderColor ? item.borderColor : null}>
             <View style={{ alignItems: 'flex-start' , margin:20}}>

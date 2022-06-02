@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dati/CartInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Card/CardWithSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Card/CardWithSlider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Screens.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Screens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/FafouriteButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/FafouriteButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/HeaderTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/HeaderTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderAllert.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderAllert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navigator/DrawerNavigatorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigator/DrawerNavigatorRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dati/DrinksInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dati/DrinksInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +37,7 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/giang/Documents/GitHub/barTender",
     "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -70,7 +56,9 @@
       <workItem from="1653635120819" duration="794000" />
       <workItem from="1653645665961" duration="121000" />
       <workItem from="1653645805550" duration="13359000" />
-      <workItem from="1653939550235" duration="38211000" />
+      <workItem from="1653939550235" duration="38545000" />
+      <workItem from="1654195736459" duration="70000" />
+      <workItem from="1654195823845" duration="4967000" />
     </task>
     <servers />
   </component>
@@ -87,5 +75,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

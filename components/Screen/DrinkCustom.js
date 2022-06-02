@@ -52,8 +52,8 @@ export const DrinkCustom = ({route, navigation}) => {
                 item={quantity}
                 drinkQuantity={1000}
                 action={
-                ()=>{
-                    setPageTitle(` ${Drink.name} ${Drink.custom ? "custom": "" }`)
+                (lol)=>{
+                    setPageTitle(` ${Drink.name} ${lol ? "custom": "" }`)
                     console.log("setPageTitle")
                 }
             }/>

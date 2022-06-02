@@ -1,5 +1,5 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 
 const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
@@ -28,6 +28,7 @@ const drinkInfo = ( id_,
         ingredients: setIngredients(ingredients_, quantity_),
         recipe: ingredients_,
         custom: null,
+        setCustom: null,
         color: color_, // sfondo della bolla del bar
         textColor: textColor_,// colore del testo della bolla
         favorite: favorite_, // è favorito
@@ -296,7 +297,6 @@ export {
     switchFavouriteStateFromId,
     fullDrinkListForCocktailStyles,
     fullDrinkListForInputRadio,
-    customizeIngredients,
     deleteCustomization,
     getIngredientById,
     getCustomIngredientById
@@ -445,7 +445,7 @@ function copy(mainObj) {
     }
     return objCopy;
 }
-function copyArray(mainObj) {
+export function copyArray(mainObj) {
     let objCopy = []; // objCopy will store a copy of the mainObj
     let key;
 
@@ -455,21 +455,7 @@ function copyArray(mainObj) {
     return objCopy;
 }
 
-
-function customizeIngredients(drink, ingredientID, ingredientNewQuantity, isFixedQuantity){
-      console.log("customizeIngredients")
-      if (!drink.custom){
-          drink.custom = copyArray(drink.ingredients)
-      }
-      if (isFixedQuantity){
-          updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
-      }
-      else{
-          updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
-      }
-}
-
-function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
+export function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
      console.log("updateWithFixedQuantity")
       var sumOfQuantities = 0
     drink.custom.forEach(e => {
@@ -494,10 +480,10 @@ function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){
         }
     }
 }
-function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingredientNewQuantity){
+export function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingredientNewQuantity){
     console.log("updateWithFreeQuantity   id:" + ingredientID + " quantity:"+ingredientNewQuantity + " customLength:" + drink.custom.length )
     let i;
-    var sumOfQuantities = 0
+    let sumOfQuantities = 0
     drink.custom.forEach(e => {
         if(e.id == ingredientID){
             sumOfQuantities += ingredientNewQuantity
