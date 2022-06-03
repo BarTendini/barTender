@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Risotto!">
-      <change afterPath="$PROJECT_DIR$/components/componenti/TenderFragment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/BarDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/BarDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/HomeSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/HomeSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/HeaderTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/BannerTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +61,7 @@
       <workItem from="1654241997246" duration="66000" />
       <workItem from="1654242066688" duration="1000" />
       <workItem from="1654254210044" duration="665000" />
-      <workItem from="1654261457116" duration="4266000" />
+      <workItem from="1654261457116" duration="4405000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -89,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654241903972</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js">
+      <created>1654265863407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654265863407</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,7 +96,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Risotto!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Risotto!" />
+    <MESSAGE value="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
