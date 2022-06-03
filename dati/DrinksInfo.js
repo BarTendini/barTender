@@ -27,8 +27,7 @@ const drinkInfo = ( id_,
         image: image_, // richiama un immagine
         ingredients: setIngredients(ingredients_, quantity_),
         recipe: ingredients_,
-        custom: null,
-        setCustom: null,
+        custom: [],
         color: color_, // sfondo della bolla del bar
         textColor: textColor_,// colore del testo della bolla
         favorite: favorite_, // è favorito
@@ -509,8 +508,8 @@ export function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingred
 
 }
 
-function deleteCustomization(drink){
-      drink["custom"] = null
+function deleteCustomization(drink) {
+      drink.custom = []
     console.log("deleteCustomization")
 }
 

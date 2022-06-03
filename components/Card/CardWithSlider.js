@@ -11,36 +11,28 @@ const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
     const [Drink, setDrink] = useState(DrinksInfo[drink])
     const [actualValue, setActualValue] = useState(item.quantity)
     const [displayText, setDisplayText] = useState([item.quantity, item.percent])
-    const [custom, setCustom] = useState([])
     //console.log("still alive")
     const updateValue = (newValue) => {
         newValue = Math.round(newValue)
         customizeIngredients(Drink, item.id, newValue, false)
-
-        setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id).percent :getIngredientById(DrinksInfo,drink,item.id).percent ])
+        action()
+        setDisplayText([newValue, Drink.custom.length > 0 ? getCustomIngredientById(DrinksInfo,drink,item.id).percent :getIngredientById(DrinksInfo,drink,item.id).percent ])
         setActualValue(newValue)
     }
 
     const customizeIngredients = (drink, ingredientID, ingredientNewQuantity, isFixedQuantity) => {
         console.log("customizeIngredients")
-        if (!drink.custom){
-            const lol = copyArray(drink.ingredients)
-            setCustom(lol)
-            console.warn(lol)
+        if (Drink.custom.length === 0) {
+            Drink.custom = copyArray(drink.ingredients)
         }
-        // if (isFixedQuantity){
-        //     updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
-        // }
-        // else{
-        //     updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
-        // }
+        if (isFixedQuantity){
+            updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
+        }
+        else{
+            updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
+        }
     }
 
-    useEffect(()=>{
-        action(custom)
-        console.log(custom)
-        //setDisplayText([newValue, Drink.custom ? getCustomIngredientById(DrinksInfo,drink,item.id):getIngredientById(DrinksInfo,drink,item.id) ])
-    }, [custom])
     return (
         <DrinkCardTender title={item.nome} color={item.color} action={item.action ? item.action : null} borderColor={item.borderColor ? item.borderColor : null}>
             <View style={{ alignItems: 'flex-start' , margin:20}}>
