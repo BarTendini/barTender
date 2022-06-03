@@ -22,8 +22,8 @@ const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
 
     const customizeIngredients = (drink, ingredientID, ingredientNewQuantity, isFixedQuantity) => {
         console.log("customizeIngredients")
-        if (Drink.custom.length === 0) {
-            Drink.custom = copyArray(drink.ingredients)
+        if (drink.custom.length === 0) {
+            drink.custom = copyArray(drink.ingredients)
         }
         if (isFixedQuantity){
             updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
