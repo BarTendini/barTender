@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Platform, SafeAreaView, Alert, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/HeaderTender.js";
+import Header from "../componenti/BannerTender.js";
 import BarSelection from "../componenti/BarSelection";
 import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../componenti/Location";

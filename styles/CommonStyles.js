@@ -12,7 +12,7 @@ export default StyleSheet.create({
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     AndroidHomeSafeArea: {
-        flex: 1,
+        flexGrow: 1,
         backgroundColor: "white",
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },

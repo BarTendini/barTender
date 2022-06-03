@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native"; /
 import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import { changes, version } from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
 import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
-import Header from "../componenti/HeaderTender.js";
+import Header from "../componenti/BannerTender.js";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
 import { IconsButton } from "../../dati/IconsButton";
 import MainMenu from "../componenti/MainMenu";

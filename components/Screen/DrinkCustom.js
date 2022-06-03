@@ -1,6 +1,6 @@
 import React, {Component, useState, useEffect} from 'react';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/HeaderTender";
+import Header from "../componenti/BannerTender";
 import {IconsButton} from "../../dati/IconsButton";
 import {Platform, SafeAreaView, Text, View, StyleSheet, ScrollView, FlatList} from "react-native";
 import SettingsInfo from "../../dati/SettingsInfo";

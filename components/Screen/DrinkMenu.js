@@ -1,6 +1,6 @@
 import React, {useState} from "react"; //quasi sempre necessario
 import {TouchableOpacity, SafeAreaView, Platform, ScrollView, View, StyleSheet, Text} from "react-native";
-import Header from "../componenti/HeaderTender";
+import Header from "../componenti/BannerTender";
 import commonStyles from "../../styles/CommonStyles";
 import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"

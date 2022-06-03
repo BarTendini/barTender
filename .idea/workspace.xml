@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Risotto!" />
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Risotto!">
+      <change afterPath="$PROJECT_DIR$/components/componenti/TenderFragment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/BarDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/BarDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/HomeSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/HomeSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/HeaderTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/BannerTender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +76,20 @@
       <workItem from="1654195823845" duration="4967000" />
       <workItem from="1654212648557" duration="47000" />
       <workItem from="1654212697811" duration="5368000" />
+      <workItem from="1654241801390" duration="123000" />
+      <workItem from="1654241997246" duration="66000" />
+      <workItem from="1654242066688" duration="1000" />
+      <workItem from="1654254210044" duration="665000" />
+      <workItem from="1654261457116" duration="4266000" />
     </task>
+    <task id="LOCAL-00001" summary="Risotto!">
+      <created>1654241903972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654241903972</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -73,6 +105,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Risotto!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Risotto!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -11,7 +11,7 @@ import {
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/HeaderTender.js";
+import Header from "../componenti/BannerTender.js";
 import {IconsButton} from "../../dati/IconsButton";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 

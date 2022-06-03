@@ -1,7 +1,7 @@
 import {TouchableOpacity, SafeAreaView} from "react-native";
 import {Text} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/HeaderTender";
+import Header from "../componenti/BannerTender";
 import {IconsButton} from "../../dati/IconsButton";
 import btnStyles from "../../styles/BtnStyles";
 

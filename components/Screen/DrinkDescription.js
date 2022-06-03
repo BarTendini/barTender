@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"; //quasi sempre necessario
 import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, ScrollView, Platform } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
-import Header from "../componenti/HeaderTender";
+import Header from "../componenti/BannerTender";
 import SettingsInfo from "../../dati/SettingsInfo";
 import { IconsButton } from "../../dati/IconsButton";
 import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"; //quasi sempre necessario
 import { SafeAreaView, Platform, ScrollView, View, StyleSheet, Text, FlatList} from "react-native";
-import Header from "../componenti/HeaderTender";
+import Header from "../componenti/BannerTender";
 import commonStyles from "../../styles/CommonStyles";
 import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId} from "../../dati/CartInfo";
 import {IconsButton} from "../../dati/IconsButton";

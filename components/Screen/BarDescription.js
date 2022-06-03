@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { SafeAreaView, Image, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/HeaderTender.js";
+import Header from "../componenti/BannerTender.js";
 import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
 import { DrinkCardTender } from "../Card/TenderCard";
