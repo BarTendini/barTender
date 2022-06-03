@@ -14,7 +14,6 @@ export default StyleSheet.create({
     AndroidHomeSafeArea: {
         flexGrow: 1,
         backgroundColor: "white",
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     ViewAut: {
         flex: 1,
