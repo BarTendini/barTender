@@ -15,7 +15,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import TenderAllert from "../componenti/TenderAllert";
 import {addCartInfo} from "../../dati/CartInfo";
-
+import TenderFragment from "../componenti/TenderFragment";
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
@@ -130,8 +130,7 @@ const DrinkDescription = ({ route, navigation }) => {
     }
 
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
+        <TenderFragment navigation={navigation}>
             <View>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
                     {Drink.name} {Drink.custom ? "custom": "" }
@@ -257,7 +256,7 @@ const DrinkDescription = ({ route, navigation }) => {
                     </Text>
                 </View>
             </TenderAllert>
-        </SafeAreaView>
+        </TenderFragment>
     );
 }
 

@@ -13,6 +13,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
 import {customizeIngredients, deleteCustomization, DrinksInfo} from "../../dati/DrinksInfo"
+import TenderFragment from "../componenti/TenderFragment";
 
 export const DrinkCustom = ({route, navigation}) => {
 
@@ -103,8 +104,7 @@ export const DrinkCustom = ({route, navigation}) => {
     }
 
     console.log("CocktailHtml");
-    return <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-        <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'}/>
+    return <TenderFragment navigation={navigation}>
         <Text style={{ fontSize: 36, textAlign: 'center' }}>
             {pageTitle}
         </Text>
@@ -138,7 +138,7 @@ export const DrinkCustom = ({route, navigation}) => {
             </LinearGradient>
         </View>
         
-    </SafeAreaView>
+    </TenderFragment>
 }
 
 const styles = StyleSheet.create({

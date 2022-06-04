@@ -14,6 +14,7 @@ import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/BannerTender.js";
 import {IconsButton} from "../../dati/IconsButton";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
+import TenderFragment from "../componenti/TenderFragment";
 
 
 const Register = ({ navigation }) => {
@@ -37,10 +38,10 @@ const Register = ({ navigation }) => {
         navigation.goBack();
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+        <TenderFragment bgColor={'#ffcc8b'} noGradient={true} navigation={navigation}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
-                <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: themeStyles.light.backgroundColor1}} keyboardShouldPersistTaps='handled'>
-                    <Header icon={IconsButton.back} navigation={navigation} noGradient={true}/>
+                <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
+
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
                         <View style={{padding: 20}}/>
@@ -79,7 +80,7 @@ const Register = ({ navigation }) => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

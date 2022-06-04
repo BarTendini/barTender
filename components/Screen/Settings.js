@@ -7,7 +7,7 @@ import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da set
 import DrinkCardTender from "../Card/DrinkCardTender";
 import CardTender from "../Card/DrinkCardTender";
 import {IconsButton} from "../../dati/IconsButton"; //permette di importare le bolle personalizzate
-
+import TenderFragment from "../componenti/TenderFragment";
 
 const Settings = ({ navigation }) => {
 
@@ -46,8 +46,7 @@ const Settings = ({ navigation }) => {
     console.log("Settings.js");
 
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
-            <Header icon={IconsButton.back} navigation={navigation} bgColor={themeStyles.light.backgroundColor1} />
+        <TenderFragment navigation={navigation}>
             <View style={{flex: 1}}>
                 <Text style={commonStyles.titleText}>
                     settings
@@ -57,7 +56,7 @@ const Settings = ({ navigation }) => {
                     renderItem={cardRenderSelector}
                 />
             </View>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

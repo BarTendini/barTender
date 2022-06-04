@@ -21,8 +21,10 @@ import { Entypo } from '@expo/vector-icons';
 import TenderFragment from "../componenti/TenderFragment";
 
 const InitialSelectorScreen = ({route, navigation}) => {
+    console.log("InitialSelectorScreen")
+    console.warn(navigation)
     return (
-        <TenderFragment navigation={navigation}>
+        <TenderFragment icon={"logout"} navigation={navigation}>
             <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between', marginTop: 10}} contentInsetAdjustmentBehavior="automatic">
                 <HomeButton
                     onPress={() => navigation.push('HomeScreenSelector')}

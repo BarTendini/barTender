@@ -3,7 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/BarDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/BarDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/HomeSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/HomeSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/InitialSelectorScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/BannerTender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderFragment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderFragment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

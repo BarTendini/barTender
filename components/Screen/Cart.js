@@ -9,6 +9,7 @@ import TenderButton from "../componenti/TenderButton";
 import {deleteCustomization} from "../../dati/DrinksInfo";
 import {LinearGradient} from 'expo-linear-gradient';
 import {themeStyles} from "../../styles/theme/ThemeStyles";
+import TenderFragment from "../componenti/TenderFragment";
 
 const Cart = ({route, navigation}) => {
     console.log("Cart")
@@ -63,8 +64,7 @@ const Cart = ({route, navigation}) => {
     }
 
     return(
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'}/>
+        <TenderFragment navigation={navigation}>
             <View>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
                     Cart
@@ -98,7 +98,7 @@ const Cart = ({route, navigation}) => {
 
             </LinearGradient>
             </View>
-        </SafeAreaView>)
+        </TenderFragment>)
 }
 
 export default Cart;

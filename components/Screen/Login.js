@@ -7,6 +7,7 @@ import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
 import {AppContext} from "../../AppContext";
 import {IconsButton} from "../../dati/IconsButton";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import TenderFragment from "../componenti/TenderFragment";
 
 
 const Login = ({ navigation }) => {
@@ -32,12 +33,12 @@ const Login = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={[commonStyles.AndroidSafeArea, themeStylesSheet.light1]}>
+        <TenderFragment icon={"none"} bgColor={'#ffcc8b'} noGradient={true} navigation={navigation}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Header icon={IconsButton.none} noGradient={true}/>
+
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Login</Text>
                         <View style={{paddingTop: 20}}/>
@@ -83,7 +84,7 @@ const Login = ({ navigation }) => {
                 <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
             </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

@@ -7,6 +7,7 @@ import Header from "../componenti/BannerTender.js";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
 import { IconsButton } from "../../dati/IconsButton";
 import MainMenu from "../componenti/MainMenu";
+import TenderFragment from "../componenti/TenderFragment";
 
 //import per sandbox
 import { DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
@@ -17,6 +18,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import  TenderAllert from "../componenti/TenderAllert"
 import  showAlertBox from "../componenti/TenderAllert"
 import TenderButton from "../componenti/TenderButton";
+
 
 
 
@@ -86,8 +88,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
         console.log("change log page as sandbox");
         
         return (
-            <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>
-                <Header icon={IconsButton.back} navigation={navigation} bgColor={themeStyles.light.backgroundColor1} />
+            <TenderFragment navigation={navigation}>
                 <View style={commonStyles.ViewHome}>
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
@@ -109,7 +110,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                     </TenderAllert>  
                     <TenderButton testo={'🚨 Allert!'} navigation={navigation}  action={()=>{showAlert()}}/>    
                 </View>
-            </SafeAreaView>
+            </TenderFragment>
         );
     }
 };

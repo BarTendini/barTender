@@ -8,6 +8,7 @@ import {IconsButton} from "../../dati/IconsButton";
 import {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import {AppContext} from "../../AppContext";
 import {DrinkCardTender} from "../Card/TenderCard";
+import TenderFragment from "../componenti/TenderFragment";
 
 const DrinkMenu = ({route, navigation}) => {
     const avaiableDrinkTypes = getTypes(DrinksInfo);
@@ -38,8 +39,7 @@ const DrinkMenu = ({route, navigation}) => {
         return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'}/>
+        <TenderFragment navigation={navigation}>
             <View style={styles.ViewInfo}>
                 <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>
             </View>
@@ -63,7 +63,7 @@ const DrinkMenu = ({route, navigation}) => {
 
             </ScrollView>
 
-        </SafeAreaView>
+        </TenderFragment>
     )
 };
 

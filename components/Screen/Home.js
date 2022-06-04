@@ -7,6 +7,7 @@ import AwesomeAlert from "react-native-awesome-alerts";
 import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
 import {IconsButton} from "../../dati/IconsButton";
+import TenderFragment from "../componenti/TenderFragment";
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [alert, setAlert] = useState(false) // ??? qualcosa per lo stato
@@ -50,8 +51,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
             </View>
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={buttonToShow()} navigation={navigation} bgColor={'#ffcc8b'} alertFun={logOut} />
+        <TenderFragment navigation={navigation}>
             <Location animEnd={posizioneOttenuta}/>
             {barList()}
             <AwesomeAlert
@@ -76,7 +76,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                 overlayStyle={{height: '100%'}}
                 alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
             />
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

@@ -8,6 +8,7 @@ import AwesomeAlert from "react-native-awesome-alerts";
 import { DrinkCardTender } from "../Card/TenderCard";
 import { IconsButton } from "../../dati/IconsButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
+import TenderFragment from "../componenti/TenderFragment";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
@@ -52,8 +53,7 @@ const BarDescription = ({ route, navigation }) => {
         }
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.back} navigation={navigation} bgColor={'#ffcc8b'} />
+        <TenderFragment navigation={navigation}>
             <View style={styles.MarginTop}>
                 <Text style={styles.Title}>{bar.nome}</Text>
                 <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
@@ -139,7 +139,7 @@ const BarDescription = ({ route, navigation }) => {
                 overlayStyle={{ height: '100%' }}
                 alertContainerStyle={{ height: '100%', width: '100%', alignSelf: 'center' }}
             />
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

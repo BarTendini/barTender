@@ -4,12 +4,12 @@ import commonStyles from "../../styles/CommonStyles";
 import Header from "../componenti/BannerTender";
 import {IconsButton} from "../../dati/IconsButton";
 import btnStyles from "../../styles/BtnStyles";
+import tenderFragment from "../componenti/TenderFragment";
 
 
 const HomeSelection = ({navigation}) => {
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Header icon={IconsButton.logout} navigation={navigation} bgColor={'#ffcc8b'}/>
+        <TenderFragment navigation={navigation}>
 
             <TouchableOpacity
                 style={btnStyles.rectangle}
@@ -25,7 +25,7 @@ const HomeSelection = ({navigation}) => {
                 <Text style={{textAlign: "center"}}> Scegli da bere </Text>
             </TouchableOpacity>
 
-        </SafeAreaView>
+        </TenderFragment>
     )
 }
 
