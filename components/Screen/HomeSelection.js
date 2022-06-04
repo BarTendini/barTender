@@ -1,10 +1,7 @@
-import {TouchableOpacity, SafeAreaView} from "react-native";
+import {TouchableOpacity} from "react-native";
 import {Text} from "react-native";
-import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender";
-import {IconsButton} from "../../dati/IconsButton";
 import btnStyles from "../../styles/BtnStyles";
-import tenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderFragment";
 
 
 const HomeSelection = ({navigation}) => {

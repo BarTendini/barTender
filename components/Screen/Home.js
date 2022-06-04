@@ -10,34 +10,11 @@ import {IconsButton} from "../../dati/IconsButton";
 import TenderFragment from "../componenti/TenderFragment";
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
-    const [alert, setAlert] = useState(false) // ??? qualcosa per lo stato
-    const [showBars, setShowBars] = useState(false) // ??? qualcosa per lo stato
-    const showAlert = () => { // definizione funzione che mostra l' allert
-        setAlert( true)
-    };
+    const [showBars, setShowBars] = useState(false)
     const buttonToShow = () => {
         return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
     }
-    const hideAlert = () => { // definizione funzione che nasconde l' allert
-        setAlert(false)
-    };
-    const logOut = () => { // definizione funzione per il logout
-        if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
-            showAlert() // attiva l'AwesomeAllert per il web
-        } else {
-            Alert.alert( // funzione allerta che prende titolo, testo e bottoni come parametri
-                "Logout",
-                "Sei sicuro? Vuoi eseguire un logout?",
-                [
-                    {
-                        text: "Cancella",
-                        style: "cancel"
-                    },
-                    { text: "Conferma", onPress: () => { navigation.replace('Autenticazione') }}
-                ]
-            );
-        }
-    }
+
     const posizioneOttenuta = () => { // ???
         setShowBars(true)
     }
@@ -54,28 +31,6 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
         <TenderFragment navigation={navigation}>
             <Location animEnd={posizioneOttenuta}/>
             {barList()}
-            <AwesomeAlert
-                show={alert}
-                showProgress={false}
-                title="Logout"
-                message="Sei sicuro? Vuoi eseguire uno logout?"
-                closeOnTouchOutside={true}
-                closeOnHardwareBackPress={false}
-                showCancelButton={true}
-                showConfirmButton={true}
-                cancelText="Cancella"
-                confirmText="Conferma"
-                confirmButtonColor="#DD6B55"
-                onCancelPressed={() => {
-                    hideAlert();
-                }}
-                onConfirmPressed={() => {
-                    hideAlert()
-                    navigation.replace('Autenticazione');
-                }}
-                overlayStyle={{height: '100%'}}
-                alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
-            />
         </TenderFragment>
     );
 };

@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 vcs.xml
+workspace.xml
 
 # macOS
 .DS_Store

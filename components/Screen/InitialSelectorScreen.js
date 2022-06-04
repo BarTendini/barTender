@@ -1,28 +1,18 @@
 import React from "react";
 import {
-    SafeAreaView,
     TouchableOpacity,
-    View,
     StyleSheet,
     Text,
-    Image,
-    TouchableOpacityComponent,
     ScrollView,
-    StatusBar
 } from "react-native";
-import commonStyles from "../../styles/CommonStyles";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
-import SettingsInfo from "../../dati/SettingsInfo";
-import {IconsButton} from "../../dati/IconsButton";
 import {LinearGradient} from "expo-linear-gradient";
-import {Ionicons} from "@expo/vector-icons";
 import {MaterialIcons} from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import TenderFragment from "../componenti/TenderFragment";
 
 const InitialSelectorScreen = ({route, navigation}) => {
     console.log("InitialSelectorScreen")
-    console.warn(navigation)
     return (
         <TenderFragment icon={"logout"} navigation={navigation}>
             <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between', marginTop: 10}} contentInsetAdjustmentBehavior="automatic">

@@ -37,17 +37,15 @@ const Header = ({ icon, navigation, bgColor, alertFun, noGradient=false}) => { /
 export default Header; // esporta logo e header come oggetto composto da componente
 
 const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, logout e menu
-    console.log("Header: showIcon")
-    console.warn(navigation)
     const getAction = (ico, nav, fun) => {
         if (ico.name === 'back' && nav.canGoBack()) return nav.goBack({wentBack:true});
-        if (ico.name === 'logout' && !nav.canGoBack()) return () => { props.navigation.replace('Autenticazione')};
+        if (ico.name === 'logout' && !nav.canGoBack()) return fun();
         if (ico.name === 'menu' && navigation && navigation.toggleDrawer())
             return navigation.dispatch(DrawerActions.toggleDrawer());
         if (ico.name === 'none')  return null;
     };
 
-    return <TouchableOpacity onPress={() => getAction(icon, navigation, () => { navigation.replace('Autenticazione') })}
+    return <TouchableOpacity onPress={() => getAction(icon, navigation, alertFun)}
                           style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             {icon.iconJSX}
         </TouchableOpacity>
