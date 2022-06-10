@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dati/classi/Drink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dati/classi/Ingredient.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dati/classi/Menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dati/classi/Recipe.js" afterDir="false" />
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Sistemato il navigator che non veniva passato correttamente al fragmentender">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/FafouriteButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/FavouriteButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderAllert.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderAlert.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dati/DrinksInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dati/DrinksInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dati/IngredientsInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dati/IngredientsInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +20,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -35,19 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/giang/Documents/GitHub/barTender",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giang/Documents/GitHub/barTender&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,7 +74,7 @@
       <workItem from="1654261457116" duration="4405000" />
       <workItem from="1654265889261" duration="295000" />
       <workItem from="1654266360786" duration="38000" />
-      <workItem from="1654427283383" duration="20622000" />
+      <workItem from="1654886719826" duration="2689000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>

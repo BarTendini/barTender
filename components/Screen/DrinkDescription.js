@@ -5,15 +5,15 @@ import { themeStyles } from "../../styles/theme/ThemeStyles"
 import Header from "../componenti/BannerTender";
 import SettingsInfo from "../../dati/SettingsInfo";
 import { IconsButton } from "../../dati/IconsButton";
-import {DrinksInfo, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
-import FafouriteButton from "../componenti/FafouriteButton";
+import {DrinksInfo, isDrinkCustom, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
+import FafouriteButton from "../componenti/FavouriteButton";
 import { DrinkCardTender } from "../Card/TenderCard";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import TenderAllert from "../componenti/TenderAllert";
+import TenderAlert from "../componenti/TenderAlert";
 import {addCartInfo} from "../../dati/CartInfo";
 import TenderFragment from "../componenti/TenderFragment";
 
@@ -133,7 +133,7 @@ const DrinkDescription = ({ route, navigation }) => {
         <TenderFragment navigation={navigation}>
             <View>
                 <Text style={{ fontSize: 36, textAlign: 'center' }}>
-                    {Drink.name} {Drink.custom ? "custom": "" }
+                    {Drink.name} {isDrinkCustom(Drink) ? "custom": "" }
                 </Text>
             </View>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -165,7 +165,7 @@ const DrinkDescription = ({ route, navigation }) => {
 
                         <DrinkCardTender title={"Ingredienti:"}>
                             <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
-                                 {Drink.custom ?
+                                 {isDrinkCustom(Drink) ?
                                          <View style={{flexDirection:"row"}}>
                                              <View style={{flex:0.5, fontSize: 24}}>
                                                  <Text style={{fontWeight:"bold"}}>original</Text>
@@ -230,12 +230,12 @@ const DrinkDescription = ({ route, navigation }) => {
                     </View>
                 </LinearGradient>
             </View>
-            <TenderAllert
+            <TenderAlert
                 visibility = {alertVisibility}
                 state = {setAlertVisibility}
                 title = {"Pronto a Bere?"}
                 tenderButtons = {
-                    Drink.custom? [
+                    isDrinkCustom(Drink)? [
                             {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, false); navigation.push('Cart')}},
                             {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, true); navigation.push('Cart')}},
                             {testo:'annulla'}
@@ -250,12 +250,12 @@ const DrinkDescription = ({ route, navigation }) => {
                     <Text style={{fontSize:24}}>
                         <Text>Stai acquistando </Text>
                         <Text style={{fontWeight:"bold"}}>{Drink.name} </Text>
-                        {Drink.custom ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
+                        {isDrinkCustom(Drink) ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
                         <Text> al prezzo di </Text>
                         <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
                     </Text>
                 </View>
-            </TenderAllert>
+            </TenderAlert>
         </TenderFragment>
     );
 }

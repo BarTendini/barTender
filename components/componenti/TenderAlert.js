@@ -28,7 +28,7 @@ import TenderButton from "../componenti/TenderButton";
  * @returns 
  */
 
-const TenderAllert = (elements) =>{
+const TenderAlert = (elements) =>{
 const cancelAlertBox = () => {
   elements.state(false);
 }
@@ -123,6 +123,11 @@ const alertMessage = (text) => {
     const action_ = element.action
     const alertText = element.alertText
 
+    function actionAcquista () {
+      cancelAlertBox();
+      action_()
+    }
+
     if(alertText){
       return(
       <View style={styles.parallelButtons}>
@@ -131,7 +136,7 @@ const alertMessage = (text) => {
           navigation = {navigation_}
           bar = {bar_ ? bar_ : "unknown"} 
           color = {color_ ? color_ : themeStyles.light.backgroundColor1}
-          action = {action_ ? action_ : ()=>{alertMessage(alertText)}}
+          action = {action_ ? actionAcquista : ()=>{alertMessage(alertText)}}
           />
       </View>
       );
@@ -144,7 +149,7 @@ const alertMessage = (text) => {
           navigation = {navigation_}
           bar = {bar_ ? bar_ : "unknown"} 
           color = {color_ ? color_ : themeStyles.light.backgroundColor1}
-          action = {action_ ? ()=>{cancelAlertBox(); action_()} : cancelAlertBox}
+          action = {action_ ? actionAcquista: cancelAlertBox}
           />
       </View>
       
@@ -179,7 +184,7 @@ const alertMessage = (text) => {
   
 }
 
-export default TenderAllert
+export default TenderAlert
 
 const styles = StyleSheet.create({
   fullPageBackground:{

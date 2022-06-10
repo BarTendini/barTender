@@ -12,7 +12,7 @@ import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
-import {customizeIngredients, deleteCustomization, DrinksInfo} from "../../dati/DrinksInfo"
+import {customizeIngredients, deleteCustomization, DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo"
 import TenderFragment from "../componenti/TenderFragment";
 
 export const DrinkCustom = ({route, navigation}) => {
@@ -23,13 +23,13 @@ export const DrinkCustom = ({route, navigation}) => {
     // Se provo a cambiare colore viene visualizzato solo per pochi secondi
     const fullScreen = {flex: 1, backgroundColor: '#fff'}
     // const fullScreen = {container: {flex: 1, backgroundColor: '#000000'}}
-    const [pageTitle, setPageTitle] = useState(` ${Drink.name} ${Drink.custom.length > 0 ? "custom": "" }`)
-    const [customIngridients, setCustomIngridients] = useState(Drink.custom.length > 0 ? Drink.custom : Drink.ingredients )
+    const [pageTitle, setPageTitle] = useState(` ${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
+    const [customIngridients, setCustomIngridients] = useState(isDrinkCustom(Drink) ? Drink.custom : Drink.ingredients )
 
     //console.log(Drink.custom)
     const updateDrink=()=>{
         setDrink(DrinksInfo[route.params.drink])
-        setPageTitle(` ${Drink.name} ${Drink.custom.length > 0 ? "custom": "" }`)
+        setPageTitle(` ${Drink.name} ${isDrinkCustomDrink ? "custom": "" }`)
     }
 
     const runFirst = (selDrink) => `  
@@ -40,7 +40,7 @@ export const DrinkCustom = ({route, navigation}) => {
     const _renderHeader = () => {
         {/*Tutorial WebView*/}
         {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
-        const quantity = {nome:"quantity", quantity:Drink.custom.length > 0 ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
+        const quantity = {nome:"quantity", quantity:isDrinkCustom(Drink) ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
         return (<>
             <View style={{width: '100%', height:300}}>
                 {showHTML()}
@@ -50,7 +50,7 @@ export const DrinkCustom = ({route, navigation}) => {
                 drinkQuantity={1000}
                 action={
                 ()=>{
-                    setPageTitle(` ${Drink.name} ${Drink.custom.length > 0 > 0 ? "custom": "" }`)
+                    setPageTitle(` ${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
                     console.log("setPageTitle")
                 }
             }/>
@@ -110,7 +110,7 @@ export const DrinkCustom = ({route, navigation}) => {
         </Text>
         <FlatList
             ListHeaderComponent={_renderHeader}
-            data={Drink.custom.length > 0 ? Drink.custom : Drink.ingredients }
+            data={isDrinkCustom(Drink) ? Drink.custom : Drink.ingredients }
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={{ paddingBottom: 100}}
@@ -130,7 +130,7 @@ export const DrinkCustom = ({route, navigation}) => {
                 style={{height: 110, paddingTop:20,paddingBottom:30,  flexDirection: "row", justifyContent: 'center',  marginBottom: 20}}
             >
                 <View style={styles.parallelButtons}>
-                    <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {deleteCustomization(Drink); updateDrink(); setPageTitle(` ${Drink.name} ${Drink.custom.length > 0 ? "custom": "" }`)}}/>
+                    <TenderButton testo={'🔧 ripristina'} navigation={navigation} color={Drink.color} action={() => {deleteCustomization(Drink); updateDrink(); setPageTitle(` ${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)}}/>
                 </View>
                 <View style={styles.parallelButtons}>
                         <TenderButton testo={'🍹 conferma'} navigation={navigation} action={() => {navigation.goBack()}}/>

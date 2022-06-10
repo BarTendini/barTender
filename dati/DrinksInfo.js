@@ -524,6 +524,10 @@ export function updateWithFreeQuantity(drink=DrinksInfo[1], ingredientID, ingred
 
 }
 
+export function isDrinkCustom(drink) {
+      return drink.custom.length > 0
+}
+
 function deleteCustomization(drink) {
       drink.custom = []
     console.log("deleteCustomization")

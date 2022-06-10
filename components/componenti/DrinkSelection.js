@@ -6,9 +6,9 @@ import { themeStyles } from "../../styles/theme/ThemeStyles"
 import SettingsInfo from "../../dati/SettingsInfo";
 import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
-import TenderAllert from "./TenderAllert"
-import FafouriteButton from "./FafouriteButton";
-import {DrinksInfo} from "../../dati/DrinksInfo";
+import TenderAlert from "./TenderAlert"
+import FafouriteButton from "./FavouriteButton";
+import {DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo";
 import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId, addCartInfo} from "../../dati/CartInfo";
 
 
@@ -143,12 +143,12 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
             </LinearGradient>
 
         </TouchableOpacity>
-        <TenderAllert 
+        <TenderAlert
         visibility = {alertVisibility} 
         state = {setAlertVisibility}
         title = {"Pronto a Bere?"}
         tenderButtons = {
-            Drink.custom? [
+            isDrinkCustom(Drink)? [
                     {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, false); navigation.push('Cart')}},
                     {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, true); navigation.push('Cart')}},
                     {testo:'annulla'}
@@ -163,12 +163,12 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
             <Text style={{fontSize:24}}>
                 <Text>Stai acquistando </Text>
                 <Text style={{fontWeight:"bold"}}>{Drink.name} </Text>
-                {Drink.custom ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
+                {isDrinkCustom(Drink) ? <Text style={{textDecorationLine: 'underline', fontWeight:"bold"}}>custom</Text> :<></> }
                 <Text> al prezzo di </Text>
                 <Text style={{fontWeight:"bold"}}>{Drink.price}€</Text>
             </Text>
         </View>
-    </TenderAllert> 
+    </TenderAlert>
     </View>
     );
 };

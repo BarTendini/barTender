@@ -15,8 +15,8 @@ import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";
-import  TenderAllert from "../componenti/TenderAllert"
-import  showAlertBox from "../componenti/TenderAllert"
+import  TenderAlert from "../componenti/TenderAlert"
+import  showAlertBox from "../componenti/TenderAlert"
 import TenderButton from "../componenti/TenderButton";
 
 
@@ -93,7 +93,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                     <Text style={commonStyles.titleText}>
                         change log page as sandbox
                     </Text>  
-                    <TenderAllert 
+                    <TenderAlert
                         visibility = {alertVisibility} 
                         state = {setAlertVisibility}
                         title = {"una notifica con tantissime belle parole dentro"}
@@ -107,7 +107,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                         <View>
                             <Text style={{fontSize:24}}>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmiao</Text>
                         </View>
-                    </TenderAllert>  
+                    </TenderAlert>
                     <TenderButton testo={'🚨 Allert!'} navigation={navigation}  action={()=>{showAlert()}}/>    
                 </View>
             </TenderFragment>
