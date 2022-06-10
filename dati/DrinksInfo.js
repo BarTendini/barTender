@@ -1,6 +1,8 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
 import React, {useState} from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import Menu from "./classi/Menu";
+import Drink from "./classi/Drink";
+import Ingredient from "./classi/Ingredient";
 
 const fakeText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
 
@@ -20,23 +22,25 @@ const drinkInfo = ( id_,
                 ) =>{
 
     console.log('drinkInfo: ' + name_ + " ------------------------------------------")
-    return {
-        id: id_, // deve necessariamente essere diverso dagli altri
-        name: name_, // nome del drink
-        type: type_, //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
-        image: image_, // richiama un immagine
-        ingredients: setIngredients(ingredients_, quantity_),
-        recipe: ingredients_,
-        custom: [],
-        color: color_, // sfondo della bolla del bar
-        textColor: textColor_,// colore del testo della bolla
-        favorite: favorite_, // è favorito
-        price: price_,
-        quantity: quantity_,
-        customQuantity: null,
-        alchoolicTax: alchoolicTax_,
-        description: description_
-    }
+    return new Drink(
+        {
+            id: id_, // deve necessariamente essere diverso dagli altri
+            name: name_, // nome del drink
+            type: type_, //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+            image: image_, // richiama un immagine
+            ingredients: setIngredients(ingredients_, quantity_),
+            recipe: ingredients_,
+            custom: [],
+            color: color_, // sfondo della bolla del bar
+            textColor: textColor_,// colore del testo della bolla
+            favorite: favorite_, // è favorito
+            price: price_,
+            quantity: quantity_,
+            customQuantity: null,
+            alcoholicTax: alchoolicTax_,
+            description: description_
+        }
+    )
 }
 
 const setRecipe = (ingredients = [{name: "unknown", quantity: 0}],  unit ="ml") =>{
@@ -452,6 +456,18 @@ export function copyArray(mainObj) {
         objCopy.push(copy(e));
     })
     return objCopy;
+}
+function customizeIngredients(drink, ingredientID, ingredientNewQuantity, isFixedQuantity){
+    console.log("customizeIngredients")
+    if (!drink.custom){
+        drink.custom = copyArray(drink.ingredients)
+    }
+    if (isFixedQuantity){
+        updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity)
+    }
+    else{
+        updateWithFreeQuantity(drink, ingredientID, ingredientNewQuantity)
+    }
 }
 
 export function updateWithFixedQuantity(drink,ingredientID, ingredientNewQuantity){

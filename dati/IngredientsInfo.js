@@ -1,3 +1,5 @@
+import Ingredient from "./classi/Ingredient"
+
 const ingredientsInfo = [ // definisce i singoli ingredienti che si possono inserire nella macchina
     {id:0,  nome: "ichnusa",    type:"beer",    available:false, alcoholic:true,    color:"#f28e1c"},
     {id:1,  nome: "vodka",      type:"vodka",   available:true, alcoholic:true,     color:"#bfc0ee"},
@@ -30,6 +32,11 @@ const getIngredientFromNome = (nome) => {
     for(let i = 0; i < ingredientsInfo.length; i++)
     {
         if(ingredientsInfo[i].nome === nome){
+            const ingredient = new Ingredient(ingredientsInfo[i])
+            //console.log(ingredient.id)
+            //console.log(`funzia ? ${ingredient.customQuantity}:`)
+            //ingredient.customQuantity = ingredient.customQuantity + 1000
+            //console.log(`purtroppo no! ${ingredient.customQuantity}:`)
             return(ingredientsInfo[i]);
         }
     }
