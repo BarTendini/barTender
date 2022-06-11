@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Sistemato il navigator che non veniva passato correttamente al fragmentender">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Inserita funzione per controllare che il drink custom esiste">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/DrinkSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/FafouriteButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/FavouriteButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderAllert.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderAlert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dati/CartInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dati/CartInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dati/DrinksInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dati/DrinksInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +69,7 @@
       <workItem from="1654261457116" duration="4405000" />
       <workItem from="1654265889261" duration="295000" />
       <workItem from="1654266360786" duration="38000" />
-      <workItem from="1654886719826" duration="2689000" />
+      <workItem from="1654886719826" duration="4924000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -97,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654266122200</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Inserita funzione per controllare che il drink custom esiste">
+      <created>1654889759129</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654889759129</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +119,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Risotto!" />
     <MESSAGE value="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
+    <MESSAGE value="Inserita funzione per controllare che il drink custom esiste" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inserita funzione per controllare che il drink custom esiste" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

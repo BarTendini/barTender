@@ -1,6 +1,9 @@
 import { getIngredientFromNome, ingredientsInfo } from "./IngredientsInfo";
 import React, {useState} from 'react';
-import Menu from "./classi/Menu";
+// Se importi Menu crei un ciclo
+// dati/DrinksInfo.js -> dati/classi/Menu.js -> dati/DrinksInfo.js
+// A quanto pare è consigliabile evitarli
+//import Menu from "./classi/Menu";
 import Drink from "./classi/Drink";
 import Ingredient from "./classi/Ingredient";
 

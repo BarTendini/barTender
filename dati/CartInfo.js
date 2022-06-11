@@ -1,13 +1,12 @@
 import React from 'react';
 import {DrinksInfo} from "./DrinksInfo";
-
-var id = -1
-var nextToWithdrawId = 2
-
 export {CartInfo, addCartInfo, removeCartInfo, withdraw, getNextToWithdrawId}
 
+let id = -1;
+let nextToWithdrawId = 2;
+
 function getNextToWithdrawId(){
-    return parseInt(""+nextToWithdrawId );
+    return nextToWithdrawId;
 }
 
 function withdraw(cartInfo){

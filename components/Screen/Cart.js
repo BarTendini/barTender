@@ -71,12 +71,10 @@ const Cart = ({route, navigation}) => {
                 </Text>
             </View>
             <FlatList
-                inverted = {true}
-                initialScrollIndex={getNextToWithdrawId()}
-                data={cartInfo}
+                data={cartInfo.slice().reverse()}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-                contentContainerStyle={{ paddingTop: 100}}
+                contentContainerStyle={{ paddingBottom: 100}}
             />
             <View style={{
                 position: 'absolute',
