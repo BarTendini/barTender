@@ -6,7 +6,8 @@ import Header from "./BannerTender";
 import AwesomeAlert from "react-native-awesome-alerts";
 
 // A quanto pare children è una parola speciale che indica proprio i figli
-const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
+const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title }) => {
+    const PADDING_TOP_HEADER = 10;
     const H_MAX_HEIGHT = 150;
     const animatedHeaderValue = useRef(new Animated.Value(0)).current
 
@@ -53,14 +54,13 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
 
     const cloneChild = (child, index) => {
         if (child && child.type && child.type.name ==='TenderScroll') {
-            return React.cloneElement(child, {scroll: animatedHeaderValue})
+            return React.cloneElement(child, {scroll: animatedHeaderValue, header_height: H_MAX_HEIGHT + PADDING_TOP_HEADER })
         }
         if (child && child.type && child.type.name === 'TenderFlatList')
-            return React.cloneElement(child, {scroll: animatedHeaderValue, header_height: index === 0 ? H_MAX_HEIGHT + 15 : 0 })
-        console.log(child.type)
-        console.log(index)
-        // return React.cloneElement(child, {style: {paddingTop: index === 0 ? H_MAX_HEIGHT + 15 : 0 }})
-        return React.cloneElement(child, {})
+            return React.cloneElement(child, {scroll: animatedHeaderValue, header_height: H_MAX_HEIGHT + PADDING_TOP_HEADER })
+        // if (index === 0)
+        //     return React.cloneElement(child, {style: {paddingTop: index === 0 ? H_MAX_HEIGHT + PADDING_TOP_HEADER : 0 }})
+        return child
     }
 
 
@@ -76,10 +76,9 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
                     noGradient={!!noGradient}
                     alertFun={logOut}
                     animations={{ anim: animatedHeaderValue, height: H_MAX_HEIGHT}}
+                    titolo={title}
                 />
-                <View style={{flex: 1, backgroundColor: '#ffffff00', paddingTop: 150}}>
                 {recursiveChildrenMap(children, cloneChild)}
-                </View>
                 <AwesomeAlert
                     show={alert}
                     showProgress={false}

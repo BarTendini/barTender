@@ -7,7 +7,7 @@ const BarSelection = ({ Bar, navigation }) => {
     return (
         <TouchableOpacity
             onPress={() => navigation.push('BarDescription', Bar)}
-            style={{ width: '100%', borderColor: Bar.color, borderWidth:6, borderRadius: 50, marginTop: 10}}
+            style={{ flex: 1, borderColor: Bar.color, borderWidth:6, borderRadius: 50, margin: 10}}
         >
             <LinearGradient
                     colors={Platform.OS === 'ios' ?

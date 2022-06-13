@@ -39,10 +39,10 @@ const DrinkMenu = ({route, navigation}) => {
         return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
     }
     return (
-        <TenderFragment navigation={navigation}>
-            <View style={styles.ViewInfo}>
-                <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>
-            </View>
+        <TenderFragment navigation={navigation} title={`Menu: ${selBarName}`}>
+            {/*<View style={styles.ViewInfo}>*/}
+            {/*    <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>*/}
+            {/*</View>*/}
             <ScrollView style={{marginTop:-20}}>
 
                 <DrinkCardTender title={"Tipo di Drink:"}>

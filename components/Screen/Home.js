@@ -7,6 +7,12 @@ import {TenderFragment, TenderFlatList, Location, BarSelection} from "../compone
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [showBars, setShowBars] = useState(false)
+    const [location, setLocation] = useState('')
+
+    const locationLoaded = (location) => {
+        return setLocation(location)
+    }
+
     const buttonToShow = () => {
         return navigation.canGoBack() ? IconsButton.back : IconsButton.logout
     }
@@ -14,19 +20,25 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const posizioneOttenuta = () => { // ???
         setShowBars(true)
     }
+
+    const showLocation = () => {
+        if (!showBars)
+            return (<Location animEnd={posizioneOttenuta} locationToSet={locationLoaded}/>)
+        return barList()
+    }
+
     const barList = () => { // definizione funzione che mostra i bar
         if (showBars) // se non è nullo restituisce un component di tipo View con flatList e componente fatto da noi "BarSelection"
-            return <View style={commonStyles.ViewHome}>
+            return (
                 <TenderFlatList data={BarsInfo} renderItem={item =>
-                    <BarSelection Bar={item.item} navigation={navigation} />
-                }
-                />
-            </View>
+                        <BarSelection Bar={item.item} navigation={navigation}/>
+                    }
+                style={{marginTop: -10}}/>
+            )
     }
     return (
-        <TenderFragment navigation={navigation}>
-            <Location animEnd={posizioneOttenuta} />
-            {barList()}
+        <TenderFragment navigation={navigation} title={location}>
+            {showLocation()}
         </TenderFragment>
     );
 };

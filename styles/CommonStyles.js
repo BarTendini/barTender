@@ -63,7 +63,6 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     ViewHome: {
-        flex: 1,
         flexDirection: "column",
         justifyContent: "flex-start",
         marginHorizontal: 10,
@@ -95,7 +94,7 @@ export default StyleSheet.create({
         top: 0,
         width: "100%",
         overflow: "hidden",
-        zIndex: 999,
+        zIndex: 998,
         elevation: 20,
         shadowOffset: {width: 0, height: 5},
         shadowRadius: 4,

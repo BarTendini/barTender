@@ -1,12 +1,13 @@
 import React, {useEffect, useRef} from 'react'; //quasi sempre necessario
-import {Platform, View, ImageBackground, Image, TouchableOpacity, Animated} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
+import {Platform, View, ImageBackground, Image, TouchableOpacity, Animated, Text} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../../styles/CommonStyles";
 import {DrawerActions} from "@react-navigation/native";
 import {IconsButton} from "../../../dati/IconsButton";
 import {LinearGradient} from 'expo-linear-gradient';
+import {themeStyles} from "../../../styles/theme/ThemeStyles";
 
 
-const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false}) => { //renderizza l'header header
+const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false, titolo=''}) => { //renderizza l'header header
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
     const H_MAX_HEIGHT = animations.height;
@@ -28,6 +29,29 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     });
     // Serve per loggare il valore dello scroll
     // animatedHeaderScroll.addListener(value => console.warn(value))
+    const title = (title) => (
+        <View style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            width: "100%",
+            height: '100%',
+            justifyContent: "flex-end",
+            flex: 1,
+            paddingBottom: 10,
+            zIndex: 1000,
+            elevation: 1000
+        }}>
+            <Text style={{
+                fontSize: 20,
+                textAlign: 'center',
+                fontWeight: 'bold',
+            }}>
+                {title}
+            </Text>
+        </View>
+    )
 
     const menuIconForWeb = (icon,navigation,alertFun) => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
@@ -50,6 +74,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                 end={{ x: 0.5, y: 1 }}
                 style={{flex: 1, justifyContent: 'center'}}
             >
+                {title(titolo)}
                 <ImageBackground
                     source={require('../../../image/loghi/logoHome.png')}
                     style={{
@@ -58,9 +83,9 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                     }}
                     resizeMode={'contain'}
                 >
-                {showIcon(icon, navigation, alertFun)}
-                {menuIconForWeb(icon, navigation, alertFun )}
-            </ImageBackground>
+                    {showIcon(icon, navigation, alertFun)}
+                    {menuIconForWeb(icon, navigation, alertFun )}
+                </ImageBackground>
             </LinearGradient>
         </Animated.View>
     );

@@ -2,7 +2,7 @@ import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, ActivityIndic
 import { Entypo } from '@expo/vector-icons';
 import React, {useEffect, useState} from "react";
 
-export const Location = ({animEnd}) => {
+export const Location = ({animEnd, locationToSet}) => {
     const [text, setText] = useState('Calcolo posizione')
     const [animEnded, setAnimEnded] = useState(false)
     const [isSearching, setSearching] = useState(false)
@@ -16,8 +16,10 @@ export const Location = ({animEnd}) => {
         setSearching(true)
     }
     const endAnim = () => {
-        setText('Via Dante, 12')
+        const location = 'Via Dante, 12'
+        setText(location)
         setAnimEnded(true)
+        locationToSet(location)
         animEnd()
     }
     const showLoader = () => {
@@ -41,7 +43,7 @@ export const Location = ({animEnd}) => {
             marginHorizontal: 20
         }, isSearching ? {} : {flex: 1}]}
         >
-            <TouchableOpacity style={styles.Bottone}>
+            <TouchableOpacity style={styles.BottonePosizione}>
                 <Text style={styles.Testo}>{text}</Text>
                 {showLoader()}
                 {/*<Entypo name="location-pin" size={32} color="black" />*/}
@@ -57,6 +59,15 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 10,
         marginHorizontal: 20
+    },
+    BottonePosizione: {
+        flexDirection: "column",
+        alignItems: 'center',
+        justifyContent: "center",
+        borderColor: 'black',
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderRadius: 50,
     },
     Bottone: {
         flexDirection: "column",
