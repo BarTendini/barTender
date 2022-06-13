@@ -11,10 +11,10 @@ import {
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender.js";
+import Header from "../componenti/TenderComponents/BannerTender.js";
 import {IconsButton} from "../../dati/IconsButton";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 
 const Register = ({ navigation }) => {

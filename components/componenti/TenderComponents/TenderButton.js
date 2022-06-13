@@ -1,8 +1,8 @@
 import { View, TouchableOpacity, Text } from 'react-native';
-import {AppContext} from "../../AppContext";
+import {AppContext} from "../../../AppContext";
 import React, {useState} from "react";
 import { useContext } from 'react';
-import { themeStyles } from "../../styles/theme/ThemeStyles"
+import { themeStyles } from "../../../styles/theme/ThemeStyles"
 
 
 

@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native"; /
 import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import { changes, version } from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
 import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
-import Header from "../componenti/BannerTender.js";
+import Header from "../componenti/TenderComponents/BannerTender.js";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
 import { IconsButton } from "../../dati/IconsButton";
 import MainMenu from "../componenti/MainMenu";
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 //import per sandbox
 import { DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
@@ -15,9 +15,9 @@ import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
 import { ScrollView } from "react-native-gesture-handler";
-import  TenderAlert from "../componenti/TenderAlert"
-import  showAlertBox from "../componenti/TenderAlert"
-import TenderButton from "../componenti/TenderButton";
+import  TenderAlert from "../componenti/TenderComponents/TenderAlert"
+import  showAlertBox from "../componenti/TenderComponents/TenderAlert"
+import TenderButton from "../componenti/TenderComponents/TenderButton";
 
 
 

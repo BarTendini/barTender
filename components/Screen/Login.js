@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import Header from "../componenti/BannerTender.js";
+import Header from "../componenti/TenderComponents/BannerTender.js";
 import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
 import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
 import {AppContext} from "../../AppContext";
 import {IconsButton} from "../../dati/IconsButton";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 
 const Login = ({ navigation }) => {

@@ -1,4 +1,4 @@
-import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, LayoutAnimation, TouchableOpacity, Text, StyleSheet, ActivityIndicator, Platform} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import React, {useEffect, useState} from "react";
 
@@ -22,7 +22,14 @@ export const Location = ({animEnd}) => {
     }
     const showLoader = () => {
         if (!animEnded) {
-            return <ActivityIndicator style={{ marginVertical: 10}} />
+            const props = Platform.OS === 'android' ? {size:"large", color:"#0000ff"} : {size:"large"}
+            return (
+                <View>
+                    <ActivityIndicator {...props} style={{marginVertical: 10}}/>
+                </View>
+            )
+
+
         }
     }
 
@@ -31,7 +38,6 @@ export const Location = ({animEnd}) => {
             flexDirection: "row",
             alignItems: isSearching ? 'flex-start' : 'center',
             justifyContent: 'center',
-            marginTop: 10,
             marginHorizontal: 20
         }, isSearching ? {} : {flex: 1}]}
         >

@@ -1,13 +1,15 @@
-import React, {useState} from "react";
-import {Alert, Platform, SafeAreaView, StatusBar, View} from "react-native";
-import commonStyles from "../../styles/CommonStyles";
-import {IconsButton} from "../../dati/IconsButton";
+import React, {useRef, useState} from "react";
+import {Alert, Platform, SafeAreaView, StatusBar, View, ScrollView, FlatList, Animated} from "react-native";
+import commonStyles from "../../../styles/CommonStyles";
+import {IconsButton} from "../../../dati/IconsButton";
 import Header from "./BannerTender";
 import AwesomeAlert from "react-native-awesome-alerts";
 
-
 // A quanto pare children è una parola speciale che indica proprio i figli
 const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
+    const H_MAX_HEIGHT = 150;
+    const animatedHeaderValue = useRef(new Animated.Value(0)).current
+
     const [alert, setAlert] = useState(false)
     const showAlert = () => {
         setAlert( true)
@@ -34,19 +36,50 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
         }
     }
 
+    const recursiveChildrenMap = (children, fn, index=0) => {
+        return React.Children.map(children, child => {
+            if (!React.isValidElement(child)) {
+                return child;
+            }
+
+            if (child.props.children) {
+                child = React.cloneElement(child, {
+                    children: recursiveChildrenMap(child.props.children, fn, index+1)
+                });
+            }
+            return fn(child, index);
+        });
+    }
+
+    const cloneChild = (child, index) => {
+        if (child && child.type && child.type.name ==='TenderScroll') {
+            return React.cloneElement(child, {scroll: animatedHeaderValue})
+        }
+        if (child && child.type && child.type.name === 'TenderFlatList')
+            return React.cloneElement(child, {scroll: animatedHeaderValue, header_height: index === 0 ? H_MAX_HEIGHT + 15 : 0 })
+        console.log(child.type)
+        console.log(index)
+        // return React.cloneElement(child, {style: {paddingTop: index === 0 ? H_MAX_HEIGHT + 15 : 0 }})
+        return React.cloneElement(child, {})
+    }
+
+
     return (
-        <View style={{flex:1 }}>
+        <View style={{flex:1, backgroundColor: '#ffffff00' }}>
             <SafeAreaView style={{ flex:0, backgroundColor: '#ffcc8b' }} />
             <StatusBar hidden={false} backgroundColor="#ffcc8b" />
-            <SafeAreaView style={[commonStyles.AndroidHomeSafeArea,{backgroundColor: bgColor? bgColor:'#ffffff'}]} >
+            <View style={[commonStyles.AndroidHomeSafeArea,{backgroundColor: bgColor? bgColor:'#ffffff00', overflow: "hidden"}]} >
                 <Header
                     icon={getIcon(icon)}
                     navigation={navigation}
                     bgColor={'#ffcc8b'}
                     noGradient={!!noGradient}
                     alertFun={logOut}
+                    animations={{ anim: animatedHeaderValue, height: H_MAX_HEIGHT}}
                 />
-                {children}
+                <View style={{flex: 1, backgroundColor: '#ffffff00', paddingTop: 150}}>
+                {recursiveChildrenMap(children, cloneChild)}
+                </View>
                 <AwesomeAlert
                     show={alert}
                     showProgress={false}
@@ -69,7 +102,7 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor}) => {
                     overlayStyle={{height: '100%'}}
                     alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
                 />
-            </SafeAreaView>
+            </View>
         </View>
     )
 }

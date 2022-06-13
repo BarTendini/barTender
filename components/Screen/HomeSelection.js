@@ -1,7 +1,7 @@
 import {TouchableOpacity} from "react-native";
 import {Text} from "react-native";
 import btnStyles from "../../styles/BtnStyles";
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 
 const HomeSelection = ({navigation}) => {

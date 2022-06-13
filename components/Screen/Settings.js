@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, SafeAreaView, StyleSheet, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender.js";
+import Header from "../componenti/TenderComponents/BannerTender.js";
 import {themeStyles} from "../../styles/theme/ThemeStyles";
 import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da settings info con le info
 import DrinkCardTender from "../Card/DrinkCardTender";
 import CardTender from "../Card/DrinkCardTender";
 import {IconsButton} from "../../dati/IconsButton"; //permette di importare le bolle personalizzate
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 const Settings = ({ navigation }) => {
 

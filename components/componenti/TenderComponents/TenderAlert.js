@@ -1,9 +1,9 @@
 import React, { Component, useState} from 'react';
 import { Text, StyleSheet, View, Modal, TouchableOpacity, Button, Alert  } from 'react-native';
-import {themeStyles} from "../../styles/theme/ThemeStyles"
+import {themeStyles} from "../../../styles/theme/ThemeStyles"
 import Accordion from 'react-native-collapsible/Accordion';
 import { Entypo } from "@expo/vector-icons";
-import TenderButton from "../componenti/TenderButton";
+import TenderButton from "./TenderButton";
 
 
 /* necessario per essere chiamato 

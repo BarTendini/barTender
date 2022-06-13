@@ -1,14 +1,10 @@
 import React, { useRef, useState } from "react";
-import { SafeAreaView, Image, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform } from 'react-native';
+import { Image, View, Text, StyleSheet, Alert, TouchableOpacity, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender.js";
-import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
 import { DrinkCardTender } from "../Card/TenderCard";
-import { IconsButton } from "../../dati/IconsButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
-import TenderFragment from "../componenti/TenderFragment";
+import { TenderFragment, TenderScroll, TenderButton} from "../componenti/tender-components";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
@@ -54,11 +50,12 @@ const BarDescription = ({ route, navigation }) => {
     }
     return (
         <TenderFragment navigation={navigation}>
+            <View>
             <View style={styles.MarginTop}>
                 <Text style={styles.Title}>{bar.nome}</Text>
                 <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
             </View>
-            <ScrollView contentContainerStyle={{ flexGrow: 1}}>
+            <TenderScroll contentContainerStyle={{ flexGrow: 1}}>
                 <View style={{ paddingBottom:80}}>
                     {/*Sezione di distanza, status, orari*/}
                     <View style={styles.ViewInfo}>
@@ -103,7 +100,9 @@ const BarDescription = ({ route, navigation }) => {
                     </DrinkCardTender>
                     <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
                 </View>
-            </ScrollView>
+
+            </TenderScroll>
+            </View>
 
             <View style={{
                 position: 'absolute',

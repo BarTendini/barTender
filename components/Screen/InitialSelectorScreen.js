@@ -3,19 +3,18 @@ import {
     TouchableOpacity,
     StyleSheet,
     Text,
-    ScrollView,
 } from "react-native";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from "expo-linear-gradient";
 import {MaterialIcons} from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import TenderFragment from "../componenti/TenderFragment";
+import {TenderFragment, TenderScroll} from '../componenti/tender-components';
 
 const InitialSelectorScreen = ({route, navigation}) => {
     console.log("InitialSelectorScreen")
     return (
         <TenderFragment icon={"logout"} navigation={navigation}>
-            <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between', marginTop: 10}} contentInsetAdjustmentBehavior="automatic">
+            <TenderScroll>
                 <HomeButton
                     onPress={() => navigation.push('HomeScreenSelector')}
                     gradient={['#FFFFFF', '#FFCC8B']}
@@ -36,7 +35,7 @@ const InitialSelectorScreen = ({route, navigation}) => {
                     text="Guarda il carrello"
                     icon={ <MaterialIcons name="shopping-cart" size={100} color="black"/> }
                 />
-            </ScrollView>
+            </TenderScroll>
         </TenderFragment>
     );
 }

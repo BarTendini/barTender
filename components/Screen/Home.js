@@ -1,13 +1,9 @@
 import React, {useState} from 'react';
-import {View, Platform, SafeAreaView, Alert, FlatList} from 'react-native';
+import {View} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender.js";
-import BarSelection from "../componenti/BarSelection";
-import AwesomeAlert from "react-native-awesome-alerts";
-import {Location} from "../componenti/Location";
 import BarsInfo from "../../dati/BarsInfo"
 import {IconsButton} from "../../dati/IconsButton";
-import TenderFragment from "../componenti/TenderFragment";
+import {TenderFragment, TenderFlatList, Location, BarSelection} from "../componenti/tender-components";
 
 const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [showBars, setShowBars] = useState(false)
@@ -21,7 +17,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const barList = () => { // definizione funzione che mostra i bar
         if (showBars) // se non è nullo restituisce un component di tipo View con flatList e componente fatto da noi "BarSelection"
             return <View style={commonStyles.ViewHome}>
-                <FlatList data={BarsInfo} renderItem={item =>
+                <TenderFlatList data={BarsInfo} renderItem={item =>
                     <BarSelection Bar={item.item} navigation={navigation} />
                 }
                 />
@@ -29,7 +25,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     }
     return (
         <TenderFragment navigation={navigation}>
-            <Location animEnd={posizioneOttenuta}/>
+            <Location animEnd={posizioneOttenuta} />
             {barList()}
         </TenderFragment>
     );

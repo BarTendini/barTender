@@ -4,9 +4,9 @@ import { Entypo } from "@expo/vector-icons";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import SettingsInfo from "../../dati/SettingsInfo";
-import TenderButton from "../componenti/TenderButton";
+import TenderButton from "./TenderComponents/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
-import TenderAlert from "./TenderAlert"
+import TenderAlert from "./TenderComponents/TenderAlert"
 import FafouriteButton from "./FavouriteButton";
 import {DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo";
 import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId, addCartInfo} from "../../dati/CartInfo";

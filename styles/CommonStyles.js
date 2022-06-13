@@ -13,7 +13,7 @@ export default StyleSheet.create({
     },
     AndroidHomeSafeArea: {
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#ffffff00",
     },
     ViewAut: {
         flex: 1,
@@ -56,10 +56,6 @@ export default StyleSheet.create({
     BottoneText: {
         color: "white",
     },
-    Logo: {
-        width: '100%',
-        height: 150,
-    },
     Bottom: {
         //serve per centrare il resto degli elementi della pagina a causa di logo
         // Altrimenti è tutto centrato al di sotto del logo
@@ -91,5 +87,18 @@ export default StyleSheet.create({
         marginVertical: 10,
         // borderColor: 'black',
         // borderWidth: 3,
+    },
+    HeaderTender: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        width: "100%",
+        overflow: "hidden",
+        zIndex: 999,
+        elevation: 20,
+        shadowOffset: {width: 0, height: 5},
+        shadowRadius: 4,
+        shadowOpacity: 0.5
     }
 });

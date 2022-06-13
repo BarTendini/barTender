@@ -1,21 +1,19 @@
 import React, {useEffect, useState} from "react"; //quasi sempre necessario
-import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, Image, ScrollView, Platform } from "react-native";
+import { TouchableOpacity, View, StyleSheet, Text, Image, Platform } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
-import Header from "../componenti/BannerTender";
 import SettingsInfo from "../../dati/SettingsInfo";
-import { IconsButton } from "../../dati/IconsButton";
 import {DrinksInfo, isDrinkCustom, switchFavouriteStateFromId} from "../../dati/DrinksInfo";
-import FafouriteButton from "../componenti/FavouriteButton";
 import { DrinkCardTender } from "../Card/TenderCard";
-import TenderButton from "../componenti/TenderButton";
 import {LinearGradient} from 'expo-linear-gradient';
-import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import TenderAlert from "../componenti/TenderAlert";
 import {addCartInfo} from "../../dati/CartInfo";
-import TenderFragment from "../componenti/TenderFragment";
+import {
+    FavouriteButton,
+    TenderScroll,
+    TenderAlert,
+    TenderButton,
+    TenderFragment
+} from "../componenti/tender-components";
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
@@ -131,12 +129,12 @@ const DrinkDescription = ({ route, navigation }) => {
 
     return (
         <TenderFragment navigation={navigation}>
-            <View>
-                <Text style={{ fontSize: 36, textAlign: 'center' }}>
-                    {Drink.name} {isDrinkCustom(Drink) ? "custom": "" }
-                </Text>
-            </View>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            {/*<View>*/}
+            {/*    <Text style={{ fontSize: 36, textAlign: 'center' }}>*/}
+            {/*        {Drink.name} {isDrinkCustom(Drink) ? "custom": "" }*/}
+            {/*    </Text>*/}
+            {/*</View>*/}
+            <TenderScroll>
                 <View style={{ flex: 1, paddingBottom: 80 }}>
                     <View style={{ flexDirection: "column", justifyContent: "center", marginTop: 20 }}>
                         <Image
@@ -156,7 +154,7 @@ const DrinkDescription = ({ route, navigation }) => {
                                 <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
                             </View>
                             <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50, marginHorizontal: 5}}>
-                                {FafouriteButton(Drink.id)}
+                                {FavouriteButton(Drink.id)}
                             </View>
 
                         </View>
@@ -208,7 +206,7 @@ const DrinkDescription = ({ route, navigation }) => {
                         </DrinkCardTender>
                     </View>
                 </View>
-            </ScrollView>
+            </TenderScroll>
             <View style={{
                 position: 'absolute',
                 width: '100%',

@@ -1,19 +1,19 @@
 import React, {Component, useState, useEffect} from 'react';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/BannerTender";
+import Header from "../componenti/TenderComponents/BannerTender";
 import {IconsButton} from "../../dati/IconsButton";
 import {Platform, SafeAreaView, Text, View, StyleSheet, ScrollView, FlatList} from "react-native";
 import SettingsInfo from "../../dati/SettingsInfo";
 import {CocktailHtml} from "../webview/CocktailStyles";
 import {WebView} from "react-native-webview";
 import {WebView as WebJS} from "react-native-web-webview";
-import TenderButton from "../componenti/TenderButton";
+import TenderButton from "../componenti/TenderComponents/TenderButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
 import {customizeIngredients, deleteCustomization, DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo"
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 export const DrinkCustom = ({route, navigation}) => {
 

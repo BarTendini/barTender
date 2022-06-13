@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from "react"; //quasi sempre necessario
 import { SafeAreaView, Platform, ScrollView, View, StyleSheet, Text, FlatList} from "react-native";
-import Header from "../componenti/BannerTender";
+import Header from "../componenti/TenderComponents/BannerTender";
 import commonStyles from "../../styles/CommonStyles";
 import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId} from "../../dati/CartInfo";
 import {IconsButton} from "../../dati/IconsButton";
 import {DrinkCardTender} from "../Card/TenderCard";
-import TenderButton from "../componenti/TenderButton";
+import TenderButton from "../componenti/TenderComponents/TenderButton";
 import {deleteCustomization} from "../../dati/DrinksInfo";
 import {LinearGradient} from 'expo-linear-gradient';
 import {themeStyles} from "../../styles/theme/ThemeStyles";
-import TenderFragment from "../componenti/TenderFragment";
+import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 const Cart = ({route, navigation}) => {
     console.log("Cart")
