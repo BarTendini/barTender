@@ -10,19 +10,19 @@ import {themeStyles} from "../../../styles/theme/ThemeStyles";
 const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false, titolo=''}) => { //renderizza l'header header
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
-    const H_MAX_HEIGHT = animations.height;
+    const H_MAX_HEIGHT = animations ? animations.height : 150;
     const H_MIN_HEIGHT = 50;
     const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
     const minScroll = 50;
     const activeRange = 200;
 
-    const animatedHeaderBackgroundColor = animations.anim.interpolate({
+    const animatedHeaderBackgroundColor = animations?.anim.interpolate({
         inputRange: [0, H_SCROLL_DISTANCE],
         outputRange: ['blue', 'red'],
         extrapolate: "clamp"
     });
 
-    const animatedHeaderScroll = animations.anim.interpolate({
+    const animatedHeaderScroll = animations?.anim.interpolate({
         inputRange: [0, H_SCROLL_DISTANCE],
         outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
         extrapolate: "clamp"
@@ -64,7 +64,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
             {
                 backgroundColor: bgColor ? bgColor : null,
                 // backgroundColor: animatedHeaderBackgroundColor,
-                height: animatedHeaderScroll
+                height: animatedHeaderScroll ? animatedHeaderScroll : 150
             }
             ]}
         >

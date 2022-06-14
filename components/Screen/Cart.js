@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from "react"; //quasi sempre necessario
-import { SafeAreaView, Platform, ScrollView, View, StyleSheet, Text, FlatList} from "react-native";
-import Header from "../componenti/TenderComponents/BannerTender";
-import commonStyles from "../../styles/CommonStyles";
-import {CartInfo, removeCartInfo, withdraw, getNextToWithdrawId} from "../../dati/CartInfo";
+import { Platform, View, StyleSheet, Text} from "react-native";
+import {CartInfo, withdraw, getNextToWithdrawId} from "../../dati/CartInfo";
 import {IconsButton} from "../../dati/IconsButton";
 import {DrinkCardTender} from "../Card/TenderCard";
-import TenderButton from "../componenti/TenderComponents/TenderButton";
-import {deleteCustomization} from "../../dati/DrinksInfo";
 import {LinearGradient} from 'expo-linear-gradient';
 import {themeStyles} from "../../styles/theme/ThemeStyles";
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
+import {TenderFragment, TenderFlatList, TenderButton} from "../componenti/tender-components";
 
 const Cart = ({route, navigation}) => {
     console.log("Cart")
@@ -64,17 +60,18 @@ const Cart = ({route, navigation}) => {
     }
 
     return(
-        <TenderFragment navigation={navigation}>
-            <View>
-                <Text style={{ fontSize: 36, textAlign: 'center' }}>
-                    Cart
-                </Text>
-            </View>
-            <FlatList
+        <TenderFragment navigation={navigation} title={'Cart'}>
+            {/*<View>*/}
+            {/*    <Text style={{ fontSize: 36, textAlign: 'center' }}>*/}
+            {/*        Cart*/}
+            {/*    </Text>*/}
+            {/*</View>*/}
+            <TenderFlatList
                 data={cartInfo.slice().reverse()}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-                contentContainerStyle={{ paddingBottom: 100}}
+                footerPadding={60}
+
             />
             <View style={{
                 position: 'absolute',

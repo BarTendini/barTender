@@ -49,12 +49,11 @@ const BarDescription = ({ route, navigation }) => {
         }
     }
     return (
-        <TenderFragment navigation={navigation}>
-            <View>
-            <View style={styles.MarginTop}>
-                <Text style={styles.Title}>{bar.nome}</Text>
-                <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
-            </View>
+        <TenderFragment navigation={navigation} title={bar.nome}>
+            {/*<View style={styles.MarginTop}>*/}
+            {/*    <Text style={styles.Title}>{bar.nome}</Text>*/}
+            {/*    <Text style={{ textAlign: 'center', }}>{bar.via}</Text>*/}
+            {/*</View>*/}
             <TenderScroll contentContainerStyle={{ flexGrow: 1}}>
                 <View style={{ paddingBottom:80}}>
                     {/*Sezione di distanza, status, orari*/}
@@ -69,6 +68,7 @@ const BarDescription = ({ route, navigation }) => {
                                 }}
                             />
                         </View>
+                        <Text style={{ textAlign: 'center', marginVertical: 5 }}>{bar.via}</Text>
                         {/*Sotto titolo di distanza, status, orari*/}
                         <View style={styles.ParallelCardsContainer}>
                             <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
@@ -102,8 +102,6 @@ const BarDescription = ({ route, navigation }) => {
                 </View>
 
             </TenderScroll>
-            </View>
-
             <View style={{
                 position: 'absolute',
                 width: '100%',
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
     ViewInfo: {
         flexDirection: "column",
         justifyContent: "center",
-        marginTop: 20
+        // marginTop: 20
     },
     ViewInfoTitle: {
         flexDirection: "row",

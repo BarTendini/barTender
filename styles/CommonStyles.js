@@ -61,12 +61,12 @@ export default StyleSheet.create({
         // Altrimenti è tutto centrato al di sotto del logo
         justifyContent: "flex-end",
         alignItems: "center",
+        padding: 30
     },
     ViewHome: {
         flexDirection: "column",
         justifyContent: "flex-start",
         marginHorizontal: 10,
-        
     },
     RistoranteImm: {
         justifyContent: "center",

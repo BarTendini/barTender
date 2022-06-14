@@ -14,6 +14,7 @@ import {
     TenderButton,
     TenderFragment
 } from "../componenti/tender-components";
+import {useFocusEffect, useIsFocused} from "@react-navigation/native";
 
 const borderWidth = SettingsInfo[3].settables[0].value ? 1 : 0
 
@@ -23,16 +24,23 @@ const DrinkDescription = ({ route, navigation }) => {
     const [Drink, setDrink] = useState(DrinksInfo[route.params.drink])
     const [alertVisibility, setAlertVisibility] = useState(false)
     const [dummy, setDummy] = useState(0)
+    const [pageTitle, setPageTitle] = useState(`${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
     //console.log(Drink.ingredients)
     const standardImage = require("../../image/drinks/logos/barTenderLogo.png")
     const updateDrink=()=>{
         setDrink(DrinksInfo[route.params.drink])
     }
-    useEffect(()=>{
-        console.log("dummy === "+ dummy)
-        setDrink(DrinksInfo[route.params.drink])
-        setDummy(0)
-    })
+
+    // Serve per notificare il componente quando viene chiamato a causa di un navigator
+    useFocusEffect(
+        React.useCallback(() => {
+            console.log("dummy === "+ dummy)
+            setDrink(DrinksInfo[route.params.drink])
+            setDummy(0)
+            setPageTitle(`${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
+        }, [route, navigation])
+    );
+
     const showAlert=()=>{
         if (alertVisibility===false){
             setAlertVisibility(true)
@@ -128,83 +136,81 @@ const DrinkDescription = ({ route, navigation }) => {
     }
 
     return (
-        <TenderFragment navigation={navigation}>
-            {/*<View>*/}
+        <TenderFragment navigation={navigation} title={pageTitle}>
+            {/*<View style={{marginTop: 160}}>*/}
             {/*    <Text style={{ fontSize: 36, textAlign: 'center' }}>*/}
             {/*        {Drink.name} {isDrinkCustom(Drink) ? "custom": "" }*/}
             {/*    </Text>*/}
             {/*</View>*/}
-            <TenderScroll>
-                <View style={{ flex: 1, paddingBottom: 80 }}>
-                    <View style={{ flexDirection: "column", justifyContent: "center", marginTop: 20 }}>
-                        <Image
-                            source={getPicture(Drink)}
-                            style={commonStyles.DrinkImm}
-                        />
+            <TenderScroll footerPadding={30}>
+                <View style={{ flexDirection: "column", justifyContent: "center", marginTop: 20 }}>
+                    <Image
+                        source={getPicture(Drink)}
+                        style={commonStyles.DrinkImm}
+                    />
 
 
-                        {/*Drink info*/}
-                        <View style={styles.ParallelCardsContainer}>
-                            <View style={styles.ParallelCards}>
-                                <Text style={styles.TextInfoTitle}>Prezzo</Text>
-                                <Text style={{textAlign: 'center',}}>{Drink.price}€</Text>
-                            </View>
-                            <View style={styles.ParallelCards}>
-                                <Text style={styles.TextInfoTitle}>Tasso alcolico</Text>
-                                <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
-                            </View>
-                            <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50, marginHorizontal: 5}}>
-                                {FavouriteButton(Drink.id)}
-                            </View>
-
+                    {/*Drink info*/}
+                    <View style={styles.ParallelCardsContainer}>
+                        <View style={styles.ParallelCards}>
+                            <Text style={styles.TextInfoTitle}>Prezzo</Text>
+                            <Text style={{textAlign: 'center',}}>{Drink.price}€</Text>
+                        </View>
+                        <View style={styles.ParallelCards}>
+                            <Text style={styles.TextInfoTitle}>Tasso alcolico</Text>
+                            <Text style={{textAlign: 'center',}}>{Drink.alchoolicTax}%</Text>
+                        </View>
+                        <View style={{justifyContent:"center", height:70, width:70, alignItems:"center", backgroundColor:themeStyles.light.backgroundColor1, borderRadius:50, marginHorizontal: 5}}>
+                            {FavouriteButton(Drink.id)}
                         </View>
 
-
-
-                        <DrinkCardTender title={"Ingredienti:"}>
-                            <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
-                                 {isDrinkCustom(Drink) ?
-                                         <View style={{flexDirection:"row"}}>
-                                             <View style={{flex:0.5, fontSize: 24}}>
-                                                 <Text style={{fontWeight:"bold"}}>original</Text>
-                                                 <Text>quantity: {Drink.quantity}ml</Text>
-                                                 {
-                                                     Drink.ingredients.map(item =>
-                                                         <Text key={item.id}>{item.nome}: {item.percent}%</Text>
-                                                     )
-                                                 }
-                                             </View>
-                                             <View style={{flex:0.5, fontSize: 24}}>
-                                                 <Text style={{fontWeight:"bold"}}>custom</Text>
-                                                 <Text>quantity: {Drink.customQuantity}ml</Text>
-                                                 {
-                                                     Drink.custom.map(item =>
-                                                         <Text key={item.id}>{item.nome}: {item.percent}%</Text>
-                                                     )
-                                                 }
-                                             </View>
-                                         </View>
-
-                                     :<>
-                                     <Text>quantity: {Drink.quantity}ml</Text>
-                                         {Drink.ingredients.map(item =>
-                                                <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
-                                                    <Text >
-                                                        {item.nome}: {item.quantity} {item.unit}
-                                                    </Text>
-                                                </View>
-
-                                        )}
-                                     </>
-                                     }
-                            </View>
-                        </DrinkCardTender>
-                        <DrinkCardTender title={"Descrizione:"}>
-                            <View style = {{flex:1, marginHorizontal:20, marginVertical: 10}}>
-                                <Text>{Drink.description}</Text>
-                            </View>
-                        </DrinkCardTender>
                     </View>
+
+
+
+                    <DrinkCardTender title={"Ingredienti:"}>
+                        <View style={{ flex: 1, marginHorizontal:20, marginVertical: 10 }}>
+                             {isDrinkCustom(Drink) ?
+                                     <View style={{flexDirection:"row"}}>
+                                         <View style={{flex:0.5, fontSize: 24}}>
+                                             <Text style={{fontWeight:"bold"}}>original</Text>
+                                             <Text>quantity: {Drink.quantity}ml</Text>
+                                             {
+                                                 Drink.ingredients.map(item =>
+                                                     <Text key={item.id}>{item.nome}: {item.percent}%</Text>
+                                                 )
+                                             }
+                                         </View>
+                                         <View style={{flex:0.5, fontSize: 24}}>
+                                             <Text style={{fontWeight:"bold"}}>custom</Text>
+                                             <Text>quantity: {Drink.customQuantity}ml</Text>
+                                             {
+                                                 Drink.custom.map(item =>
+                                                     <Text key={item.id}>{item.nome}: {item.percent}%</Text>
+                                                 )
+                                             }
+                                         </View>
+                                     </View>
+
+                                 :<>
+                                 <Text>quantity: {Drink.quantity}ml</Text>
+                                     {Drink.ingredients.map(item =>
+                                            <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
+                                                <Text >
+                                                    {item.nome}: {item.quantity} {item.unit}
+                                                </Text>
+                                            </View>
+
+                                    )}
+                                 </>
+                                 }
+                        </View>
+                    </DrinkCardTender>
+                    <DrinkCardTender title={"Descrizione:"}>
+                        <View style = {{flex:1, marginHorizontal:20, marginVertical: 10}}>
+                            <Text>{Drink.description}</Text>
+                        </View>
+                    </DrinkCardTender>
                 </View>
             </TenderScroll>
             <View style={{
@@ -221,10 +227,13 @@ const DrinkDescription = ({ route, navigation }) => {
                     style={{height: 100, paddingVertical: 20,  flexDirection: "row", justifyContent: 'center'}}
                 >
                     <View style={styles.parallelButtons}>
-                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() =>{ setDummy(2); navigation.push('DrinkCustom', { drink: Drink.id}) }}/>
+                        <TenderButton testo={'🔧 Personalizza'} navigation={navigation} color={Drink.color} action={() =>{
+                            setDummy(2); navigation.push('DrinkCustom', {drink: Drink.id,})
+                        }}
+                        />
                     </View>
                     <View style={styles.parallelButtons}>
-                         <TenderButton testo={'🍹 Aquista' } navigation={navigation} action={showAlert}/>
+                         <TenderButton testo={'🍹 Acquista' } navigation={navigation} action={showAlert}/>
                     </View>
                 </LinearGradient>
             </View>

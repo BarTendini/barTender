@@ -1,5 +1,5 @@
 import React, { Component, useState} from 'react';
-import { Text, StyleSheet, View, Modal, TouchableOpacity, Button, Alert  } from 'react-native';
+import { Text, StyleSheet, View, Modal, TouchableWithoutFeedback, Alert  } from 'react-native';
 import {themeStyles} from "../../../styles/theme/ThemeStyles"
 import Accordion from 'react-native-collapsible/Accordion';
 import { Entypo } from "@expo/vector-icons";
@@ -165,19 +165,23 @@ const alertMessage = (text) => {
       transparent={true}
       animationType={"fade"}
       onRequestClose={() => { cancelAlertBox() }} >
+      {/*per chiudere il modal quando clicchi fuori
+      https://stackoverflow.com/questions/40483034/close-react-native-modal-by-clicking-on-overlay*/}
+      <TouchableWithoutFeedback style={{backgroundColor: 'rgba(0,0,0,0.7)'}} onPress={cancelAlertBox}>
 
-      <View style={styles.fullPageBackground}>
+        <View style={styles.fullPageBackground}>
 
-        <View style={styles.MainAlertView}>
-          {_renderHeader()}
-          <View style={styles.horizontalWhiteLines} />
+          <View style={styles.MainAlertView}>
+            {_renderHeader()}
+            <View style={styles.horizontalWhiteLines} />
 
-          {_renderContent()}
+            {_renderContent()}
 
-          {_renderButtons()}
+            {_renderButtons()}
 
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   </View>
 );

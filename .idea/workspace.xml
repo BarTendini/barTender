@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Aggiunto un import generale per i componenti&#10;l'header ora si abbassa quando si scrolla, ma non ho testato su android">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Aggiunto un titolo nell'header che scorre">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/BarDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/BarDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/ChangeLogScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkCustom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkDescription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/DrinkMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/BarSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/BarSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/Location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Screens.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/screens-tender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Settings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderAlert.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderAlert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFlatList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderScroll.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderScroll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navigator/DrawerNavigatorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigator/DrawerNavigatorRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,18 +46,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/massimo/Documents/GitHub/barTender/components/componenti/TenderComponents&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/massimo/Documents/GitHub/barTender/components/componenti/TenderComponents",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components/componenti/TenderComponents" />
@@ -86,7 +97,8 @@
       <workItem from="1655024485507" duration="3243000" />
       <workItem from="1655027741942" duration="25796000" />
       <workItem from="1655108665730" duration="60000" />
-      <workItem from="1655137503760" duration="6368000" />
+      <workItem from="1655137503760" duration="6595000" />
+      <workItem from="1655235484384" duration="8484000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -130,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655108718387</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Aggiunto un titolo nell'header che scorre">
+      <created>1655162570212</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655162570212</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +172,8 @@
     <MESSAGE value="Inserita funzione per controllare che il drink custom esiste" />
     <MESSAGE value="Risolto bug classe circolare&#10;Risolto bug nella flat list del carte, ora non si visualizzano più errori" />
     <MESSAGE value="Aggiunto un import generale per i componenti&#10;l'header ora si abbassa quando si scrolla, ma non ho testato su android" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto un import generale per i componenti&#10;l'header ora si abbassa quando si scrolla, ma non ho testato su android" />
+    <MESSAGE value="Aggiunto un titolo nell'header che scorre" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto un titolo nell'header che scorre" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

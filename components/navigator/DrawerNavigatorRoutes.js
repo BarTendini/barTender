@@ -5,7 +5,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, Home, Settings, Cart} from '../Screen/Screens'
+import { BarDescription, ChangeLogScreen, DrinkDescription, DrinkMenu, Home, Settings, Cart} from '../Screen/screens-tender'
 import CustomSidebarMenu from "./CustomSidebarMenu";
 import NavigationDrawerHeader from "./NavigationDrawerHeader";
 import {DrinkCustom} from "../Screen/DrinkCustom";

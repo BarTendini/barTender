@@ -2,7 +2,7 @@ import {StyleSheet, Platform, UIManager} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {ChangeLogScreen, Login, Register, SplashScreen} from './components/Screen/Screens'
+import {ChangeLogScreen, Login, Register, SplashScreen} from './components/Screen/screens-tender'
 import DrawerNavigationRoutes from './components/navigator/DrawerNavigatorRoutes';
 import React from "react";
 import {AppContext} from "./AppContext";

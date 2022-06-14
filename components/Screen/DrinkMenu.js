@@ -1,14 +1,11 @@
 import React, {useState} from "react"; //quasi sempre necessario
 import {TouchableOpacity, SafeAreaView, Platform, ScrollView, View, StyleSheet, Text} from "react-native";
-import Header from "../componenti/TenderComponents/BannerTender";
-import commonStyles from "../../styles/CommonStyles";
-import DrinkSelection from "../componenti/DrinkSelection";
 import {themeStyles} from "../../styles/theme/ThemeStyles"
 import {IconsButton} from "../../dati/IconsButton";
 import {DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import {AppContext} from "../../AppContext";
 import {DrinkCardTender} from "../Card/TenderCard";
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
+import {TenderFragment, TenderScroll, DrinkSelection} from "../componenti/tender-components";
 
 const DrinkMenu = ({route, navigation}) => {
     const avaiableDrinkTypes = getTypes(DrinksInfo);
@@ -43,7 +40,7 @@ const DrinkMenu = ({route, navigation}) => {
             {/*<View style={styles.ViewInfo}>*/}
             {/*    <Text style={styles.FeedTestoVoto}>Menu: {selBarName}</Text>*/}
             {/*</View>*/}
-            <ScrollView style={{marginTop:-20}}>
+            <TenderScroll style={{marginTop: -15 }}>
 
                 <DrinkCardTender title={"Tipo di Drink:"}>
                     <View>
@@ -61,7 +58,7 @@ const DrinkMenu = ({route, navigation}) => {
                     return <DrinkSelection Drink_={item.id} availability={false} navigation={navigation} key={item.id}/>
                 }}/>
 
-            </ScrollView>
+            </TenderScroll>
 
         </TenderFragment>
     )

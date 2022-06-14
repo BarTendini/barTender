@@ -3,21 +3,15 @@ import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native"; /
 import commonStyles from "../../styles/CommonStyles"; //importa stili comuni
 import { changes, version } from "../../dati/ChangeLog"; //importa gli oggetti da Change log con i log
 import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare le bolle personalizzate
-import Header from "../componenti/TenderComponents/BannerTender.js";
 import { themeStyles } from "../../styles/theme/ThemeStyles";
-import { IconsButton } from "../../dati/IconsButton";
-import MainMenu from "../componenti/MainMenu";
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
 
 //import per sandbox
 import { DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
 import { AppContext } from "../../AppContext";
 import { TouchableOpacity} from "react-native";
 import DrinkSelection from "../componenti/DrinkSelection";
-import { ScrollView } from "react-native-gesture-handler";
-import  TenderAlert from "../componenti/TenderComponents/TenderAlert"
 import  showAlertBox from "../componenti/TenderComponents/TenderAlert"
-import TenderButton from "../componenti/TenderComponents/TenderButton";
+import {TenderFragment, TenderScroll, TenderButton, TenderAlert, TenderFlatList} from "../componenti/tender-components";
 
 
 
@@ -65,19 +59,19 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
 
         // ogni funzione per la renderizzazione di una pagina deve restituire un oggetto disegnabile come una View o una Text
         return (
-            <SafeAreaView style={[commonStyles.AndroidSafeArea, wow.mio]}>
-                <Header icon={IconsButton.back} navigation={navigation} bgColor={themeStyles.light.backgroundColor1} />
+            <TenderFragment style={wow.mio} navigation={navigation} title={version}>
                 <View style={commonStyles.ViewHome}>
-                    <Text style={commonStyles.titleText}>
-                        {version}
-                    </Text>
-                    <FlatList
+                    {/*<Text style={commonStyles.titleText}>*/}
+                    {/*    {version}*/}
+                    {/*</Text>*/}
+                    <TenderFlatList
                         data={changes}
                         renderItem={renderItem}
                         keyExtractor={item => item.version}
+                        style={{marginTop: -15}}
                     />
                 </View>
-            </SafeAreaView>
+            </TenderFragment>
         );
     }
     /**************************************************************************************
@@ -88,11 +82,11 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
         console.log("change log page as sandbox");
         
         return (
-            <TenderFragment navigation={navigation}>
-                <View style={commonStyles.ViewHome}>
-                    <Text style={commonStyles.titleText}>
-                        change log page as sandbox
-                    </Text>  
+            <TenderFragment navigation={navigation} title={"change log page as sandbox"}>
+                <TenderScroll style={commonStyles.ViewHome}>
+                    {/*<Text style={commonStyles.titleText}>*/}
+                    {/*    change log page as sandbox*/}
+                    {/*</Text>  */}
                     <TenderAlert
                         visibility = {alertVisibility} 
                         state = {setAlertVisibility}
@@ -109,7 +103,7 @@ const ChangeLogScreen = ({ navigation }) => { //funzione che permette di renderi
                         </View>
                     </TenderAlert>
                     <TenderButton testo={'🚨 Allert!'} navigation={navigation}  action={()=>{showAlert()}}/>    
-                </View>
+                </TenderScroll>
             </TenderFragment>
         );
     }

@@ -33,7 +33,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                 <TenderFlatList data={BarsInfo} renderItem={item =>
                         <BarSelection Bar={item.item} navigation={navigation}/>
                     }
-                style={{marginTop: -10}}/>
+                style={{marginTop: -10, marginBottom: -15}}/>
             )
     }
     return (

@@ -1,13 +1,9 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/TenderComponents/BannerTender.js";
-import {themeStyles} from "../../styles/theme/ThemeStyles";
 import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da settings info con le info
 import DrinkCardTender from "../Card/DrinkCardTender";
-import CardTender from "../Card/DrinkCardTender";
-import {IconsButton} from "../../dati/IconsButton"; //permette di importare le bolle personalizzate
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
+import {TenderFlatList, TenderFragment} from "../componenti/tender-components";
 
 const Settings = ({ navigation }) => {
 
@@ -46,12 +42,12 @@ const Settings = ({ navigation }) => {
     console.log("Settings.js");
 
     return (
-        <TenderFragment navigation={navigation}>
+        <TenderFragment navigation={navigation} title={"Settings"}>
             <View style={{flex: 1}}>
-                <Text style={commonStyles.titleText}>
-                    settings
-                </Text>
-                <FlatList
+                {/*<Text style={commonStyles.titleText}>*/}
+                {/*    settings*/}
+                {/*</Text>*/}
+                <TenderFlatList
                     data={settingsInfo}
                     renderItem={cardRenderSelector}
                 />

@@ -2,7 +2,7 @@ import React from "react";
 import {Animated, Platform, ScrollView, View} from "react-native";
 
 // ...props è un deconstructor che serve a indicature un oggetto contentente tutte le altre proprietà non elencate
-export const TenderScroll = ({children, scroll, header_height, ...props}) => {
+export const TenderScroll = ({children, scroll, header_height, footerPadding=15, ...props}) => {
     return (
         <ScrollView
             {...props}
@@ -16,7 +16,7 @@ export const TenderScroll = ({children, scroll, header_height, ...props}) => {
         >
             {/*<View style={{padding: 200}}></View>*/}
             {children}
-            <View style={{padding: 10}}></View>
+            <View style={{padding: footerPadding}}></View>
         </ScrollView>
     )
 }

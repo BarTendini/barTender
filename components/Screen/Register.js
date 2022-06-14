@@ -4,17 +4,13 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
-    SafeAreaView,
     TextInput,
     KeyboardAvoidingView,
     Platform,
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/TenderComponents/BannerTender.js";
-import {IconsButton} from "../../dati/IconsButton";
-import {themeStyles} from "../../styles/theme/ThemeStyles"
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
+import {TenderFragment, TenderScroll} from "../componenti/tender-components";
 
 
 const Register = ({ navigation }) => {
@@ -40,7 +36,7 @@ const Register = ({ navigation }) => {
     return (
         <TenderFragment bgColor={'#ffcc8b'} noGradient={true} navigation={navigation}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
-                <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
+                <TenderScroll contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
 
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
@@ -78,7 +74,7 @@ const Register = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                </ScrollView>
+                </TenderScroll>
             </KeyboardAvoidingView>
         </TenderFragment>
     );

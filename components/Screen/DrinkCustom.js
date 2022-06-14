@@ -1,9 +1,5 @@
-import React, {Component, useState, useEffect} from 'react';
-import commonStyles from "../../styles/CommonStyles";
-import Header from "../componenti/TenderComponents/BannerTender";
-import {IconsButton} from "../../dati/IconsButton";
+import React, {useState} from 'react';
 import {Platform, SafeAreaView, Text, View, StyleSheet, ScrollView, FlatList} from "react-native";
-import SettingsInfo from "../../dati/SettingsInfo";
 import {CocktailHtml} from "../webview/CocktailStyles";
 import {WebView} from "react-native-webview";
 import {WebView as WebJS} from "react-native-web-webview";
@@ -13,7 +9,8 @@ import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
 import {customizeIngredients, deleteCustomization, DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo"
-import TenderFragment from "../componenti/TenderComponents/TenderFragment";
+import {TenderFlatList, TenderFragment} from "../componenti/tender-components";
+
 
 export const DrinkCustom = ({route, navigation}) => {
 
@@ -29,7 +26,8 @@ export const DrinkCustom = ({route, navigation}) => {
     //console.log(Drink.custom)
     const updateDrink=()=>{
         setDrink(DrinksInfo[route.params.drink])
-        setPageTitle(` ${Drink.name} ${isDrinkCustomDrink ? "custom": "" }`)
+        const title = `${Drink.name} ${isDrinkCustom ? "custom": "" }`
+        setPageTitle(title)
     }
 
     const runFirst = (selDrink) => `  
@@ -41,20 +39,21 @@ export const DrinkCustom = ({route, navigation}) => {
         {/*Tutorial WebView*/}
         {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
         const quantity = {nome:"quantity", quantity:isDrinkCustom(Drink) ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
-        return (<>
-            <View style={{width: '100%', height:300}}>
-                {showHTML()}
+        return (
+            <View>
+                <View style={{width: '100%', height:300}}>
+                    {showHTML()}
+                </View>
+                <CardWithSlider
+                    item={quantity}
+                    drinkQuantity={1000}
+                    action={
+                    ()=>{
+                        setPageTitle(` ${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
+                        console.log("setPageTitle")
+                    }
+                }/>
             </View>
-            <CardWithSlider
-                item={quantity}
-                drinkQuantity={1000}
-                action={
-                ()=>{
-                    setPageTitle(` ${Drink.name} ${isDrinkCustom(Drink) ? "custom": "" }`)
-                    console.log("setPageTitle")
-                }
-            }/>
-            </>
         )
     }
 
@@ -104,16 +103,16 @@ export const DrinkCustom = ({route, navigation}) => {
     }
 
     console.log("CocktailHtml");
-    return <TenderFragment navigation={navigation}>
-        <Text style={{ fontSize: 36, textAlign: 'center' }}>
-            {pageTitle}
-        </Text>
-        <FlatList
+    return <TenderFragment navigation={navigation} title={pageTitle}>
+        {/*<Text style={{ fontSize: 36, textAlign: 'center' }}>*/}
+        {/*    {pageTitle}*/}
+        {/*</Text>*/}
+        <TenderFlatList
             ListHeaderComponent={_renderHeader}
             data={isDrinkCustom(Drink) ? Drink.custom : Drink.ingredients }
             renderItem={renderItem}
             keyExtractor={item => item.id}
-            contentContainerStyle={{ paddingBottom: 100}}
+            footerPadding={60}
         />
         <View style={{
             position: 'absolute',
