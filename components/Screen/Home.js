@@ -57,6 +57,9 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                     value={location}
                     onChangeText={setLocation}
                     style={[commonStyles.InputSearchBar]}
+                    autoFocus={true}
+                    returnKeyType={'search'}
+                    onSubmitEditing={updateBars}
                 />
                 <View
                     style={{marginRight: 25}}

@@ -30,13 +30,10 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     });
     // Serve per loggare il valore dello scroll
     animatedHeaderScroll.addListener(value => {
-        //console.warn(value)
         if (value.value < 80) {
-            //console.warn('yey')
             setAllScrolled(true)
         }
         else if (allScrolled){
-            //console.warn('uffy')
             setAllScrolled(false)
         }
     })
