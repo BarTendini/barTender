@@ -40,6 +40,17 @@ export default StyleSheet.create({
         borderRadius: 15,
         fontSize: 16,
     },
+    InputSearchBar: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        marginHorizontal: 15,
+        paddingHorizontal: 15,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 15,
+        fontSize: 16,
+    },
     BottoneView: {
         flex: 1,
         justifyContent: "center",
