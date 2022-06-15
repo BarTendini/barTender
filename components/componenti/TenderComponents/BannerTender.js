@@ -12,7 +12,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
     const H_MAX_HEIGHT = animations ? animations.height : 150;
-    const H_MIN_HEIGHT = 50;
+    const H_MIN_HEIGHT = 60;
     const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
     const minScroll = 50;
     const activeRange = 200;
@@ -31,7 +31,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     // Serve per loggare il valore dello scroll
     animatedHeaderScroll.addListener(value => {
         console.warn(value)
-        if (value.value < 70) {
+        if (value.value < 80) {
             console.warn('yey')
             setAllScrolled(true)
         }
@@ -52,13 +52,14 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
             justifyContent: "flex-end",
             flex: 1,
             paddingBottom: 10,
-            zIndex: 1000,
-            elevation: 1000
         }}>
             <Text style={{
-                fontSize: 20,
+                fontSize: 30,
                 textAlign: 'center',
                 fontWeight: 'bold',
+                // fontFamily: 'Roboto',
+                marginTop: 10,
+                // color: 'white'
             }}>
                 {title}
             </Text>
@@ -72,9 +73,9 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                     source={require('../../../image/loghi/logoHome.png')}
                     style={{
                         width: '100%',
-                        height: '80%',
+                        height: '90%',
                     }}
-                    resizeMode={'contain'}
+                    resizeMode={Platform.OS === 'web'? 'contain' : 'cover'}
                 >
                     {buttons()}
                 </ImageBackground>

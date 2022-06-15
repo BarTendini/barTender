@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Guarda come mischia bene">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Lagg         a">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <workItem from="1655108665730" duration="60000" />
       <workItem from="1655137503760" duration="6595000" />
       <workItem from="1655235484384" duration="8547000" />
-      <workItem from="1655322453975" duration="2927000" />
+      <workItem from="1655322453975" duration="5540000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -150,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655323994103</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Lagg         a">
+      <created>1655325423037</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655325423037</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +180,8 @@
     <MESSAGE value="Aggiunto un titolo nell'header che scorre" />
     <MESSAGE value="Ora tutte le schermate dovrebbero avere l'header che si chiude" />
     <MESSAGE value="Guarda come mischia bene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Guarda come mischia bene" />
+    <MESSAGE value="Lagg         a" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lagg         a" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
