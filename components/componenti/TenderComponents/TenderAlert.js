@@ -64,7 +64,7 @@ const alertMessage = (text) => {
     if (elements.tenderButtons) {
       if (elements.tenderButtons.length == 1) {
         return (
-          <View style={{ flexDirection: "row", alignSelf: "center", justifyContent: 'center', alignItems: "center", alignContent: 'center', borderWidth: 3, borderRadius: 50, paddingVertical:20}}>
+          <View style={{ flexDirection: "row", alignSelf: "center", justifyContent: 'center', alignItems: "center", alignContent: 'center', paddingVertical:20}}>
             {
               singleButton(elements.tenderButtons[0])
             }
