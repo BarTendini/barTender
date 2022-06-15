@@ -59,14 +59,12 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                     onChangeText={setLocation}
                     style={[commonStyles.InputSearchBar]}
                 />
-                <View style= {{justifyContent: 'center', alignContent: 'center'}}>
-                    <TouchableOpacity
-                        style={{marginRight: 15}}
-                        onPress={() => { updateBars() }}
-                    >
-                        <FontAwesome5 name="search-location" size={50} color="black" />
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                    style={{marginRight: 25}}
+                    onPress={() => { updateBars() }}
+                >
+                    <FontAwesome5 name="search-location" size={50} color="black" />
+                </TouchableOpacity>
             </View>
         )
     }

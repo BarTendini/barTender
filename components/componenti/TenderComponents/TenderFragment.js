@@ -65,10 +65,10 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title
 
 
     return (
-        <View style={{flex:1, backgroundColor: '#ffffff00' }}>
+        <View style={{flex:1, backgroundColor: '#ffffff' }}>
             <SafeAreaView style={{ flex:0, backgroundColor: '#ffcc8b' }} />
             <StatusBar hidden={false} backgroundColor="#ffcc8b" />
-            <View style={[commonStyles.AndroidHomeSafeArea,{backgroundColor: bgColor? bgColor:'#ffffff00', overflow: "hidden"}]} >
+            <View style={[commonStyles.AndroidHomeSafeArea,{backgroundColor: bgColor? bgColor:'#ffffff', overflow: "hidden"}]} >
                 <Header
                     icon={getIcon(icon)}
                     navigation={navigation}

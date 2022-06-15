@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'; //quasi sempre necessario
+import React, {useEffect, useRef, useState} from 'react'; //quasi sempre necessario
 import {Platform, View, ImageBackground, Image, TouchableOpacity, Animated, Text} from 'react-native'; // quasi sempre necessario anche se raramente servono tutti questi import
 import commonStyles from "../../../styles/CommonStyles";
 import {DrawerActions} from "@react-navigation/native";
@@ -8,6 +8,7 @@ import {themeStyles} from "../../../styles/theme/ThemeStyles";
 
 
 const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false, titolo=''}) => { //renderizza l'header header
+    const [allScrolled, setAllScrolled] = useState(false)
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
     const H_MAX_HEIGHT = animations ? animations.height : 150;
@@ -28,7 +29,18 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
         extrapolate: "clamp"
     });
     // Serve per loggare il valore dello scroll
-    // animatedHeaderScroll.addListener(value => console.warn(value))
+    animatedHeaderScroll.addListener(value => {
+        console.warn(value)
+        if (value.value < 70) {
+            console.warn('yey')
+            setAllScrolled(true)
+        }
+        else if (allScrolled){
+            console.warn('uffy')
+            setAllScrolled(false)
+        }
+    })
+
     const title = (title) => (
         <View style={{
             position: "absolute",
@@ -53,6 +65,37 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
         </View>
     )
 
+    const background = () => {
+        if (!allScrolled)
+            return (
+                <ImageBackground
+                    source={require('../../../image/loghi/logoHome.png')}
+                    style={{
+                        width: '100%',
+                        height: '80%',
+                    }}
+                    resizeMode={'contain'}
+                >
+                    {buttons()}
+                </ImageBackground>
+            )
+        else
+            return (
+                <View style={{width: '100%', height: '90%',}}>
+                    {buttons()}
+                </View>
+            )
+    }
+
+    const buttons = () => (
+        <View>
+            {showIcon(icon, navigation, alertFun)}
+            {menuIconForWeb(icon, navigation, alertFun )}
+        </View>
+    )
+
+
+
     const menuIconForWeb = (icon,navigation,alertFun) => {
         if (Platform.OS === 'web') { // controlla la piattaforma (web android ios)
             return(showIcon(IconsButton.menu, navigation, alertFun));
@@ -75,17 +118,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                 style={{flex: 1, justifyContent: 'center'}}
             >
                 {title(titolo)}
-                <ImageBackground
-                    source={require('../../../image/loghi/logoHome.png')}
-                    style={{
-                        width: '100%',
-                        height: '100%'
-                    }}
-                    resizeMode={'contain'}
-                >
-                    {showIcon(icon, navigation, alertFun)}
-                    {menuIconForWeb(icon, navigation, alertFun )}
-                </ImageBackground>
+                {background()}
             </LinearGradient>
         </Animated.View>
     );

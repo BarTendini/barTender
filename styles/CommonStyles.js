@@ -106,9 +106,9 @@ export default StyleSheet.create({
         width: "100%",
         overflow: "hidden",
         zIndex: 998,
-        elevation: 20,
-        shadowOffset: {width: 0, height: 5},
-        shadowRadius: 4,
-        shadowOpacity: 0.5
+        // elevation: 20,
+        // shadowOffset: {width: 0, height: 5},
+        // shadowRadius: 4,
+        // shadowOpacity: 0.5
     }
 });
