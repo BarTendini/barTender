@@ -243,7 +243,7 @@ const DrinkDescription = ({ route, navigation }) => {
                 title = {"Pronto a Bere?"}
                 tenderButtons = {
                     isDrinkCustom(Drink)? [
-                            {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, false); navigation.push('Cart')}},
+                            {testo: "originale", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, false); navigation.push('Cart')}},
                             {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, route.params.drink, true); navigation.push('Cart')}},
                             {testo:'annulla'}
                         ]:

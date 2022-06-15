@@ -149,7 +149,7 @@ const DrinkSelection = ({ Drink_, availability, navigation }) => {
         title = {"Pronto a Bere?"}
         tenderButtons = {
             isDrinkCustom(Drink)? [
-                    {testo: "original", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, false); navigation.push('Cart')}},
+                    {testo: "originale", alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, false); navigation.push('Cart')}},
                     {testo:'custom', alertText: "acquistato originale", color: Drink.color, action:() => {addCartInfo(DrinksInfo, Drink_, true); navigation.push('Cart')}},
                     {testo:'annulla'}
                 ]:
