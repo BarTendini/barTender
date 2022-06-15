@@ -38,13 +38,12 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
 
     const flatHeader = () => {
         return(
-            <View
+            <TouchableOpacity
+            onPress={() => { updateBars() }}
                 style={{
                     flex: 1,
-                    borderColor: themeStyles.light.backgroundColor1,
-                    borderWidth: 6,
-                    backgroundColor: themeStyles.light.backgroundColor2,
-                    paddingVertical: 10,
+                    backgroundColor: themeStyles.light.backgroundColor1,
+                    paddingVertical: 7,
                     margin:10,
                     borderRadius: 50,
                     shadowColor: '#000',
@@ -59,13 +58,13 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                     onChangeText={setLocation}
                     style={[commonStyles.InputSearchBar]}
                 />
-                <TouchableOpacity
+                <View
                     style={{marginRight: 25}}
-                    onPress={() => { updateBars() }}
+                    
                 >
-                    <FontAwesome5 name="search-location" size={50} color="black" />
-                </TouchableOpacity>
-            </View>
+                    <FontAwesome5 name="search-location" size={45} color="black" />
+                </View>
+            </TouchableOpacity>
         )
     }
     const barList = () => { // definizione funzione che mostra i bar
