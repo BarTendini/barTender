@@ -114,7 +114,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
     // il primo oggetto definisce un singolo drink
     drinkInfo(  0, // deve necessariamente essere diverso dagli altri
                 'Ichnusa', // nome del drink
-                "beer", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+                "birra", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
                 require("../image/drinks/drawings/ichnusa.png"), // richiama un immagine
                 setRecipe([ // array degli ingredienti
                     {name: "ichnusa", quantity:330}
@@ -265,7 +265,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
     ),
     drinkInfo(  9, // deve necessariamente essere diverso dagli altri
         'carignano', // nome del drink
-        "wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        "vino", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
         require("../image/drinks/drawings/carignano.png"), // richiama un immagine
         setRecipe([ // array degli ingredienti
             {name: "carignano", quantity:100}
@@ -280,7 +280,7 @@ const DrinksInfo = [ // questo array definisce tutte le informazioni riguardanti
     ),
     drinkInfo(  10, // deve necessariamente essere diverso dagli altri
         'vermentino', // nome del drink
-        "wine", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
+        "vino", //beer, cocktail, non_alcoholic_cocktail, beverage, bitter, wine
         require("../image/drinks/drawings/vermentino.png"), // richiama un immagine
         setRecipe([ // array degli ingredienti
             {name: "vermentino", quantity:100}
@@ -311,8 +311,8 @@ export {
 const getTypes=(drinksInfo)=>{
     console.log("getTypes");
     let types =[
-        {id:0, type:"favourites"},
-        {id:1, type:"all"}
+        {id:0, type:"Preferiti"},
+        {id:1, type:"Tutti"}
     ];
     drinksInfo.forEach(element => {
         if (!types.some(e => e.type === element.type)) {
@@ -325,10 +325,10 @@ const getTypes=(drinksInfo)=>{
 
 const getDrinksOfType = (drinksInfo, type) => {
     //console.log("getDrinksOfType");
-    if (type === "all") {
+    if (type === "Tutti") {
         return (drinksInfo);
     }
-    else if (type === "favourites") {
+    else if (type === "Preferiti") {
         return drinksInfo.filter(e => e.favorite);
     }
     return drinksInfo.filter(e => {

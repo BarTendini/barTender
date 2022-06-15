@@ -38,7 +38,7 @@ export const DrinkCustom = ({route, navigation}) => {
     const _renderHeader = () => {
         {/*Tutorial WebView*/}
         {/*https://blog.logrocket.com/react-native-webview-a-complete-guide/*/}
-        const quantity = {nome:"quantity", quantity:isDrinkCustom(Drink) ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
+        const quantity = {nome:"quantità", quantity:isDrinkCustom(Drink) ? Drink.customQuantity : Drink.quantity, color:"#ffffff", action:console.log, borderColor:Drink.color, minimumTrackTintColor: Drink.color}
         return (
             <View>
                 <View style={{width: '100%', height:300}}>

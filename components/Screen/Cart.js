@@ -49,7 +49,7 @@ const Cart = ({route, navigation}) => {
             <View>
                 {item.id === nextToWithdraw ?
                     <Text style={[styles.FeedTestoVoto, {color:"#000000"} ]}>
-                        next drink
+                        Prossimo drink
                     </Text>
 
                     : <></>
@@ -61,7 +61,7 @@ const Cart = ({route, navigation}) => {
             >
                 <View style={{flex:0.5, fontSize: 24, marginVertical:10, marginHorizontal:20}}>
                     <Text style={{fontWeight:"bold"}}>original</Text>
-                    <Text>quantity: {item.drink.quantity}ml</Text>
+                    <Text>quantit°: {item.drink.quantity}ml</Text>
                     {
                         item.drink.ingredients.map(item =>
                             <Text key={item.id}>{item.nome}: {item.percent}%</Text>
@@ -71,7 +71,7 @@ const Cart = ({route, navigation}) => {
             </DrinkCardTender>
                 {item.id === nextToWithdraw ?
                     <Text style={[styles.FeedTestoVoto, themeStyles.unavailableColor]}>
-                        already withdrawn
+                        Già ritirati
                     </Text>
                     : <></>
                 }
@@ -81,7 +81,7 @@ const Cart = ({route, navigation}) => {
     }
 
     return(
-        <TenderFragment navigation={navigation} title={'Cart'}>
+        <TenderFragment navigation={navigation} title={'Ordini'}>
             {/*<View>*/}
             {/*    <Text style={{ fontSize: 36, textAlign: 'center' }}>*/}
             {/*        Cart*/}

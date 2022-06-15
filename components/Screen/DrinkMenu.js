@@ -75,7 +75,7 @@ function ListDrinkType(props) {
 function ListDrinkAvailable(props) {
     return <>
         {props.availableDrinks.length > 0 && <View style={styles.ViewInfo}>
-            <Text style={styles.FeedTestoVoto}>AVIABLES DRINKS</Text>
+            <Text style={styles.FeedTestoVoto}>DRINK DISPONIBILI</Text>
         </View>}
         {props.availableDrinks.map(props.callbackfn)}
     </>;
@@ -84,7 +84,7 @@ function ListDrinkAvailable(props) {
 function ListUnavailableDrink(props) {
     return <>
         {props.unavailableDrinks.length > 0 && <Text style={[styles.FeedTestoVoto, themeStyles.unavailableColor]}>
-            UNAVIABLE DRINKS
+            DRINK NON DISPONIBILI
         </Text>}
         {props.unavailableDrinks.map(props.callbackfn)}
     </>;

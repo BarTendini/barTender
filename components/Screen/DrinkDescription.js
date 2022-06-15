@@ -173,8 +173,8 @@ const DrinkDescription = ({ route, navigation }) => {
                              {isDrinkCustom(Drink) ?
                                      <View style={{flexDirection:"row"}}>
                                          <View style={{flex:0.5, fontSize: 24}}>
-                                             <Text style={{fontWeight:"bold"}}>original</Text>
-                                             <Text>quantity: {Drink.quantity}ml</Text>
+                                             <Text style={{fontWeight:"bold"}}>originale</Text>
+                                             <Text>quantità: {Drink.quantity}ml</Text>
                                              {
                                                  Drink.ingredients.map(item =>
                                                      <Text key={item.id}>{item.nome}: {item.percent}%</Text>
@@ -183,7 +183,7 @@ const DrinkDescription = ({ route, navigation }) => {
                                          </View>
                                          <View style={{flex:0.5, fontSize: 24}}>
                                              <Text style={{fontWeight:"bold"}}>custom</Text>
-                                             <Text>quantity: {Drink.customQuantity}ml</Text>
+                                             <Text>quantità: {Drink.customQuantity}ml</Text>
                                              {
                                                  Drink.custom.map(item =>
                                                      <Text key={item.id}>{item.nome}: {item.percent}%</Text>
@@ -193,7 +193,7 @@ const DrinkDescription = ({ route, navigation }) => {
                                      </View>
 
                                  :<>
-                                 <Text>quantity: {Drink.quantity}ml</Text>
+                                 <Text>quantità: {Drink.quantity}ml</Text>
                                      {Drink.ingredients.map(item =>
                                             <View key={item.id} style={{ flex: 1, alignItems: 'flex-start'}}>
                                                 <Text >

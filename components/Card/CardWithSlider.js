@@ -40,7 +40,7 @@ const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
                     <View style={{flex:0.90, fontSize:16}}>
                         <Text >
                             <Text style={styles.DescriptionText}>
-                                quantity:
+                                quantità:
                             </Text>
                             <Text style={styles.DescriptionData}>
                                 {` ${displayText[0]} `}
@@ -53,7 +53,7 @@ const CardWithSlider = ({drink, item, drinkQuantity, action, stateUpdate }) => {
                         {displayText[1] ?
                             <Text style={{flex:0.90, fontSize:16}}>
                                 <Text style={styles.DescriptionText}>
-                                    proportion:
+                                    proporzione:
                                 </Text>
                                 <Text style={styles.DescriptionData}>
                                     {` ${displayText[1]} `}

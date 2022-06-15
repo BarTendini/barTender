@@ -43,7 +43,7 @@ const BarsInfo = [ // questo array definisce tutte le informazioni riguardanti i
             { nome: 'Gino', txt: 'Ottimo rapporto qualità-prezzo, ci tornerò sicuramente', voto: 5 },
             { nome: 'Pino', txt: 'feedback generico 3', voto: 3 },
         ],
-        color: '#cc6633', textColor: 'white'},
+        color: '#cc6633', textColor: 'black'},
     {
         id: 3, image: require("../image/ristoranti/daLino.png"),
         nome: 'Da Lino', via: 'Via le dita nel naso n.3',
