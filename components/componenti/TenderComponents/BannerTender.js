@@ -136,8 +136,12 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
         if (ico.name === 'none')  return null;
     };
 
-    return <TouchableOpacity onPress={() => getAction(icon, navigation, alertFun)}
-                          style={{marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-            {icon.iconJSX}
-        </TouchableOpacity>
+    return (
+            <TouchableOpacity
+                onPress={() => getAction(icon, navigation, alertFun)}
+                style={{ width: 80, height: 40, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start', borderWidth: 6}}
+            >
+                {icon.iconJSX}
+            </TouchableOpacity>
+    )
 }

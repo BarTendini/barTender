@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Sistema la barra">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Yey consegna">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +83,8 @@
       <workItem from="1655108665730" duration="60000" />
       <workItem from="1655137503760" duration="6595000" />
       <workItem from="1655235484384" duration="8547000" />
-      <workItem from="1655322453975" duration="6820000" />
+      <workItem from="1655322453975" duration="6879000" />
+      <workItem from="1655330826968" duration="807000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -162,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655328106963</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Yey consegna">
+      <created>1655329302578</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655329302578</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +198,8 @@
     <MESSAGE value="Guarda come mischia bene" />
     <MESSAGE value="Lagg         a" />
     <MESSAGE value="Sistema la barra" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sistema la barra" />
+    <MESSAGE value="Yey consegna" />
+    <option name="LAST_COMMIT_MESSAGE" value="Yey consegna" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

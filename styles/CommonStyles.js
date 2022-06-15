@@ -104,7 +104,6 @@ export default StyleSheet.create({
         right: 0,
         top: 0,
         width: "100%",
-        overflow: "hidden",
         zIndex: 998,
         // elevation: 20,
         // shadowOffset: {width: 0, height: 5},
