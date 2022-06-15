@@ -66,6 +66,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     const background = () => {
         if (!allScrolled)
             return (
+                <View>
                 <ImageBackground
                     source={require('../../../image/loghi/logoHome.png')}
                     style={{
@@ -76,6 +77,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                 >
                     {buttons()}
                 </ImageBackground>
+                </View>
             )
         else
             return (
@@ -110,13 +112,14 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
             ]}
         >
             <LinearGradient
-                colors={['rgba(255,255,255,0)', noGradient ? 'rgba(255,255,255,0)':'rgba(255,255,255,1)']}
-                start={{ x: 0.5, y: 0.5 }}
+                colors={['rgba(255,204,137,255)', noGradient ? 'rgba(255,255,255,0)':'rgba(255,255,255,255)','rgba(255,255,255,0)']}
+                start={{ x: 0.5, y: 0.7 }}
                 end={{ x: 0.5, y: 1 }}
                 style={{flex: 1, justifyContent: 'center'}}
             >
-                {title(titolo)}
+                
                 {background()}
+                {title(titolo)}
             </LinearGradient>
         </Animated.View>
     );

@@ -7,8 +7,8 @@ import AwesomeAlert from "react-native-awesome-alerts";
 
 // A quanto pare children è una parola speciale che indica proprio i figli
 const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title }) => {
-    const PADDING_TOP_HEADER = 10;
-    const H_MAX_HEIGHT = 150;
+    const PADDING_TOP_HEADER = 0;
+    const H_MAX_HEIGHT = 220;
     const animatedHeaderValue = useRef(new Animated.Value(0)).current
 
     const [alert, setAlert] = useState(false)
@@ -66,13 +66,13 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title
 
     return (
         <View style={{flex:1, backgroundColor: '#ffffff' }}>
-            <SafeAreaView style={{ flex:0, backgroundColor: '#ffcc8b' }} />
-            <StatusBar hidden={false} backgroundColor="#ffcc8b" />
+            <SafeAreaView style={{ flex:0, backgroundColor: '#ffcc8b'}} />
+            <StatusBar hidden={false} backgroundColor="#ffcc8b"/>
             <View style={[commonStyles.AndroidHomeSafeArea,{backgroundColor: bgColor? bgColor:'#ffffff', overflow: "hidden"}]} >
                 <Header
                     icon={getIcon(icon)}
                     navigation={navigation}
-                    bgColor={'#ffcc8b'}
+                    //bgColor={'#ffcc8b'}
                     noGradient={!!noGradient}
                     alertFun={logOut}
                     animations={{ anim: animatedHeaderValue, height: H_MAX_HEIGHT}}

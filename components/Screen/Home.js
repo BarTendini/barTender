@@ -44,7 +44,8 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                     flex: 1,
                     backgroundColor: themeStyles.light.backgroundColor1,
                     paddingVertical: 7,
-                    margin:10,
+                    marginBottom:10,
+                    marginHorizontal:10,
                     borderRadius: 50,
                     shadowColor: '#000',
                     shadowOpacity: 0.25,
@@ -57,7 +58,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                     value={location}
                     onChangeText={setLocation}
                     style={[commonStyles.InputSearchBar]}
-                    autoFocus={true}
+                    //autoFocus={true}
                     returnKeyType={'search'}
                     onSubmitEditing={updateBars}
                 />
@@ -73,7 +74,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const barList = () => { // definizione funzione che mostra i bar
         if (showBars) // se non è nullo restituisce un component di tipo View con flatList e componente fatto da noi "BarSelection"
             return (
-                <View style={{flex:1}}>
+                <View style={{flex:1, paddingTop:10}}>
                     <TenderFlatList data={barsInfo}
                         renderItem={item =>
                             <BarSelection Bar={item.item} navigation={navigation}/>

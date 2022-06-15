@@ -16,7 +16,7 @@ export const TenderScroll = ({children, scroll, header_height, footerPadding=15,
         >
             {/*<View style={{padding: 200}}></View>*/}
             {children}
-            <View style={{padding: footerPadding}}></View>
+            <View style={{paddingBottom: footerPadding}}></View>
         </ScrollView>
     )
 }
