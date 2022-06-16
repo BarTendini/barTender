@@ -7,7 +7,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {themeStyles} from "../../../styles/theme/ThemeStyles";
 
 
-const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false, titolo=''}) => { //renderizza l'header header
+const BannerTender = ({ icon, navigation, bgColor, alertFun, animations, noGradient=false, titolo=''}) => { //renderizza l'header header
     const [allScrolled, setAllScrolled] = useState(false)
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
@@ -130,7 +130,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     );
 }
 
-export default Header; // esporta logo e header come oggetto composto da componente
+export default BannerTender; // esporta logo e header come oggetto composto da componente
 
 const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, logout e menu
     const getAction = (ico, nav, fun) => {

@@ -28,7 +28,7 @@ import TenderButton from "./TenderButton";
  * @returns 
  */
 
-const TenderAlert = (elements) =>{
+export default TenderAlert = (elements) =>{
 const cancelAlertBox = () => {
   elements.state(false);
 }
@@ -188,7 +188,6 @@ const alertMessage = (text) => {
   
 }
 
-export default TenderAlert
 
 const styles = StyleSheet.create({
   fullPageBackground:{

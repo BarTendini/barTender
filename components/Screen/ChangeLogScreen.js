@@ -6,11 +6,7 @@ import DrinkCardTender from "../Card/DrinkCardTender"; //permette di importare l
 import { themeStyles } from "../../styles/theme/ThemeStyles";
 
 //import per sandbox
-import { DrinksInfo, getTypes, getDrinksOfType, getAvailableAndUnavailableDrinks} from "../../dati/DrinksInfo";
-import { AppContext } from "../../AppContext";
-import { TouchableOpacity} from "react-native";
-import DrinkSelection from "../componenti/DrinkSelection";
-import  showAlertBox from "../componenti/TenderComponents/TenderAlert"
+
 import {TenderFragment, TenderScroll, TenderButton, TenderAlert, TenderFlatList} from "../componenti/tender-components";
 
 

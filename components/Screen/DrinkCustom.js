@@ -3,13 +3,12 @@ import {Platform, SafeAreaView, Text, View, StyleSheet, ScrollView, FlatList} fr
 import {CocktailHtml} from "../webview/CocktailStyles";
 import {WebView} from "react-native-webview";
 import {WebView as WebJS} from "react-native-web-webview";
-import TenderButton from "../componenti/TenderComponents/TenderButton";
 import { themeStyles } from "../../styles/theme/ThemeStyles"
 import {LinearGradient} from 'expo-linear-gradient';
 import CardWithSlider from "../Card/CardWithSlider";
 import {DrinkCardTender} from "../Card/TenderCard";
 import {customizeIngredients, deleteCustomization, DrinksInfo, isDrinkCustom} from "../../dati/DrinksInfo"
-import {TenderFlatList, TenderFragment} from "../componenti/tender-components";
+import {TenderFlatList, TenderFragment, TenderButton} from "../componenti/tender-components";
 
 
 export const DrinkCustom = ({route, navigation}) => {

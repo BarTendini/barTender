@@ -5,8 +5,7 @@ import {IconsButton} from "../../dati/IconsButton";
 import {DrinkCardTender} from "../Card/TenderCard";
 import {LinearGradient} from 'expo-linear-gradient';
 import {themeStyles} from "../../styles/theme/ThemeStyles";
-import {TenderFragment, TenderFlatList, TenderButton} from "../componenti/tender-components";
-import TenderAlert from "../componenti/TenderComponents/TenderAlert"
+import {TenderFragment, TenderFlatList, TenderButton, TenderAlert} from "../componenti/tender-components";
 import commonStyles from "../../styles/CommonStyles";
 
 

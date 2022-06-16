@@ -6,7 +6,7 @@ import { themeStyles } from "../../../styles/theme/ThemeStyles"
 
 
 
-const TenderButton = ({ testo, navigation, bar = "unknown", color = themeStyles.light.backgroundColor1, action = null }) => {
+export default TenderButton = ({ testo, navigation, bar = "unknown", color = themeStyles.light.backgroundColor1, action = null }) => {
     //const [bar, setBar] = useState('');
     
     //console.log("TenderButton")
@@ -49,4 +49,3 @@ const TenderButton = ({ testo, navigation, bar = "unknown", color = themeStyles.
     )
 }
 
-export default TenderButton;
