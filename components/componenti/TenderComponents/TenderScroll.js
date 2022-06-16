@@ -20,5 +20,3 @@ export const TenderScroll = ({children, scroll, header_height, footerPadding=15,
         </ScrollView>
     )
 }
-TenderScroll.displayName = 'TenderScroll'
-TenderScroll.animazioneHeader=true

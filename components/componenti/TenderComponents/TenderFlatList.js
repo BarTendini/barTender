@@ -28,5 +28,3 @@ export const TenderFlatList = ({children, scroll, header_height, ListFooterCompo
         </FlatList>
     )
 }
-TenderFlatList.displayName = 'TenderFlatList'
-TenderFlatList.animazioneHeader=true

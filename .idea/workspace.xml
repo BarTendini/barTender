@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Yey consegna">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/CommonStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/styles/CommonStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFlatList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFlatList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderScroll.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderScroll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

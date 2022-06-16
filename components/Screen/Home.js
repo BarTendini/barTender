@@ -39,7 +39,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const flatHeader = () => {
         return(
             <TouchableOpacity
-            onPress={() => { updateBars() }}
+                onPress={() => { updateBars() }}
                 style={{
                     flex: 1,
                     backgroundColor: themeStyles.light.backgroundColor1,
@@ -74,7 +74,6 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const barList = () => { // definizione funzione che mostra i bar
         if (showBars) // se non è nullo restituisce un component di tipo View con flatList e componente fatto da noi "BarSelection"
             return (
-                <View style={{flex:1, paddingTop:10}}>
                     <TenderFlatList data={barsInfo}
                         renderItem={item =>
                             <BarSelection Bar={item.item} navigation={navigation}/>
@@ -82,7 +81,6 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
                         style={{marginTop: -10, marginBottom: -15}}
                         ListHeaderComponent={flatHeader}
                     />
-                </View>
             )
     }
     return (
