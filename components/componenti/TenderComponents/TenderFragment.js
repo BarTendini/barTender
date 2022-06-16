@@ -10,8 +10,8 @@ import BannerTender from "./BannerTender";
 
 // A quanto pare children è una parola speciale che indica proprio i figli
 const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title }) => {
-    const PADDING_TOP_HEADER = 0;
-    const H_MAX_HEIGHT = 220;
+    const PADDING_TOP_HEADER = 15;
+    const H_MAX_HEIGHT = 150;
     const animatedHeaderValue = useRef(new Animated.Value(0)).current
 
     const [alert, setAlert] = useState(false)
@@ -81,9 +81,7 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title
                     animations={{ anim: animatedHeaderValue, height: H_MAX_HEIGHT}}
                     titolo={title}
                 />
-<View style={{ flex:1}}>
                 {recursiveChildrenMap(children, cloneChild)}
-</View>
                 <AwesomeAlert
                     show={alert}
                     showProgress={false}

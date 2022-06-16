@@ -71,7 +71,6 @@ const BannerTender = ({ icon, navigation, bgColor, alertFun, animations, noGradi
     const background = () => {
         if (!allScrolled)
             return (
-                <View>
                 <ImageBackground
                     source={require('../../../image/loghi/logoHome.png')}
                     style={{
@@ -82,7 +81,6 @@ const BannerTender = ({ icon, navigation, bgColor, alertFun, animations, noGradi
                 >
                     {buttons()}
                 </ImageBackground>
-                </View>
             )
         else
             return (
@@ -122,9 +120,8 @@ const BannerTender = ({ icon, navigation, bgColor, alertFun, animations, noGradi
                 end={{ x: 0.5, y: 1 }}
                 style={{flex: 1, justifyContent: 'center'}}
             >
-                
-                {background()}
                 {title(titolo)}
+                {background()}
             </LinearGradient>
         </Animated.View>
     );
