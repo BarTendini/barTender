@@ -12,7 +12,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     // https://itnext.io/react-native-collapsible-headers-explained-78584ff133d8
     // https://www.youtube.com/watch?v=YC17-JnrYQE
     const H_MAX_HEIGHT = animations ? animations.height : 150;
-    const H_MIN_HEIGHT = 60;
+    const H_MIN_HEIGHT =100;
     const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
     const minScroll = 50;
     const activeRange = 200;
@@ -30,7 +30,7 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
     });
     // Serve per loggare il valore dello scroll
     animatedHeaderScroll.addListener(value => {
-        if (value.value < 80) {
+        if (value.value < 110) {
             setAllScrolled(true)
         }
         else if (allScrolled){
@@ -56,6 +56,11 @@ const Header = ({ icon, navigation, bgColor, alertFun, animations, noGradient=fa
                 fontWeight: 'bold',
                 // fontFamily: 'Roboto',
                 marginTop: 10,
+                maxWidth:allScrolled? 250 : 600,
+                minHeight:allScrolled? 80 : 0,
+                justifyContent:"center",
+                alignContent:"center",
+                alignSelf:"center"
                 // color: 'white'
             }}>
                 {title}
@@ -139,7 +144,7 @@ const showIcon = (icon, navigation, alertFun) => { // mostra le icone indietro, 
     return (
             <TouchableOpacity
                 onPress={() => getAction(icon, navigation, alertFun)}
-                style={{ width: 80, height: 40, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start', borderWidth: 6}}
+                style={{ width: 80, height: 40, marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}
             >
                 {icon.iconJSX}
             </TouchableOpacity>

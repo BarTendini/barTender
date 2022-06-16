@@ -64,9 +64,10 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: "center",
-        borderColor: 'black',
-        paddingHorizontal: 20,
-        borderWidth: 1,
+        borderColor: '#ffcc89',
+        paddingHorizontal: 30,
+        paddingVertical:10,
+        borderWidth: 6,
         borderRadius: 50,
     },
     Bottone: {

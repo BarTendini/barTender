@@ -78,7 +78,9 @@ const TenderFragment = ({children, icon,  navigation, noGradient, bgColor, title
                     animations={{ anim: animatedHeaderValue, height: H_MAX_HEIGHT}}
                     titolo={title}
                 />
+
                 {recursiveChildrenMap(children, cloneChild)}
+
                 <AwesomeAlert
                     show={alert}
                     showProgress={false}
