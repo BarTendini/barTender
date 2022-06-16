@@ -126,17 +126,17 @@ const Cart = ({route, navigation}) => {
         >
         <View>
             <Text style={{fontSize:24}}>
-                <Text>Because of the bar beeing happily crowded </Text>
-                <Text style={{fontWeight:"bold"}}>we will notify you </Text>
-                <Text> when the time comes </Text>
-                <Text style={{fontWeight:"bold"}}>to collect your order</Text>
+                <Text>Essendo il locale felicemente affollato </Text>
+                <Text style={{fontWeight:"bold"}}>ti notificheremo</Text>
+                <Text> quando arriverà il momento di </Text>
+                <Text style={{fontWeight:"bold"}}>ritirare l'ordine</Text>
             </Text>
             <Image
                 source={ require("../../image/icons/happyCrowd.png")}
                 style={[commonStyles.DrinkImm, {flexShrink:1, maxHeight:150}]}
             />
             <Text style={{fontSize:24}}>
-                <Text>people in front of you: </Text>
+                <Text>persone davanti a te: </Text>
                 <Text style={{fontWeight:"bold"}}>{peopleInFrontOfYou} </Text>
             </Text>
         </View>
