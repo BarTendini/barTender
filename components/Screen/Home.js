@@ -11,6 +11,8 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
     const [showBars, setShowBars] = useState(false)
     const [location, setLocation] = useState('')
     const [barsInfo, setBarsInfo] = useState(BarsInfo)
+    const [autofocus, setAutofocus] = useState(false)
+
 
     const locationLoaded = (location) => {
         return setLocation(location)
@@ -38,8 +40,7 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
 
     const flatHeader = () => {
         return(
-            <TouchableOpacity
-                onPress={() => { updateBars() }}
+            <View
                 style={{
                     flex: 1,
                     backgroundColor: themeStyles.light.backgroundColor1,
@@ -56,19 +57,26 @@ const Home = ({ navigation }) => { // funzione generatrice della schermata home
             }}>
                 <TextInput
                     value={location}
-                    onChangeText={setLocation}
+                    onChangeText={(input) => {
+                        setLocation(input)
+                        setAutofocus(true)
+                    }}
                     style={[commonStyles.InputSearchBar]}
-                    //autoFocus={true}
+                    autoFocus={autofocus}
                     returnKeyType={'search'}
-                    onSubmitEditing={updateBars}
+                    onEndEditing={() => setAutofocus(false)}
+                    onSubmitEditing={() => {
+                        updateBars()
+                        setAutofocus(false)
+                    }}
                 />
-                <View
+                <TouchableOpacity
                     style={{marginRight: 25}}
-                    
+                    onPress={updateBars}
                 >
                     <FontAwesome5 name="search-location" size={45} color="black" />
-                </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
         )
     }
     const barList = () => { // definizione funzione che mostra i bar

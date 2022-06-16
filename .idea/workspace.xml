@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="yey funziona">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/BannerTender.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/componenti/TenderComponents/TenderFragment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +84,7 @@
       <workItem from="1655235484384" duration="8547000" />
       <workItem from="1655322453975" duration="6879000" />
       <workItem from="1655330826968" duration="807000" />
+      <workItem from="1655383760149" duration="419000" />
     </task>
     <task id="LOCAL-00001" summary="Risotto!">
       <created>1654241903972</created>
@@ -177,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655382752827</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto">
+      <created>1655383678775</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655383678775</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +214,8 @@
     <MESSAGE value="Sistema la barra" />
     <MESSAGE value="Yey consegna" />
     <MESSAGE value="yey funziona" />
-    <option name="LAST_COMMIT_MESSAGE" value="yey funziona" />
+    <MESSAGE value="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
