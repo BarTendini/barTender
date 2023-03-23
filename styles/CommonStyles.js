@@ -13,8 +13,7 @@ export default StyleSheet.create({
     },
     AndroidHomeSafeArea: {
         flex: 1,
-        backgroundColor: "white",
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        backgroundColor: "#ffffff00",
     },
     ViewAut: {
         flex: 1,
@@ -41,6 +40,17 @@ export default StyleSheet.create({
         borderRadius: 15,
         fontSize: 16,
     },
+    InputSearchBar: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        marginHorizontal: 15,
+        paddingHorizontal: 15,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 15,
+        fontSize: 16,
+    },
     BottoneView: {
         flex: 1,
         justifyContent: "center",
@@ -57,22 +67,17 @@ export default StyleSheet.create({
     BottoneText: {
         color: "white",
     },
-    Logo: {
-        width: '100%',
-        height: 150,
-    },
     Bottom: {
         //serve per centrare il resto degli elementi della pagina a causa di logo
         // Altrimenti è tutto centrato al di sotto del logo
         justifyContent: "flex-end",
         alignItems: "center",
+        padding: 30
     },
     ViewHome: {
-        flex: 1,
         flexDirection: "column",
         justifyContent: "flex-start",
         marginHorizontal: 10,
-        
     },
     RistoranteImm: {
         justifyContent: "center",
@@ -82,5 +87,27 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         // borderColor: 'black',
         // borderWidth: 3,
+    },
+    DrinkImm: {
+        justifyContent: "center",
+        alignItems: "center",
+        height: 300,
+        width: '100%',
+        resizeMode: 'contain',
+        marginVertical: 10,
+        // borderColor: 'black',
+        // borderWidth: 3,
+    },
+    HeaderTender: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        width: "100%",
+        zIndex: 998,
+        // elevation: 20,
+        // shadowOffset: {width: 0, height: 5},
+        // shadowRadius: 4,
+        // shadowOpacity: 0.5
     }
 });

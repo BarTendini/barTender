@@ -1,17 +1,16 @@
-import React, {useRef, useState} from "react";
-import {SafeAreaView, View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Platform} from 'react-native';
+import React, { useRef, useState } from "react";
+import { Image, View, Text, StyleSheet, Alert, TouchableOpacity, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import commonStyles from "../../styles/CommonStyles";
-import {Logo} from "../componenti/HeaderTender.js";
-import TenderButton from "../componenti/TenderButton";
 import AwesomeAlert from "react-native-awesome-alerts";
-import { CardTender } from "../Card/TenderCard";
+import { DrinkCardTender } from "../Card/TenderCard";
+import { themeStyles } from "../../styles/theme/ThemeStyles";
+import { TenderFragment, TenderScroll, TenderButton} from "../componenti/tender-components";
 
 const BarDescription = ({ route, navigation }) => {
     const bar = useRef(route.params).current;
     const [alert, setAlert] = useState(false)
     const showAlert = () => {
-        setAlert( true)
+        setAlert(true)
     };
 
     const hideAlert = () => {
@@ -44,77 +43,80 @@ const BarDescription = ({ route, navigation }) => {
                 "Orari bar",
                 bar.orari,
                 [
-                    {text: "Ok",}
+                    { text: "Ok", }
                 ]
             );
         }
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidHomeSafeArea}>
-            <Logo icon={1} navigation={navigation} bgColor={'#ffcc8b'} />
-            <View style={styles.MarginTop}>
-                <Text style={styles.Title}>{bar.nome}</Text>
-                <Text style={{ textAlign: 'center', }}>{bar.via}</Text>
-            </View>
-            <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                {/*Sezione di distanza, status, orari*/}
-                <View style={styles.ViewInfo}>
-                    {/*Sotto titolo di distanza, status, orari*/}
-                    <View style={styles.ViewInfoTitle}>
-                        <View style={styles.ViewInfoSubTitle}>
-                            <Text style={styles.TextInfoTitle}>Distanza:</Text>
+        <TenderFragment navigation={navigation} title={bar.nome}>
+            {/*<View style={styles.MarginTop}>*/}
+            {/*    <Text style={styles.Title}>{bar.nome}</Text>*/}
+            {/*    <Text style={{ textAlign: 'center', }}>{bar.via}</Text>*/}
+            {/*</View>*/}
+            <TenderScroll contentContainerStyle={{ flexGrow: 1}}>
+                <View style={{ paddingBottom:80}}>
+                    {/*Sezione di distanza, status, orari*/}
+                    <View style={styles.ViewInfo}>
+                        <View style={{ height: 100, marginHorizontal: 30 }}>
+                            <Image
+                                source={bar.image}
+                                style={{
+                                    flex: 1,
+                                    width: '100%',
+                                    resizeMode: 'contain',
+                                }}
+                            />
                         </View>
-                        <View style={styles.ViewInfoSubTitle}>
-                            <Text style={styles.TextInfoTitle}>Status:</Text>
+                        <Text style={{ textAlign: 'center', marginVertical: 5 }}>{bar.via}</Text>
+                        {/*Sotto titolo di distanza, status, orari*/}
+                        <View style={styles.ParallelCardsContainer}>
+                            <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={styles.TextInfoTitle}>Distanza:</Text>
+                                <Text style={{ textAlign: 'center', }}>{bar.dist}</Text>
+                            </View>
+                            <View style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={styles.TextInfoTitle}>Status:</Text>
+                                <Text style={{ textAlign: 'center', }}>{bar.status}</Text>
+                            </View>
+                            <TouchableOpacity onPress={infoOrari} style={[styles.ParallelCards, styles.ViewInfoSubTitle]}>
+                                <Text style={[styles.TextInfoTitle, { color: '#007fff' }]}>Orario:</Text>
+                                <Text style={{ textAlign: 'center', color: '#007fff' }}>{bar.orario}</Text>
+                            </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={infoOrari} style={styles.ViewInfoSubTitle}>
-                            <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>Orario:</Text>
-                        </TouchableOpacity>
+
                     </View>
-                    {/*Valori di distanza, status, orari*/}
-                    <View style={styles.ViewInfoTitle}>
-                        <View style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', }}>{bar.dist}</Text>
+
+                    {/*Descrizione Locale*/}
+                    <DrinkCardTender title={"Descrizione:"}>
+                        <View style={styles.ViewDescrizioneTesto}>
+                            <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
                         </View>
-                        <View style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', }}>{bar.status}</Text>
-                        </View>
-                        <TouchableOpacity onPress={infoOrari} style={styles.ViewInfoSubTitle}>
-                            <Text style={{ textAlign: 'center', color: '#007fff' }}>{bar.orario}</Text>
-                        </TouchableOpacity>
-                    </View>
+                    </DrinkCardTender>
+
+                    {/*Feedback*/}
+                    <DrinkCardTender title={"Feedback:"}>
+                        {feedback()}
+                    </DrinkCardTender>
+                    <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
                 </View>
 
-                {/*Descrizione Locale*/}
-                <CardTender title={"Descrizione:"}>
-                    <View style={styles.ViewDescrizioneTesto}>
-                        <Text style={styles.TestoDescrizione}>{bar.descr}</Text>
-                    </View>
-                </CardTender>
-
-                {/*Feedback*/}
-                <CardTender title={"Feedback:"}>
-                    {feedback()}
-                </CardTender>
-                <View style={{ marginBottom: Platform.OS === 'android' ? 70 : 60, }} />
-            </ScrollView>
-
+            </TenderScroll>
             <View style={{
                 position: 'absolute',
                 width: '100%',
                 height: Platform.OS === 'android' ? '8%' : '14%',
                 bottom: 0,
                 justifyContent: 'center',
-                // borderColor: 'black',
-                // borderWidth: 3,
+
             }}>
                 <LinearGradient
                     colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,1)']}
                     start={{ x: 0.5, y: 0 }}
-                    end={{ x: 0.5, y: 0.3 }}
-                    style={{ flex: 1, }}
+                    end={{ x: 0.5, y: 0.2 }}
+                    style={{ height: 100, paddingVertical: 20, justifyContent: 'center'}}
                 >
-                    <TenderButton testo={'ORDINA'} navigation={navigation}/>
+                    <TenderButton testo={'🍹 ORDINA'} navigation={navigation} bar={bar} />
                 </LinearGradient>
             </View>
 
@@ -131,10 +133,10 @@ const BarDescription = ({ route, navigation }) => {
                 onConfirmPressed={() => {
                     hideAlert()
                 }}
-                overlayStyle={{height: '100%'}}
-                alertContainerStyle={{height: '100%', width: '100%', alignSelf: 'center'}}
+                overlayStyle={{ height: '100%' }}
+                alertContainerStyle={{ height: '100%', width: '100%', alignSelf: 'center' }}
             />
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
     ViewInfo: {
         flexDirection: "column",
         justifyContent: "center",
-        marginTop: 20
+        // marginTop: 20
     },
     ViewInfoTitle: {
         flexDirection: "row",
@@ -159,10 +161,12 @@ const styles = StyleSheet.create({
     },
     ViewInfoSubTitle: {
         flex: 1,
+
     },
     TextInfoTitle: {
         fontWeight: 'bold',
         textAlign: 'center',
+        fontSize: 20
     },
     Descrizione: {
         backgroundColor: '#ffcc8b',
@@ -204,5 +208,23 @@ const styles = StyleSheet.create({
     FeedTestoVoto: {
         fontSize: 20,
         textAlign: 'right',
+    },
+    ParallelCardsContainer: {
+        flex: 1,
+        flexDirection: "row",
+        alignContent: 'center',
+        marginTop: 10,
+        marginBottom: 5,
+    },
+    ParallelCards: {
+        flex: 0.5,
+        alignContent: 'center',
+        textAlignVertical: 'center',
+        backgroundColor: themeStyles.light.backgroundColor1,
+        borderRadius: 50,
+        borderColor: themeStyles.light.backgroundColor1,
+        borderWidth: 8,
+        marginHorizontal: 5
+
     }
 })

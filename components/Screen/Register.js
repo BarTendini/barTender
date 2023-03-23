@@ -4,14 +4,14 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
-    SafeAreaView,
     TextInput,
     KeyboardAvoidingView,
     Platform,
     ScrollView
 } from "react-native";
 import commonStyles from "../../styles/CommonStyles";
-import {Logo} from "../componenti/HeaderTender.js";
+import {TenderFragment, TenderScroll} from "../componenti/tender-components";
+
 
 const Register = ({ navigation }) => {
     const [logMail, setMail] = useState('')
@@ -34,10 +34,10 @@ const Register = ({ navigation }) => {
         navigation.goBack();
     }
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
+        <TenderFragment bgColor={'#ffcc8b'} noGradient={true} navigation={navigation}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1,}}>
-                <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Logo icon={1} navigation={navigation} />
+                <TenderScroll contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
+
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Registrati</Text>
                         <View style={{padding: 20}}/>
@@ -74,9 +74,9 @@ const Register = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                </ScrollView>
+                </TenderScroll>
             </KeyboardAvoidingView>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 

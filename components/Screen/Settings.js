@@ -1,12 +1,9 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet, ScrollView, Switch} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import commonStyles from "../../styles/CommonStyles";
-import {Logo, Header} from "../componenti/HeaderTender.js";
-import {themeStyles} from "../../styles/theme/ThemeStyles";
 import settingsInfo from "../../dati/SettingsInfo"; //importa gli oggetti da settings info con le info
-import { FlatList } from "react-native-gesture-handler";
-import CardTender from "../Card/CardTender"; //permette di importare le bolle personalizzate
-
+import DrinkCardTender from "../Card/DrinkCardTender";
+import {TenderFlatList, TenderFragment} from "../componenti/tender-components";
 
 const Settings = ({ navigation }) => {
 
@@ -22,54 +19,43 @@ const Settings = ({ navigation }) => {
         // console.log("Sono il gruppo con id: " + item.id) ho debuggatto così se ti può interessare
         // if (item.id === 2) console.log(item); Non so se si possa fare senza le parentesi graffe però
         return (
-            <CardTender title={item.title}>
+            <DrinkCardTender title={item.title}>
                 <View style={{flex: 1, flexDirection: 'column', margin: 10}}>
                     <FlatList
                         data={item.settables}
                         renderItem={cardRenderSelector}
-                        
+
                     />
                 </View>
-            </CardTender>
+            </DrinkCardTender>
         )
     }
 
     const cardRenderItem = ({item}) => {
-        console.log(item.id);
         return (
-            <View style={{flexDirection: 'column', margin: 10}}>                
-                    {item.interaction(item)}   
+            <View style={{flexDirection: 'column', margin: 10}}>
+                    {item.interaction(item)}
             </View>
         )
     }
 
     console.log("Settings.js");
-    
+
     return (
-        <SafeAreaView style={commonStyles.AndroidSafeArea}>
-            <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
+        <TenderFragment navigation={navigation} title={"Settings"}>
             <View style={{flex: 1}}>
-                <Text style={commonStyles.titleText}>
-                    settings
-                </Text>
-                <FlatList
+                {/*<Text style={commonStyles.titleText}>*/}
+                {/*    settings*/}
+                {/*</Text>*/}
+                <TenderFlatList
                     data={settingsInfo}
                     renderItem={cardRenderSelector}
                 />
             </View>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 
-//           <Header icon={1} navigation={navigation} bgColor= {themeStyles.light} />
-
-/**
- * <FlatList
-                    data={SettingsInfo}
-                    renderItem={cardRenderSelector}
-                    keyExtractor={item => item.id}
-                />
- */
 
 export default Settings;
 

@@ -1,14 +1,16 @@
 import React, {useState} from "react";
-import {Alert, View, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, ScrollView, SafeAreaView, TextInput, KeyboardAvoidingView} from "react-native";
-import {Logo} from "../componenti/HeaderTender.js";
+import {View, TouchableOpacity, Text, StyleSheet, Platform, TextInput, KeyboardAvoidingView} from "react-native";
 import commonStyles from "../../styles/CommonStyles";
 import {version, changes} from "../../dati/ChangeLog";
-import {themeStyles,themeStylesSheet} from "../../styles/theme/ThemeStyles";
+import {AppContext} from "../../AppContext";
+import {TenderFragment, TenderScroll} from "../componenti/tender-components";
 
 
 const Login = ({ navigation }) => {
-    const [logUsr, setUsr] = useState('')
-    const [passText, setPass] = useState('')
+    const [logUsr, setUsr] = useState('');
+    const [passText, setPass] = useState('');
+    const {user, setUser} = React.useContext(AppContext);
+
     const handleSubmitPress = () => {
         //setErrortext('');
         if (logUsr.trim() === "") {
@@ -19,19 +21,20 @@ const Login = ({ navigation }) => {
             console.warn('Please inserisci la password');
             return;
         }
+        setUser(logUsr);
         navigation.replace('DrawerNavigationRoutes');
     }
 
-    
+
 
 
     return (
-        <SafeAreaView style={[commonStyles.AndroidSafeArea, themeStylesSheet.light1]}>
+        <TenderFragment icon={"none"} bgColor={'#ffcc8b'} noGradient={true} navigation={navigation}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{flex: 1,}}>
-                <ScrollView contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
-                    <Logo icon={0} />
+                <TenderScroll contentContainerStyle={{flexGrow: 1}} keyboardShouldPersistTaps='handled'>
+
                     <View style={commonStyles.ViewAut}>
                         <Text style={commonStyles.titleText}>Login</Text>
                         <View style={{paddingTop: 20}}/>
@@ -70,14 +73,14 @@ const Login = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-                </ScrollView>
+                </TenderScroll>
             </KeyboardAvoidingView>
             <View style={commonStyles.Bottom}><Text>Build: {version} in data: {changes[0].dataPush}</Text>
             <TouchableOpacity onPress={() => navigation.push('ChangeLog')} style={styles.ViewInfoSubTitle}>
                 <Text style={ [styles.TextInfoTitle, {color: '#007fff'}]}>changeLog</Text>
             </TouchableOpacity>
             </View>
-        </SafeAreaView>
+        </TenderFragment>
     );
 };
 
@@ -90,3 +93,7 @@ const styles = StyleSheet.create({
     }
 });
 
+// Todo simo: aggiungere il pulsante finto
+// <FontAwesome.Button name="facebook" backgroundColor="#3b5998">
+//     Login with Facebook
+// </FontAwesome.Button>

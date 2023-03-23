@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Screen/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Screen/Home.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29gyL3EigSOHDPnFRvqQB4bbQU4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/massimo/Documents/GitHub/barTender/components/componenti/TenderComponents&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/componenti/TenderComponents" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/componenti/TenderComponents" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f249733-763f-404d-89d4-83363781a8a5" name="Changes" comment="" />
+      <created>1653548966272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653548966272</updated>
+      <workItem from="1653548971245" duration="31967000" />
+      <workItem from="1653634306029" duration="473000" />
+      <workItem from="1653634800240" duration="171000" />
+      <workItem from="1653635120819" duration="794000" />
+      <workItem from="1653645665961" duration="121000" />
+      <workItem from="1653645805550" duration="13359000" />
+      <workItem from="1653939550235" duration="38545000" />
+      <workItem from="1654195736459" duration="70000" />
+      <workItem from="1654195823845" duration="4967000" />
+      <workItem from="1654212648557" duration="47000" />
+      <workItem from="1654212697811" duration="5368000" />
+      <workItem from="1654241801390" duration="123000" />
+      <workItem from="1654241997246" duration="66000" />
+      <workItem from="1654242066688" duration="1000" />
+      <workItem from="1654254210044" duration="665000" />
+      <workItem from="1654261457116" duration="4405000" />
+      <workItem from="1654265889261" duration="295000" />
+      <workItem from="1654266360786" duration="38000" />
+      <workItem from="1654886719826" duration="5096000" />
+      <workItem from="1654938202458" duration="5751000" />
+      <workItem from="1655024485507" duration="3243000" />
+      <workItem from="1655027741942" duration="25796000" />
+      <workItem from="1655108665730" duration="60000" />
+      <workItem from="1655137503760" duration="6595000" />
+      <workItem from="1655235484384" duration="8547000" />
+      <workItem from="1655322453975" duration="6879000" />
+      <workItem from="1655330826968" duration="807000" />
+      <workItem from="1655383760149" duration="419000" />
+    </task>
+    <task id="LOCAL-00001" summary="Risotto!">
+      <created>1654241903972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654241903972</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js">
+      <created>1654265863407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654265863407</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js">
+      <created>1654266122200</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654266122200</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Inserita funzione per controllare che il drink custom esiste">
+      <created>1654889759129</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654889759129</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Risolto bug classe circolare&#10;Risolto bug nella flat list del carte, ora non si visualizzano più errori">
+      <created>1654908685247</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654908685247</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Aggiunto un import generale per i componenti&#10;l'header ora si abbassa quando si scrolla, ma non ho testato su android">
+      <created>1655108718387</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655108718387</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Aggiunto un titolo nell'header che scorre">
+      <created>1655162570212</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655162570212</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Ora tutte le schermate dovrebbero avere l'header che si chiude">
+      <created>1655245825619</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655245825619</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Guarda come mischia bene">
+      <created>1655323994103</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655323994103</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Lagg         a">
+      <created>1655325423037</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655325423037</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Sistema la barra">
+      <created>1655328106963</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655328106963</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Yey consegna">
+      <created>1655329302578</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655329302578</updated>
+    </task>
+    <task id="LOCAL-00013" summary="yey funziona">
+      <created>1655382752827</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655382752827</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto">
+      <created>1655383678775</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655383678775</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Risotto!" />
+    <MESSAGE value="Cambiato l'header, tutto per aggiungere il colore nella status bar&#10;Bisogna cambiare gli altri screen e utilizzare TenderFragment come in InitialSelectorScreen.js" />
+    <MESSAGE value="Inserita funzione per controllare che il drink custom esiste" />
+    <MESSAGE value="Risolto bug classe circolare&#10;Risolto bug nella flat list del carte, ora non si visualizzano più errori" />
+    <MESSAGE value="Aggiunto un import generale per i componenti&#10;l'header ora si abbassa quando si scrolla, ma non ho testato su android" />
+    <MESSAGE value="Aggiunto un titolo nell'header che scorre" />
+    <MESSAGE value="Ora tutte le schermate dovrebbero avere l'header che si chiude" />
+    <MESSAGE value="Guarda come mischia bene" />
+    <MESSAGE value="Lagg         a" />
+    <MESSAGE value="Sistema la barra" />
+    <MESSAGE value="Yey consegna" />
+    <MESSAGE value="yey funziona" />
+    <MESSAGE value="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dovrei aver fixato le cose peggiori... ma stavi rompendo di nuovo tutto" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
