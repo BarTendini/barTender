@@ -12,25 +12,34 @@
       "backgroundColor": "#FFCC8B"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/35a58b1f-9d30-4224-a563-6b9f63a5b851"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bartender.barTender"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/AppIcons/appstore.png",
         "backgroundColor": "#FFCC8B"
-      }
+      },
+      "package": "com.bartender.barTender"
     },
     "web": {
       "favicon": "./assets/AppIcons/Assets.xcassets/AppIcon.appiconset/_/48.png"
     },
     "description": "",
-    "sdkVersion": "44.0.0"
-  },
-  "name": "bartender"
+    "extra": {
+      "eas": {
+        "projectId": "35a58b1f-9d30-4224-a563-6b9f63a5b851"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
 }
