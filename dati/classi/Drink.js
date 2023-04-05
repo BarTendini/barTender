@@ -22,6 +22,7 @@ export default class Drink {
         this._custom = []
         this.isCorrect()
     }
+
     isCustom(){
         return this._custom===[]
     }
